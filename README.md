@@ -2,7 +2,13 @@
 
 ### Project : 방방술래 (주류 픽업 서비스 플랫폼)
 
-#### Member : 구성모, 김현우, 문가란, 신승민
+#### Member
+
+|             [구성모](https://github.com/gusm96)              | [김현우](https://github.com/wmrwmr) | [문가란](https://github.com/lililights) | 신승민 |
+| :----------------------------------------------------------: | ----------------------------------- | --------------------------------------- | ------ |
+| <img src="C:\Users\gusm9\Documents\workspace\bitwin-bangbang\profile\seongmo.jpg" style=" width: 200px; hight:200px;" /> |                                     |                                         |        |
+
+
 
 ------
 

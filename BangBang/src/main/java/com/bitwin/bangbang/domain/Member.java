@@ -1,0 +1,141 @@
+package com.bitwin.bangbang.domain;
+
+public class Member {
+
+	private int idx;
+	private String userid;
+	private String password;
+	private String username;
+	private String birth;
+	private String phonenum;
+	private String email;
+	private boolean enotify;
+	private boolean mnotify;
+	private boolean snotify;
+	private String photo;
+	private String regdate;
+
+	public Member(int idx, String userid, String password, String username, String birth, String phonenum, String email,
+			boolean enotify, boolean mnotify, boolean snotify, String photo, String regdate) {
+		this.idx = idx;
+		this.userid = userid;
+		this.password = password;
+		this.username = username;
+		this.birth = birth;
+		this.phonenum = phonenum;
+		this.email = email;
+		this.enotify = enotify;
+		this.mnotify = mnotify;
+		this.snotify = snotify;
+		this.photo = photo;
+		this.regdate = regdate;
+	}
+
+	public int getIdx() {
+		return idx;
+	}
+
+	public void setIdx(int idx) {
+		this.idx = idx;
+	}
+
+	public String getUserid() {
+		return userid;
+	}
+
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+
+	public String getRegdate() {
+		return regdate;
+	}
+
+	public void setRegdate(String regdate) {
+		this.regdate = regdate;
+	}
+
+	public String getBirth() {
+		return birth;
+	}
+
+	public void setBirth(String birth) {
+		this.birth = birth;
+	}
+
+	public String getPhonenum() {
+		return phonenum;
+	}
+
+	public void setPhonenum(String phonenum) {
+		this.phonenum = phonenum;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public boolean isEnotify() {
+		return enotify;
+	}
+
+	public void setEnotify(boolean enotify) {
+		this.enotify = enotify;
+	}
+
+	public boolean isMnotify() {
+		return mnotify;
+	}
+
+	public void setMnotify(boolean mnotify) {
+		this.mnotify = mnotify;
+	}
+
+	public boolean isSnotify() {
+		return snotify;
+	}
+
+	public void setSnotify(boolean snotify) {
+		this.snotify = snotify;
+	}
+
+	@Override
+	public String toString() {
+		return "Member [idx=" + idx + ", userid=" + userid + ", password=" + password + ", username=" + username
+				+ ", birth=" + birth + ", phonenum=" + phonenum + ", email=" + email + ", enotify=" + enotify
+				+ ", mnotify=" + mnotify + ", snotify=" + snotify + ", photo=" + photo + ", regdate=" + regdate + "]";
+	}
+
+//	public LoginInfo getLoginInfo() {
+//		return new LoginInfo(idx, userid, username, photo);
+//	}
+
+}
