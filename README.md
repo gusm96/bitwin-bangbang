@@ -4,9 +4,9 @@
 
 #### Member
 
-|             [구성모](https://github.com/gusm96)              | [김현우](https://github.com/wmrwmr) | [문가란](https://github.com/lililights) | 신승민 |
-| :----------------------------------------------------------: | ----------------------------------- | --------------------------------------- | ------ |
-| <img src="C:\Users\gusm9\Documents\workspace\bitwin-bangbang\profile\seongmo.jpg" style=" width: 200px; hight:200px;" /> |                                     |                                         |        |
+| [구성모](https://github.com/gusm96) | [김현우](https://github.com/wmrwmr) | [문가란](https://github.com/lililights) | 신승민 |
+| :---------------------------------: | ----------------------------------- | --------------------------------------- | ------ |
+|                                     |                                     |                                         |        |
 
 
 
