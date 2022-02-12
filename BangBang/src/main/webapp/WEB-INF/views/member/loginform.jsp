@@ -6,9 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인</title>
+
 </head>
 <body>
-	<form mathod="post">
+	<form method="post">
 		<table>
 			<tr>
 				<td>아이디</td>

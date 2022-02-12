@@ -1,10 +1,9 @@
-package com.bitwin.bangbang.domain;
-
-import org.springframework.web.multipart.MultipartFile;
+package com.bitwin.bangbang.member.domain;
 
 public class GeneralRegRequest {
+	private int uidx;
 	private String userid;
-	private String pw;
+	private String password;
 	private String username;
 	private String birth;
 	private String phonenum;
@@ -12,17 +11,25 @@ public class GeneralRegRequest {
 	private boolean enotify;
 	private boolean mnotify;
 	private boolean snotify;
+	
+	
+	public int getUidx() {
+		return uidx;
+	}
+	public void setUidx(int uidx) {
+		this.uidx = uidx;
+	}
 	public String getUserid() {
 		return userid;
 	}
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
-	public String getPw() {
-		return pw;
+	public String getPassword() {
+		return password;
 	}
-	public void setPw(String pw) {
-		this.pw = pw;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public String getUsername() {
 		return username;
@@ -66,9 +73,10 @@ public class GeneralRegRequest {
 	public void setSnotify(boolean snotify) {
 		this.snotify = snotify;
 	}
+	
 	@Override
 	public String toString() {
-		return "MemberRegRequest [userid=" + userid + ", pw=" + pw + ", username=" + username + ", birth=" + birth
+		return "MemberRegRequest [userid=" + userid + ", password=" + password + ", username=" + username + ", birth=" + birth
 				+ ", phonenum=" + phonenum + ", email=" + email + ", enotify=" + enotify + ", mnotify=" + mnotify
 				+ ", snotify=" + snotify + "]";
 	}

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bitwin.bangbang.member.dao.MemberDao">
+	<!-- 회원가입 insert -->
+	<insert 
+		id="insertMember"
+		parameterType="com.bitwin.bangbang.member.domain.GeneralRegRequest"
+		useGeneratedKeys="true"
+		keyProperty="uidx"
+	>
+		insert into user (userid, password, username, birth, phonenum, email, enotify, mnotify, snotify)
+		values (#{userid}, #{password}, #{username}, #{birth}, #{phonenum}, #{email}, #{enotify}, #{mnotify}, #{snotify})
+	</insert>
+	
+	<!-- 아이디 중복 체크 -->
+	<select id="selectCountByUesrId"
+			resultType="int"
+	>
+		select count(*) from user where userid=#{userid}
+	</select>
+	<!-- 이메일 중복 체크 -->
+	<select id="selectCountByEmail"
+			resultType="int"
+	>
+		select count(*) from user where email=#{email}
+	</select>
+	
+</mapper>

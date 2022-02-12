@@ -1,4 +1,4 @@
-package com.bitwin.bangbang.controller;
+package com.bitwin.bangbang.member.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.bitwin.bangbang.domain.GeneralRegRequest;
-import com.bitwin.bangbang.service.GeneralRegService;
+import com.bitwin.bangbang.member.domain.GeneralRegRequest;
+import com.bitwin.bangbang.member.service.GeneralRegService;
 
 @Controller
 @RequestMapping("/join/general")
@@ -23,6 +23,6 @@ public class GeneralRegController {
 	}
 	@PostMapping
 	public void postGeneralMember(GeneralRegRequest regRequest, HttpServletRequest req ,Model model) {
-	//	model.add
+		model.addAttribute("result", regService.insertMember(regRequest, req));
 	}
 }

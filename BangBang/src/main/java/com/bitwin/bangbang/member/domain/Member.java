@@ -1,4 +1,4 @@
-package com.bitwin.bangbang.domain;
+package com.bitwin.bangbang.member.domain;
 
 public class Member {
 

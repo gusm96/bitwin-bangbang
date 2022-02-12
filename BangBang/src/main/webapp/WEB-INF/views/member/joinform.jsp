@@ -1,10 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원가입</title>
+<%@ include file="/WEB-INF/views/frame/pageset.jsp"%>
+<style>
+#msg {
+	display: none;
+}
+
+.text_red {
+	color: red;
+}
+
+.text_blue {
+	color: blue;
+}
+</style>
+<script type="text/javascript" src="<c:url value="/js/checkid.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/checkemail.js"/>"></script>
 </head>
 <body>
 	<h3>일반 회원가입</h3>
@@ -13,15 +30,18 @@
 			<!-- 아이디 비밀번호 이름 생년월일 전화번호 이메일 이메일(수신여부) 문자(수신여부) 카카오톡(수신여부) -->
 			<tr>
 				<td>아이디</td>
-				<td><input type="text" name="userid" required></td>
+				<td><input type="text" name="userid" id="userid" required>
+					<div id="msg"></div></td>
 			</tr>
 			<tr>
 				<td>비밀번호</td>
-				<td><input type="password" name="password" required></td>
+				<td><input type="password" name="password" id="password"
+					required></td>
 			</tr>
 			<tr>
 				<td>비밀번호 확인</td>
-				<td><input type="password" name="password2" required></td>
+				<td><input type="password" name="password2" id="password2"
+					required><div id="pw2"></div></td>
 			</tr>
 			<tr>
 				<td>이름</td>
@@ -37,7 +57,8 @@
 			</tr>
 			<tr>
 				<td>이메일</td>
-				<td><input type="email" name="email" required></td>
+				<td><input type="email" name="email" id="email" required>
+					<div id="emsg"></div></td>
 			</tr>
 		</table>
 		<hr>

@@ -1,4 +1,4 @@
-package com.bitwin.bangbang.controller;
+package com.bitwin.bangbang.member.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
