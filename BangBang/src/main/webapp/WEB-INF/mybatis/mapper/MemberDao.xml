@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 회원가입 insert -->
 	<insert 
 		id="insertMember"
-		parameterType="com.bitwin.bangbang.member.domain.GeneralRegRequest"
+		parameterType="com.bitwin.bangbang.member.domain.MemberRegRequest"
 		useGeneratedKeys="true"
 		keyProperty="uidx"
 	>
@@ -26,6 +26,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			resultType="int"
 	>
 		select count(*) from user where email=#{email}
+	</select>
+	
+	<!-- 로그인 아이디 체크 -->
+	<select id="selectById"
+			resultType="com.bitwin.bangbang.member.domain.Member"
+	>
+		select * from user where userid=#{userid}
 	</select>
 	
 </mapper>

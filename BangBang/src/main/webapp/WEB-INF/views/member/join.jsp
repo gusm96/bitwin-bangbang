@@ -9,15 +9,13 @@
 </head>
 <body>
 	<h1>회원가입</h1>
-	<div>
-		<div>
+	<div id="reg-container">
+		<div id="general-reg" class="reg">
 			<a href="${pageContext.request.contextPath}/join/general">일반 회원가입</a>
 		</div>
-		<div>카카오 간편 회원가입</div>
-		<div>네이버 간편 회원가입</div>
-		<div>구글 간편 회원가입</div>
+		<div id="store-reg" class="reg">
+			<a href="">가맹점 등록</a>
+		</div>
 	</div>
-	<hr>
-	<span>가맹점 등록</span>
 </body>
 </html>

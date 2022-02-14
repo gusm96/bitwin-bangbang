@@ -22,6 +22,7 @@
 </style>
 <script type="text/javascript" src="<c:url value="/js/checkid.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/js/checkemail.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/js/checkpw.js"/>"></script>
 </head>
 <body>
 	<h3>일반 회원가입</h3>
@@ -66,15 +67,15 @@
 		<table>
 			<tr>
 				<td>이메일</td>
-				<td><input type="checkbox" name="enotify" required></td>
+				<td><input type="checkbox" name="enotify" ></td>
 			</tr>
 			<tr>
 				<td>문자</td>
-				<td><input type="checkbox" name="mnotify" required></td>
+				<td><input type="checkbox" name="mnotify" ></td>
 			</tr>
 			<tr>
 				<td>카카오톡</td>
-				<td><input type="checkbox" name="snotify" required></td>
+				<td><input type="checkbox" name="snotify" ></td>
 			</tr>
 			<tr>
 				<td></td>

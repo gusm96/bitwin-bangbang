@@ -1,6 +1,6 @@
 package com.bitwin.bangbang.member.domain;
 
-public class GeneralRegRequest {
+public class MemberRegRequest {
 	private int uidx;
 	private String userid;
 	private String password;

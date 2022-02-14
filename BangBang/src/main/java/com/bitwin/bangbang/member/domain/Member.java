@@ -2,7 +2,7 @@ package com.bitwin.bangbang.member.domain;
 
 public class Member {
 
-	private int idx;
+	private int uidx;
 	private String userid;
 	private String password;
 	private String username;
@@ -15,9 +15,9 @@ public class Member {
 	private String photo;
 	private String regdate;
 
-	public Member(int idx, String userid, String password, String username, String birth, String phonenum, String email,
+	public Member(int uidx, String userid, String password, String username, String birth, String phonenum, String email,
 			boolean enotify, boolean mnotify, boolean snotify, String photo, String regdate) {
-		this.idx = idx;
+		this.uidx = uidx;
 		this.userid = userid;
 		this.password = password;
 		this.username = username;
@@ -31,12 +31,12 @@ public class Member {
 		this.regdate = regdate;
 	}
 
-	public int getIdx() {
-		return idx;
+	public int getUidx() {
+		return uidx;
 	}
 
-	public void setIdx(int idx) {
-		this.idx = idx;
+	public void setUidx(int uidx) {
+		this.uidx = uidx;
 	}
 
 	public String getUserid() {
@@ -129,13 +129,13 @@ public class Member {
 
 	@Override
 	public String toString() {
-		return "Member [idx=" + idx + ", userid=" + userid + ", password=" + password + ", username=" + username
+		return "Member [uidx=" + uidx + ", userid=" + userid + ", password=" + password + ", username=" + username
 				+ ", birth=" + birth + ", phonenum=" + phonenum + ", email=" + email + ", enotify=" + enotify
 				+ ", mnotify=" + mnotify + ", snotify=" + snotify + ", photo=" + photo + ", regdate=" + regdate + "]";
 	}
 
-//	public LoginInfo getLoginInfo() {
-//		return new LoginInfo(idx, userid, username, photo);
-//	}
+	public LoginInfo getLoginInfo() {
+		return new LoginInfo(uidx, userid, username, photo);
+	}
 
 }
