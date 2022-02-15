@@ -20,9 +20,9 @@
 	color: blue;
 }
 </style>
-<script type="text/javascript" src="<c:url value="/js/checkid.js"/>"></script>
-<script type="text/javascript" src="<c:url value="/js/checkemail.js"/>"></script>
-<script type="text/javascript" src="<c:url value="/js/checkpw.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/checkid.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/checkemail.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/checkpw.js"/>"></script>
 </head>
 <body>
 	<h3>일반 회원가입</h3>

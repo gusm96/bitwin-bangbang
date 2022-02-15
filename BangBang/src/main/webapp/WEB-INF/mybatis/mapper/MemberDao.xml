@@ -35,4 +35,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from user where userid=#{userid}
 	</select>
 	
+	<!-- Uidx 값으로 회원정보 가져오기 -->
+	<select 
+		id="selectByIdx"
+		resultType="com.bitwin.bangbang.member.dao.Member"
+		>
+		select * from user where uidx=#{uidx}
+		</select>
 </mapper>

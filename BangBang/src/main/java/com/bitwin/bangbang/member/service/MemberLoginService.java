@@ -40,11 +40,10 @@ public class MemberLoginService {
 			// 사용자가 입력한 비밀번호와 Member객체가 가지고 있는 비밀번호를 확인
 			throw new LoginInvalidException("아이디 또는 비밀번호가 틀립니다.");
 		}
-
 		// session에 로그인 데이터를 저장한다.
 		session.setAttribute("loginInfo", member.getLoginInfo());
 
-		System.out.println("session: " + session);
+		System.out.println("session: " + session.getAttribute("loginInfo").toString());
 
 		if (loginRequest.getUrl().length() > 0) {
 			viewName = "redirect:" + loginRequest.getUrl();

@@ -18,7 +18,6 @@
 		up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 	<resources mapping="/css/**" location="/css/" />
-	<!-- http://localhost:8080/op/css/default.css -->
 	<resources mapping="/js/**" location="/js/" />
 	<resources mapping="/images/**" location="/images/" />
 	<resources mapping="/uploadfile/**" location="/uploadfile/" />
@@ -30,7 +29,18 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-
+	
+	<!-- 로그인 여부 확인을 위한 인터셉터 등록 -->
+	<beans:bean id="authCheckInterceptor"
+		class="com.bitwin.bangbang.member.interceptor.AuthCheckInterceptor" />
+		
+	<interceptors>
+		<interceptor>
+			<mapping path="/mypage/**" />
+			<beans:ref bean="authCheckInterceptor" />
+		</interceptor>
+	</interceptors>
+	
 	<!-- JavaMailSender 설정 -->
 	<beans:bean id="mailSender"
 		class="org.springframework.mail.javamail.JavaMailSenderImpl">

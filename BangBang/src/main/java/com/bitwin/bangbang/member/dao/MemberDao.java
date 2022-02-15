@@ -13,5 +13,7 @@ public interface MemberDao {
 	
 	public Member selectById(String userid);
 	
+	public Member selectByIdx(int uidx);
+	
 //	public Member selectByIdPw (String userid, String pw);
 }

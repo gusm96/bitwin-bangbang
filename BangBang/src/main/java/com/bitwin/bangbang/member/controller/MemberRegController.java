@@ -22,7 +22,8 @@ public class MemberRegController {
 		return "member/joinform";
 	}
 	@PostMapping
-	public void postGeneralMember(MemberRegRequest regRequest, HttpServletRequest req ,Model model) {
+	public String postGeneralMember(MemberRegRequest regRequest, HttpServletRequest req ,Model model) {
 		model.addAttribute("result", regService.insertMember(regRequest, req));
+		return "redirect:/";
 	}
 }

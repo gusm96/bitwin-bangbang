@@ -29,6 +29,11 @@ public class LoginInfo {
 	public String getPhoto() {
 		return photo;
 	}
+
+	@Override
+	public String toString() {
+		return "LoginInfo [uidx=" + uidx + ", userId=" + userId + ", username=" + username + ", photo=" + photo + "]";
+	}
 	
 	
 	

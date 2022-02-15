@@ -16,8 +16,9 @@
 	</c:if>
 	<c:if test="${not empty loginInfo }">
 		<div>
+		<span>${loginInfo.userName}</span>
 			<a href="${pageContext.request.contextPath}/logout">로그아웃</a>
-			<a href="${pageContext.request.contextPath}/mypage">회원가입</a>
+			<a href="${pageContext.request.contextPath}/mypage/">마이페이지</a>
 		</div>
 	</c:if>
 </body>
