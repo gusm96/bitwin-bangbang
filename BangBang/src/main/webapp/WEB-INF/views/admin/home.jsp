@@ -23,7 +23,7 @@
 			<a href="">상품 게시글 관리</a>
 		</li>
 		<li>
-			<a href="">가맹점 관리</a>
+			<a href="${pageContext.request.contextPath}/admin/store">가맹점 관리</a>
 		</li>
 		<li>
 			<a href="">판매 상품 관리</a>

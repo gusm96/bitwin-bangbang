@@ -9,21 +9,25 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.bitwin.bangbang.member.domain.MemberRegRequest;
-import com.bitwin.bangbang.member.service.MemberRegService;
+import com.bitwin.bangbang.member.domain.SimpleRegRequest;
+import com.bitwin.bangbang.member.service.SimpleRegService;
 
 @Controller
-@RequestMapping("/join/general")
-public class MemberRegController {
+@RequestMapping("/join/simple-reg")
+public class SimpleRegController {
+	
 	@Autowired
-	private MemberRegService regService;
+	private SimpleRegService regService;
+	
 	@GetMapping
-	public String getGeneralMember() {
-		return "member/joinform";
+	public String getSimpleReg() {
+		return "member/simplereg";
 	}
 	@PostMapping
-	public String postGeneralMember(MemberRegRequest regRequest, HttpServletRequest req ,Model model) {
-		model.addAttribute("result", regService.insertMember(regRequest, req));
+	public String postSimpleReg(SimpleRegRequest regRequest, HttpServletRequest req , Model model) {
+		
+		model.addAttribute("result", regService.insertSimpleMember(regRequest, req));
+		
 		return "redirect:/login";
 	}
 }

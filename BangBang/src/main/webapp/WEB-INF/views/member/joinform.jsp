@@ -23,10 +23,12 @@
 <script type="text/javascript" src="<c:url value="/resources/js/checkid.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/checkemail.js"/>"></script>
 <script type="text/javascript" src="<c:url value="/resources/js/checkpw.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/submit.js"/>"></script>
+
 </head>
 <body>
 	<h3>일반 회원가입</h3>
-	<form method="post">
+	<form method="post" id="form">
 		<table>
 			<!-- 아이디 비밀번호 이름 생년월일 전화번호 이메일 이메일(수신여부) 문자(수신여부) 카카오톡(수신여부) -->
 			<tr>
@@ -46,7 +48,7 @@
 			</tr>
 			<tr>
 				<td>이름</td>
-				<td><input type="text" name="username" required></td>
+				<td><input type="text" name="username" id="username" required></td>
 			</tr>
 			<tr>
 				<td>생년월일</td>
@@ -79,7 +81,7 @@
 			</tr>
 			<tr>
 				<td></td>
-				<td><input type="submit" value="회원가입"></td>
+				<td><button name="submit" id="submit" type="submit">가입하기</button></td>
 			</tr>
 		</table>
 	</form>

@@ -7,8 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-회원 가입을 축하드립니다.
-<hr>
-&rarr; <a href="${pathContext.request.contextPath }/login">로그인 하기</a>
+	test
 </body>
 </html>

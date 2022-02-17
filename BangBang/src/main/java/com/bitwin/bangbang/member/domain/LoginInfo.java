@@ -14,7 +14,7 @@ public class LoginInfo {
 		this.photo = photo;
 	}
 
-	public int getIdx() {
+	public int getUidx() {
 		return uidx;
 	}
 

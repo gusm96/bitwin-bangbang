@@ -42,8 +42,7 @@ public class MemberLoginService {
 		}
 		// session에 로그인 데이터를 저장한다.
 		session.setAttribute("loginInfo", member.getLoginInfo());
-
-		System.out.println("session: " + session.getAttribute("loginInfo").toString());
+		session.setAttribute("loginType", "general");
 
 		if (loginRequest.getUrl().length() > 0) {
 			viewName = "redirect:" + loginRequest.getUrl();
