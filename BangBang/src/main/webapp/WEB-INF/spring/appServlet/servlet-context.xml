@@ -33,11 +33,16 @@
 	<!-- 로그인 여부 확인을 위한 인터셉터 등록 -->
 	<beans:bean id="authCheckInterceptor"
 		class="com.bitwin.bangbang.member.interceptor.AuthCheckInterceptor" />
-		
+	<beans:bean id="adminAuthCheckInterceptor"
+		class="com.bitwin.bangbang.admin.interceptor.AuthCheckInterceptor" />
 	<interceptors>
 		<interceptor>
 			<mapping path="/mypage/**" />
 			<beans:ref bean="authCheckInterceptor" />
+		</interceptor>
+		<interceptor>
+			<mapping path="/admin/**" />
+			<beans:ref bean="adminAuthCheckInterceptor" />
 		</interceptor>
 	</interceptors>
 	

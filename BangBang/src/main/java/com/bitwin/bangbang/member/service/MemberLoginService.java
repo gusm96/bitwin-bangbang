@@ -1,5 +1,6 @@
 package com.bitwin.bangbang.member.service;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -43,7 +44,19 @@ public class MemberLoginService {
 		// session에 로그인 데이터를 저장한다.
 		session.setAttribute("loginInfo", member.getLoginInfo());
 		session.setAttribute("loginType", "general");
+		
+		
+		// id 저장하기 체크 처리 : checked 상태 -> "on" -> 쿠키 저장
+		if (loginRequest.getSaveid() != null && loginRequest.getSaveid().equals("on")) {
 
+			Cookie c = new Cookie("saveId", loginRequest.getUserid());
+			res.addCookie(c);
+		}else if(loginRequest.getSaveid() == null) {
+			// check 상태 -> "null" 쿠키 null
+			Cookie c = new Cookie("saveId", null);
+			res.addCookie(c);
+		}
+		
 		if (loginRequest.getUrl().length() > 0) {
 			viewName = "redirect:" + loginRequest.getUrl();
 		} else {

@@ -33,11 +33,9 @@ public class MemberEditController {
 		return "member/mypage/editform";
 	}
 
-	@PostMapping
+	@PostMapping	
 	public String postMemeberEdit(EditMember editMember, HttpServletRequest req)
 			throws IllegalStateException, IOException {
-		System.out.println(req);
-		System.out.println(editMember);
 		editService.editMember(editMember, req);
 		return "redirect:/mypage";
 	}

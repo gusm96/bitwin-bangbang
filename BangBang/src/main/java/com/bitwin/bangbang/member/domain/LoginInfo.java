@@ -22,7 +22,7 @@ public class LoginInfo {
 		return userId;
 	}
 
-	public String getUserName() {
+	public String getUsername() {
 		return username;
 	}
 

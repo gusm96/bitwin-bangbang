@@ -38,13 +38,13 @@
 			</tr>
 			<tr>
 				<td>비밀번호</td>
-				<td><input type="password" name="password" id="password"
+				<td><input type="password" name="password" id="password1"
 					required></td>
 			</tr>
 			<tr>
 				<td>비밀번호 확인</td>
 				<td><input type="password" name="password2" id="password2"
-					required><div id="pw2"></div></td>
+					required><div id="pmsg"></div></td>
 			</tr>
 			<tr>
 				<td>이름</td>

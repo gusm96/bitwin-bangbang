@@ -14,7 +14,7 @@ import com.bitwin.bangbang.admin.service.AdminLoginService;
 import com.bitwin.bangbang.member.exception.LoginInvalidException;
 
 @Controller
-@RequestMapping("/admin/login")
+@RequestMapping("/login/admin")
 public class AdminLoginController {
 	
 	@Autowired

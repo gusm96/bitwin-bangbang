@@ -13,14 +13,9 @@
 </style>
 
 <%@ include file="/WEB-INF/views/frame/pageset.jsp"%>
-<script type="text/javascript"
-	src="<c:url value="/resources/js/checkpw.js"/>"></script>
-<script type="text/javascript"
-	src="<c:url value="/resources/js/changepw.js"/>"></script>
-
 </head>
 <body>
-	<h3>${member.username}님의회원정보</h3>
+	<h3>${member.username}님의 회원정보</h3>
 	<form method="post">
 		<table>
 			<tr>
@@ -35,20 +30,8 @@
 			</tr>
 			<tr>
 				<td>비밀번호</td>
-				<td id="btn"><input type="button" id="change_btn" value="변경하기" />
+				<td><div id="change_pw"><a href="${pageContext.request.contextPath}/mypage/edit/pw">변경하기</a></div>
 				</td>
-				<td>
-					<div class="change_pw">
-						<input type="password" name="passowrd" id="password"
-							value="${member.password}" required />
-					</div>
-				</td>
-			</tr>
-			<tr class="change_pw">
-				<td>비밀번호 확인</td>
-				<td><input type="password" name="passowrd2" id="password2"
-					value="${member.password}" required />
-					<div id="pw2"></div></td>
 			</tr>
 			<tr>
 				<td>생년월일</td>

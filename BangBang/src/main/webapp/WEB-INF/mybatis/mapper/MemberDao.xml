@@ -59,7 +59,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 회원 정보 수정 -->
 	<update id="editMember"
 		parameterType="com.bitwin.bangbang.member.domain.EditMember">
-		update user set password=#{password}, email=#{email},
+		update user set email=#{email},
 		<if test="photo != null">photo=#{photo},</if>
 		enotify=#{enotify}, mnotify=#{mnotify}, snotify=#{snotify} where
 		userid=#{userid}
