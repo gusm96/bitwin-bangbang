@@ -17,14 +17,20 @@ public class SimpleRegService {
 	@Autowired
 	private SqlSessionTemplate template;
 
+	@Autowired
+	private MailSenderService mailSender;
+
 	public int insertSimpleMember(SimpleRegRequest regRequest, HttpServletRequest req) {
 		int resultCnt = 0;
-
-		SimpleRegRequest simpleReg = null;
 
 		dao = template.getMapper(MemberDao.class);
 
 		resultCnt = dao.insertSimpleMember(regRequest);
+		if (mailSender.send(regRequest.getEmail(), regRequest.getUsername()) > 0) {
+			System.out.println("메일전송 성공");
+		} else {
+			System.out.println("메일전송 실패");
+		}
 
 		return resultCnt;
 	}

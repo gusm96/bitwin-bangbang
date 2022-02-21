@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
+pageEncoding="UTF-8"%> <%@ taglib prefix="c"
+uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset="UTF-8" />
     <title>가맹점 등록</title>
+    <%@ include file="/WEB-INF/views/frame/pageset.jsp"%>
   </head>
   <body>
     <form method="post">
@@ -12,6 +14,7 @@ pageEncoding="UTF-8"%>
         <tr>
           <td>아이디</td>
           <td><input type="text" name="storeid" id="storeid" required /></td>
+          <div id="id_msg"></div>
         </tr>
         <tr>
           <td>비밀번호</td>

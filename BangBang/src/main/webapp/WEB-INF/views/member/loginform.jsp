@@ -41,7 +41,8 @@ uri="http://java.sun.com/jsp/jstl/core"%>
       /></a>
     </div>
     <div>
-      <a href="">네이버 ICON</a>
+      <a href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${naver.client_id}&redirect_uri=${naver.redirect_uri}&state=hLiDdL2uhPtsftcU
+ ">네이버 ICON</a>
     </div>
     <div>
       <a href="">구글 ICON</a>

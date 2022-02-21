@@ -7,19 +7,22 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     <meta charset="UTF-8" />
     <title>비밀번호 변경</title>
     <%@ include file="/WEB-INF/views/frame/pageset.jsp"%>
+    <style>
+      #msg, #pmsg{
+        display: none;
+      }
+      
+      .text_red {
+        color: red;
+      }
+      
+      .text_blue {
+        color: blue;
+      }
+      </style>
+    <script type="text/javascript" src="<c:url value="/resources/js/currentpw.js"/>"></script>
     <script type="text/javascript" src="<c:url value="/resources/js/checkpw.js"/>"></script>
-    <script>
-      $(document).submit(function (e) {
-        e.preventDefault();
-        const regex =
-          /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,16}$/;
-        if (!regex.test($("#password1"))) {
-          alert("비밀번호는 영문, 숫자, 기호를 사용하여 8자 이상 입력하세요. ");
-          return false;
-        }
-        return true;
-      });
-    </script>
+    <script type="text/javascript" src="<c:url value="/resources/js/reg.js"/>"></script>
   </head>
   <body>
     <form method="post" id="pwform">
@@ -34,6 +37,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           required
         />
       </div>
+      <div id="msg"></div>
       <div>
         <label for="new_password1">새 비밀번호</label>
         <input

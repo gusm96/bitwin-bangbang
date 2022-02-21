@@ -2,8 +2,12 @@ package com.bitwin.bangbang.member.dao;
 
 import com.bitwin.bangbang.member.domain.MemberRegRequest;
 import com.bitwin.bangbang.member.domain.SimpleRegRequest;
+
+import java.util.List;
+
 import com.bitwin.bangbang.member.domain.EditMember;
 import com.bitwin.bangbang.member.domain.Member;
+import com.bitwin.bangbang.member.domain.MemberPassword;
 
 public interface MemberDao {
 	
@@ -22,6 +26,9 @@ public interface MemberDao {
 	public Member selectByEmail(String email);
 		
 	public int editMember(EditMember editMember);
+
+	public int updatePassword(MemberPassword memberPw);
 	
-//	public Member selectByIdPw (String userid, String pw);
+	public List<Member> selectAll();
+	
 }

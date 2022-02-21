@@ -39,7 +39,6 @@ public class MailSenderService {
 			
 			// 메일 내용 : html
 			String html = "<h1>회원가입을 축하합니다.</h1>";
-			html += "<a href=\"http://www.naver.com\">네이버</a> <br>";
 			html += "<a href=\"http://localhost:8080/BangBang\">방방술래 바로가기</a> <br>";
 			
 			message.setText(html, "utf-8", "html");

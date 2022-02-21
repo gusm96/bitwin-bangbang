@@ -22,7 +22,7 @@ public class SimpleLoginController {
 	private SimpleLoginService apiService;
 
 	@GetMapping("{snsname}")
-	public String kakaoLogin(@PathVariable("snsname") String snsname, @RequestParam("code") String code,
+	public String socialLogin(@PathVariable("snsname") String snsname, @RequestParam("code") String code,
 			HttpSession session) {
 		String page = "";
 
@@ -36,7 +36,6 @@ public class SimpleLoginController {
 			// email 로 회원 정보 가져온다.
 			// session 에 로그인 정보 등록
 			session.setAttribute("loginInfo", apiService.getLoginInfo(email));
-			System.out.println("loginInfo: " + apiService.getLoginInfo(email));
 			session.setAttribute("access_Token", access_Token);
 			session.setAttribute("loginType", "sns");
 			page = "redirect:/";

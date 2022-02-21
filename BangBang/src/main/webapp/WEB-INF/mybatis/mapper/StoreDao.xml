@@ -5,5 +5,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.bitwin.bangbang.store.dao.StoreDao">
 
-
+	<!-- 가맹점 등록 -->
+	<insert id="insertStore"
+		parameterType="com.bitwin.bangbang.store.domain.Store"
+		useGeneratedKeys="true" keyProperty="sidx">
+		insert into store (storeid,
+		storepw, sname, sphone, address, oname, ophone, regnum ) values
+		(#{storeId}, #{storePw}, #{sname}, #{sphone}, #{address}, #{oname},
+		#{ophone}, #{regnum})
+	</insert>
 </mapper>
