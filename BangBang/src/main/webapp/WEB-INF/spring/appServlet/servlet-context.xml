@@ -30,6 +30,14 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!-- 파일 업로드를 위한 multipartResolver 등록 -->
+	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="defaultEncoding">
+			<beans:value>utf-8</beans:value>
+		</beans:property>
+	</beans:bean>
+	
 	<!-- 로그인 여부 확인을 위한 인터셉터 등록 -->
 	<beans:bean id="authCheckInterceptor"
 		class="com.bitwin.bangbang.member.interceptor.AuthCheckInterceptor" />
@@ -37,7 +45,7 @@
 		class="com.bitwin.bangbang.admin.interceptor.AuthCheckInterceptor" />
 	<interceptors>
 		<interceptor>
-			<mapping path="/mypage/**" />
+			<mapping path="/member/mypage/**" />
 			<beans:ref bean="authCheckInterceptor" />
 		</interceptor>
 		<interceptor>

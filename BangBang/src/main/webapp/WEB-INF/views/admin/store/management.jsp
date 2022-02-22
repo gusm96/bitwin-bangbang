@@ -44,6 +44,7 @@
 				</tbody>
 			</table>
 		</div>
+		<span>&rarr;<a href="${pageContext.request.contextPath}/admin/store/reg">가맹점 등록하기</a></span>
 	</div>
 
 </body>

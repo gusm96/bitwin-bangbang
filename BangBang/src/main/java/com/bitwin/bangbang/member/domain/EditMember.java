@@ -3,12 +3,38 @@ package com.bitwin.bangbang.member.domain;
 import org.springframework.web.multipart.MultipartFile;
 
 public class EditMember {
+	private String userid;
 	private String phonenum;
 	private String email;
 	private boolean enotify;
 	private boolean mnotify;
 	private boolean snotify;
 	private MultipartFile photo;
+	private String photoName;
+
+	public String getUserid() {
+		return userid;
+	}
+
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+
+	public String getPhotoName() {
+		return photoName;
+	}
+
+	public void setPhotoName(String photoName) {
+		this.photoName = photoName;
+	}
+
+	public MultipartFile getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(MultipartFile photo) {
+		this.photo = photo;
+	}
 
 	public String getPhonenum() {
 		return phonenum;
@@ -50,18 +76,11 @@ public class EditMember {
 		this.snotify = snotify;
 	}
 
-	public MultipartFile getPhoto() {
-		return photo;
-	}
-
-	public void setPhoto(MultipartFile photo) {
-		this.photo = photo;
-	}
-
 	@Override
 	public String toString() {
-		return "EditMember [phonenum=" + phonenum + ", email=" + email + ", enotify=" + enotify + ", mnotify=" + mnotify
-				+ ", snotify=" + snotify + ", photo=" + photo + "]";
+		return "EditMember [userid=" + userid + ", phonenum=" + phonenum + ", email=" + email + ", enotify=" + enotify
+				+ ", mnotify=" + mnotify + ", snotify=" + snotify + ", photo=" + photo + ", photoName=" + photoName
+				+ "]";
 	}
 
 }

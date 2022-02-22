@@ -31,7 +31,7 @@ public class MemberEditService {
 		int resultCnt = 0;
 
 		File newFile = null;
-
+		System.out.println(editMember);
 		if (!editMember.getPhoto().isEmpty() && editMember.getPhoto().getSize() > 0) {
 			String savePath = req.getSession().getServletContext().getRealPath(CommonsData.SAVE_URL);
 			String[] files = editMember.getPhoto().getOriginalFilename().split("\\.");
@@ -39,17 +39,22 @@ public class MemberEditService {
 			String newFileName = System.nanoTime() + "." + exet;
 			newFile = new File(savePath, newFileName);
 			editMember.getPhoto().transferTo(newFile);
+			editMember.setPhotoName(newFileName);
 		}
 
 		try {
 			dao = template.getMapper(MemberDao.class);
 			resultCnt = dao.editMember(editMember);
+			System.out.println("성공");
 		} catch (Exception e) {
 			// 파일이 저장된 후 DB관련 예외가 발생했을 때 : 저장했던 파일을 삭제
 			if (newFile != null && newFile.exists()) {
 				newFile.delete();
+				System.out.println(e);
+				System.out.println("실패");
 			}
 		}
+		
 		return resultCnt;
 	}
 

@@ -24,8 +24,8 @@ public class MemberChangePwService {
 	
 	public int changePw (String userid, String newPw) {
 		int resultCnt = 0;
-		MemberPassword memberPw = new MemberPassword(); 
-		
+		MemberPassword memberPw = new MemberPassword();
+
 		String password = bcrypt.encode(newPw);
 		
 		memberPw.setUserid(userid);
@@ -34,6 +34,8 @@ public class MemberChangePwService {
 		dao = template.getMapper(MemberDao.class);
 		
 		resultCnt = dao.updatePassword(memberPw);
+		
+		
 		
 		return resultCnt;
 	}

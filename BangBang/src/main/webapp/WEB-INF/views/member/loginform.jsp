@@ -51,6 +51,6 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     <span>아직 회원이 아니신가요?</span>
     <br />
     &rarr;
-    <a href="${pageContext.request.contextPath }/join">회원가입</a>
+    <a href="${pageContext.request.contextPath }/member/join">회원가입</a>
   </body>
 </html>

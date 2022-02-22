@@ -11,7 +11,7 @@
 	<h1>회원가입</h1>
 	<div id="reg-container">
 		<div id="general-reg" class="reg">
-			<a href="${pageContext.request.contextPath}/join/general">일반 회원가입</a>
+			<a href="${pageContext.request.contextPath}/member/join/general">일반 회원가입</a>
 		</div>
 		<div id="store-reg" class="reg">
 			<a href="">가맹점 등록</a>

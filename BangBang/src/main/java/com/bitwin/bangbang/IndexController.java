@@ -18,10 +18,8 @@ import com.bitwin.bangbang.member.exception.LoginInvalidException;
 import com.bitwin.bangbang.member.service.MemberLoginService;
 
 @Controller
-@RequestMapping("/*")
+@RequestMapping("/")
 public class IndexController {
-	@Autowired
-	private MemberLoginService loginService;
 
 	@GetMapping
 	public String index(Model model) {
@@ -32,46 +30,5 @@ public class IndexController {
 		return "index";
 	}
 
-	// 로그인
-	@GetMapping("/login")
-	public String getLogin(Model model) {
-		KakaoInfo kakao = new KakaoInfo();
-		NaverInfo naver = new NaverInfo();
-		model.addAttribute("kakao", kakao);
-		model.addAttribute("naver", naver);
-		return "member/loginform";
-	}
-
-	@PostMapping("/login")
-	public String postLogin(MemberLoginRequest loginRequest, HttpServletResponse res, HttpSession session)
-			throws LoginInvalidException {
-
-		return loginService.login(loginRequest, res, session);
-	}
-
-	@ExceptionHandler(LoginInvalidException.class)
-	public String loginFail(LoginInvalidException e) {
-		return "error/loginFail";
-	}
-
-	// 로그아웃
-	@GetMapping("/logout")
-	public String logout(HttpSession session) {
-		session.invalidate();
-		return "redirect:/";
-	}
-
-	// Kakao api 로그아웃
-	@GetMapping("/logout/oauth/kakao")
-	public String kakaoLogout(HttpSession session) {
-		session.invalidate();
-		return "redirect:/";
-	}
-
-	// 회원가입
-	@GetMapping("/join")
-	public String getJoin() {
-		return "member/join";
-	}
-
+	
 }

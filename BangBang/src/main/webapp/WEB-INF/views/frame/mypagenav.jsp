@@ -5,13 +5,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>마이페이지</title>
 </head>
 <body>
 	<div id="mypage_nav">
 		<ul>
 			<c:if test="${loginType eq 'general'}">
-			<li><a href="${pageContext.request.contextPath}/mypage/edit">내정보 수정</a></li>
+			<li><a href="${pageContext.request.contextPath}/member/mypage/edit">내정보 수정</a></li>
 			</c:if>
 			<li><a href="">장바구니</a></li>
 			<li><a href="">찜 목록</a></li>
