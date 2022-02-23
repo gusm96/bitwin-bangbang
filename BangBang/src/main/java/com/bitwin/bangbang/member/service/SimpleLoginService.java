@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import com.bitwin.bangbang.member.dao.MemberDao;
 import com.bitwin.bangbang.member.domain.KakaoInfo;
+import com.bitwin.bangbang.member.domain.LoginInfo;
 import com.bitwin.bangbang.member.domain.Member;
 import com.bitwin.bangbang.member.domain.NaverInfo;
 import com.google.gson.JsonElement;
@@ -251,13 +252,13 @@ public class SimpleLoginService {
 
 	}
 
-	public Member getLoginInfo(String email) {
-		Member member = null;
+	public LoginInfo getLoginInfo(String email) {
+		LoginInfo loginInfo = null;
 
 		dao = template.getMapper(MemberDao.class);
 
-		member = dao.selectByEmail(email);
+		loginInfo = dao.selectByEmail(email);
 
-		return member;
+		return loginInfo;
 	}
 }

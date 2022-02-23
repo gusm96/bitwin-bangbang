@@ -12,10 +12,10 @@
 		<form>
 			<div style="display: inline;">가맹점 검색</div>
 			<select name="searchType" class="form-control">
-				<option value="userid"
-					${param.searchType eq 'userid' ? 'selected' : ''}>아이디</option>
-				<option value="username"
-					${param.searchType eq 'username' ? 'selected' : ''}>이름</option>
+				<option value="sname"
+					${param.searchType eq 'sname' ? 'selected' : ''}>가맹점명</option>
+				<option value="oname"
+					${param.searchType eq 'oname' ? 'selected' : ''}>사업자명</option>
 			</select> <input type="text">
 			<button type="submit">검색</button>
 		</form>
@@ -28,15 +28,15 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td>가맹점 번호</td>
-						<td>가맹점 이름</td>
+						<td>번호</td>
+						<td>가맹점명</td>
 						<td>가맹점 주소</td>
 						<td>사업자명</td>
 					</tr>
 					<c:forEach items="${store}" var="s">
 						<tr>
 							<td>${s.sidx}</td>
-							<td>${s.sname}</td>
+							<td><a href="${pageContext.request.contextPath}/admin/store/${s.sname}">${s.sname}</a></td>
 							<td>${s.address}</td>
 							<td>${s.oname}</td>
 						</tr>

@@ -31,8 +31,8 @@ public class MemberEditService {
 		int resultCnt = 0;
 
 		File newFile = null;
-		System.out.println(editMember);
-		if (!editMember.getPhoto().isEmpty() && editMember.getPhoto().getSize() > 0) {
+		
+		if (!(editMember.getPhoto() == null) && editMember.getPhoto().getSize() > 0) {
 			String savePath = req.getSession().getServletContext().getRealPath(CommonsData.SAVE_URL);
 			String[] files = editMember.getPhoto().getOriginalFilename().split("\\.");
 			String exet = files[files.length - 1];
@@ -40,6 +40,8 @@ public class MemberEditService {
 			newFile = new File(savePath, newFileName);
 			editMember.getPhoto().transferTo(newFile);
 			editMember.setPhotoName(newFileName);
+		}else {
+			editMember.setPhotoName(editMember.getOldPhoto());
 		}
 
 		try {
@@ -54,7 +56,7 @@ public class MemberEditService {
 				System.out.println("실패");
 			}
 		}
-		
+
 		return resultCnt;
 	}
 

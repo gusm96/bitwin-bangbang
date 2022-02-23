@@ -30,8 +30,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 간편 회원 이메일로 회원 정보 가져오기 -->
 	<select id="selectByEmail"
-		resultType="com.bitwin.bangbang.member.domain.Member">
-		select * from
+		resultType="com.bitwin.bangbang.member.domain.LoginInfo">
+		select uidx, userId, username, photo from
 		user where email=#{email}
 	</select>
 	<!-- 아이디 중복 체크 -->

@@ -11,6 +11,7 @@ public class EditMember {
 	private boolean snotify;
 	private MultipartFile photo;
 	private String photoName;
+	private String oldPhoto;
 
 	public String getUserid() {
 		return userid;
@@ -75,12 +76,23 @@ public class EditMember {
 	public void setSnotify(boolean snotify) {
 		this.snotify = snotify;
 	}
+	
+	
+	public String getOldPhoto() {
+		return oldPhoto;
+	}
+
+	public void setOldPhoto(String oldPhoto) {
+		this.oldPhoto = oldPhoto;
+	}
 
 	@Override
 	public String toString() {
 		return "EditMember [userid=" + userid + ", phonenum=" + phonenum + ", email=" + email + ", enotify=" + enotify
 				+ ", mnotify=" + mnotify + ", snotify=" + snotify + ", photo=" + photo + ", photoName=" + photoName
-				+ "]";
+				+ ", oldPhoto=" + oldPhoto + "]";
 	}
+
+	
 
 }

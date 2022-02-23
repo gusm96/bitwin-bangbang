@@ -1,9 +1,7 @@
 package com.bitwin.bangbang.store.domain;
 
-import org.springframework.web.multipart.MultipartFile;
-
-public class Store {
-	private int sidx;
+public class StoreRegRequest {
+	private String sidx;
 	private String storeId;
 	private String storePw;
 	private String sname;
@@ -13,14 +11,12 @@ public class Store {
 	private String ophone;
 	private String oemail;
 	private String regnum;
-	private String photo;
-	private String date;
 
-	public int getSidx() {
+	public String getSidx() {
 		return sidx;
 	}
 
-	public void setSidx(int sidx) {
+	public void setSidx(String sidx) {
 		this.sidx = sidx;
 	}
 
@@ -96,27 +92,11 @@ public class Store {
 		this.regnum = regnum;
 	}
 
-	public String getPhoto() {
-		return photo;
-	}
-
-	public void setPhoto(String photo) {
-		this.photo = photo;
-	}
-
-	public String getDate() {
-		return date;
-	}
-
-	public void setDate(String date) {
-		this.date = date;
-	}
-
 	@Override
 	public String toString() {
-		return "Store [sidx=" + sidx + ", storeId=" + storeId + ", storePw=" + storePw + ", sname=" + sname
-				+ ", sphone=" + sphone + ", address=" + address + ", oname=" + oname + ", ophone=" + ophone
-				+ ", oemail=" + oemail + ", regnum=" + regnum + ", photo=" + photo + ", date=" + date + "]";
+		return "StoreRegRequest [storeId=" + storeId + ", storePw=" + storePw + ", sname=" + sname + ", sphone="
+				+ sphone + ", address=" + address + ", oname=" + oname + ", ophone=" + ophone + ", oemail=" + oemail
+				+ ", regnum=" + regnum + "]";
 	}
 
 }

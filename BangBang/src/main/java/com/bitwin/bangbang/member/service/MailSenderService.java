@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import com.bitwin.bangbang.member.domain.Member;
 import com.bitwin.bangbang.store.domain.Store;
+import com.bitwin.bangbang.store.domain.StoreRegRequest;
 
 @Service
 public class MailSenderService {
@@ -64,7 +65,7 @@ public class MailSenderService {
 		return resultCnt;
 	}
 
-	public int sendStore(Store store) {
+	public int sendStore(StoreRegRequest store, String pw) {
 		int resultCnt = 1;
 
 		MimeMessage message = sender.createMimeMessage();
@@ -73,8 +74,9 @@ public class MailSenderService {
 			message.setSubject("[안내] " + store.getOname() + " 님 가맹점 계정이 등록되었습니다.", "utf-8");
 
 			// 메일 내용 : html
-			String html = "<h1>회원가입을 축하합니다.</h1>";
-			html += "<h1>가맹점 등록에 감사드립니다.</h1>\r\n" + 
+			String html = 
+					"<h1>가맹점 등록에 감사드립니다.</h1>\r\n" + 
+					"<br>\r\n" +		
 					"<div>\r\n" + 
 					"  <table>\r\n" + 
 					"    <thead>\r\n" + 
@@ -101,7 +103,7 @@ public class MailSenderService {
 					"      </tr>\r\n" + 
 					"      <tr>\r\n" + 
 					"        <td>임시 비밀번호</td>\r\n" + 
-					"        <td>"+ store.getStorePw()+"</td>\r\n" + 
+					"        <td>"+ pw +"</td>\r\n" + 
 					"      </tr>\r\n" + 
 					"    </tbody>\r\n" + 
 					"  </table>\r\n" + 

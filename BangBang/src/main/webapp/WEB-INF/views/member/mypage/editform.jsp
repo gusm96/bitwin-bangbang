@@ -19,19 +19,23 @@
 	<form method="post" enctype="multipart/form-data">
 		<input type="hidden" name="userid" value="${member.userid}">
 		<table>
-			<tr>
-				<td>프로필</td>
-				<td><img 
-					src="${pageContext.request.contextPath}/resources/uploadfile/${member.photo}"
-					width="200px" height="200px"></td>
-				<td><input type="file" name="photo"></td>
-			</tr>
-			<tr>
-				<td>비밀번호</td>
-				<td><div id="change_pw">
-						<a href="${pageContext.request.contextPath}/member/mypage/edit/pw">변경하기</a>
-					</div></td>
-			</tr>
+			<c:if test="${loginType eq 'general'}">
+				<tr>
+					<td>프로필</td>
+					<td><img
+						src="${pageContext.request.contextPath}/resources/uploadfile/${member.photo}"
+						width="200px" height="200px"> <input type="hidden"
+						name=oldPhoto value="${member.photo}"></td>
+					<td><input type="file" name="photo"></td>
+				</tr>
+				<tr>
+					<td>비밀번호</td>
+					<td><div id="change_pw">
+							<a
+								href="${pageContext.request.contextPath}/member/mypage/edit/pw">변경하기</a>
+						</div></td>
+				</tr>
+			</c:if>
 			<tr>
 				<td>생년월일</td>
 				<td>${member.birth}</td>
@@ -43,9 +47,15 @@
 			</tr>
 			<tr>
 				<td>이메일</td>
-				<td><input type="email" name="email" id="email"
-					value="${member.email}" required />
-					<div id="emsg"></div></td>
+				<c:if test="${loginType eq 'general'}">
+					<td><input type="email" name="email" id="email"
+						value="${member.email}" required />
+						<div id="emsg"></div></td>
+				</c:if>
+				<c:if test="${loginType eq 'kakao' || loginType eq 'naver'}">
+					<td><input type="hidden" name="email" id="email"
+						value="${member.email}" /> ${member.email}</td>
+				</c:if>
 			</tr>
 		</table>
 		<hr>

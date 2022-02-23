@@ -109,7 +109,7 @@ public class MemberController {
 		} else {
 			// userInfo 값을 joinform 으로 전달해 회원가입 실행.
 			session.setAttribute("userInfo", userInfo);
-			page = "redirect:member/join/simple-reg";
+			page = "redirect:/member/join/simple-reg";
 		}
 
 		return page;

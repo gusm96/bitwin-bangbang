@@ -6,6 +6,7 @@ import com.bitwin.bangbang.member.domain.SimpleRegRequest;
 import java.util.List;
 
 import com.bitwin.bangbang.member.domain.EditMember;
+import com.bitwin.bangbang.member.domain.LoginInfo;
 import com.bitwin.bangbang.member.domain.Member;
 import com.bitwin.bangbang.member.domain.MemberPassword;
 
@@ -23,7 +24,7 @@ public interface MemberDao {
 	
 	public Member selectByIdx(int uidx);
 	
-	public Member selectByEmail(String email);
+	public LoginInfo selectByEmail(String email);
 		
 	public int editMember(EditMember editMember);
 

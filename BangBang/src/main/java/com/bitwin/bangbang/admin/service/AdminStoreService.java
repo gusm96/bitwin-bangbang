@@ -11,6 +11,7 @@ import com.bitwin.bangbang.member.service.MailSenderService;
 import com.bitwin.bangbang.member.service.RamdomPassword;
 import com.bitwin.bangbang.store.dao.StoreDao;
 import com.bitwin.bangbang.store.domain.Store;
+import com.bitwin.bangbang.store.domain.StoreRegRequest;
 
 @Service
 public class AdminStoreService {
@@ -28,7 +29,7 @@ public class AdminStoreService {
 	@Autowired
 	private RamdomPassword randomPw;
 
-	public int insertStore(Store store) {
+	public int insertStore(StoreRegRequest regRequest) {
 		int resultCnt = 0;
 
 		// 임시 비밀번호 생성
@@ -37,16 +38,16 @@ public class AdminStoreService {
 		// 임시 비밀번호를 암호화 하여 DB에 저장
 		String bPw = bcrypt.encode(pw);
 
-		store.setStorePw(bPw);
+		regRequest.setStorePw(bPw);
 
 		dao = template.getMapper(StoreDao.class);
 
-		resultCnt = dao.insertStore(store);
+		resultCnt = dao.insertStore(regRequest);
 
 		if (resultCnt > 0) {
 			// 가맹점 등록 성공
 			// 사업자의 이메일로 가맹점 등록 정보를 전송
-			if (mailSender.sendStore(store) > 0) {
+			if (mailSender.sendStore(regRequest, pw) > 0) {
 				System.out.println("메일 발송 성공");
 			} else {
 				System.out.println("메일 발송 실패");
@@ -65,6 +66,33 @@ public class AdminStoreService {
 
 		store = dao.selectAll();
 
+		return store;
+	}
+	
+	// 가맹점 아이디 중복 체크 
+	public String checkStoreId (String storeId) {
+		String result = "";
+		
+		dao = template.getMapper(StoreDao.class);
+		
+		int count = dao.selectByStoreId(storeId);
+		
+		if(count > 0) {
+			result = "N";
+		}else {
+			result = "Y";
+		}
+		return result;
+	
+	}
+
+	public Store storeDetial(String sname) {
+		Store store = null;
+		
+		dao = template.getMapper(StoreDao.class);
+		
+		store = dao.selectBySname(sname);
+		
 		return store;
 	}
 

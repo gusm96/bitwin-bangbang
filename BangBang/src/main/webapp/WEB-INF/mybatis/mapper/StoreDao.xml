@@ -7,19 +7,33 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 가맹점 등록 -->
 	<insert id="insertStore"
-		parameterType="com.bitwin.bangbang.store.domain.Store"
+		parameterType="com.bitwin.bangbang.store.domain.StoreRegRequest"
 		useGeneratedKeys="true" keyProperty="sidx">
 		insert into store (storeid,
-		storepw, sname, sphone, address, oname, ophone, regnum ) values
-		(#{storeId}, #{storePw}, #{sname}, #{sphone}, #{address}, #{oname},
-		#{ophone}, #{regnum})
+		storepw, sname, sphone, address, oname, ophone, oemail, regnum )
+		values
+		(#{storeId}, #{storePw}, #{sname}, #{sphone}, #{address},
+		#{oname},
+		#{ophone},#{oemail}, #{regnum})
 	</insert>
-	
+
 	<!-- 모든 가맹점 정보 가져오기 -->
-	<select 
-		id="selectAll"
-		resultType="com.bitwin.bangbang.store.domain.Store"
-		>
-		select * from store
-		</select>
+	<select id="selectAll"
+		resultType="com.bitwin.bangbang.store.domain.Store">
+		select * from
+		store
+	</select>
+
+	<!-- 가맹점 아이디 찾기 -->
+	<select id="selectByStoreId" resultType="int">
+		select count(*)
+		from
+		store where storeid=#{storeId}
+	</select>
+	
+	<!-- 가맹점 이름 찾기 -->
+	<select id="selectBySname"
+	resultType="com.bitwin.bangbang.store.domain.Store">
+		select * from store where sname=#{sname}
+	</select>
 </mapper>
