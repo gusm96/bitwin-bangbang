@@ -75,7 +75,10 @@ public class MemberController {
 		model.addAttribute("naver", naver);
 		return "member/loginform";
 	}
-
+	@GetMapping("/login/test")
+	public String getLoginTest() {
+		return "member/loginTest";
+	}
 	@PostMapping("/login")
 	public String postLogin(MemberLoginRequest loginRequest, HttpServletResponse res, HttpSession session)
 			throws LoginInvalidException {
@@ -114,7 +117,7 @@ public class MemberController {
 
 		return page;
 	}
-
+	
 	// 로그아웃
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
@@ -128,7 +131,19 @@ public class MemberController {
 		session.invalidate();
 		return "redirect:/";
 	}
-
+	// Id 찾기
+	@GetMapping("/search/id")
+	public String getSearchId() {
+		return "member/searchId";
+	}
+	@PostMapping("/search/id")
+	public String postSearchId(@RequestParam("email") String email, Model model) {
+		//model.addAttribute(attributeValue)
+		return "member/searchComplete";
+	}
+	
+	// PW 찾기
+	
 	// 회원가입 페이지
 	@GetMapping("/join")
 	public String getJoin() {

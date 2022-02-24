@@ -19,4 +19,6 @@ public interface StoreDao {
 
 	public Store selectBySname(String sname);
 
+	public Store selectByStoreId2(String storeId);
+
 }

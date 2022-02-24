@@ -30,10 +30,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from
 		store where storeid=#{storeId}
 	</select>
-	
+
+	<!-- 로그인 : 가맹점 아이디 찾기 -->
+	<select id="selectByStoreId2"
+		resultType="com.bitwin.bangbang.store.domain.Store">
+		select * from store where storeid=#{storeId}
+	</select>
+
 	<!-- 가맹점 이름 찾기 -->
 	<select id="selectBySname"
-	resultType="com.bitwin.bangbang.store.domain.Store">
+		resultType="com.bitwin.bangbang.store.domain.Store">
 		select * from store where sname=#{sname}
 	</select>
 </mapper>
