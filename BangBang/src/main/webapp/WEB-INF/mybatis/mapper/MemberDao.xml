@@ -32,7 +32,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectByEmail"
 		resultType="com.bitwin.bangbang.member.domain.LoginInfo">
 		select uidx, userId, username, photo from
-		user where email=#{email}
+		user where
+		email=#{email}
 	</select>
 	<!-- 아이디 중복 체크 -->
 	<select id="selectCountByUesrId" resultType="int">
@@ -68,6 +69,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		user
 	</select>
 
+	<!-- 회원 아이디 비밀번호 찾기 -->
+	<select id="searchId" resultType="String">
+		select userid from user where
+		email=#{email}
+	</select>
+	<select id="selectCountByEmailUserId" resultType="int">
+		select count(*)
+		from user where userid=#{userid} and email=#{email}
+	</select>
+
 	<!-- 회원 정보 수정 -->
 	<update id="editMember"
 		parameterType="com.bitwin.bangbang.member.domain.EditMember">
@@ -83,5 +94,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		userid=#{userid}
 	</update>
 
+	<!-- 비밀번호 랜덤 변경 -->
+	<update id="updatePassword2">
+		update user set password=#{bpw}
+		where userid=#{userid}
+	</update>
 
 </mapper>

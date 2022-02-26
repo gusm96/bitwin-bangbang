@@ -11,6 +11,7 @@ public class StoreRegRequest {
 	private String ophone;
 	private String oemail;
 	private String regnum;
+	private String photo;
 
 	public String getSidx() {
 		return sidx;
@@ -92,11 +93,19 @@ public class StoreRegRequest {
 		this.regnum = regnum;
 	}
 
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+
 	@Override
 	public String toString() {
-		return "StoreRegRequest [storeId=" + storeId + ", storePw=" + storePw + ", sname=" + sname + ", sphone="
-				+ sphone + ", address=" + address + ", oname=" + oname + ", ophone=" + ophone + ", oemail=" + oemail
-				+ ", regnum=" + regnum + "]";
+		return "StoreRegRequest [sidx=" + sidx + ", storeId=" + storeId + ", storePw=" + storePw + ", sname=" + sname
+				+ ", sphone=" + sphone + ", address=" + address + ", oname=" + oname + ", ophone=" + ophone
+				+ ", oemail=" + oemail + ", regnum=" + regnum + ", photo=" + photo + "]";
 	}
 
 }

@@ -4,7 +4,7 @@ pageEncoding="UTF-8"%>
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>아이디 찾기</title>
+    <title>비밀번호 찾기</title>
     <%@ include file="/WEB-INF/views/frame/pageset.jsp"%>
     <style>
       #msg {
@@ -51,7 +51,17 @@ pageEncoding="UTF-8"%>
         />
         <div id="msg"></div>
       </div>
-      <button type="submit">아이디 찾기</button>
+      <div>
+        <label for="userid">아이디</label>
+        <input
+          type="text"
+          name="userid"
+          id="userid"
+          placeholder="회원의 아이디를 입력하세요."
+          required
+        />
+      </div>
+      <button type="submit">비밀번호 찾기</button>
     </form>
     <button id="back_btn">뒤로가기</button>
     <script>

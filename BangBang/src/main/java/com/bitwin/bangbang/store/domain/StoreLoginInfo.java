@@ -1,4 +1,4 @@
-package com.bitwin.bangbang.store.dao;
+package com.bitwin.bangbang.store.domain;
 
 public class StoreLoginInfo {
 	private int sidx;

@@ -3,6 +3,7 @@ package com.bitwin.bangbang.store.dao;
 import java.util.List;
 
 import com.bitwin.bangbang.store.domain.Store;
+import com.bitwin.bangbang.store.domain.StoreOrderInfo;
 import com.bitwin.bangbang.store.domain.StoreRegRequest;
 
 public interface StoreDao {
@@ -21,4 +22,5 @@ public interface StoreDao {
 
 	public Store selectByStoreId2(String storeId);
 
+	public StoreOrderInfo selectOrderInfo (int sidx);
 }

@@ -4,7 +4,7 @@
 <c:if test="${result > 0 }">
 	<script>
 		alert("가맹점 등록 성공");
-		location.href = "/BangBang/admin/store";
+		location.href = "/bangbang/admin/store";
 	</script>
 </c:if>
 <c:if test="${result == 0 }">

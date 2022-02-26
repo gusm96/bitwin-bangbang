@@ -10,11 +10,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		parameterType="com.bitwin.bangbang.store.domain.StoreRegRequest"
 		useGeneratedKeys="true" keyProperty="sidx">
 		insert into store (storeid,
-		storepw, sname, sphone, address, oname, ophone, oemail, regnum )
+		storepw, sname, sphone, address, oname, ophone, oemail, regnum , photo)
 		values
 		(#{storeId}, #{storePw}, #{sname}, #{sphone}, #{address},
 		#{oname},
-		#{ophone},#{oemail}, #{regnum})
+		#{ophone},#{oemail}, #{regnum}, #{photo})
 	</insert>
 
 	<!-- 모든 가맹점 정보 가져오기 -->
@@ -41,5 +41,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectBySname"
 		resultType="com.bitwin.bangbang.store.domain.Store">
 		select * from store where sname=#{sname}
+	</select>
+	<!-- 가맹점 주문 정보 -->
+	<select id="selectOrderInfo" resultType="com.bitwin.bangbang.store.domain.StoreOrderInfo">
+		select sidx,sname,sphone,address from store where sidx=#{sidx}
 	</select>
 </mapper>

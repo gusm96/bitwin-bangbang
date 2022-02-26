@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.bitwin.bangbang.admin.domain.Admin;
 import com.bitwin.bangbang.admin.service.AdminLoginService;
-import com.bitwin.bangbang.member.exception.LoginInvalidException;
+import com.bitwin.bangbang.exception.LoginInvalidException;
 
 @Controller
 @RequestMapping("/login/admin")

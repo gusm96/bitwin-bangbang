@@ -44,6 +44,8 @@
 		class="com.bitwin.bangbang.member.interceptor.AuthCheckInterceptor" />
 	<beans:bean id="adminAuthCheckInterceptor"
 		class="com.bitwin.bangbang.admin.interceptor.AuthCheckInterceptor" />
+	<beans:bean id="storeAuthCheckInterceptor"
+		class="com.bitwin.bangbang.store.interceptor.AuthCheckInterceptor" />
 	<interceptors>
 		<interceptor>
 			<mapping path="/member/mypage/**" />
@@ -52,6 +54,10 @@
 		<interceptor>
 			<mapping path="/admin/**" />
 			<beans:ref bean="adminAuthCheckInterceptor" />
+		</interceptor>
+		<interceptor>
+			<mapping path="/store/**" />
+			<beans:ref bean="storeAuthCheckInterceptor" />
 		</interceptor>
 	</interceptors>
 	

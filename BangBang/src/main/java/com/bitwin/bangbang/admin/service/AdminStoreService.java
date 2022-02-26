@@ -37,7 +37,7 @@ public class AdminStoreService {
 
 		// 임시 비밀번호를 암호화 하여 DB에 저장
 		String bPw = bcrypt.encode(pw);
-
+		regRequest.setPhoto("storedefault.jpg");
 		regRequest.setStorePw(bPw);
 
 		dao = template.getMapper(StoreDao.class);

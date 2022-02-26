@@ -21,15 +21,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.bitwin.bangbang.exception.ChangePwInvalidException;
+import com.bitwin.bangbang.exception.LoginInvalidException;
 import com.bitwin.bangbang.member.domain.EditMember;
 import com.bitwin.bangbang.member.domain.KakaoInfo;
 import com.bitwin.bangbang.member.domain.LoginInfo;
 import com.bitwin.bangbang.member.domain.MemberLoginRequest;
 import com.bitwin.bangbang.member.domain.MemberRegRequest;
 import com.bitwin.bangbang.member.domain.NaverInfo;
+import com.bitwin.bangbang.member.domain.SearchPassword;
 import com.bitwin.bangbang.member.domain.SimpleRegRequest;
-import com.bitwin.bangbang.member.exception.ChangePwInvalidException;
-import com.bitwin.bangbang.member.exception.LoginInvalidException;
 import com.bitwin.bangbang.member.service.MemberChangePwService;
 import com.bitwin.bangbang.member.service.MemberEditService;
 import com.bitwin.bangbang.member.service.MemberEmailCheckService;
@@ -37,11 +38,16 @@ import com.bitwin.bangbang.member.service.MemberIdCheckService;
 import com.bitwin.bangbang.member.service.MemberLoginService;
 import com.bitwin.bangbang.member.service.MemberPwCheckService;
 import com.bitwin.bangbang.member.service.MemberRegService;
+import com.bitwin.bangbang.member.service.MemberService;
 import com.bitwin.bangbang.member.service.SimpleLoginService;
 
 @Controller
 @RequestMapping("/member")
 public class MemberController {
+	
+	@Autowired
+	private MemberService service;
+	
 	@Autowired
 	private MemberLoginService loginService;
 
@@ -74,10 +80,6 @@ public class MemberController {
 		model.addAttribute("kakao", kakao);
 		model.addAttribute("naver", naver);
 		return "member/loginform";
-	}
-	@GetMapping("/login/test")
-	public String getLoginTest() {
-		return "member/loginTest";
 	}
 	@PostMapping("/login")
 	public String postLogin(MemberLoginRequest loginRequest, HttpServletResponse res, HttpSession session)
@@ -138,11 +140,20 @@ public class MemberController {
 	}
 	@PostMapping("/search/id")
 	public String postSearchId(@RequestParam("email") String email, Model model) {
-		//model.addAttribute(attributeValue)
-		return "member/searchComplete";
+		model.addAttribute("result", service.searchById(email));
+		return "member/searchIdComplete";
 	}
 	
 	// PW 찾기
+	@GetMapping("/search/pw")
+	public String getSearchPw() {
+		return "member/searchPw";
+	}
+	@PostMapping("/search/pw")
+	public String postSearchPw(SearchPassword searchPW, Model model) {
+		model.addAttribute("result", service.searchByPw(searchPW));
+		return "member/searchPwComplete";
+	}
 	
 	// 회원가입 페이지
 	@GetMapping("/join")

@@ -18,7 +18,7 @@
 			<li><a href="">상품 게시글 관리</a></li>
 			<li><a href="">판매 상품 관리</a></li>
 			<li><a href="">1:1 문의 목록 조회</a></li>
-			<li><a href="${pageContext.request.contextPath }/admin/logout">로그아웃</a>
+			<li><a href="${pageContext.request.contextPath }/logout">로그아웃</a>
 			</li>
 		</ul>
 	</nav>

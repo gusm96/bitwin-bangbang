@@ -1,6 +1,7 @@
 package com.bitwin.bangbang.member.dao;
 
 import com.bitwin.bangbang.member.domain.MemberRegRequest;
+import com.bitwin.bangbang.member.domain.SearchPassword;
 import com.bitwin.bangbang.member.domain.SimpleRegRequest;
 
 import java.util.List;
@@ -31,5 +32,11 @@ public interface MemberDao {
 	public int updatePassword(MemberPassword memberPw);
 	
 	public List<Member> selectAll();
+	
+	public String searchId(String email);
+
+	public int selectCountByEmailUserId(SearchPassword searchPw);
+
+	public void updatePassword2(SearchPassword searchPw);
 	
 }

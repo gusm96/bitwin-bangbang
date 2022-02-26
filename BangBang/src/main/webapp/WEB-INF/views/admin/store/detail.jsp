@@ -19,7 +19,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         <tbody>
           <tr>
             <td>가맹점 사진</td>
-            <td>${store.photo}</td>
+            <td><img src="${pageContext.request.contextPath}/resources/uploadfile/${store.photo}" style="width: 200px; height: 200px;"></td>
           </tr>
           <tr>
             <td>아이디</td>
