@@ -43,26 +43,33 @@ uri="http://java.sun.com/jsp/jstl/core"%>
             <td>${store.address}</td>
           </tr>
           <tr>
-            <td>사업자명</td>
-            <td>${store.oname}</td>
-          </tr>
-          <tr>
-            <td>사업자 전화번호</td>
-            <td>${store.ophone}</td>
-          </tr>
-          <tr>
-            <td>사업자 이메일</td>
-            <td>${store.oemail}</td>
-          </tr>
-          <tr>
-            <td>사업자 번호</td>
-            <td>${store.regnum}</td>
-          </tr>
-          <tr>
-            <td>가맹점 등록일</td>
-            <td>${store.date}</td>
+            <td></td>
+            <td><button id="update_request_btn">가맹점 정보 수정</button></td>
           </tr>
         </tbody>
+      </table>
+      <hr />
+      <table>
+        <tr>
+          <td>사업자명</td>
+          <td>${store.oname}</td>
+        </tr>
+        <tr>
+          <td>사업자 전화번호</td>
+          <td>${store.ophone}</td>
+        </tr>
+        <tr>
+          <td>사업자 이메일</td>
+          <td>${store.oemail}</td>
+        </tr>
+        <tr>
+          <td>사업자 번호</td>
+          <td>${store.regnum}</td>
+        </tr>
+        <tr>
+          <td>가맹점 등록일</td>
+          <td>${store.date}</td>
+        </tr>
       </table>
       <hr />
       <button id="changepw_btn">비밀번호 변경</button>
@@ -70,6 +77,9 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     <script>
       $("#changepw_btn").click(function () {
         location.href = "mypage/edit/pw";
+      });
+      $("#update_request_btn").click(function () {
+        location.href = "mypage/edit/";
       });
     </script>
   </body>

@@ -8,6 +8,8 @@
 <title>회원 관리</title>
 </head>
 <body>
+	<%@include file="../../includes/admin-header.jsp"%>
+	<%@include file="../../includes/admin-nav.jsp"%>
 	<div>
 		<form>
 			<div style="display: inline;">회원검색</div>
@@ -36,7 +38,7 @@
 					<c:forEach items="${member}" var="m">
 						<tr>
 							<td>${m.uidx}</td>
-							<td>${m.userid}</td>
+							<td><a href="member/${m.userid}">${m.userid}</a></td>
 							<td>${m.username}</td>
 							<td>${m.email}</td>
 						</tr>

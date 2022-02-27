@@ -39,6 +39,9 @@ pageEncoding="UTF-8"%>
     </script>
   </head>
   <body>
+  	<%@include file="../includes/bangbang-header.jsp"%>
+
+	<%@include file="../includes/bangbang-nav.jsp"%>
     <form method="post">
       <div>
         <label for="email">이메일</label>

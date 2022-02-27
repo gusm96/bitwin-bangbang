@@ -9,6 +9,9 @@
 <title>간편 회원 가입</title>
 </head>
 <body>
+	<%@include file="../includes/bangbang-header.jsp"%>
+
+	<%@include file="../includes/bangbang-nav.jsp"%>
 	<form method="post">
 		<div>
 			<label for="photo"><input type="hidden" name="photo"

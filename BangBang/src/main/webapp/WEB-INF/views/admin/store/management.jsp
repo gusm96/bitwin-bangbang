@@ -8,6 +8,8 @@
 <title>가맹점 관리</title>
 </head>
 <body>
+	<%@include file="../../includes/admin-header.jsp"%>
+	<%@include file="../../includes/admin-nav.jsp"%>
 	<div>
 		<form>
 			<div style="display: inline;">가맹점 검색</div>
@@ -36,7 +38,8 @@
 					<c:forEach items="${store}" var="s">
 						<tr>
 							<td>${s.sidx}</td>
-							<td><a href="${pageContext.request.contextPath}/admin/store/${s.sname}">${s.sname}</a></td>
+							<td><a
+								href="${pageContext.request.contextPath}/admin/store/${s.sname}">${s.sname}</a></td>
 							<td>${s.address}</td>
 							<td>${s.oname}</td>
 						</tr>
@@ -44,7 +47,9 @@
 				</tbody>
 			</table>
 		</div>
-		<span>&rarr;<a href="${pageContext.request.contextPath}/admin/store/reg">가맹점 등록하기</a></span>
+		<span>&rarr;<a
+			href="${pageContext.request.contextPath}/admin/store/reg">가맹점
+				등록하기</a></span>
 	</div>
 
 </body>

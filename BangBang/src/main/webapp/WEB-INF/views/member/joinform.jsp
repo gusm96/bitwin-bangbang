@@ -26,7 +26,9 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 	<script type="text/javascript" src="<c:url value="/resources/js/reg.js"/>"></script>
   </head>
   <body>
-    <h3>일반 회원가입</h3>
+  	<%@include file="../includes/bangbang-header.jsp"%>
+
+	<%@include file="../includes/bangbang-nav.jsp"%>
     <form method="post" id="form">
       <table>
         <!-- 아이디 비밀번호 이름 생년월일 전화번호 이메일 이메일(수신여부) 문자(수신여부) 카카오톡(수신여부) -->

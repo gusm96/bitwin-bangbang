@@ -14,7 +14,6 @@
 
 <%@ include file="/WEB-INF/views/frame/pageset.jsp"%>
 <%@include file="../../includes/bangbang-header.jsp"%>
-
 <%@include file="../../includes/bangbang-nav.jsp"%>
 <%@ include file="/WEB-INF/views/frame/mypagenav.jsp"%>
 </head>
@@ -90,10 +89,15 @@
 					</c:if></td>
 			</tr>
 			<tr>
-				<td><a href="../mypage">취소하기</a></td>
+				<td><button type="button" id="back_btn">뒤로가기</button><td>
 				<td><button type="submit" name="submit">수정하기</button></td>
 			</tr>
 		</table>
 	</form>
+	<script type="text/javascript">
+		$("#back_btn").click(function () { 
+			history.go(-1);
+		});
+	</script>
 </body>
 </html>

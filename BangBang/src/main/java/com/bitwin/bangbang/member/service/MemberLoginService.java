@@ -60,7 +60,7 @@ public class MemberLoginService {
 		if (loginRequest.getUrl().length() > 0) {
 			viewName = "redirect:" + loginRequest.getUrl();
 		} else {
-			viewName = "redirect:/";
+			viewName = "redirect:/main/mainpage";
 		}
 
 		return viewName;

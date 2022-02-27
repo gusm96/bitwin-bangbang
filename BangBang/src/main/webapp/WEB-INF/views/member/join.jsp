@@ -5,16 +5,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원가입</title>
 </head>
 <body>
-	<h1>회원가입</h1>
+<!-- 마이페이지 네비 -->
+	<%@include file="../includes/bangbang-header.jsp"%>
+
+	<%@include file="../includes/bangbang-nav.jsp"%>
 	<div id="reg-container">
 		<div id="general-reg" class="reg">
 			<a href="${pageContext.request.contextPath}/member/join/general">일반 회원가입</a>
 		</div>
 		<div id="store-reg" class="reg">
-			<a href="">가맹점 등록</a>
+			<a href="${pageContext.request.contextPath}/reg/store">가맹점 등록</a>
 		</div>
 	</div>
 </body>
