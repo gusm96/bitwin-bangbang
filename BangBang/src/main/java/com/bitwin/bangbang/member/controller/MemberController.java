@@ -110,7 +110,7 @@ public class MemberController {
 			session.setAttribute("loginInfo", apiService.getLoginInfo(email));
 			session.setAttribute("access_Token", access_Token);
 			session.setAttribute("loginType", snsname);
-			page = "redirect:/";
+			page = "redirect:/main/mainpage";
 		} else {
 			// userInfo 값을 joinform 으로 전달해 회원가입 실행.
 			session.setAttribute("userInfo", userInfo);
@@ -124,14 +124,14 @@ public class MemberController {
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		session.invalidate();
-		return "redirect:/";
-	}
+		return "redirect:/main/mainpage";
+		}
 
 	// Kakao api 로그아웃
 	@GetMapping("/logout/oauth/kakao")
 	public String kakaoLogout(HttpSession session) {
 		session.invalidate();
-		return "redirect:/";
+		return "redirect:/main/mainpage";
 	}
 	// Id 찾기
 	@GetMapping("/search/id")

@@ -13,9 +13,13 @@
 </style>
 
 <%@ include file="/WEB-INF/views/frame/pageset.jsp"%>
+<%@include file="../../includes/bangbang-header.jsp"%>
+
+<%@include file="../../includes/bangbang-nav.jsp"%>
+<%@ include file="/WEB-INF/views/frame/mypagenav.jsp"%>
 </head>
 <body>
-	<h3>${member.username}님의 회원정보</h3>
+	<h3>${member.username}님의회원정보</h3>
 	<form method="post" enctype="multipart/form-data">
 		<input type="hidden" name="userid" value="${member.userid}">
 		<table>

@@ -8,10 +8,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.bitwin.bangbang.exception.LoginInvalidException;
+import com.bitwin.bangbang.member.dao.MemberDao;
+import com.bitwin.bangbang.member.domain.Member;
 import com.bitwin.bangbang.store.dao.StoreDao;
 import com.bitwin.bangbang.store.domain.Store;
 import com.bitwin.bangbang.store.domain.StoreLoginInfo;
 import com.bitwin.bangbang.store.domain.StoreLoginRequest;
+import com.bitwin.bangbang.store.domain.StorePassword;
 
 @Service
 public class StoreService {
@@ -51,15 +54,49 @@ public class StoreService {
 
 		return viewPage;
 	}
+
 	public Store getStoreInfo(HttpSession session) {
 		Store store = null;
 		StoreLoginInfo loginInfo = (StoreLoginInfo) session.getAttribute("storeInfo");
 		String storeId = loginInfo.getStoreId();
-		
+
 		dao = template.getMapper(StoreDao.class);
-		
+
 		store = dao.selectByStoreId2(storeId);
-		
+
+		System.out.println(store);
+
 		return store;
+	}
+
+	public String checkPw(String storeid, String currentPw) {
+		Store store = null;
+
+		dao = template.getMapper(StoreDao.class);
+
+		store = dao.selectByStoreId2(storeid);
+
+		if (!bcrypt.matches(currentPw, store.getStorePw())) {
+			return "N";
+		}
+		return "Y";
+
+	}
+
+	public int changePw(StorePassword storePw, String currentPw) {
+		int resultCnt = 0;
+		String storeId = storePw.getStoreId();
+		System.out.println(storePw);
+
+		dao = template.getMapper(StoreDao.class);
+
+		if (checkPw(storeId, currentPw).equals("Y")) {
+			String bpw = bcrypt.encode(storePw.getNewPw1());
+			storePw.setNewPw1(bpw);
+			System.out.println("변경할 비빌번호: " +storePw);
+			resultCnt = dao.updatePassword(storePw);
+		}
+
+		return resultCnt;
 	}
 }

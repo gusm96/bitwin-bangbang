@@ -18,18 +18,27 @@ import com.bitwin.bangbang.store.service.StoreService;
 public class StoreLoginController {
 	@Autowired
 	private StoreService service;
-	
+
 	@GetMapping("/login/store")
 	public String getStoreLogin() {
 		return "store/loginform";
 	}
+
 	@PostMapping("/login/store")
 	public String postStoreLogin(StoreLoginRequest loginReq, HttpSession session) throws LoginInvalidException {
 		// login service
-		return service.storeLogin(loginReq , session);
+		return service.storeLogin(loginReq, session);
 	}
+
 	@ExceptionHandler(LoginInvalidException.class)
 	public String loginFail(LoginInvalidException e) {
 		return "error/loginFail";
+	}
+
+	// 로그아웃
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();
+		return "redirect:/";
 	}
 }
