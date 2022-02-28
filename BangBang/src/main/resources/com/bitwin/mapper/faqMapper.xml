@@ -8,13 +8,13 @@
 		resultType="com.bitwin.domain.faqVO">
 	
 	<![CDATA[ 
-	select * from project.faq where fqidx > 0
+	select * from faq where fqidx > 0
 	]]>
 
 	</select>
 
 	<insert id="insert">
-		insert into project.faq
+		insert into faq
 		(title,content, regdate, updatedate) values (#{title}, #{content},
 		current_timestamp(), current_timestamp())
 	</insert>
@@ -22,7 +22,7 @@
 	<insert id="insertSelectKey">
 
 
-		insert into `project`.`faq` (title,content,
+		insert into faq (title,content,
 		regdate, updatedate)
 		values (#{title}, #{content}, current_timestamp(),
 		current_timestamp())
@@ -30,16 +30,16 @@
 
 
 	<select id="read" resultType="com.bitwin.domain.faqVO">
-		select * from project.faq
+		select * from faq
 		where fqidx = #{fqidx}
 	</select>
 
 	<delete id="delete">
-		delete from project.faq where fqidx = #{fqidx}
+		delete from faq where fqidx = #{fqidx}
 	</delete>
 
 	<update id="update">
-		update project.faq
+		update faq
 		set title = #{title},
 		content = #{content},
 		updatedate = current_timestamp()
@@ -58,7 +58,7 @@
 		resultType="com.bitwin.domain.faqVO">
  					 <![CDATA[  
  					 SELECT fqidx, title, content, regdate,updatedate
-  					FROM `project`.faq
+  					FROM faq
  					 where 
  				 ]]>
 		<include refid="criteria"></include>
@@ -76,7 +76,7 @@
 
 	<select id="getTotalCount" resultType="int">
 		select count(*) from
-		`project`.faq where
+		faq where
 
 		<include refid="criteria"></include>
 

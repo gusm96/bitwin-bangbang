@@ -18,6 +18,19 @@ pageEncoding="UTF-8"%>
       .text_blue {
         color: blue;
       }
+      #body_container {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+      }
+      #form_container {
+        display: inline-block;
+        width: 300px;
+        margin-top: 50px;
+      }
+      input {
+        text-align: center;
+      }
     </style>
     <script>
       $(document).ready(function () {
@@ -39,24 +52,32 @@ pageEncoding="UTF-8"%>
     </script>
   </head>
   <body>
-  	<%@include file="../includes/bangbang-header.jsp"%>
-
-	<%@include file="../includes/bangbang-nav.jsp"%>
-    <form method="post">
-      <div>
-        <label for="email">이메일</label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          placeholder="등록된 이메일을 입력하세요."
-          required
-        />
-        <div id="msg"></div>
+    <%@include file="../includes/bangbang-header.jsp"%> <%@include
+    file="../includes/bangbang-nav.jsp"%>
+    <div id="body_container">
+      <div id="form_container" class="text-center">
+        <div>
+          <h3>아이디 찾기</h3>
+          <span>등록된 이메일을 입력해주세요.</span>
+          <br />
+        </div>
+        <form method="post">
+          <div class="form-floating">
+            <label for="email">이메일</label>
+            <input
+              class="form-control"
+              type="email"
+              name="email"
+              id="email"
+              required
+            />
+            <div id="msg"></div>
+          </div>
+          <button type="submit" style="display: inline">아이디 찾기</button>
+          <button id="back_btn">뒤로가기</button>
+        </form>
       </div>
-      <button type="submit">아이디 찾기</button>
-    </form>
-    <button id="back_btn">뒤로가기</button>
+    </div>
     <script>
       $("#back_btn").click(function () {
         history.go(-1);

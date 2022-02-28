@@ -8,13 +8,13 @@
 		resultType="com.bitwin.domain.notice_boardVO">
 	
 	<![CDATA[ 
-	select * from project.notice_board where nidx > 0
+	select * from notice_board where nidx > 0
 	]]>
 
 	</select>
 
 	<insert id="insert">
-		insert into project.notice_board
+		insert into notice_board
 		(title,content,regdate, updatedate) values (#{title}, #{content},
 		current_timestamp(), current_timestamp())
 	</insert>
@@ -22,7 +22,7 @@
 	<insert id="insertSelectKey">
 
 
-		insert into `project`.`notice_board` 
+		insert into notice_board 
 		(title,content, regdate, updatedate)
 		values (#{title}, #{content}, current_timestamp(),
 		current_timestamp())
@@ -30,16 +30,16 @@
 
 
 	<select id="read" resultType="com.bitwin.domain.notice_boardVO">
-		select * from project.notice_board
+		select * from notice_board
 		where nidx = #{nidx}
 	</select>
 
 	<delete id="delete">
-		delete from project.notice_board where nidx = #{nidx}
+		delete from notice_board where nidx = #{nidx}
 	</delete>
 
 	<update id="update">
-		update project.notice_board
+		update notice_board
 		set title = #{title},
 		content = #{content},
 		updatedate = current_timestamp()
@@ -58,8 +58,8 @@
 		resultType="com.bitwin.domain.notice_boardVO">
  					 <![CDATA[  
  					 SELECT nidx, title, content, regdate,updatedate
-  					FROM `project`.notice_board
- 					 where 
+  					FROM notice_board
+					 where 
  				 ]]>
 		<include refid="criteria"></include>
  					<![CDATA[
@@ -76,7 +76,7 @@
 
 	<select id="getTotalCount" resultType="int">
 		select count(*) from
-		`project`.notice_board where
+		notice_board where
 
 		<include refid="criteria"></include>
 

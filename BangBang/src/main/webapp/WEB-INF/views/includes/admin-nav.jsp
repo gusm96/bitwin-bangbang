@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 
 <!-- Bootstrap Core CSS -->
-<link href="${pageContext.request.contextPath}/resources/hyunwoo/vendor/bootstrap/css/bootstrap.min.css"
+<link
+	href="${pageContext.request.contextPath}/resources/hyunwoo/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 
 <!-- MetisMenu CSS -->
-<link href="${pageContext.request.contextPath}/resources/hyunwoo/vendor/metisMenu/metisMenu.min.css"
+<link
+	href="${pageContext.request.contextPath}/resources/hyunwoo/vendor/metisMenu/metisMenu.min.css"
 	rel="stylesheet">
 
 <!-- DataTables CSS -->
@@ -20,7 +22,8 @@
 	rel="stylesheet">
 
 <!-- Custom CSS -->
-<link href="${pageContext.request.contextPath}/resources/hyunwoo/dist/css/sb-admin-2.css"
+<link
+	href="${pageContext.request.contextPath}/resources/hyunwoo/dist/css/sb-admin-2.css"
 	rel="stylesheet">
 
 <!-- Custom Fonts -->
@@ -31,24 +34,28 @@
 <script src="https://kit.fontawesome.com/ba424bfb3c.js"
 	crossorigin="anonymous"></script>
 
-	
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
-	
+
+<script type="text/javascript"
+	src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
+
 <div class="container" style="padding-top: 10px;">
-    <nav class="nav d-flex justify-content-between">
-      <a class="nav-font" href="${pageContext.request.contextPath}/admin/store" style="padding-top: 10px;">가맹점 관리</a>
-      <a class="nav-font" href="${pageContext.request.contextPath}/admin/member" style="padding-top: 10px;">회원 관리</a>
-      <a class="nav-font" href="#" style="padding-top: 10px;">공지게시글 관리</a>
-      <a class="nav-font" href="#" style="padding-top: 10px;">상품게시글 관리</a>
-      <a class="nav-font" href="#" style="padding-top: 10px;">판매 상품 관리</a>
-      <a class="nav-font" href="#" style="padding-top: 10px;">1:1문의 목록 조회</a>
-	 
-	 </nav>
-    
-  <hr style="color: gray;">
+	<nav class="nav d-flex justify-content-between">
+		<a class="nav-font"
+			href="${pageContext.request.contextPath}/admin/store"
+			style="padding-top: 10px;">가맹점 관리</a> <a class="nav-font"
+			href="${pageContext.request.contextPath}/admin/member"
+			style="padding-top: 10px;">회원 관리</a> <a class="nav-font"
+			href="${pageContext.request.contextPath}/admin/notice_board/list"
+			style="padding-top: 10px;">서비스 관리 메뉴</a> <a class="nav-font" href="#"
+			style="padding-top: 10px;">상품게시글 관리</a> <a class="nav-font" href="#"
+			style="padding-top: 10px;">판매 상품 관리</a>
+
+	</nav>
+
+	<hr style="color: gray;">
 </div>
 
 
 
-    
-    
+
+

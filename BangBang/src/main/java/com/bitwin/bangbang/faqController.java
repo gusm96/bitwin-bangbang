@@ -143,7 +143,7 @@ public class faqController {
     		byte[] bytes = upload.getBytes();
     		
     		//�씠誘몄� 寃쎈줈 �깮�꽦
-    		String path = "C:\\Users\\samsung\\Pictures\\Saved Pictures" + "ckImage/";	// �씠誘몄� 寃쎈줈 �꽕�젙(�뤃�뜑 �옄�룞 �깮�꽦)
+    		String path = "C:\\Users\\gusm9\\Pictures\\Saved Pictures" + "ckImage/";	// �씠誘몄� 寃쎈줈 �꽕�젙(�뤃�뜑 �옄�룞 �깮�꽦)
     		String ckUploadPath = path + uid + "_" + fileName;
     		File folder = new File(path);
     		System.out.println("path:"+path);	// �씠誘몄� ���옣寃쎈줈 console�뿉 �솗�씤
@@ -162,7 +162,7 @@ public class faqController {
     	
     	String callback = request.getParameter("CKEditorFuncNum");
     	printWriter = response.getWriter();
-    	String fileUrl = "${pageContext.request.contextPath}/admin/faq/ckImgSubmit?uid=" + uid + "&fileName=" + fileName; // �옉�꽦�솕硫�
+    	String fileUrl = "/bangbang/admin/faq/ckImgSubmit?uid=" + uid + "&fileName=" + fileName; // �옉�꽦�솕硫�
     	
     	// �뾽濡쒕뱶�떆 硫붿떆吏� 異쒕젰
     	printWriter.println("{\"filename\" : \""+fileName+"\", \"uploaded\" : 1, \"url\":\""+fileUrl+"\"}");
@@ -189,7 +189,7 @@ public class faqController {
     throws ServletException, IOException{
     	
     	//�꽌踰꾩뿉 ���옣�맂 �씠誘몄� 寃쎈줈
-    	String path = "C:\\Users\\samsung\\Pictures\\Saved Pictures" + "ckImage/";	// ���옣�맂 �씠誘몄� 寃쎈줈
+    	String path = "C:\\Users\\gusm9\\Pictures\\Saved Pictures" + "ckImage/";	// ���옣�맂 �씠誘몄� 寃쎈줈
     	System.out.println("path:"+path);
     	String sDirPath = path + uid + "_" + fileName;
     	

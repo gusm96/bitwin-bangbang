@@ -90,7 +90,7 @@
 				</a>
 					<ul class="dropdown-menu dropdown-user">
 
-						<li><a href="${pageContext.request.contextPath }/admin/logout"><i class="fa fa-sign-out fa-fw"></i>
+						<li><a href="${pageContext.request.contextPath }/logout/admin"><i class="fa fa-sign-out fa-fw"></i>
 								로그아웃</a></li>
 					</ul> <!-- /.dropdown-user --></li>
 				<!-- /.dropdown -->

@@ -7,13 +7,13 @@
 	<select id="getList" resultType="com.bitwin.domain.paqVO">
 	
 	<![CDATA[ 
-	select * from project.paq where pqidx > 0
+	select * from paq where pqidx > 0
 	]]>
 
 	</select>
 
 	<insert id="insert">
-		insert into project.paq
+		insert into paq
 		(uidx, title,content, regdate,
 		updatedate) values (#{uidx}, #{title}, #{content},
 		current_timestamp(),
@@ -23,7 +23,7 @@
 	<insert id="insertSelectKey">
 
 
-		insert into `project`.`paq` (uidx, title,content,
+		insert into paq (uidx, title,content,
 		regdate, updatedate)
 		values (#{uidx}, #{title}, #{content},
 		current_timestamp(),
@@ -36,7 +36,7 @@
 
 
 	<select id="read" resultType="com.bitwin.domain.paqVO">
-		select * from project.paq
+		select * from paq
 		where
 		pqidx = #{pqidx}
 	</select>
@@ -44,13 +44,13 @@
 	<delete id="delete">
 
 
-		delete from project.paq where pqidx = #{pqidx}
+		delete from paq where pqidx = #{pqidx}
 
 
 	</delete>
 
 	<update id="update">
-			UPDATE project.paq SET reply = #{reply} WHERE pqidx = #{pqidx};
+			UPDATE paq SET reply = #{reply} WHERE pqidx = #{pqidx};
 	</update>
 
 
@@ -63,7 +63,7 @@
 		resultType="com.bitwin.domain.paqVO">
  					 <![CDATA[  
  					 SELECT pqidx, title, content, regdate,updatedate
-  					FROM `project`.paq
+  					FROM paq
  					 where 
  				 ]]>
 		<include refid="criteria"></include>
@@ -85,7 +85,7 @@
 		resultType="com.bitwin.domain.paqVO">
  					 <![CDATA[  
  					 SELECT pqidx, title, content, regdate,updatedate
-  					FROM `project`.paq
+  					FROM paq
  					 where 
  				 ]]>
 		<include refid="criteria"></include>
@@ -107,7 +107,7 @@
 
 
 		select count(*) from
-		`project`.paq where
+		paq where
 
 		<include refid="criteria"></include>
 
@@ -123,7 +123,7 @@
 
 	<select id="adminGetTotalCount" resultType="int">
 		select count(*) from
-		`project`.paq where
+		paq where
 
 		<include refid="criteria"></include>
 
@@ -158,14 +158,14 @@
 	
 	<select id="getEmail" resultType="String">
 	
-		select email from project.user where uidx=#{uidx}
+		select email from user where uidx=#{uidx}
 	
 	</select>
 	
 	
 	<select id="getPhoneNum" resultType="String">
 	
-		select phonenum from project.user where uidx=#{uidx}
+		select phonenum from user where uidx=#{uidx}
 	
 	</select>
 
