@@ -13,9 +13,8 @@
 	<div id="body_container">
 		<div id="main_container">
 			<h3>${storeInfo.sname}</h3>
-			<img
-				src="${pageContext.request.contextPath}/resources/uploadfile/${storeInfo.photo}"
-				style="width: 50px; height: 50px" />
+			<br>
+			<h4>주문목록</h4>
 		</div>
 	</div>
 </body>

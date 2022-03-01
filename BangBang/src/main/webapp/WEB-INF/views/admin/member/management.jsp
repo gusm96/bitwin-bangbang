@@ -14,8 +14,8 @@
 	<div id="body_container">
 		<div id="main_container">
 			<form>
-				<div style="display: inline;">회원검색</div>
-				<select name="searchType" >
+				<h3>회원검색</h3>
+				<select name="searchType">
 					<option value="userid"
 						${param.searchType eq 'userid' ? 'selected' : ''}>아이디</option>
 					<option value="username"
@@ -24,7 +24,7 @@
 				<button type="submit">검색</button>
 			</form>
 			<div>
-				<table style="text-align: center">
+				<table style="text-align: center; width: 100%;">
 					<thead>
 						<tr>
 							<th colspan="4">회원 리스트</th>

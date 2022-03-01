@@ -24,7 +24,7 @@
 				<button type="submit">검색</button>
 			</form>
 			<div>
-				<table style="text-align: center;">
+				<table style="text-align: center; width: 100%;">
 					<thead>
 						<tr>
 							<th colspan="4">가맹점 리스트</th>
@@ -40,23 +40,24 @@
 						<c:forEach items="${store}" var="s">
 							<tr>
 								<td>${s.sidx}</td>
-								<td><a
-									href="${pageContext.request.contextPath}/admin/store/${s.sname}">${s.sname}</a></td>
+								<td>${s.sname}</td>
 								<td>${s.address}</td>
 								<td>${s.oname}</td>
+								<td><a href="store/${s.sname}"><button>상세보기</button></a></td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
 			</div>
+			<br>
 			<span>&rarr;<a
 				href="${pageContext.request.contextPath}/admin/store/reg">가맹점
 					등록하기</a></span>
 			<hr>
-			<table>
+			<table style="text-align: center; width: 100%;">
 				<thead>
 					<tr>
-						<td colspan="3">가맹점 정보수정 요청</td>
+						<td colspan="4" style="font-weight: bolder;">가맹점 정보수정 요청<br></td>
 					</tr>
 				</thead>
 				<tbody>
@@ -80,6 +81,6 @@
 			</table>
 		</div>
 	</div>
-<%@include file="../../includes/bangbang-footer.jsp"%>
+	<%@include file="../../includes/bangbang-footer.jsp"%>
 </body>
 </html>
