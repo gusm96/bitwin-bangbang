@@ -22,9 +22,9 @@ public class AdminMemberController {
 		return "admin/member/management";
 	}
 	
-	@GetMapping("/{userid}")
-	public String getMember(@PathVariable("userid")String userid, Model model) {
-		model.addAttribute("member", memberService.getMember(userid));
+	@GetMapping("/{uidx}")
+	public String getMember(@PathVariable("uidx")int uidx, Model model) {
+		model.addAttribute("member", memberService.getMember(uidx));
 		return "admin/member/detail";
 	}
 }

@@ -6,22 +6,10 @@
 <head>
 <meta charset="UTF-8" />
 <title>내 정보 수정</title>
+<link rel="stylesheet" href="/bangbang/resources/css/container.css">
 <style>
 .change_pw {
 	display: none;
-}
-
-#body_container {
-	display: flex;
-	justify-content: center;
-	text-align: center;
-}
-
-#form_container {
-	display: inline-block;
-	border: 1px solid black;
-	border-radius: 15px;
-	padding: 10px 10px;
 }
 
 #profile_img {
@@ -38,7 +26,7 @@
 <body>
 	<div id="body_container">
 		<%@ include file="/WEB-INF/views/frame/mypagenav.jsp"%>
-		<div id="form_container">
+		<div id="main_container">
 			<h3>${member.username}님의회원정보</h3>
 			<form method="post" enctype="multipart/form-data">
 				<input type="hidden" name="userid" value="${member.userid}">
@@ -118,6 +106,7 @@
 			</form>
 		</div>
 	</div>
+	<%@include file="../../includes/bangbang-footer.jsp"%>
 	<script type="text/javascript">
 		$("#back_btn").click(function() {
 			history.go(-1);

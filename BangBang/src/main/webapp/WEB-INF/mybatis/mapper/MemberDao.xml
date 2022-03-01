@@ -22,10 +22,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		parameterType="com.bitwin.bangbang.member.domain.SimpleRegRequest"
 		useGeneratedKeys="true" keyProperty="uidx">
 		insert into user (userid,
-		username, birth, phonenum, email, enotify, mnotify, snotify, photo)
+		username, birth, phonenum, email, enotify, mnotify, snotify, photo, sns)
 		values (#{userid}, #{username}, #{birth}, #{phonenum},
 		#{email},
-		#{enotify}, #{mnotify}, #{snotify}, #{photo})
+		#{enotify}, #{mnotify}, #{snotify}, #{photo}, #{sns})
 	</insert>
 
 	<!-- 간편 회원 이메일로 회원 정보 가져오기 -->

@@ -6,29 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>가맹점 관리</title>
-<style type="text/css">
-#body_container {
-	display: flex;
-	justify-content: center;
-	text-align: center;
-}
-
-#form_container {
-	display: inline-block;
-	width: 500px;
-	margin-top: 50px;
-}
-
-input {
-	text-align: center;
-}
-</style>
+<link rel="stylesheet" href="/bangbang/resources/css/container.css">
 </head>
 <body>
 	<%@include file="../../includes/admin-header.jsp"%>
 	<%@include file="../../includes/admin-nav.jsp"%>
 	<div id="body_container">
-		<div id="form_container">
+		<div id="main_container">
 			<form>
 				<h3>가맹점 검색</h3>
 				<select name="searchType">
@@ -88,7 +72,7 @@ input {
 							<td>${sr.sname}</td>
 							<td>${sr.storeId}</td>
 							<td><a
-								href="${pageContext.request.contextPath}/admin/store/${sr.sridx}/eidt">수정</a>
+								href="${pageContext.request.contextPath}/admin/store/${sr.sridx}/req">수정</a>
 							</td>
 						</tr>
 					</c:forEach>
@@ -96,6 +80,6 @@ input {
 			</table>
 		</div>
 	</div>
-
+<%@include file="../../includes/bangbang-footer.jsp"%>
 </body>
 </html>

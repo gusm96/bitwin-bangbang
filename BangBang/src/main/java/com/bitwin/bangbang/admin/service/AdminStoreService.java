@@ -11,6 +11,7 @@ import com.bitwin.bangbang.member.service.MailSenderService;
 import com.bitwin.bangbang.member.service.RamdomPassword;
 import com.bitwin.bangbang.store.dao.StoreDao;
 import com.bitwin.bangbang.store.domain.Store;
+import com.bitwin.bangbang.store.domain.StoreEditRequest;
 import com.bitwin.bangbang.store.domain.StoreEditRequestList;
 import com.bitwin.bangbang.store.domain.StoreRegRequest;
 
@@ -104,6 +105,32 @@ public class AdminStoreService {
 		store = dao.selectEditRequestList();
 		
 		return store;
+	}
+
+	public StoreEditRequest getEditRequest(int sridx) {
+		
+		StoreEditRequest storeReq = null;
+		
+		dao = template.getMapper(StoreDao.class);
+		
+		storeReq = dao.selectStoreEditReq(sridx);
+		
+		return storeReq;
+	}
+
+	public int acceptEditRequest(StoreEditRequest editRequest) {
+		int resultCnt = 0;
+		
+		dao = template.getMapper(StoreDao.class);
+		
+		resultCnt = dao.updateStore(editRequest);
+		
+		if(resultCnt > 0) {
+			// 성공적으로 update 되었으므로 요청 리스트 에서 삭제
+			dao.deleteEditReq(editRequest.getSidx());
+		}
+		
+		return resultCnt;
 	}
 
 }

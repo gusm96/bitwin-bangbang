@@ -32,4 +32,10 @@ public interface StoreDao {
 	public int storeInfoEditRequest(StoreEditRequest editRequest);
 
 	public List<StoreEditRequestList> selectEditRequestList();
+
+	public StoreEditRequest selectStoreEditReq(int sridx);
+
+	public int updateStore(StoreEditRequest editRequest);
+
+	public void deleteEditReq(int sidx);
 }

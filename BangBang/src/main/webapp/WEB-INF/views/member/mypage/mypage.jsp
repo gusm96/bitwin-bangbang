@@ -32,5 +32,6 @@ body{
 		</div>
 	
 	</div>
+	<%@include file="../../includes/bangbang-footer.jsp"%>
 </body>
 </html>

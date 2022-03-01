@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bitwin.bangbang.admin.service.AdminStoreService;
+import com.bitwin.bangbang.store.domain.StoreEditRequest;
 import com.bitwin.bangbang.store.domain.StoreRegRequest;
 
 @Controller
@@ -64,4 +65,16 @@ public class AdminStoreController {
 		
 		return "admin/store/editComplete";
 	}
+	
+	@GetMapping("/{sridx}/req")
+	public String getEditReqStore(@PathVariable("sridx") int sridx, Model model) {
+		model.addAttribute("store", storeService.getEditRequest(sridx));
+		return "admin/store/editReqForm";
+	}
+	@PostMapping("/{sridx}/req")
+	public String postEditReqStore(@PathVariable("sridx") int sridx, StoreEditRequest editRequest, Model model) {
+		model.addAttribute("result", storeService.acceptEditRequest(editRequest));
+		return "admin/store/editReqComplete";
+	}
+	
 }	

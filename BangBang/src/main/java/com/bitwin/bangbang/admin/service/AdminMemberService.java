@@ -27,12 +27,14 @@ public class AdminMemberService {
 		return member;
 	}
 
-	public Member getMember(String userid) {
+	public Member getMember(int uidx) {
 		Member member = null;
 
 		dao = template.getMapper(MemberDao.class);
 
-		member = dao.selectById(userid);
+		member = dao.selectByIdx(uidx);
+		
+		System.out.println(member);
 
 		return member;
 	}

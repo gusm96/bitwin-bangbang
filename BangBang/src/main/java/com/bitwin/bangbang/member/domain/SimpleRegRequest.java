@@ -11,6 +11,7 @@ public class SimpleRegRequest {
 	private boolean enotify;
 	private boolean mnotify;
 	private boolean snotify;
+	private boolean sns;
 	
 
 	public String getPhoto() {
@@ -92,14 +93,21 @@ public class SimpleRegRequest {
 	public void setSnotify(boolean snotify) {
 		this.snotify = snotify;
 	}
+	
+
+	public boolean isSns() {
+		return sns;
+	}
+
+	public void setSns(boolean sns) {
+		this.sns = sns;
+	}
 
 	@Override
 	public String toString() {
 		return "SimpleRegRequest [uidx=" + uidx + ", photo=" + photo + ", userid=" + userid + ", username=" + username
 				+ ", birth=" + birth + ", phonenum=" + phonenum + ", email=" + email + ", enotify=" + enotify
-				+ ", mnotify=" + mnotify + ", snotify=" + snotify + "]";
+				+ ", mnotify=" + mnotify + ", snotify=" + snotify + ", sns=" + sns + "]";
 	}
-
-	
 
 }

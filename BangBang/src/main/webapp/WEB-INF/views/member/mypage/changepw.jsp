@@ -64,10 +64,12 @@
 			<button type="submit" id="submit_btn">수정하기</button>
 		</form>
 	</div>
+	<%@include file="../../includes/bangbang-footer.jsp"%>
 	<script type="text/javascript">
 		$("#back_btn").click(function () { 
 			history.go(-1);
 		});
 	</script>
+	
 </body>
 </html>

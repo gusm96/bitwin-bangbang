@@ -10,5 +10,6 @@
 <body>
 	<%@include file="../includes/admin-header.jsp"%>
 	<%@include file="../includes/admin-nav.jsp"%>
+	<%@include file="../includes/bangbang-footer.jsp"%>
 </body>
 </html>

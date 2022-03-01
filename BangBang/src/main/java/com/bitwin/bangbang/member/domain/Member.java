@@ -14,9 +14,10 @@ public class Member {
 	private boolean snotify;
 	private String photo;
 	private String regdate;
+	private boolean sns;
 
 	public Member(int uidx, String userid, String password, String username, String birth, String phonenum, String email,
-			boolean enotify, boolean mnotify, boolean snotify, String photo, String regdate) {
+			boolean enotify, boolean mnotify, boolean snotify, String photo, String regdate, boolean sns) {
 		this.uidx = uidx;
 		this.userid = userid;
 		this.password = password;
@@ -29,6 +30,7 @@ public class Member {
 		this.snotify = snotify;
 		this.photo = photo;
 		this.regdate = regdate;
+		this.sns=sns;
 	}
 
 	public int getUidx() {
@@ -126,16 +128,26 @@ public class Member {
 	public void setSnotify(boolean snotify) {
 		this.snotify = snotify;
 	}
+	
+
+	public boolean isSns() {
+		return sns;
+	}
+
+	public void setSns(boolean sns) {
+		this.sns = sns;
+	}
 
 	@Override
 	public String toString() {
 		return "Member [uidx=" + uidx + ", userid=" + userid + ", password=" + password + ", username=" + username
 				+ ", birth=" + birth + ", phonenum=" + phonenum + ", email=" + email + ", enotify=" + enotify
-				+ ", mnotify=" + mnotify + ", snotify=" + snotify + ", photo=" + photo + ", regdate=" + regdate + "]";
+				+ ", mnotify=" + mnotify + ", snotify=" + snotify + ", photo=" + photo + ", regdate=" + regdate
+				+ ", sns=" + sns + "]";
 	}
 
 	public LoginInfo getLoginInfo() {
-		return new LoginInfo(uidx, userid, username, photo);
+		return new LoginInfo(uidx, userid, username, photo, sns);
 	}
 
 }
