@@ -24,8 +24,8 @@ img {max-width:100%}
 <!-- ìë¬íì´ì§ -->
 <div class="error" >
     <div class="box">
-        <div class="cont"><img src="../../bangbang/resources/hyunwoo/imageContainer/img_error.png" /></div>
-        <div class="btn"><a href="/bangbang/main/mainpage"><img src="../../bangbang/resources/hyunwoo/imageContainer/bt_home.png"/></a></div>
+        <div class="cont"><img src="${pageContext.request.contextPath}/resources/hyunwoo/imageContainer/img_error.png" /></div>
+        <div class="btn"><a href="${pageContext.request.contextPath}/main/mainpage"><img src="${pageContext.request.contextPath}/resources/hyunwoo/imageContainer/bt_home.png"/></a></div>
     </div>
 </div>
 

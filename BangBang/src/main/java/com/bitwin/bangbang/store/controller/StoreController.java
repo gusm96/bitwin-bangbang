@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bitwin.bangbang.exception.LoginInvalidException;
 import com.bitwin.bangbang.member.domain.LoginInfo;
+import com.bitwin.bangbang.store.domain.StoreEditRequest;
 import com.bitwin.bangbang.store.domain.StoreLoginInfo;
 import com.bitwin.bangbang.store.domain.StoreLoginRequest;
 import com.bitwin.bangbang.store.domain.StorePassword;
@@ -42,7 +43,8 @@ public class StoreController {
 		return "store/editform";
 	}
 	@PostMapping("/mypage/edit")
-	public String postStoreEdit () {
+	public String postStoreEdit (StoreEditRequest editRequest, Model model, HttpSession session) {
+		model.addAttribute("result", service.storeEditRequest(editRequest, session));
 		return "store/editRequest";
 	}
 	

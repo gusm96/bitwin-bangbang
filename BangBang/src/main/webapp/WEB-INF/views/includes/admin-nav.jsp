@@ -46,10 +46,11 @@
 			href="${pageContext.request.contextPath}/admin/member"
 			style="padding-top: 10px;">회원 관리</a> <a class="nav-font"
 			href="${pageContext.request.contextPath}/admin/notice_board/list"
-			style="padding-top: 10px;">서비스 관리 메뉴</a> <a class="nav-font" href="#"
-			style="padding-top: 10px;">상품게시글 관리</a> <a class="nav-font" href="#"
+			style="padding-top: 10px;">서비스 관리 메뉴</a> 
+			<a class="nav-font" href="${pageContext.request.contextPath}/admin/board/list"
+			style="padding-top: 10px;">상품게시글 관리</a> 
+			<a class="nav-font" href="${pageContext.request.contextPath}/admin/item/list"
 			style="padding-top: 10px;">판매 상품 관리</a>
-
 	</nav>
 
 	<hr style="color: gray;">

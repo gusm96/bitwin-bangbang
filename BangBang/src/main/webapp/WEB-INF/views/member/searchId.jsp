@@ -52,8 +52,8 @@ pageEncoding="UTF-8"%>
     </script>
   </head>
   <body>
-    <%@include file="../includes/bangbang-header.jsp"%> <%@include
-    file="../includes/bangbang-nav.jsp"%>
+    <%@include file="../includes/bangbang-header.jsp"%> 
+    <%@include file="../includes/bangbang-nav.jsp"%>
     <div id="body_container">
       <div id="form_container" class="text-center">
         <div>

@@ -12,6 +12,8 @@ pageEncoding="UTF-8"%>
     <script type="text/javascript" src="<c:url value="/resources/js/reg.js"/>"></script>
   </head>
   <body>
+  <%@include file="../includes/store-header.jsp"%> 
+    <%@include file="../includes/store-nav.jsp"%>
     <div>
       <form method="post" id="pwform">
         <h3>비밀번호 변경</h3>

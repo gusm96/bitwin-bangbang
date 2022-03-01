@@ -5,39 +5,63 @@ pageEncoding="UTF-8"%>
   <head>
     <meta charset="UTF-8" />
     <title>가맹점 정보 수정</title>
+    <style>
+      #body_container {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+      }
+      #form_container {
+        display: inline-block;
+        width: 500px;
+        margin-top: 50px;
+      }
+      input {
+        text-align: center;
+      }
+    </style>
   </head>
   <body>
-    <form method="post">
-      <table>
-        <tr>
-          <td>가맹점명</td>
-          <td>
-            <input type="text" name="sname" value="${store.sname" required />
-          </td>
-        </tr>
-        <tr>
-          <td>가맹점 번호</td>
-          <td>
+    <%@include file="../includes/store-header.jsp"%> <%@include
+    file="../includes/store-nav.jsp"%>
+    <div id="body_container">
+      <div id="form_container" class="text-center">
+        <form method="post">
+          <div class="form-floating">
+            <label for="sname">가맹점명</label>
             <input
+              class="form-control"
+              type="text"
+              name="sname"
+              value="${store.sname}"
+              required
+            />
+          </div>
+          <div class="form-floating">
+            <label for="sphone">가맹점 전화번호</label>
+            <input
+              class="form-control"
               type="text"
               name="sphone"
               value="${store.sphone}"
               required
-            />/td>
-          </td>
-        </tr>
-        <tr>
-          <td>가맹점 주소</td>
-          <td>
+            />
+          </div>
+          <div class="form-floating">
+            <label for="address">가맹점 주소</label>
             <input
+              class="form-control"
               type="text"
               name="address"
               value="${store.address}"
               required
             />
-          </td>
-        </tr>
-      </table>
-    </form>
+          </div>
+          <div>
+            <button type="submit" id="submit_btn">정보 수정 신청</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </body>
 </html>

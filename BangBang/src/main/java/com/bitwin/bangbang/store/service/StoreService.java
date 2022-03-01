@@ -12,6 +12,7 @@ import com.bitwin.bangbang.member.dao.MemberDao;
 import com.bitwin.bangbang.member.domain.Member;
 import com.bitwin.bangbang.store.dao.StoreDao;
 import com.bitwin.bangbang.store.domain.Store;
+import com.bitwin.bangbang.store.domain.StoreEditRequest;
 import com.bitwin.bangbang.store.domain.StoreLoginInfo;
 import com.bitwin.bangbang.store.domain.StoreLoginRequest;
 import com.bitwin.bangbang.store.domain.StorePassword;
@@ -97,6 +98,20 @@ public class StoreService {
 			resultCnt = dao.updatePassword(storePw);
 		}
 
+		return resultCnt;
+	}
+
+	public int storeEditRequest(StoreEditRequest editRequest, HttpSession session) {
+		int resultCnt = 0;
+		StoreLoginInfo loginInfo = (StoreLoginInfo) session.getAttribute("storeInfo");
+		
+		editRequest.setSidx(loginInfo.getSidx());
+		System.out.println(editRequest);
+		
+		dao = template.getMapper(StoreDao.class);
+		
+		resultCnt = dao.storeInfoEditRequest(editRequest);
+		
 		return resultCnt;
 	}
 }

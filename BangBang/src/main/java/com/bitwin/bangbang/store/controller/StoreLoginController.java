@@ -36,7 +36,7 @@ public class StoreLoginController {
 	}
 
 	// 로그아웃
-	@GetMapping("/logout")
+	@GetMapping("/logout/store")
 	public String logout(HttpSession session) {
 		session.invalidate();
 		return "redirect:/";

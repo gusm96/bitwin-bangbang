@@ -22,6 +22,7 @@ public class AdminStoreController {
 	@GetMapping
 	public String getStore(Model model) {
 		model.addAttribute("store", storeService.selectAll());
+		model.addAttribute("storeReq", storeService.selectEditRequest());
 		return "admin/store/management";
 	}
 	// 가맹점 등록

@@ -11,6 +11,7 @@ import com.bitwin.bangbang.member.service.MailSenderService;
 import com.bitwin.bangbang.member.service.RamdomPassword;
 import com.bitwin.bangbang.store.dao.StoreDao;
 import com.bitwin.bangbang.store.domain.Store;
+import com.bitwin.bangbang.store.domain.StoreEditRequestList;
 import com.bitwin.bangbang.store.domain.StoreRegRequest;
 
 @Service
@@ -68,30 +69,39 @@ public class AdminStoreService {
 
 		return store;
 	}
-	
-	// 가맹점 아이디 중복 체크 
-	public String checkStoreId (String storeId) {
+
+	// 가맹점 아이디 중복 체크
+	public String checkStoreId(String storeId) {
 		String result = "";
-		
+
 		dao = template.getMapper(StoreDao.class);
-		
+
 		int count = dao.selectByStoreId(storeId);
-		
-		if(count > 0) {
+
+		if (count > 0) {
 			result = "N";
-		}else {
+		} else {
 			result = "Y";
 		}
 		return result;
-	
+
 	}
 
 	public Store storeDetial(String sname) {
 		Store store = null;
-		
+
+		dao = template.getMapper(StoreDao.class);
+
+		store = dao.selectBySname(sname);
+
+		return store;
+	}
+
+	public List<StoreEditRequestList> selectEditRequest() {
+		List<StoreEditRequestList> store = null;
 		dao = template.getMapper(StoreDao.class);
 		
-		store = dao.selectBySname(sname);
+		store = dao.selectEditRequestList();
 		
 		return store;
 	}

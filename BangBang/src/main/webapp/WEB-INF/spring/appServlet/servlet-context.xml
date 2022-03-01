@@ -21,6 +21,7 @@
 	<resources mapping="/css/**" location="/css/" />
 	<resources mapping="/js/**" location="/js/" />
 	<resources mapping="/images/**" location="/images/" />
+	<resources mapping="/ckeditor/**" location="/ckeditor/" />
 	<resources mapping="/uploadfile/**" location="/uploadfile/" />
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources 
@@ -38,7 +39,10 @@
 			<beans:value>utf-8</beans:value>
 		</beans:property>
 	</beans:bean>
-
+	<!-- 업로드 패스 설정 --> 
+	<beans:bean class="java.lang.String" id="uploadPath">
+ 	<beans:constructor-arg value="C:\Users\gusm9\Documents\workspace\bitwin-bangbang\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\BangBang\resources\uploadfile" />
+	</beans:bean>
 	<!-- 로그인 여부 확인을 위한 인터셉터 등록 -->
 	<beans:bean id="authCheckInterceptor"
 		class="com.bitwin.bangbang.member.interceptor.AuthCheckInterceptor" />

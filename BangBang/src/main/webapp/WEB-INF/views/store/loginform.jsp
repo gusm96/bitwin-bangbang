@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:if test="${not empty storeInfo }">
+	<script>
+		location.href = "/bangbang/store";
+	</script>
+</c:if>
 <!DOCTYPE html>
 <html>
   <head>
@@ -7,6 +13,8 @@ pageEncoding="UTF-8"%>
     <title>가맹점 로그인</title>
   </head>
   <body>
+  <%@include file="../includes/store-header.jsp"%> 
+    <%@include file="../includes/store-nav.jsp"%>
     <div>
       <form method="post">
         <table style="text-align: center">

@@ -6,50 +6,95 @@
 <head>
 <meta charset="UTF-8">
 <title>가맹점 관리</title>
+<style type="text/css">
+#body_container {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+}
+
+#form_container {
+	display: inline-block;
+	width: 500px;
+	margin-top: 50px;
+}
+
+input {
+	text-align: center;
+}
+</style>
 </head>
 <body>
 	<%@include file="../../includes/admin-header.jsp"%>
 	<%@include file="../../includes/admin-nav.jsp"%>
-	<div>
-		<form>
-			<div style="display: inline;">가맹점 검색</div>
-			<select name="searchType" class="form-control">
-				<option value="sname"
-					${param.searchType eq 'sname' ? 'selected' : ''}>가맹점명</option>
-				<option value="oname"
-					${param.searchType eq 'oname' ? 'selected' : ''}>사업자명</option>
-			</select> <input type="text">
-			<button type="submit">검색</button>
-		</form>
-		<div>
-			<table style="text-align: center">
+	<div id="body_container">
+		<div id="form_container">
+			<form>
+				<h3>가맹점 검색</h3>
+				<select name="searchType">
+					<option value="sname"
+						${param.searchType eq 'sname' ? 'selected' : ''}>가맹점명</option>
+					<option value="oname"
+						${param.searchType eq 'oname' ? 'selected' : ''}>사업자명</option>
+				</select> <input type="text">
+				<button type="submit">검색</button>
+			</form>
+			<div>
+				<table style="text-align: center;">
+					<thead>
+						<tr>
+							<th colspan="4">가맹점 리스트</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>번호</td>
+							<td>가맹점명</td>
+							<td>가맹점 주소</td>
+							<td>사업자명</td>
+						</tr>
+						<c:forEach items="${store}" var="s">
+							<tr>
+								<td>${s.sidx}</td>
+								<td><a
+									href="${pageContext.request.contextPath}/admin/store/${s.sname}">${s.sname}</a></td>
+								<td>${s.address}</td>
+								<td>${s.oname}</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+			<span>&rarr;<a
+				href="${pageContext.request.contextPath}/admin/store/reg">가맹점
+					등록하기</a></span>
+			<hr>
+			<table>
 				<thead>
 					<tr>
-						<th colspan="4">가맹점 리스트</th>
+						<td colspan="3">가맹점 정보수정 요청</td>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td>번호</td>
+						<td>신청 번호</td>
 						<td>가맹점명</td>
-						<td>가맹점 주소</td>
-						<td>사업자명</td>
+						<td>가맹점 아이디</td>
+						<td></td>
 					</tr>
-					<c:forEach items="${store}" var="s">
+					<c:forEach items="${storeReq}" var="sr">
 						<tr>
-							<td>${s.sidx}</td>
+							<td>${sr.sridx}</td>
+							<td>${sr.sname}</td>
+							<td>${sr.storeId}</td>
 							<td><a
-								href="${pageContext.request.contextPath}/admin/store/${s.sname}">${s.sname}</a></td>
-							<td>${s.address}</td>
-							<td>${s.oname}</td>
+								href="${pageContext.request.contextPath}/admin/store/${sr.sridx}/eidt">수정</a>
+							</td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 		</div>
-		<span>&rarr;<a
-			href="${pageContext.request.contextPath}/admin/store/reg">가맹점
-				등록하기</a></span>
 	</div>
 
 </body>

@@ -18,6 +18,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{ophone},#{oemail}, #{regnum}, #{photo})
 	</insert>
 
+	<!-- 가맹점 정보 수정 요청 -->
+	<insert id="storeInfoEditRequest"
+		parameterType="com.bitwin.bangbang.store.domain.StoreEditRequest"
+		useGeneratedKeys="true" keyProperty="sridx"
+	>
+	insert into store_req (sname, sphone, address, sidx) values (#{sname}, #{sphone}, #{address}, #{sidx})
+	</insert>
+
 	<!-- 모든 가맹점 정보 가져오기 -->
 	<select id="selectAll"
 		resultType="com.bitwin.bangbang.store.domain.Store">
@@ -49,10 +57,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select sidx,sname,sphone,address from store where
 		sidx=#{sidx}
 	</select>
+	
+	<!-- 가맹점 정보 수정 요청 리스트 -->
+	<select id="selectEditRequestList"
+		resultType="com.bitwin.bangbang.store.domain.StoreEditRequestList"
+	>
+	select sridx, store.SNAME, store.STOREID from store_req inner join store on store_req.sidx = store.sidx;
+	</select>
 	<!-- 가맹점 비밀번호 변경 -->
 	<update id="updatePassword"
 		parameterType="com.bitwin.bangbang.store.domain.StorePassword">
 		update store set storePw=#{newPw1} where
 		storeId=#{storeId}
 	</update>
+	
 </mapper>

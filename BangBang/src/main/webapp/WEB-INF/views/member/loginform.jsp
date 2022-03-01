@@ -12,7 +12,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
         justify-content: center;
         text-align: center;
       }
-      #login_container {
+      #form_container {
         display: inline-block;
         width: 300px;
         margin-top: 50px;
@@ -26,7 +26,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
     <%@include file="../includes/bangbang-header.jsp"%> <%@include
     file="../includes/bangbang-nav.jsp"%>
     <div id="body_container">
-      <div id="login_container" class="text-center">
+      <div id="form_container" class="text-center">
         <form method="post">
           <input type="hidden" name="url" value="${param.referer}" />
           <div class="form-floating">
@@ -71,11 +71,10 @@ uri="http://java.sun.com/jsp/jstl/core"%>
           <a
             href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${naver.client_id}&redirect_uri=${naver.redirect_uri}&state=hLiDdL2uhPtsftcU
  "
-            >네이버 ICON</a
+            ><img
+              src="${pageContext.request.contextPath}/resources/images/naver_login.png" width="300px" height="45px"
+          /></a
           >
-        </div>
-        <div>
-          <a href="">구글 ICON</a>
         </div>
         <div>
           <a href="${pageContext.request.contextPath }/login/store"

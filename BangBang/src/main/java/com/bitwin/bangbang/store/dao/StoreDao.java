@@ -3,6 +3,8 @@ package com.bitwin.bangbang.store.dao;
 import java.util.List;
 
 import com.bitwin.bangbang.store.domain.Store;
+import com.bitwin.bangbang.store.domain.StoreEditRequest;
+import com.bitwin.bangbang.store.domain.StoreEditRequestList;
 import com.bitwin.bangbang.store.domain.StoreOrderInfo;
 import com.bitwin.bangbang.store.domain.StorePassword;
 import com.bitwin.bangbang.store.domain.StoreRegRequest;
@@ -26,4 +28,8 @@ public interface StoreDao {
 	public StoreOrderInfo selectOrderInfo (int sidx);
 
 	public int updatePassword(StorePassword storePw);
+
+	public int storeInfoEditRequest(StoreEditRequest editRequest);
+
+	public List<StoreEditRequestList> selectEditRequestList();
 }
