@@ -6,27 +6,33 @@
 <meta charset="UTF-8" />
 <title>관리자 로그인</title>
 <link rel="stylesheet" href="/bangbang/resources/css/container.css">
+<style type="text/css">
+#main_container {
+	width: 300px;
+}
+form * input{
+	margin-bottom: 5px;
+}
+</style>
 </head>
 <body>
 	<%@include file="../includes/admin-header.jsp"%>
 	<%@include file="../includes/admin-nav.jsp"%>
 	<div id="body_container">
 		<div id="main_container">
+			<h3>관리자 로그인</h3>
 			<form method="post">
-				<table>
-					<tr>
-						<td>관리자 아이디</td>
-						<td><input type="text" name="aid" required /></td>
-					</tr>
-					<tr>
-						<td>관리자 비밀번호</td>
-						<td><input type="password" name="apw" required /></td>
-					</tr>
-					<tr>
-						<td></td>
-						<td><input type="submit" value="로그인" /></td>
-					</tr>
-				</table>
+				<div class="form-floating">
+					<label>아이디</label> <input class="form-control" type="text"
+						name="aid" required />
+				</div>
+				<div class="form-floating">
+					<label>비밀번호</label> <input class="form-control" type="password"
+						name="apw" required />
+				</div>
+				<div>
+					<button type="submit" class="w-100 btn btn-lg btn-primary">로그인</button>
+				</div>
 			</form>
 		</div>
 	</div>

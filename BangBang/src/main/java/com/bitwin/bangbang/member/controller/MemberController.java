@@ -154,12 +154,6 @@ public class MemberController {
 		model.addAttribute("result", service.searchByPw(searchPW));
 		return "member/searchPwComplete";
 	}
-	
-	// 회원가입 페이지
-	@GetMapping("/join")
-	public String getJoin() {
-		return "member/join";
-	}
 
 	// 일반 회원가입
 	@GetMapping("/join/general")

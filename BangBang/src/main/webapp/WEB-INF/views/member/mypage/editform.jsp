@@ -17,6 +17,10 @@
 	width: 150px;
 	height: 150px;
 }
+
+table {
+	width: 100%;
+}
 </style>
 
 <%@ include file="/WEB-INF/views/frame/pageset.jsp"%>
@@ -27,17 +31,17 @@
 	<div id="body_container">
 		<%@ include file="/WEB-INF/views/frame/mypagenav.jsp"%>
 		<div id="main_container">
-			<h3>${member.username}님의회원정보</h3>
+			<h3>${member.username}님의 회원정보</h3>
 			<form method="post" enctype="multipart/form-data">
 				<input type="hidden" name="userid" value="${member.userid}">
 				<table style="text-align: center;">
 					<c:if test="${loginType eq 'general'}">
 						<tr>
-							<td>프로필</td>
 							<td><img
 								src="${pageContext.request.contextPath}/resources/uploadfile/${member.photo}"
 								id="profile_img"> <input type="hidden" name=oldPhoto
-								value="${member.photo}"></td>
+								value="${member.photo}">
+							<hr></td>
 							<td><input type="file" name="photo"></td>
 						</tr>
 						<tr>
@@ -71,7 +75,8 @@
 					</tr>
 				</table>
 				<hr>
-				광고 및 알람 수신동의
+				<span style="font-weight: bolder;">광고 및 알람 수신동의</span>
+				<hr>
 				<table>
 					<tr>
 						<td>이메일</td>

@@ -11,6 +11,9 @@
 #main_container {
 	width: 322px;
 }
+form * {
+	margin-bottom: 5px;
+}
 </style>
 </head>
 <body>
@@ -18,6 +21,7 @@
 	<%@include file="../includes/bangbang-nav.jsp"%>
 	<div id="body_container">
 		<div id="main_container" class="text-center">
+			<h3>로그인</h3>
 			<form method="post">
 				<input type="hidden" name="url" value="${param.referer}" />
 				<div class="form-floating">
@@ -40,7 +44,7 @@
 						로그인</button>
 				</div>
 			</form>
-			<div>
+			<div style="margin-bottom: 5px;">
 				<a
 					href="https://kauth.kakao.com/oauth/authorize?client_id=${kakao.client_id}&redirect_uri=${kakao.redirect_uri}&response_type=code"><img
 					src="${pageContext.request.contextPath}/resources/images/kakao_login_medium_wide.png" /></a>
@@ -63,7 +67,7 @@
 					찾기</a>
 			</div>
 			<span>아직 회원이 아니신가요?</span> <br /> &rarr; <a
-				href="${pageContext.request.contextPath }/member/join">회원가입</a>
+				href="${pageContext.request.contextPath }/member/join/general">회원가입</a>
 		</div>
 	</div>
 	<%@include file="../includes/bangbang-footer.jsp"%>

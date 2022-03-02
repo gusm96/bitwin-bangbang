@@ -22,10 +22,14 @@
 
 #changepw_container {
 	text-align: center;
+	margin-bottom: 50px;	
 }
 
 #changepw_container>form {
 	display: inline-block;
+}
+#changepw_container * input{
+	width: 350px;
 }
 </style>
 <script type="text/javascript"

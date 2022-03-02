@@ -171,7 +171,7 @@ public class paqController {
 	@Autowired
 	private JavaMailSender mailSender;
     
-	//mailSend 肄붾뱶
+	//mailSend
 	@RequestMapping(value = "/mailSend", method = RequestMethod.POST)
 	public String mailSend(HttpServletRequest request,@RequestParam("pqidx") int pqidx, @ModelAttribute("cri") Criteria cri, @RequestParam("uidx") int uidx, RedirectAttributes rttr) {
 		
@@ -180,12 +180,12 @@ public class paqController {
 			MimeMessage mimeMessage = mailSender.createMimeMessage();
 		    MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, true, "UTF-8");
 		    String emailReceiver = service.getEmail(uidx);
-		    messageHelper.setFrom("wnrak0116@gmail.com"); // 蹂대궡�뒗�궗�엺 �씠硫붿씪 �뿬湲곗꽑 google 硫붿씪�꽌踰� �궗�슜�븯�뒗 �븘�씠�뵒瑜� �옉�꽦�븯硫대맖
-		    messageHelper.setTo(emailReceiver); // 諛쏅뒗�궗�엺 �씠硫붿씪
-		    messageHelper.setSubject("�븞�뀞�븯�꽭�슂. 諛⑸갑�닠�옒 怨좉컼�꽱�꽣�엯�땲�떎."); // 硫붿씪�젣紐�
-		    messageHelper.setText("怨좉컼�떂猿섏꽌 臾몄쓽�빐二쇱떊 1:1 臾몄쓽 �떟蹂��씠 �벑濡앸릺�뿀�쑝�땲, "
-		    					+ "�솃�럹�씠吏��뿉 �젒�냽�븯�뀛�꽌 �솗�씤�빐二쇱떆湲� 諛붾엻�땲�떎."
-		    					+ "媛먯궗�빀�땲�떎."); // 硫붿씪 �궡�슜
+		    messageHelper.setFrom("wnrak0116@gmail.com"); 
+		    messageHelper.setTo(emailReceiver); 
+		    messageHelper.setSubject("안녕하세요. 방방술래 고객센터입니다."); 
+		    messageHelper.setText("고객님께서 문의해주신 1:1 문의 답변이 등록되었으니, \"\r\n" + 
+		    		"                         + \"홈페이지에 접속하셔서 확인해주시기 바랍니다.\"\r\n" + 
+		    		"                         + \"감사합니다.");
 		    
 		    mailSender.send(mimeMessage);
 		} catch (Exception e) {
@@ -221,7 +221,7 @@ public class paqController {
 	    params.put("to", phoneNum);
 	    params.put("from", "01037224175");
 	    params.put("type", "SMS");
-	    params.put("text", "諛⑸갑�닠�옒�뿉 蹂대궡二쇱떊 1:1 臾몄쓽 �떟蹂��씠 �셿猷뚮릺�뿀�뒿�땲�떎.");
+	    params.put("text", "방방술래에 보내주신 1:1 문의 답변이 완료되었습니다.");
 	    params.put("app_version", "test app 1.2"); // application name and version
 
 	    try {

@@ -19,6 +19,9 @@
 .text_blue {
 	color: blue;
 }
+#main_container{
+	width: 300px;
+}
 </style>
 <script>
 	$(document).ready(function() {

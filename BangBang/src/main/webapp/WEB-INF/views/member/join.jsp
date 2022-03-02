@@ -19,9 +19,6 @@
 				<a href="${pageContext.request.contextPath}/member/join/general">일반
 					회원가입</a>
 			</div>
-			<div id="store-reg" class="reg">
-				<a href="${pageContext.request.contextPath}/reg/store">가맹점 등록</a>
-			</div>
 		</div>
 	</div>
 	<%@include file="../includes/bangbang-footer.jsp"%>

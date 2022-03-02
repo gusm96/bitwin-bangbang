@@ -8,7 +8,8 @@
 	text-align: center;
 	border: 1px solid black;
 	border-radius: 15px;
-	margin-right: 50px;
+	margin-top: 50px;
+	margin-right: 100px;
 	text-align: center;
 }
 

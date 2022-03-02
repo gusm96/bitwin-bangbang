@@ -20,6 +20,19 @@
 .text_blue {
 	color: blue;
 }
+
+table {
+	width: 80%;
+	margin: 0;
+}
+
+#main_container {
+	width: 400px;
+}
+
+.form-floating {
+	margin-bottom: 5px;
+}
 </style>
 <script type="text/javascript"
 	src="<c:url value="/resources/js/checkid.js"/>"></script>
@@ -36,46 +49,43 @@
 	<%@include file="../includes/bangbang-nav.jsp"%>
 	<div id="body_container">
 		<div id="main_container">
+			<h3>일반 회원가입</h3>
+			<hr>
 			<form method="post" id="form">
-				<table>
-					<!-- 아이디 비밀번호 이름 생년월일 전화번호 이메일 이메일(수신여부) 문자(수신여부) 카카오톡(수신여부) -->
-					<tr>
-						<td>아이디</td>
-						<td><input type="text" name="userid" id="userid" required
-							min="5" max="30" />
-							<div id="msg"></div></td>
-					</tr>
-					<tr>
-						<td>비밀번호</td>
-						<td><input type="password" name="password" id="password1"
-							min="8" max="16" required /></td>
-					</tr>
-					<tr>
-						<td>비밀번호 확인</td>
-						<td><input type="password" name="password2" id="password2"
-							min="8" max="16" required />
-							<div id="pmsg"></div></td>
-					</tr>
-					<tr>
-						<td>이름</td>
-						<td><input type="text" name="username" id="username" required /></td>
-					</tr>
-					<tr>
-						<td>생년월일</td>
-						<td><input type="date" name="birth" required /></td>
-					</tr>
-					<tr>
-						<td>전화번호</td>
-						<td><input type="text" name="phonenum" required /></td>
-					</tr>
-					<tr>
-						<td>이메일</td>
-						<td><input type="email" name="email" id="email" required />
-							<div id="emsg"></div></td>
-					</tr>
-				</table>
+				<div class="form-floating">
+					<label>아이디</label> <input class="form-control" type="text"
+						name="userid" id="userid" required min="5" max="30" />
+					<div id="msg"></div>
+				</div>
+				<div class="form-floating">
+					<label>비밀번호</label> <input class="form-control" type="password"
+						name="password" id="password1" min="8" max="16" required />
+				</div>
+				<div class="form-floating">
+					<label>비밀번호 확인</label> <input class="form-control" type="password"
+						name="password2" id="password2" min="8" max="16" required />
+					<div id="pmsg"></div>
+				</div>
+				<div class="form-floating">
+					<label>이름</label> <input class="form-control" type="text"
+						name="username" id="username" required />
+				</div>
+				<div class="form-floating">
+					<label>생년월일</label> <input class="form-control" type="date"
+						name="birth" required />
+				</div>
+				<div class="form-floating">
+					<label>전화번호</label> <input class="form-control" type="text"
+						name="phonenum" required />
+				</div>
+				<div class="form-floating">
+					<label>이메일</label> <input class="form-control" type="email"
+						name="email" id="email" required />
+					<div id="emsg"></div>
+				</div>
 				<hr />
-				<span>광고및 알람 수신여부</span><br />
+				<span style="font-weight: bolder;">광고 및 알람 수신여부</span><br />
+				<hr>
 				<table>
 					<tr>
 						<td>이메일</td>
@@ -91,9 +101,9 @@
 					</tr>
 					<tr>
 						<td></td>
-						<td>
-							<button name="submit" id="submit" type="submit">가입하기</button>
-						</td>
+						<td><hr>
+							<button name="submit" id="submit" type="submit"
+								class="w-100 btn btn-lg btn-primary">가입하기</button></td>
 					</tr>
 				</table>
 			</form>

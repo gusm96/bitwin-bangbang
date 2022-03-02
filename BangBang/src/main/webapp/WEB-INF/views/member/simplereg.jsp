@@ -8,6 +8,11 @@
 <meta charset="UTF-8" />
 <title>간편 회원 가입</title>
 <link rel="stylesheet" href="/bangbang/resources/css/container.css">
+<style type="text/css">
+	#main_container{
+		width: 400px;
+	}
+</style>
 </head>
 <body>
 	<%@include file="../includes/bangbang-header.jsp"%>

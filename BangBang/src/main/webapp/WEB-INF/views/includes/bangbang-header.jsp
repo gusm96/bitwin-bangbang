@@ -151,7 +151,7 @@
 						<c:if test="${empty loginInfo }">
 							<div>
 								<a href="${pageContext.request.contextPath}/member/login">로그인</a>
-								<a href="${pageContext.request.contextPath}/member/join">회원가입</a>
+								<a href="${pageContext.request.contextPath}/member/join/general">회원가입</a>
 							</div>
 						</c:if>
 						<c:if test="${not empty loginInfo }">

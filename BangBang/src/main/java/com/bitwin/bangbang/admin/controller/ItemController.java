@@ -23,12 +23,12 @@ public class ItemController {
 
 	@RequestMapping(value = "write", method = RequestMethod.GET)
 	public String write() {
-		return "item/write";
+		return "admin/item/write";
 	}
 
 	@RequestMapping(value = "insert", method = RequestMethod.POST)
 	public String insert(@ModelAttribute Item item) {
-		
+		System.out.println(item);
 		String sprice = item.getSprice().replaceAll("[^\\d]*", "");
 		String oprice = item.getOprice().replaceAll("[^\\d]*", "");
 		
@@ -49,7 +49,7 @@ public class ItemController {
 	@RequestMapping(value = "update", method = RequestMethod.GET)
 	public String form(@RequestParam("iidx") int iidx, Model model) {
 		model.addAttribute("item", itemService.read(iidx));
-		return "item/update";
+		return "admin/item/update";
 	}
 
 	@RequestMapping(value = "update", method = RequestMethod.POST)
