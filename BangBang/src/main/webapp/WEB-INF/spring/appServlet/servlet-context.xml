@@ -39,9 +39,10 @@
 			<beans:value>utf-8</beans:value>
 		</beans:property>
 	</beans:bean>
-	<!-- 업로드 패스 설정 --> 
+	<!-- 업로드 패스 설정 -->
 	<beans:bean class="java.lang.String" id="uploadPath">
- 	<beans:constructor-arg value="C:\Users\gusm9\Documents\workspace\bitwin-bangbang\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\BangBang\resources\uploadfile" />
+		<beans:constructor-arg
+			value="C:\Users\gusm9\Documents\workspace\bitwin-bangbang\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\BangBang\resources\uploadfile" />
 	</beans:bean>
 	<!-- 로그인 여부 확인을 위한 인터셉터 등록 -->
 	<beans:bean id="authCheckInterceptor"
@@ -94,5 +95,39 @@
 
 	<context:component-scan
 		base-package="com.bitwin.bangbang.admin" />
+
+	<beans:bean id="TemploginInfoInterceptor"
+		class="com.bitwin.bangbang.temp.LoginInfoInterceptor"></beans:bean>
+
+	<!-- ///////////////////////////////////////////////////////// -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/order" />
+			<mapping path="/order/linked" />
+			<mapping path="/order/member/**" />
+			<beans:ref bean="TemploginInfoInterceptor" />
+		</interceptor>
+	</interceptors>
+
+	<beans:bean id="TemploginInfoInterceptor2"
+		class="com.bitwin.bangbang.temp.LoginInfoInterceptor2"></beans:bean>
+
+	<interceptors>
+		<interceptor>
+			<mapping path="/order/store/**" />
+			<beans:ref bean="TemploginInfoInterceptor2" />
+		</interceptor>
+	</interceptors>
+
+	<beans:bean id="TemploginInfoInterceptor3"
+		class="com.bitwin.bangbang.temp.LoginInfoInterceptor3"></beans:bean>
+
+	<interceptors>
+		<interceptor>
+			<mapping path="/order/admin/**" />
+			<beans:ref bean="TemploginInfoInterceptor3" />
+		</interceptor>
+	</interceptors>
+	<!-- ///////////////////////////////////////////////////////// -->
 
 </beans:beans>

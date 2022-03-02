@@ -33,7 +33,8 @@
 		<li><a
 			href="${pageContext.request.contextPath}/member/mypage/edit">내정보
 				수정</a></li>
-		<li><a href="">장바구니</a></li>
+		<li><a href="${pageContext.request.contextPath}/cart">장바구니</a></li>
+		<li><a href="${pageContext.request.contextPath}/order/member/${loginInfo.uidx}/list">주문내역</a></li>
 		<li><a href="">찜 목록</a></li>
 		<li><a href="">쿠폰 / 적립금</a></li>
 		<li><a href="">1:1 문의 내역</a></li>
