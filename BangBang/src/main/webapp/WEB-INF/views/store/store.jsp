@@ -17,5 +17,6 @@
 			<h4>주문목록</h4>
 		</div>
 	</div>
+	<%@include file="../includes/bangbang-footer.jsp"%>
 </body>
 </html>

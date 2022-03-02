@@ -87,13 +87,15 @@
 	color: gray;
 	font-size: 18px;
 }
-#profile{
+
+#profile {
 	width: 40px;
 	height: 40px;
 	border: 1px solid black;
 	border-radius: 50%;
 }
-#user_container{
+
+#user_container {
 	
 }
 </style>
@@ -157,17 +159,23 @@
 						<c:if test="${not empty loginInfo }">
 							<div>
 								<c:if test="${loginType eq 'kakao'}">
-									<img id="profile" src="${loginInfo.photo}">
+
+									<a href="${pageContext.request.contextPath}/member/mypage"><img
+										id="profile" src="${loginInfo.photo}"></a>
 									<a
 										href="https://kauth.kakao.com/oauth/logout?client_id=${kakao.client_id}&logout_redirect_uri=${kakao.logout_redirect_uri}">로그아웃</a>
 								</c:if>
 								<c:if test="${loginType eq 'naver'}">
-									<img id="profile" src="${loginInfo.photo}">
+
+									<a href="${pageContext.request.contextPath}/member/mypage"><img
+										id="profile" src="${loginInfo.photo}"></a>
 									<a href="${pageContext.request.contextPath}/member/logout">로그아웃</a>
 								</c:if>
 								<c:if test="${loginType eq 'general'}">
-									<img id="profile"
-										src="${pageContext.request.contextPath}/resources/uploadfile/${loginInfo.photo}">
+
+									<a href="${pageContext.request.contextPath}/member/mypage"><img
+										id="profile"
+										src="${pageContext.request.contextPath}/resources/uploadfile/${loginInfo.photo}"></a>
 									<a href="${pageContext.request.contextPath}/member/logout">로그아웃</a>
 								</c:if>
 							</div>

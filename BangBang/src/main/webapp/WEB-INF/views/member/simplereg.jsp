@@ -9,9 +9,9 @@
 <title>간편 회원 가입</title>
 <link rel="stylesheet" href="/bangbang/resources/css/container.css">
 <style type="text/css">
-	#main_container{
-		width: 400px;
-	}
+#main_container {
+	width: 300px;
+}
 </style>
 </head>
 <body>
@@ -19,43 +19,35 @@
 
 	<%@include file="../includes/bangbang-nav.jsp"%>
 	<div id="body_container">
-		<div id="main container">
+		<div id="main_container">
+			<h3>간편 회원가입</h3>
+			<hr>
 			<form method="post">
-				<input type="checkbox" name="sns" checked="checked"
-					style="display: none;">
-				<div>
-					<label for="photo"><input type="hidden" name="photo"
-						value="${userInfo.profile}" /></label>
+				<input type="checkbox" name="sns" checked="checked"	style="display: none;"> 
+				<input type="hidden" name="photo" value="${userInfo.profile}" /> 
+				<input type="hidden" name="userid"	value="${userInfo.email}" />
+				<input type="hidden" name="username" value="${userInfo.nickname}"required />
+				<div class="form-floating">
+					<label for="birth">생년월일 </label><input class="form-control"
+						type="date" name="birth" required />
+				</div>
+				<div class="form-floating">
+					<label for="phonenum">전화번호</label>
+					<c:if test="${empty userInfo.phonenum }">
+						<input class="form-control" type="text" name="phonenum" required />
+					</c:if>
+					<c:if test="${not empty userInfo.phonenum}">
+						<input type="hidden" name="phonenum" value="${userInfo.phonenum}">
+         		  ${userInfo.phonenum}
+          		 </c:if>
+
 				</div>
 				<div>
-					<label for="userid"> <input type="hidden" name="userid"
-						value="${userInfo.email}" /></label>
+					<input type="hidden" name="email" value="${userInfo.email}" />
 				</div>
-				<div>
-					<label for="username">이름: <input type="hidden"
-						name="username" value="${userInfo.nickname}" required />
-						${userInfo.nickname}
-					</label>
-				</div>
-				<div>
-					<label for="birth">생년월일: <input type="date" name="birth"
-						required /></label>
-				</div>
-				<div>
-					<label for="phonenum">전화번호: <c:if
-							test="${empty userInfo.phonenum }">
-							<input type="text" name="phonenum" required />
-						</c:if> <c:if test="${not empty userInfo.phonenum}">
-							<input type="hidden" name="phonenum" value="${userInfo.phonenum}">
-           ${userInfo.phonenum}
-           </c:if>
-					</label>
-				</div>
-				<div>
-					<label for="email"> <input type="hidden" name="email"
-						value="${userInfo.email}" /></label>
-				</div>
-				<div>광고 및 알림 수신동의</div>
+				<hr>
+				<div style="font-weight: bolder;">광고 및 알림 수신동의</div>
+				<hr>
 				<div>
 					<label for="enotify">이메일<input type="checkbox"
 						name="enotify" /></label>
@@ -68,7 +60,9 @@
 					<label for="snotify">카카오톡<input type="checkbox"
 						name="snotify" /></label>
 				</div>
-				<input type="submit" value="회원가입" />
+				<div>
+					<button type="submit" class="w-100 btn btn-lg btn-primary">회원가입</button>
+				</div>
 			</form>
 		</div>
 	</div>

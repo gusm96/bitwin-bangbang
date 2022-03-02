@@ -8,16 +8,22 @@
 <title>가맹점 상세정보</title>
 <%@ include file="/WEB-INF/views/frame/pageset.jsp"%>
 <link rel="stylesheet" href="/bangbang/resources/css/container.css">
+<style type="text/css">
+	table {
+	margin: 0;
+	width: 100%;
+}
+</style>
 </head>
 <body>
 	<%@include file="../includes/store-header.jsp"%>
 	<%@include file="../includes/store-nav.jsp"%>
 	<div id="body_container">
 		<div id="main_container">
-			<table style="text-align: left">
-				<thead style="text-align: center;">
+			<table style="text-align: center;">
+				<thead>
 					<tr>
-						<th colspan="3">${store.sname}</th>
+						<th colspan="3" style="text-align: center;"><h3>${store.sname}</h3><hr></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -76,6 +82,7 @@
 			<button id="changepw_btn">비밀번호 변경</button>
 		</div>
 	</div>
+	<%@include file="../includes/bangbang-footer.jsp"%>
 	<script>
 		$("#changepw_btn").click(function() {
 			location.href = "mypage/edit/pw";
@@ -84,5 +91,6 @@
 			location.href = "mypage/edit/";
 		});
 	</script>
+	
 </body>
 </html>

@@ -46,7 +46,7 @@
       <a class="nav-font" href="${pageContext.request.contextPath}/board/list-type?type=리큐르" style="padding-top: 10px;">리큐르</a>
       <a class="nav-font" href="${pageContext.request.contextPath}/board/list-type?type=전통주" style="padding-top: 10px;">전통주</a>
       <a class="nav-font" href="${pageContext.request.contextPath}/board/list-type?type=기타" style="padding-top: 10px;">기타</a>
-      <a class="nav-font" href="${pageContext.request.contextPath}/member/mypage" style="padding-top: 10px;">마이페이지</a>
+<%--       <a class="nav-font" href="${pageContext.request.contextPath}/member/mypage" style="padding-top: 10px;">마이페이지</a> --%>
       
 
 	 <li class="dropdown">
