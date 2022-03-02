@@ -1,5 +1,6 @@
 package com.bitwin.bangbang.member.service;
 
+import org.junit.experimental.runners.Enclosed;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

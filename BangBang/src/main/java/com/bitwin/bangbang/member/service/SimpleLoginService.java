@@ -256,7 +256,8 @@ public class SimpleLoginService {
 		LoginInfo loginInfo = null;
 
 		dao = template.getMapper(MemberDao.class);
-
+		
+		System.out.println(email);
 		loginInfo = dao.selectByEmail(email);
 
 		return loginInfo;

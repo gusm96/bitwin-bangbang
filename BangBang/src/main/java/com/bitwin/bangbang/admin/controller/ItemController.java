@@ -23,7 +23,7 @@ public class ItemController {
 
 	@RequestMapping(value = "write", method = RequestMethod.GET)
 	public String write() {
-		return "admin/item/write";
+		return "item/write";
 	}
 
 	@RequestMapping(value = "insert", method = RequestMethod.POST)
@@ -49,7 +49,7 @@ public class ItemController {
 	@RequestMapping(value = "update", method = RequestMethod.GET)
 	public String form(@RequestParam("iidx") int iidx, Model model) {
 		model.addAttribute("item", itemService.read(iidx));
-		return "admin/item/update";
+		return "item/update";
 	}
 
 	@RequestMapping(value = "update", method = RequestMethod.POST)

@@ -43,7 +43,7 @@
 								type="text/javascript">
 							// 글쓰기 editor 및 사진 업로드 기능
 							CKEDITOR.replace('content', {
-								filebrowserUploadUrl : '${pageContext.request.contextPath}/admin/faq/imageUpload'
+								filebrowserUploadUrl : '${pageContext.request.contextPath}/imageUpload'
 							});
 						</script></td> 
 	

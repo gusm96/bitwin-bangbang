@@ -50,7 +50,7 @@
 											.replace(
 													'content',
 													{
-														filebrowserUploadUrl : '${pageContext.request.contextPath}/admin/notice_board/imageUpload'
+														filebrowserUploadUrl : '${pageContext.request.contextPath}/notice_board/imageUpload'
 													});
 								</script></td>
 

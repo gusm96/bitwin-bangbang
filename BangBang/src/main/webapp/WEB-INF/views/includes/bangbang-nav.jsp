@@ -36,16 +36,16 @@
 	
 <div class="container" style="padding-top: 10px;">
     <nav class="nav d-flex justify-content-between">
-      <a class="nav-font" href="${pageContext.request.contextPath}/board/list" style="padding-top: 10px;">전체</a>
-      <a class="nav-font" href="${pageContext.request.contextPath}/board/list-type?type=위스키" style="padding-top: 10px;">위스키</a>
-      <a class="nav-font" href="${pageContext.request.contextPath}/board/list-type?type=와인" style="padding-top: 10px;">와인</a>
-      <a class="nav-font" href="${pageContext.request.contextPath}/board/list-type?type=럼" style="padding-top: 10px;">럼</a>
-      <a class="nav-font" href="${pageContext.request.contextPath}/board/list-type?type=맥주" style="padding-top: 10px;">맥주</a>
-      <a class="nav-font" href="${pageContext.request.contextPath}/board/list-type?type=사케" style="padding-top: 10px;">사케</a>
-      <a class="nav-font" href="${pageContext.request.contextPath}/board/list-type?type=브랜디" style="padding-top: 10px;">브랜디</a>
-      <a class="nav-font" href="${pageContext.request.contextPath}/board/list-type?type=리큐르" style="padding-top: 10px;">리큐르</a>
-      <a class="nav-font" href="${pageContext.request.contextPath}/board/list-type?type=전통주" style="padding-top: 10px;">전통주</a>
-      <a class="nav-font" href="${pageContext.request.contextPath}/board/list-type?type=기타" style="padding-top: 10px;">기타</a>
+      <a class="nav-font" href="#" style="padding-top: 10px;">전체</a>
+      <a class="nav-font" href="#" style="padding-top: 10px;">위스키</a>
+      <a class="nav-font" href="#" style="padding-top: 10px;">와인</a>
+      <a class="nav-font" href="#" style="padding-top: 10px;">럼</a>
+      <a class="nav-font" href="#" style="padding-top: 10px;">맥주</a>
+      <a class="nav-font" href="#" style="padding-top: 10px;">사케</a>
+      <a class="nav-font" href="#" style="padding-top: 10px;">브랜디</a>
+      <a class="nav-font" href="#" style="padding-top: 10px;">리큐르</a>
+      <a class="nav-font" href="#" style="padding-top: 10px;">전통주</a>
+      <a class="nav-font" href="#" style="padding-top: 10px;">기타</a>
       <a class="nav-font" href="${pageContext.request.contextPath}/member/mypage" style="padding-top: 10px;">마이페이지</a>
       
 

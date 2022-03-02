@@ -110,7 +110,7 @@
 			<script>
 		function delItem(iidx) {
 			if (confirm("해당 회원 정보를 삭제하시겠습니까?")) {
-				location.href = '${pageContext.request.contextPath}/item/delete?iidx=' + iidx;
+				location.href = '${pageContext.request.contextPath}/admin/item/delete?iidx=' + iidx;
 			}
 		}
 	</script>

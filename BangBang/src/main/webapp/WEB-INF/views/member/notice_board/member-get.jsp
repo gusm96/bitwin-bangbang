@@ -26,17 +26,6 @@
 			<div class="panel-heading">&nbsp;</div>
 			<!-- /.panel-heading -->
 			<div class="panel-body">
-
-
-				<%-- 				<div class="form-group">
-					<label>공지사항 번호</label> <input class="form-control" name='nidx'
-						value='<c:out value="${board.nidx}"/>' readonly='readonly'>
-
-				</div> --%>
-				
-				
-		
-
 				<div class="form-group" style="display: inline;">
 
 				<h2><c:out value="${board.title }"/></h2> 
@@ -54,7 +43,7 @@
 				
 				
 				<div class="form-group">
-				    <c:out value="${board.content }" escapeXml="false" />
+				    <c:out value="${board.content}" escapeXml="false" />
 					
 				</div>
 
