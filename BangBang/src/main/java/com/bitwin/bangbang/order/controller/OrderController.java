@@ -62,12 +62,13 @@ public class OrderController {
 
 		model.addAttribute("orderReqMemberInfo", orderRequestService.getOrderReqMemberInfo(uidx));
 
-		// 현재 세션의 회원이 메인화면 지도에서 선택한 매장 불러오기 / 없을 경우 최근 이용 매장 불러오기
-		MyStore myStore = (MyStore) session.getAttribute("myStore");
-		int sidx = myStore != null && loginInfo.getUidx() == myStore.getUidx() ? myStore.getSidx()
-				: orderRequestService.getRecentStore(uidx);
-
-		model.addAttribute("OrderReqStoreInfo", sidx == 0 ? null : orderRequestService.getStoreInfo(sidx));
+//		// 현재 세션의 회원이 메인화면 지도에서 선택한 매장 불러오기 / 없을 경우 최근 이용 매장 불러오기
+//		MyStore myStore = (MyStore) session.getAttribute("myStore");
+//		int sidx = myStore != null && loginInfo.getUidx() == myStore.getUidx() ? myStore.getSidx()
+//				: orderRequestService.getRecentStore(uidx);
+//
+//		model.addAttribute("OrderReqStoreInfo", sidx == 0 ? null : orderRequestService.getStoreInfo(sidx));
+		model.addAttribute("OrderReqStoreInfo", orderRequestService.getStoreInfo(1));
 
 		// 장바구니를 거치지 않고 제품 상세보기 페이지에서 바로 주문서를 요청할 경우 처리
 		UrlPathHelper urls = new UrlPathHelper();

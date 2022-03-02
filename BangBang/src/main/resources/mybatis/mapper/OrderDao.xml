@@ -9,7 +9,7 @@
 	<select id="getItemInfo"
 		parameterType="com.bitwin.bangbang.order.domain.CartItem"
 		resultType="com.bitwin.bangbang.order.domain.OrderItemInfo">
-		select i.iidx, thumb, i.name, (i.sprice) as price, ((i.sprice) * (100 - i.discount) / 100) as salePrice 
+		select i.iidx, sb.thumb, i.name, (i.sprice) as price, ((i.sprice) * (100 - i.discount) / 100) as salePrice 
 		from bangbang.item i join bangbang.sales_board sb 
 		on i.iidx=sb.iidx
 		where i.iidx=#{iidx}
@@ -58,7 +58,7 @@
 	<insert id="insertOrder"
 		parameterType="com.bitwin.bangbang.order.domain.OrderRequest"
 		useGeneratedKeys="true" keyProperty="oidx">
-		insert into order
+		insert into bangbang.order
 		<if test="msg == null">
 			(uidx, sidx, name, phone)
 			values (#{uidx}, #{sidx}, #{name}, #{phone})
@@ -71,7 +71,7 @@
 
 	<insert id="insertOrderItems"
 		parameterType="com.bitwin.bangbang.order.domain.OrderItem">
-		insert into order_item
+		insert into bangbang.order_item
 		(oidx, iidx, qty)
 		values
 		<foreach collection='list' item='o' separator=','>
@@ -81,7 +81,7 @@
 
 	<insert id="insertPayment"
 		parameterType="com.bitwin.bangbang.order.domain.PaymentInfo">
-		insert into payment
+		insert into bangbang.payment
 		(oidx, totalprice, discount, pointused, totalpay, method)
 		values
 		(#{oidx}, #{totalprice}, #{discount}, #{pointused}, #{totalpay}, #{method})
@@ -244,21 +244,21 @@
 
 	<update id="updateStatus"
 		parameterType="com.bitwin.bangbang.order.domain.UpdateStatus">
-		update order 
+		update bangbang.order 
 		set status=#{status} 
 		where oidx=#{oidx}
 	</update>
 
 	<update id="updateOrder"
 		parameterType="com.bitwin.bangbang.order.domain.UpdateOrder">
-		update order 
+		update bangbang.order 
 		set name=#{name}, phone=#{phone}, msg=#{msg} 
 		where oidx=#{oidx}
 	</update>
 
 	<insert id="deliveryRequest"
 		parameterType="com.bitwin.bangbang.order.domain.DeliveryRequest">
-		insert into delivery
+		insert into bangbang.delivery
 		(oidx, service, provider, no, fee)
 		values
 		<foreach collection='list' item='d' separator=','>

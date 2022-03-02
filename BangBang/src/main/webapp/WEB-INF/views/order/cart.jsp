@@ -13,7 +13,7 @@
 <script type="text/javascript"
 	src="<c:url value="/resources/js/order/web_storage.js"/>"></script>
 <script type="text/javascript"
-	src="<c:url value="/resources/js/order/cart.js?ver=1"/>"></script>
+	src="<c:url value="/resources/js/order/cart.js?ver=5"/>"></script>
 <script src="https://kit.fontawesome.com/39c52c9ac0.js"
 	crossorigin="anonymous"></script>
 
@@ -36,8 +36,10 @@
 </c:if>
 
 <script>
+	const contextPath = '${pageContext.request.contextPath}';
+	
 	$(document).ready(function() {
-		getCartItemInfo('${pageContext.request.contextPath}');
+		getCartItemInfo(contextPath);
 	});
 </script>
 </head>
@@ -96,6 +98,10 @@ td {
 			</table>
 		</div>
 
+		<div class="float-left">
+			<button onclick="location.href='item'" class="btn btn-primary">쇼핑하기</button>
+		</div>
+		
 		<div class="float-right">
 			<button onclick="removeAll()" class="btn btn-primary">장바구니
 				비우기</button>

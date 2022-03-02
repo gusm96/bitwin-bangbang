@@ -31,10 +31,8 @@ public class CartController {
 	@ResponseBody
 	public List<OrderItemInfo> getCartItemInfo(@RequestBody List<CartItem> cartItems) {
 
-		List<OrderItemInfo> list = cartService.getItemInfo(cartItems);
-
 		// 검색 옵션값 객체로 담아 조회 후 결과 리스트로 반환 (JSON)
-		return list;
+		return cartService.getItemInfo(cartItems);
 	}
 
 }

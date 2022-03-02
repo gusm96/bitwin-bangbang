@@ -1,4 +1,4 @@
-package com.bitwin.bangbang.temp;
+package com.bitwin.bangbang.order.temp;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +13,7 @@ public class TempController {
 		return "order/temp/home";
 	}
 
-	@RequestMapping("/item-page")
+	@RequestMapping("/item")
 	public String itemPage(Model model) {
 
 		return "order/temp/item_page";

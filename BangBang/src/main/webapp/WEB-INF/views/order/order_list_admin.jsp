@@ -14,7 +14,7 @@
 	src="<c:url value="/resources/js/order/order_list_admin.js?ver=2"/>"></script>
 
 <script>
-	var contextPath = '${pageContext.request.contextPath}';
+	const contextPath = '${pageContext.request.contextPath}';
 	
 	// 관리자 권한으로 요청한 주문 목록
 	$(document).ready(function() {

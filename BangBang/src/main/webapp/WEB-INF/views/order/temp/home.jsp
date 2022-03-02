@@ -13,7 +13,7 @@
 
 			<ul>
 				<li><a href="${pageContext.request.contextPath}/order">orderform</a></li>
-				<li><a href="${pageContext.request.contextPath}/item-page">item page</a></li>
+				<li><a href="${pageContext.request.contextPath}/cart/item">item page</a></li>
 				<li><a href="${pageContext.request.contextPath}/cart">cart list</a></li>
 				<li><a href="${pageContext.request.contextPath}/temp/order-list">order list</a></li>
 			</ul>

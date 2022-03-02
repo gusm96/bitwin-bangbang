@@ -11,7 +11,7 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript"
-	src="<c:url value="/resources/js/order/order_list.js?ver=6"/>"></script>
+	src="<c:url value="/resources/js/order/order_list.js?ver=7"/>"></script>
 
 <c:if test="${loginInfo ne null}">
 	<script>

@@ -37,7 +37,9 @@ function printList(data, contextPath) {
     for (let i = 0; i < data.length; i++) {
       html += '<tr><td class="align-middle">' + (i + 1) + "</td>";
       html +=
-        '<td class="align-middle"><a href=' + contextPath + '/board/detail?iidx=' + data[i].iidx + '>' + data[i].thumb + "</a></td>";
+        '<td class="align-middle"><a href=' + contextPath + '/board/detail?iidx=' + data[i].iidx + '>';
+      html += 
+      	'<img src="/bangbang/resources/uploadfile/' + data[i].thumb + '" style="height: 50px; width: 50px;"></a></td>';
       html +=
         '<td class="align-middle"><a href=' + contextPath + '/board/detail?iidx=' + data[i].iidx + '>' + data[i].name + "</a></td>";
 

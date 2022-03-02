@@ -13,7 +13,7 @@
 <script type="text/javascript"
 	src="<c:url value="/resources/js/order/web_storage.js"/>"></script>
 <script type="text/javascript"
-	src="<c:url value="/resources/js/order/order_form.js?ver=3"/>"></script>
+	src="<c:url value="/resources/js/order/order_form.js?ver=4"/>"></script>
 <script type="text/javascript"
 	src="<c:url value="/resources/js/order/payment.js?ver=3"/>"></script>
 	

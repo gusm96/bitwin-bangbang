@@ -177,8 +177,10 @@ th, td {
 								<tbody>
 									<tr>
 										<td><c:out value="${s.count}" /></td>
-										<td><a href="${pageContext.request.contextPath}/board/detail?iidx=${oi.iidx}">${oi.thumb}</a></td>
-										<td><a href="${pageContext.request.contextPath}/board/detail?iidx=${oi.iidx}">${oi.iidx} - ${oi.name}</a></td>
+										<td><a href="${pageContext.request.contextPath}/board/detail?iidx=${oi.iidx}">
+											<img src="${pageContext.request.contextPath}/resources/uploadfile/${oi.thumb}"
+											style="height: 40px; width: 40px;"></a></td>
+										<td><a href="${pageContext.request.contextPath}/board/detail?iidx=${oi.iidx}">${oi.name}</a></td>
 										<td>${oi.qty}개</td>
 										<c:if test="${oi.salePrice eq 0}">
 											<td class="text-right"><p>-</p></td>
@@ -352,8 +354,10 @@ th, td {
 								<tbody>
 									<tr>
 										<td><c:out value="${s.count}" /></td>
-										<td><a href="${pageContext.request.contextPath}/board/detail?iidx=${oi.iidx}">${oi.thumb}</a></td>
-										<td><a href="${pageContext.request.contextPath}/board/detail?iidx=${oi.iidx}">${oi.iidx} - ${oi.name}</a></td>
+										<td><a href="${pageContext.request.contextPath}/board/detail?iidx=${oi.iidx}">
+											<img src="${pageContext.request.contextPath}/resources/uploadfile/${oi.thumb}"
+											style="height: 40px; width: 40px;"></a></td>
+										<td><a href="${pageContext.request.contextPath}/board/detail?iidx=${oi.iidx}">${oi.name}</a></td>
 										<td>${oi.qty}개</td>
 										<td>${oi.price * 0.1}</td>
 									</tr>

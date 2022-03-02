@@ -40,7 +40,7 @@ function printList(data, login) {
       html += '<td><a href="../../';
       html += login == 1 ? "member/list/" : "store/list/";
       html += data[i].oidx + '">';
-      html += data[i].thumb + "</a></td>";
+      html += '<img src="/bangbang/resources/uploadfile/' + data[i].thumb + '" style="height: 50px; width: 50px;"></a></td>';
       html += '<td><a href="../../';
       html += login == 1 ? "member/list/" : "store/list/";
       html += data[i].oidx + '">';

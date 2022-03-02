@@ -64,22 +64,22 @@ prefix="c"%>
       // 마커를 표시할 위치와 내용을 가지고 있는 객체 배열입니다
       var positions = [
         {
-          content: "<div>카카오</div>",
+          content: "<div>교동전선생</div>",
           latlng: new kakao.maps.LatLng(33.450705, 126.570677),
           sidx: 1,
         },
         {
-          content: "<div>생태연못</div>",
+          content: "<div>화로로</div>",
           latlng: new kakao.maps.LatLng(33.450936, 126.569477),
           sidx: 2,
         },
         {
-          content: "<div>텃밭</div>",
+          content: "<div>오리지날시카고피자</div>",
           latlng: new kakao.maps.LatLng(33.450879, 126.56994),
           sidx: 3,
         },
         {
-          content: "<div>근린공원</div>",
+          content: "<div>테이스티나인</div>",
           latlng: new kakao.maps.LatLng(33.451393, 126.570738),
           sidx: 4,
         },

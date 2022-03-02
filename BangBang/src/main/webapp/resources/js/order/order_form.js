@@ -25,19 +25,19 @@ function printList(data, contextPath) {
   let totalPay = 0;
 
   if (!jQuery.isEmptyObject(data)) {
-    html += "<thead><tr><th>no</th>";
+    html += "<thead><tr>";
     html += "<th>사진</th>";
     html += "<th>상품명</th>";
-    html += "<th>수량</th>";
     html += "<th>가격</th>";
     html += "<th>할인가격</th></tr></thead>";
     html += "<tbody>";
 
     for (let i = 0; i < data.length; i++) {
-      html += "<tr><td>" + (i + 1) + "</td>";
-      html += '<td><a href=' + contextPath + '/board/detail?iidx=' + data[i].iidx + '>' + data[i].thumb + " </td>";
-      html += '<td><a href=' + contextPath + '/board/detail?iidx=' + data[i].iidx + '>' + data[i].name + "</a></td>";
-      html += "<td>" + data[i].qty + "개</td>";
+      html += '<tr><td rowspan="2"><a href=' + contextPath + '/board/detail?iidx=' + data[i].iidx + '>';
+      html += '<img src=' + contextPath + '/resources/uploadfile/' + data[i].thumb + ' style="height: 50px; width: 50px;"></td>';
+      html += '<td class="text-left"><a href=' + contextPath + '/board/detail?iidx=' + data[i].iidx + '>' + data[i].name + "</a></td>";
+      html += '<td></td><td></td></tr>';
+      html += "<tr><td class='text-left'>" + data[i].qty + "개</td>";
 
       let price = data[i].price * data[i].qty;
       let salePrice = data[i].salePrice * data[i].qty;

@@ -54,6 +54,8 @@
 	<interceptors>
 		<interceptor>
 			<mapping path="/member/mypage/**" />
+			<mapping path="/order" />
+			<mapping path="/order/linked" />
 			<mapping path="/order/member/**" />
 			<beans:ref bean="authCheckInterceptor" />
 		</interceptor>
