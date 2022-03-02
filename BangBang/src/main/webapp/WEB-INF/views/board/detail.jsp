@@ -44,7 +44,7 @@ $(".modal_cancel").click(function(){
 	<script>
 	function reviewList() {
 		var iidx = ${item.iidx};
-		$.getJSON("${pageContext.request.contextPath}/admin/board/detail/review-list"+ "?iidx=" + iidx, function(data) {
+		$.getJSON("${pageContext.request.contextPath}/board/detail/review-list"+ "?iidx=" + iidx, function(data) {
 			var str = "";
 			$(data).each(function() {
 				
@@ -111,7 +111,7 @@ $(".modal_cancel").click(function(){
 							// 추천버튼 클릭시(추천 추가 또는 추천 제거)
 							$("#rec_update").click(function(){
 								$.ajax({
-									url: "${pageContext.request.contextPath}/admin/board/detail/wishcheck",
+									url: "${pageContext.request.contextPath}/board/detail/wishcheck",
 					                type: "POST",
 					                data: {
 					                    no: '${board.iidx}',
@@ -126,7 +126,7 @@ $(".modal_cancel").click(function(){
 							// 게시글 추천수
 						    function recCount() {
 								$.ajax({
-									url: "${pageContext.request.contextPath}/admin/board/detail/wishcount"+"?iidx="+"${board.iidx}",
+									url: "${pageContext.request.contextPath}/board/detail/wishcount"+"?iidx="+"${board.iidx}",
 					                type: "POST",
 					                data: {
 					                    no: '${board.iidx}'
@@ -178,7 +178,7 @@ $(".modal_cancel").click(function(){
   						};
   
  						$.ajax({
-  					 		url : "${pageContext.request.contextPath}/admin/board/detail/review-reg",
+  					 		url : "${pageContext.request.contextPath}/board/detail/review-reg",
   							type : "post",
    							data : data,
   						 	success : function(){
@@ -222,7 +222,7 @@ $(".modal_cancel").click(function(){
 				  var data = {ridx : $(this).attr("data-ridx")};
 				   
 				  $.ajax({
-				   url : "${pageContext.request.contextPath}/admin/board/detail/review-del",
+				   url : "${pageContext.request.contextPath}/board/detail/review-del",
 				   type : "post",
 				   data : data,
 				   success : function(){
@@ -247,7 +247,7 @@ $(".modal_cancel").click(function(){
   				  };  // ReplyVO 형태로 데이터 생성
   
   				$.ajax({
- 				  url : "${pageContext.request.contextPath}/admin/board/detail/review-up",
+ 				  url : "${pageContext.request.contextPath}/board/detail/review-up",
   				 type : "post",
   				 data : data,
   				 success : function(result){
@@ -273,7 +273,7 @@ $(".modal_cancel").click(function(){
 
 	<div class="margin-top text-align-center">
 		<a class="btn btn-list" href="${pageContext.request.contextPath}/board/list">목록</a>
-		<a class="btn btn-list" href="${pageContext.request.contextPath}/board/delete?iidx=${board.iidx}">삭제</a>
+		<a class="btn btn-list" href="${pageContext.request.contextPath}/admin/board/delete?iidx=${board.iidx}">삭제</a>
 	</div>
 
 

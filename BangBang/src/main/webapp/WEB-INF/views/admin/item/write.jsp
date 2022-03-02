@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%@include file="../includes/bangbang-header.jsp"%>
+<%@include file="../../includes/bangbang-header.jsp"%>
 	
-<%@include file="../includes/bangbang-nav.jsp"%>
+<%@include file="../../includes/bangbang-nav.jsp"%>
 
 <main>
 <form name="form" method="post" action="${pageContext.request.contextPath}/admin/item/insert">
@@ -91,4 +91,4 @@
 	</div>
 </form>
 </main>
-<%@include file="../includes/bangbang-footer.jsp"%>
+<%@include file="../../includes/bangbang-footer.jsp"%>

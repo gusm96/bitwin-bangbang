@@ -1,12 +1,10 @@
-package com.bitwin.bangbang.admin.controller;
+package com.bitwin.bangbang.member.controller;
 
-import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.bitwin.bangbang.admin.domain.BoardEdit;
-import com.bitwin.bangbang.admin.domain.BoardReg;
 import com.bitwin.bangbang.admin.domain.Review;
 import com.bitwin.bangbang.admin.domain.ReviewList;
 import com.bitwin.bangbang.admin.domain.SearchParams;
@@ -26,9 +22,10 @@ import com.bitwin.bangbang.admin.service.BoardService;
 import com.bitwin.bangbang.admin.service.ItemService;
 import com.bitwin.bangbang.admin.service.ReviewService;
 import com.bitwin.bangbang.admin.service.WishService;
+import com.bitwin.bangbang.member.domain.Member;
 
 @Controller
-@RequestMapping("/admin/board/*")
+@RequestMapping("/board/*")
 public class BoardController {
 
 	@Autowired
@@ -43,17 +40,7 @@ public class BoardController {
 	@Autowired
 	private WishService wishService;
 	
-	@RequestMapping(value = "write", method = RequestMethod.GET)
-	public String write(@RequestParam int iidx, Model model) {
-		model.addAttribute("item", itemService.read(iidx));
-		return "board/write";
-	}
 
-	@RequestMapping(value = "insert", method = RequestMethod.POST)
-	public String insert(BoardReg reg, Model model, HttpServletRequest request) throws IllegalStateException, IOException {
-		model.addAttribute("board", boardService.create(reg, request));
-		return "redirect:list";
-	}
 
 	@RequestMapping("list")
 	public String getListPage(SearchParams params, Model model) throws SQLException {
@@ -73,28 +60,7 @@ public class BoardController {
 		model.addAttribute("item", itemService.read(iidx));
 		model.addAttribute("board", boardService.read(iidx));
 	}
-	
-	@RequestMapping(value = "update", method = RequestMethod.GET)
-	public String form(@RequestParam("iidx") int iidx, Model model) {
-		model.addAttribute("board", boardService.read(iidx));
-		System.out.println(boardService.read(iidx));
-		model.addAttribute("item", itemService.read(iidx));
-		return "board/update";
-	}
 
-	@RequestMapping(value = "update", method = RequestMethod.POST)
-	public String update(BoardEdit edit, HttpServletRequest request) throws IllegalStateException, IOException {
-		System.out.println(edit);
-		boardService.update(edit, request);
-		return "redirect:list";
-	}
-
-	@RequestMapping(value = "delete")
-	public String delete(@RequestParam int iidx) {
-		boardService.delete(iidx);
-		return "redirect:list";
-	}
-	
 	@ResponseBody
 	@RequestMapping(value = "/detail/review-list", method = RequestMethod.GET)
 	public List<ReviewList> getReviewList(@RequestParam("iidx") int iidx){
@@ -132,24 +98,21 @@ public class BoardController {
 	 return result; 
 	}
 	
-	
-	
-	// 회원 연결 수정필요 및 ajax 추가
 	@ResponseBody
 	@RequestMapping(value = "/detail/review-up", method = RequestMethod.POST)
 	public int updateReview(Review review, HttpSession session) throws Exception {
 	 int result = 0;
 	 
-	// Member member = (Member)session.getAttribute("member");
+	 Member member = (Member)session.getAttribute("member");
 	 int uidx = reviewService.reviewUidCheck(review.getRidx());
 	 
-		/*
-		 * if(member.getUidx().equals(uidx)) { 
-		 * review.setUidx(member.getUidx());
-		 * reviewService.update(review);
-		 * result = 1; 
-		 * }
-		 */
+		
+		  if(member.getUidx() == uidx) { 
+		  review.setUidx(member.getUidx());
+		  reviewService.update(review);
+		  result = 1; 
+		  }
+		 
 	 return result; 
 	}
 	

@@ -10,7 +10,7 @@
 		<div class="my-3 p-3 bg-white rounded shadow-sm ">
 			<h3>판매 게시물 등록</h3>
 			<hr>
-			<form method="post" enctype="multipart/form-data" action="${pageContext.request.contextPath}/board/insert">
+			<form method="post" enctype="multipart/form-data" action="${pageContext.request.contextPath}/admin/board/insert">
 
 				<div class="form-group row">
 					<input type="hidden" value="${item.iidx}" name="iidx" id="iidx" class="form-control" required>

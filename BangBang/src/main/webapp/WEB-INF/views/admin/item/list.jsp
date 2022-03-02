@@ -2,8 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<%@include file="../includes/bangbang-header.jsp"%>
-<%@include file="../includes/bangbang-nav.jsp"%>
+<%@include file="../../includes/bangbang-header.jsp"%>
+<%@include file="../../includes/bangbang-nav.jsp"%>
 
 <main class="main">
 	<h2 class="main title">목록</h2>
@@ -79,15 +79,15 @@
 					<td style="text-align: center">${list.discount}</td>
 					<td style="text-align: center">${list.qty}</td>
 					<td style="text-align: center">${list.etc}</td>
-					<td><a href="${pageContext.request.contextPath}/item/update?iidx=${list.iidx}">수정</a> 
+					<td><a href="${pageContext.request.contextPath}/admin/item/update?iidx=${list.iidx}">수정</a> 
 					<a href="javascript:delItem(${list.iidx})">삭제</a></td>
-					<td><a href="${pageContext.request.contextPath}/board/write?iidx=${list.iidx}">게시물 등록</a>
+					<td><a href="${pageContext.request.contextPath}/admin/board/write?iidx=${list.iidx}">게시물 등록</a>
 				</tr>
 				</c:forEach>
 				</c:if>
 			</tbody>
 		</table>
-			<a href="${pageContext.request.contextPath}/item/write"><button type="button" id="btnWrite">등록</button></a>
+			<a href="${pageContext.request.contextPath}/admin/item/write"><button type="button" id="btnWrite">등록</button></a>
 	</div>
 	<div class="btn-toolbar" role="toolbar" >
 				<div class="btn-group mr-2" role="group">
@@ -116,4 +116,4 @@
 	</script>
 </main>
 
-<%@include file="../includes/bangbang-footer.jsp"%>
+<%@include file="../../includes/bangbang-footer.jsp"%>

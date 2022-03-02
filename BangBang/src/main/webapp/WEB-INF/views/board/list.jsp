@@ -44,15 +44,17 @@
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <div class="col">
           <div class="card shadow-sm">
-            <image src="${pageContext.request.contextPath}/uploadfile/${list.thumb}">
+            <image src="${pageContext.request.contextPath}/resources/uploadfile/${list.thumb}">
 
             <div class="card-body">
               <p class="card-text">${list.title}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <a href="${pageContext.request.contextPath}/board/detail?iidx=${list.iidx}"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
-                  <a href="${pageContext.request.contextPath}/board/update?iidx=${list.iidx}"><button type="button" class="btn btn-sm btn-outline-secondary">Edit</button></a>
-                  <a href="${pageContext.request.contextPath}/board/delete?iidx=${list.iidx}"><button type="button" class="btn btn-sm btn-outline-secondary">delete</button></a>
+                  <c:if test="${member == null}">
+                  <a href="${pageContext.request.contextPath}/admin/board/update?iidx=${list.iidx}"><button type="button" class="btn btn-sm btn-outline-secondary">Edit</button></a>
+                  <a href="${pageContext.request.contextPath}/admin/board/delete?iidx=${list.iidx}"><button type="button" class="btn btn-sm btn-outline-secondary">delete</button></a>
+                  </c:if>
                 </div>
                 <small class="text-muted">${list.hits}</small>
               </div>

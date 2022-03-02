@@ -11,7 +11,7 @@
 	<div>
 		<h3>상품 정보 수정</h3>
 		<hr>
-		<form method="post" enctype="multipart/form-data" action="${pageContext.request.contextPath}/board/update">
+		<form method="post" enctype="multipart/form-data" action="${pageContext.request.contextPath}/admin/board/update">
 			<table>
 				<tr>
 					<th>제목</th>
@@ -62,7 +62,7 @@
 					<div class="col-sm-10">
 						현재 파일 : 
 						<c:if test="${not empty board.thumb}">
-						<img id="oldfile" src="${pageContext.request.contextPath}/uploadfile/${board.thumb}"><br>
+						<img id="oldfile" src="${pageContext.request.contextPath}/resources/uploadfile/${board.thumb}"><br>
 						</c:if>
 						<input type="hidden" name="oldfile" value="${board.thumb}">
 						<input type="file" name="thumb" id="thumb"  class="form-control">
@@ -74,7 +74,7 @@
 					<div class="col-sm-10">
 						현재 파일 : 
 						<c:if test="${not empty board.photo1}">
-						<img id="oldfile" src="${pageContext.request.contextPath}/uploadfile/${board.photo1}"><br>
+						<img id="oldfile" src="${pageContext.request.contextPath}/resources/uploadfile/${board.photo1}"><br>
 						</c:if>
 						<input type="hidden" name="oldfile" value="${board.photo1}">
 						<input type="file" name="photo1" id="photo1"  class="form-control">
@@ -86,7 +86,7 @@
 					<div class="col-sm-10">
 						현재 파일 : 
 						<c:if test="${not empty board.photo2}">
-						<img id="oldfile" src="${pageContext.request.contextPath}/uploadfile/${board.photo2}"><br>
+						<img id="oldfile" src="${pageContext.request.contextPath}/resources/uploadfile/${board.photo2}"><br>
 						</c:if>
 						<input type="hidden" name="oldfile" value="${board.photo2}">
 						<input type="file" name="photo2" id="photo2"  class="form-control">

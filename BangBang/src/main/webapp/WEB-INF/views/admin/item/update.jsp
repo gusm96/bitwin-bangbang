@@ -2,9 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<%@include file="../includes/bangbang-header.jsp"%>
+<%@include file="../../includes/bangbang-header.jsp"%>
 	
-<%@include file="../includes/bangbang-nav.jsp"%>
+<%@include file="../../includes/bangbang-nav.jsp"%>
 
 <body>
 	<div id="content">
@@ -96,4 +96,4 @@
 	
 	</div>
 </body>
-<%@include file="../includes/bangbang-footer.jsp"%>
+<%@include file="../../includes/bangbang-footer.jsp"%>
