@@ -54,14 +54,17 @@
 	<interceptors>
 		<interceptor>
 			<mapping path="/member/mypage/**" />
+			<mapping path="/order/member/**" />
 			<beans:ref bean="authCheckInterceptor" />
 		</interceptor>
 		<interceptor>
 			<mapping path="/admin/**" />
+			<mapping path="/order/admin/**" />
 			<beans:ref bean="adminAuthCheckInterceptor" />
 		</interceptor>
 		<interceptor>
 			<mapping path="/store/**" />
+			<mapping path="/order/store/**" />
 			<beans:ref bean="storeAuthCheckInterceptor" />
 		</interceptor>
 	</interceptors>
@@ -95,39 +98,6 @@
 
 	<context:component-scan
 		base-package="com.bitwin.bangbang.admin" />
-
-	<beans:bean id="TemploginInfoInterceptor"
-		class="com.bitwin.bangbang.temp.LoginInfoInterceptor"></beans:bean>
-
-	<!-- ///////////////////////////////////////////////////////// -->
-	<interceptors>
-		<interceptor>
-			<mapping path="/order" />
-			<mapping path="/order/linked" />
-			<mapping path="/order/member/**" />
-			<beans:ref bean="TemploginInfoInterceptor" />
-		</interceptor>
-	</interceptors>
-
-	<beans:bean id="TemploginInfoInterceptor2"
-		class="com.bitwin.bangbang.temp.LoginInfoInterceptor2"></beans:bean>
-
-	<interceptors>
-		<interceptor>
-			<mapping path="/order/store/**" />
-			<beans:ref bean="TemploginInfoInterceptor2" />
-		</interceptor>
-	</interceptors>
-
-	<beans:bean id="TemploginInfoInterceptor3"
-		class="com.bitwin.bangbang.temp.LoginInfoInterceptor3"></beans:bean>
-
-	<interceptors>
-		<interceptor>
-			<mapping path="/order/admin/**" />
-			<beans:ref bean="TemploginInfoInterceptor3" />
-		</interceptor>
-	</interceptors>
 	<!-- ///////////////////////////////////////////////////////// -->
 
 </beans:beans>

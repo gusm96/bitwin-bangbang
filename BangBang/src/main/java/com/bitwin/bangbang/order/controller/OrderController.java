@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.util.UrlPathHelper;
 
+import com.bitwin.bangbang.member.domain.LoginInfo;
 import com.bitwin.bangbang.order.domain.DeliveryRequest;
 import com.bitwin.bangbang.order.domain.MyStore;
 import com.bitwin.bangbang.order.domain.OrderListAdmin;
@@ -34,7 +35,6 @@ import com.bitwin.bangbang.order.service.OrderInfoService;
 import com.bitwin.bangbang.order.service.OrderListService;
 import com.bitwin.bangbang.order.service.OrderRequestService;
 import com.bitwin.bangbang.order.service.OrderUpdateService;
-import com.bitwin.bangbang.temp.LoginInfo;
 
 @Controller
 @RequestMapping("/order")

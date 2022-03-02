@@ -20,8 +20,8 @@
 	
 		<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
 		p:driverClassName="com.mysql.cj.jdbc.Driver"
-		p:jdbcUrl="jdbc:mysql://database-first-mysql.cwzzjjfxbmh2.ap-northeast-2.rds.amazonaws.com:3306/project?serverTimezone=UTC"
-		p:username="bit" p:password="bit"
+		p:jdbcUrl="jdbc:mysql://database-first-mysql.cwzzjjfxbmh2.ap-northeast-2.rds.amazonaws.com:3306/bangbang?serverTimezone=UTC"
+		p:username="admin" p:password="bitwin0906"
 		
 		p:connectionTimeout="20000"
 		p:minimumIdle="5"
