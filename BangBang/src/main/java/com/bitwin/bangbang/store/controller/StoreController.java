@@ -14,10 +14,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bitwin.bangbang.exception.LoginInvalidException;
 import com.bitwin.bangbang.member.domain.LoginInfo;
+import com.bitwin.bangbang.member.domain.SearchPassword;
 import com.bitwin.bangbang.store.domain.StoreEditRequest;
 import com.bitwin.bangbang.store.domain.StoreLoginInfo;
 import com.bitwin.bangbang.store.domain.StoreLoginRequest;
 import com.bitwin.bangbang.store.domain.StorePassword;
+import com.bitwin.bangbang.store.domain.StoreSearchPassword;
 import com.bitwin.bangbang.store.service.StoreService;
 
 @Controller
@@ -31,6 +33,7 @@ public class StoreController {
 		return "store/store";
 	}
 	
+
 	@GetMapping("/mypage")
 	public String getStoreMypage(HttpSession session, Model model) {
 		model.addAttribute("store", service.getStoreInfo(session));

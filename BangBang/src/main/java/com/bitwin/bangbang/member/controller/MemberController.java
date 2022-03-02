@@ -205,14 +205,8 @@ public class MemberController {
 		return "member/regComplete";
 	}
 
-	// 마이페이지
-	@GetMapping("/mypage")
-	public String getMypage() {
-		return "member/mypage/mypage";
-	}
-
 	// 마이페이지 회원정보 수정
-	@GetMapping("/mypage/edit")
+	@GetMapping("/mypage")
 	public String getMemberEdit(HttpSession session, Model model) {
 		// 현재 로그인한 정보를 session 에서 가져온다.
 		LoginInfo loginInfo = (LoginInfo) session.getAttribute("loginInfo");
@@ -221,7 +215,7 @@ public class MemberController {
 		return "member/mypage/editform";
 	}
 
-	@PostMapping("/mypage/edit")
+	@PostMapping("/mypage")
 	public String postMemeberEdit(EditMember editMember, Model model, HttpServletRequest req)
 			throws IllegalStateException, IOException {
 		System.out.println("Controller" + editMember);
@@ -232,12 +226,12 @@ public class MemberController {
 	}
 
 	// 비밀번호 변경
-	@GetMapping("/mypage/edit/pw")
+	@GetMapping("/mypage/pw")
 	public String getEditPw() {
 		return "member/mypage/changepw";
 	}
 
-	@PostMapping("/mypage/edit/pw")
+	@PostMapping("/mypage/pw")
 	public String changePw(@RequestParam("currentPw") String currentPw, @RequestParam("newPw1") String newPw,
 			HttpSession session, Model model) throws ChangePwInvalidException {
 		String page = "";

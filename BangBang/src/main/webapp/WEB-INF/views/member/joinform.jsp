@@ -27,7 +27,7 @@ table {
 }
 
 #main_container {
-	width: 400px;
+	width: 450px;
 }
 
 .form-floating {
@@ -60,7 +60,9 @@ table {
 				<div class="form-floating">
 					<label>비밀번호</label> <input class="form-control" type="password"
 						name="password" id="password1" min="8" max="16" required />
+						<div style="font-size: small; color: gray;"># 영문, 숫자, 기호를 사용하여 8자 이상 16자 이하로 입력하세요.</div>
 				</div>
+				
 				<div class="form-floating">
 					<label>비밀번호 확인</label> <input class="form-control" type="password"
 						name="password2" id="password2" min="8" max="16" required />

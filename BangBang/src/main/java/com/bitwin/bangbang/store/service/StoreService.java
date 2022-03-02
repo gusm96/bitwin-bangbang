@@ -10,12 +10,16 @@ import org.springframework.stereotype.Service;
 import com.bitwin.bangbang.exception.LoginInvalidException;
 import com.bitwin.bangbang.member.dao.MemberDao;
 import com.bitwin.bangbang.member.domain.Member;
+import com.bitwin.bangbang.member.domain.SearchPassword;
+import com.bitwin.bangbang.member.service.MailSenderService;
+import com.bitwin.bangbang.member.service.RamdomPassword;
 import com.bitwin.bangbang.store.dao.StoreDao;
 import com.bitwin.bangbang.store.domain.Store;
 import com.bitwin.bangbang.store.domain.StoreEditRequest;
 import com.bitwin.bangbang.store.domain.StoreLoginInfo;
 import com.bitwin.bangbang.store.domain.StoreLoginRequest;
 import com.bitwin.bangbang.store.domain.StorePassword;
+import com.bitwin.bangbang.store.domain.StoreSearchPassword;
 
 @Service
 public class StoreService {
@@ -27,7 +31,13 @@ public class StoreService {
 
 	@Autowired
 	private BCryptPasswordEncoder bcrypt;
-
+	
+	@Autowired
+	private MailSenderService mailSender;
+	
+	@Autowired
+	private RamdomPassword ramdomPw;
+	
 	public String storeLogin(StoreLoginRequest loginReq, HttpSession session) throws LoginInvalidException {
 		String viewPage = "";
 
@@ -111,6 +121,34 @@ public class StoreService {
 		dao = template.getMapper(StoreDao.class);
 		
 		resultCnt = dao.storeInfoEditRequest(editRequest);
+		
+		return resultCnt;
+	}
+
+	public int searchById(String email) {
+		int resultCnt =0;
+		
+		dao = template.getMapper(StoreDao.class);
+		
+		if(dao.selectCountByEmail(email) > 0) {
+			// 메일로 회원의 아이디 전송
+			String storeId = dao.searchId(email);
+			resultCnt = mailSender.sendId(email, storeId);
+		}
+		
+		return resultCnt;
+	}
+
+	public int searchByPw(StoreSearchPassword searchPw) {
+		int resultCnt = 0;
+		dao = template.getMapper(StoreDao.class);
+		if(dao.selectCountByEmailStoreId(searchPw) > 0) {
+			String password = ramdomPw.getRamdomPassword(8);
+			resultCnt = mailSender.sendStorePw(searchPw.getEmail(), password);
+			String bpw = bcrypt.encode(password);
+			searchPw.setBpw(bpw);
+			dao.updatePassword2(searchPw);
+		}
 		
 		return resultCnt;
 	}

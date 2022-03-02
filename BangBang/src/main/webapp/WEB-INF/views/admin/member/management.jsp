@@ -7,6 +7,11 @@
 <meta charset="UTF-8">
 <title>회원 관리</title>
 <link rel="stylesheet" href="/bangbang/resources/css/container.css">
+<style type="text/css">
+#main_container{
+width: 700px;
+}
+</style>
 </head>
 <body>
 	<%@include file="../../includes/admin-header.jsp"%>
@@ -23,13 +28,10 @@
 				</select> <input type="text">
 				<button type="submit">검색</button>
 			</form>
+			<hr>
 			<div>
+				<h3>회원 리스트</h3>
 				<table style="text-align: center; width: 100%;">
-					<thead>
-						<tr>
-							<th colspan="4">회원 리스트</th>
-						</tr>
-					</thead>
 					<tbody>
 						<tr>
 							<td>회원번호</td>

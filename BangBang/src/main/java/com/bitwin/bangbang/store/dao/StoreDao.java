@@ -8,6 +8,7 @@ import com.bitwin.bangbang.store.domain.StoreEditRequestList;
 import com.bitwin.bangbang.store.domain.StoreOrderInfo;
 import com.bitwin.bangbang.store.domain.StorePassword;
 import com.bitwin.bangbang.store.domain.StoreRegRequest;
+import com.bitwin.bangbang.store.domain.StoreSearchPassword;
 
 public interface StoreDao {
 	
@@ -38,4 +39,12 @@ public interface StoreDao {
 	public int updateStore(StoreEditRequest editRequest);
 
 	public void deleteEditReq(int sidx);
+
+	public int selectCountByEmail(String email);
+
+	public String searchId(String email);
+
+	public int selectCountByEmailStoreId(StoreSearchPassword searchPw);
+
+	public void updatePassword2(StoreSearchPassword searchPw);
 }

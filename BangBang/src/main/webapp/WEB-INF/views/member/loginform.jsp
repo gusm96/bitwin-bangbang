@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="/bangbang/resources/css/container.css">
 <style type="text/css">
 #main_container {
-	width: 322px;
+	width: 343px;
 }
 form * {
 	margin-bottom: 5px;
@@ -56,6 +56,7 @@ form * {
 					src="${pageContext.request.contextPath}/resources/images/naver_login.png"
 					width="300px" height="45px" /></a>
 			</div>
+			<br>
 			<div>
 				<a href="${pageContext.request.contextPath }/login/store">가맹점
 					로그인</a>

@@ -41,6 +41,11 @@ margin-bottom: 5px;
 					<button type="submit" class="w-100 btn btn-lg btn-primary">로그인</button>
 				</div>
 			</form>
+			<div>
+				<a href="${pageContext.request.contextPath}/login/store/search/id">아이디
+					찾기</a> <a href="${pageContext.request.contextPath}/login/store/search/pw">비밀번호
+					찾기</a>
+			</div>
 		</div>
 	</div>
 	<%@include file="../includes/bangbang-footer.jsp"%>

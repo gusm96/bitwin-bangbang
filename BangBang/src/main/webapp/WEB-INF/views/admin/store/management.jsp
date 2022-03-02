@@ -23,13 +23,10 @@
 				</select> <input type="text">
 				<button type="submit">검색</button>
 			</form>
+			<hr>
 			<div>
+			<h3>가맹점 리스트</h3>
 				<table style="text-align: center; width: 100%;">
-					<thead>
-						<tr>
-							<th colspan="4">가맹점 리스트</th>
-						</tr>
-					</thead>
 					<tbody>
 						<tr>
 							<td>번호</td>

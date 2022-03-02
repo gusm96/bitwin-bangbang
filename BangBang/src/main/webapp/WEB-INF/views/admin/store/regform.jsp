@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8" />
 <title>가맹점 등록</title>
+<%@ include file="/WEB-INF/views/frame/pageset.jsp"%>
 <link rel="stylesheet" href="/bangbang/resources/css/container.css">
 <style>
 .text_red {
@@ -15,8 +16,10 @@
 .text_blue {
 	color: blue;
 }
+.form-floating{
+	margin-bottom: 10px;
+}
 </style>
-<%@ include file="/WEB-INF/views/frame/pageset.jsp"%>
 <script type="text/javascript"
 	src="<c:url value="/resources/js/storeCheckid.js"/>"></script>
 </head>
@@ -25,45 +28,45 @@
 	<%@include file="../../includes/admin-nav.jsp"%>
 	<div id="body_container">
 		<div id="main_container">
+			<h3>가맹점 등록</h3>
+			<hr>	
 			<form method="post">
-				<table>
-					<tr>
-						<td>아이디</td>
-						<td><input type="text" name="storeId" id="storeId" required />
-							<div id="msg"></div></td>
-					</tr>
-					<tr>
-						<td>가맹점 이름</td>
-						<td><input type="text" name="sname" id="sname" required /></td>
-					</tr>
-					<tr>
-						<td>가맹점 전화번호</td>
-						<td><input type="text" name="sphone" id="sphone" required /></td>
-					</tr>
-					<tr>
-						<td>가맹점 주소</td>
-						<td><input type="text" name="address" id="address" required /></td>
-					</tr>
-					<tr>
-						<td>사업자명</td>
-						<td><input type="text" name="oname" id="oname" required /></td>
-					</tr>
-					<tr>
-						<td>사업자 전화번호</td>
-						<td><input type="text" name="ophone" id="ophone" required /></td>
-					</tr>
-					<tr>
-						<td>사업자 이메일</td>
-						<td><input type="email" name="oemail" id="oemail" required /></td>
-					</tr>
-					<tr>
-						<td>사업자 등록번호</td>
-						<td><input type="text" name="regnum" id="regnum" required /></td>
-					</tr>
-					<tr>
-						<td><button type="submit">등록하기</button></td>
-					</tr>
-				</table>
+				<div class="form-floating">
+					<label for="storeId">아이디</label> <input class="form-control" type="text" name="storeId" id="storeId"
+						required />
+					<div id="msg"></div>
+				</div>
+				<div class="form-floating">
+					<label for="sname">가맹점 이름</label> <input class="form-control" type="text" name="sname" id="sname"
+						required />
+				</div>
+				<div class="form-floating">
+					<label for="sphone">가맹점 전화번호</label> <input class="form-control" type="text" name="sphone"
+						id="sphone" required />
+				</div>
+				<div class="form-floating">
+					<label for="address">가맹점 주소</label> <input class="form-control" type="text" name="address"
+						id="address" required />
+				</div>
+				<div class="form-floating">
+					<label for="oname">사업자명</label> <input class="form-control" type="text" name="oname" id="oname"
+						required />
+				</div>
+				<div class="form-floating">
+					<label for="ophone">사업자 전화번호</label> <input class="form-control" type="text" name="ophone"
+						id="ophone" required />
+				</div>
+				<div class="form-floating">
+					<label for="oemail">사업자 이메일</label> <input class="form-control" type="email" name="oemail"
+						id="oemail" required />
+				</div>
+				<div class="form-floating">
+					<label for="regnum">사업자 등록번호</label> <input class="form-control" type="text" name="regnum"
+						id="regnum" required />
+				</div>
+				<div>
+					<button type="submit" class="w-100 btn btn-lg btn-primary">등록하기</button>
+				</div>
 			</form>
 		</div>
 	</div>

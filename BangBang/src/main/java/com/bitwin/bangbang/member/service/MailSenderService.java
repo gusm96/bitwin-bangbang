@@ -166,7 +166,46 @@ public class MailSenderService {
 			// 메일 내용 : html
 			String html = "<h1>비밀번호 찾기</h1>";
 			html += "<table><tr><td>임시 비밀번호: </td><td>" + password + "</td></tr></table><br>";
-			html += "<a href=\"http://localhost:8080/bangbang/member/login?referer=http://localhost:8080/bangbang/member/mypage/edit/pw\">방방술래 로그인 바로가기</a> <br>";
+			html += "<a href=\"http://localhost:8080/bangbang/member/login?referer=http://localhost:8080/bangbang/member/mypage/pw\">방방술래 로그인 바로가기</a> <br>";
+
+			message.setText(html, "utf-8", "html");
+
+			// from : 보내는 사람 설정 , 구글 정책은 setFrom 이 적용되지 않는다.
+			message.setFrom(new InternetAddress("bitwin214@gamil.com"));
+
+			// to : 받는 사람의 이메일 설정
+			message.addRecipient(RecipientType.TO, new InternetAddress(email, "회원님", "utf-8"));
+
+			// 메일 발송
+			sender.send(message);
+
+		} catch (AddressException e) {
+			System.out.println("메일발송 실패 : 이메일 형식에 맞지 않음!!!");
+		} catch (SendFailedException e) {
+			System.out.println("발송 실패 : " + e.getMessage());
+		} catch (MailSendException e) {
+			System.out.println("발송 실패 : " + e.getMessage());
+		} catch (MessagingException | UnsupportedEncodingException e) {
+			resultCnt = 0;
+			e.printStackTrace();
+		}
+
+		return resultCnt;
+	}
+	public int sendStorePw(String email, String password) {
+		int resultCnt = 1;
+
+		MimeMessage message = sender.createMimeMessage();
+
+		try {
+
+			// 메일 제목
+			message.setSubject("[안내] 방방술래 비밀번호 찾기", "utf-8");
+
+			// 메일 내용 : html
+			String html = "<h1>비밀번호 찾기</h1>";
+			html += "<table><tr><td>임시 비밀번호: </td><td>" + password + "</td></tr></table><br>";
+			html += "<a href=\"http://localhost:8080/bangbang/login/store?referer=http://localhost:8080/bangbang/store/mypage/edit/pw\">방방술래 로그인 바로가기</a> <br>";
 
 			message.setText(html, "utf-8", "html");
 

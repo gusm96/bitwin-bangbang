@@ -76,5 +76,7 @@ public class AdminStoreController {
 		model.addAttribute("result", storeService.acceptEditRequest(editRequest));
 		return "admin/store/editReqComplete";
 	}
-	
+	// 요청 거절 사유 보내기
+//	@GetMapping("/{sridx}/cancel")
+//	public String getEditReqCancel(@PathVariable("srdix") int sridx)
 }	

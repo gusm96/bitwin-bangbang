@@ -33,19 +33,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		store
 	</select>
 
-	<!-- 가맹점 아이디 찾기 -->
+	<!-- 가맹점 아이디 -->
 	<select id="selectByStoreId" resultType="int">
 		select count(*)
 		from
 		store where storeid=#{storeId}
 	</select>
 
-	<!-- 로그인 : 가맹점 아이디 찾기 -->
+	<!-- 로그인 : 가맹점 아이디  -->
 	<select id="selectByStoreId2"
 		resultType="com.bitwin.bangbang.store.domain.Store">
 		select * from store where storeid=#{storeId}
 	</select>
-
+	<!-- 가맹점 이메일 -->
+	<select id="selectCountByEmail" resultType="int">
+		select count(*) from store where oemail=#{email}
+	</select>
+	
+	<select id="selectCountByEmailStoreId" resultType="int">
+		select count(*)
+		from store where storeId=#{storeId} and oemail=#{email}
+	</select>
+	
+	<!-- 가맹점 아이디 -->
+	<select id="searchId" resultType="String">
+	select storeId from store where oemail=#{email}
+	</select>
 	<!-- 가맹점 이름 찾기 -->
 	<select id="selectBySname"
 		resultType="com.bitwin.bangbang.store.domain.Store">
@@ -79,7 +92,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		update store set storePw=#{newPw1} where
 		storeId=#{storeId}
 	</update>
-	
+	<!-- 비밀번호 랜덤 변경 -->
+	<update id="updatePassword2">
+		update store set storePw=#{bpw}
+		where storeId=#{storeId}
+	</update>
 	<!-- 가맹점 정보 수정 요청 삭제 -->
 	<delete id="deleteEditReq" parameterType="int">
 		delete from store_req where sidx=#{sidx}

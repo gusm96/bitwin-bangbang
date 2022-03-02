@@ -20,6 +20,22 @@
 
 table {
 	width: 100%;
+	border-collapse: collapse;
+}
+.line{
+	border-bottom: 1px soild gray;
+}
+.line td {
+ height:45px;
+}
+.line * input{
+	outline:none;
+	width: 100%;
+	height: 80%;
+	border-radius: 10px;
+}
+#edit_btn{
+	margin-top: 20px;
 }
 </style>
 
@@ -32,37 +48,37 @@ table {
 		<%@ include file="/WEB-INF/views/frame/mypagenav.jsp"%>
 		<div id="main_container">
 			<h3>${member.username}님의 회원정보</h3>
+			<hr>
 			<form method="post" enctype="multipart/form-data">
 				<input type="hidden" name="userid" value="${member.userid}">
 				<table style="text-align: center;">
 					<c:if test="${loginType eq 'general'}">
-						<tr>
+						<tr class="line">
 							<td><img
 								src="${pageContext.request.contextPath}/resources/uploadfile/${member.photo}"
 								id="profile_img"> <input type="hidden" name=oldPhoto
 								value="${member.photo}">
-							<hr></td>
+								<hr></td>
 							<td><input type="file" name="photo"></td>
 						</tr>
-						<tr>
-							<td>비밀번호</td>
+						<tr class="line">
+							<th>비밀번호</th>
 							<td><div id="change_pw">
-									<a
-										href="${pageContext.request.contextPath}/member/mypage/edit/pw">변경하기</a>
+									<a href="${pageContext.request.contextPath}/member/mypage/pw">변경하기</a>
 								</div></td>
 						</tr>
 					</c:if>
-					<tr>
-						<td>생년월일</td>
+					<tr class="line">
+						<th>생년월일</th>
 						<td>${member.birth}</td>
 					</tr>
-					<tr>
-						<td>전화번호</td>
+					<tr class="line">
+						<th>전화번호</th>
 						<td><input type="text" name="phonenum" required
 							value="${member.phonenum }"></td>
 					</tr>
-					<tr>
-						<td>이메일</td>
+					<tr class="line">
+						<th>이메일</th>
 						<c:if test="${loginType eq 'general'}">
 							<td><input type="email" name="email" id="email"
 								value="${member.email}" required />
@@ -75,47 +91,35 @@ table {
 					</tr>
 				</table>
 				<hr>
-				<span style="font-weight: bolder;">광고 및 알람 수신동의</span>
-				<hr>
-				<table>
-					<tr>
-						<td>이메일</td>
-						<td><c:if test="${member.enotify eq true}">
-								<input type="checkbox" name="enotify" checked>
-							</c:if> <c:if test="${member.enotify eq false}">
-								<input type="checkbox" name="enotify">
-							</c:if></td>
-					</tr>
-					<tr>
-						<td>문자</td>
-						<td><c:if test="${member.mnotify eq true}">
-								<input type="checkbox" name="mnotify" checked>
-							</c:if> <c:if test="${member.mnotify eq false}">
-								<input type="checkbox" name="mnotify">
-							</c:if></td>
-					</tr>
-					<tr>
-						<td>카카오톡</td>
-						<td><c:if test="${member.snotify eq true}">
-								<input type="checkbox" name="snotify" checked>
-							</c:if> <c:if test="${member.snotify eq false}">
-								<input type="checkbox" name="snotify">
-							</c:if></td>
-					</tr>
-					<tr>
-						<td><button type="button" id="back_btn">뒤로가기</button>
-						<td>
-						<td><button type="submit" name="submit">수정하기</button></td>
-					</tr>
-				</table>
+				<div style="font-weight: bolder;">광고 및 알람 수신동의</div><br>
+				<label>이메일</label>
+				<c:if test="${member.enotify eq true}">
+					<input  type="checkbox" name="enotify" checked>
+				</c:if>
+				<c:if test="${member.enotify eq false}">
+					<input  type="checkbox" name="enotify">
+				</c:if>
+
+				<label>문자</label>
+				<c:if test="${member.mnotify eq true}">
+					<input type="checkbox" name="mnotify" checked>
+				</c:if>
+				<c:if test="${member.mnotify eq false}">
+					<input type="checkbox" name="mnotify">
+				</c:if>
+
+				<label>카카오톡</label>
+				<c:if test="${member.snotify eq true}">
+					<input type="checkbox" name="snotify" checked>
+				</c:if>
+				<c:if test="${member.snotify eq false}">
+					<input type="checkbox" name="snotify">
+				</c:if>
+				<button type="submit" name="submit" id="edit_btn"
+					class="w-100 btn btn-lg btn-primary">수정하기</button>
 			</form>
 		</div>
 	</div>
 	<%@include file="../../includes/bangbang-footer.jsp"%>
-	<script type="text/javascript">
-		$("#back_btn").click(function() {
-			history.go(-1);
-		});
-	</script>
 </body>
 </html>
