@@ -45,6 +45,10 @@
 			style="padding-top: 10px;">가맹점 관리</a> <a class="nav-font"
 			href="${pageContext.request.contextPath}/admin/member"
 			style="padding-top: 10px;">회원 관리</a> <a class="nav-font"
+			href="${pageContext.request.contextPath}/order/admin/list"
+			style="padding-top: 10px;">주문 관리</a> <a class="nav-font"
+			href="${pageContext.request.contextPath}/order/admin/delivery"
+			style="padding-top: 10px;">배송 관리</a> <a class="nav-font"
 			href="${pageContext.request.contextPath}/admin/notice_board/list"
 			style="padding-top: 10px;">서비스 관리 메뉴</a> 
 			<a class="nav-font" href="${pageContext.request.contextPath}/admin/board/list"

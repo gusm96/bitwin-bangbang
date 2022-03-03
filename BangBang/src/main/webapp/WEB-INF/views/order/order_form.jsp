@@ -13,7 +13,7 @@
 <script type="text/javascript"
 	src="<c:url value="/resources/js/order/web_storage.js"/>"></script>
 <script type="text/javascript"
-	src="<c:url value="/resources/js/order/order_form.js?ver=4"/>"></script>
+	src="<c:url value="/resources/js/order/order_form.js?ver=6"/>"></script>
 <script type="text/javascript"
 	src="<c:url value="/resources/js/order/payment.js?ver=3"/>"></script>
 	
@@ -120,7 +120,7 @@ th, td {
 		<h3 class="mt-4 pb-3 font-italic">[ 주문 ]</h3>
 
 		<ol class="breadcrumb mb-3 p-2">
-			<li class="breadcrumb-item"><a href="${pageContext.request.contextPath}">홈</a></li>
+			<li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/main/mainpage">홈</a></li>
 			<li class="breadcrumb-item active">주문서 작성</li>
 		</ol>
 		
@@ -143,6 +143,21 @@ th, td {
 <h5 class="font-weight-bold"><u>픽업할 매장을 선택해주세요.</u></h5>
 		</c:if>
 		
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
 		<br>
 		<br>
 		<br>
@@ -203,7 +218,7 @@ th, td {
 				</tr>
 				<tr>
 					<td class="text-right pr-4">포인트 사용</td>
-					<td class="text-right"><div class="input-group input-group-sm mb-2"><input type="number" name="pointUse" id="pointUse" value="0" class="form-control text-right" aria-label="Sizing example input"
+					<td class="text-right"><div class="input-group input-group-sm mb-2"><input type="number" min="0" name="pointUse" id="pointUse" value="0" class="form-control text-right" aria-label="Sizing example input"
 					aria-describedby="inputGroup-sizing-sm" style="width: 150px; height: 28px;"></div></td>
 				</tr>
 				<tr>

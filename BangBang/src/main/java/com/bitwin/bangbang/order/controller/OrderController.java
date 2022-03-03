@@ -19,7 +19,6 @@ import org.springframework.web.util.UrlPathHelper;
 
 import com.bitwin.bangbang.member.domain.LoginInfo;
 import com.bitwin.bangbang.order.domain.DeliveryRequest;
-import com.bitwin.bangbang.order.domain.MyStore;
 import com.bitwin.bangbang.order.domain.OrderListAdmin;
 import com.bitwin.bangbang.order.domain.OrderListMember;
 import com.bitwin.bangbang.order.domain.OrderListOptAdmin;

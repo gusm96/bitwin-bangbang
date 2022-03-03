@@ -137,6 +137,15 @@ function removeAll() {
   location.reload();
 }
 
+// 주문페이지 이동
+function order(contextPath){
+	if (cart.length < 1) {
+		alert('장바구니에 담긴 상품이 없습니다.');
+	} else {
+		location.href= contextPath + '/order';
+	}
+}
+
 // 화폐 단위 (1,000,000) 표현식
 function moneyEx(number) {
   return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

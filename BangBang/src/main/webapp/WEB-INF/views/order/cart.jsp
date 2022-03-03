@@ -13,7 +13,7 @@
 <script type="text/javascript"
 	src="<c:url value="/resources/js/order/web_storage.js"/>"></script>
 <script type="text/javascript"
-	src="<c:url value="/resources/js/order/cart.js?ver=5"/>"></script>
+	src="<c:url value="/resources/js/order/cart.js?ver=6"/>"></script>
 <script src="https://kit.fontawesome.com/39c52c9ac0.js"
 	crossorigin="anonymous"></script>
 
@@ -84,7 +84,7 @@ td {
 		<h3 class="mt-4 pb-3 font-italic">[ 장바구니 ]</h3>
 
 		<ol class="breadcrumb mb-3 p-2">
-			<li class="breadcrumb-item"><a href="${pageContext.request.contextPath}">홈</a></li>
+			<li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/main/mainpage">홈</a></li>
 			<li class="breadcrumb-item active">장바구니</li>
 		</ol>
 
@@ -99,13 +99,13 @@ td {
 		</div>
 
 		<div class="float-left">
-			<button onclick="location.href='item'" class="btn btn-primary">쇼핑하기</button>
+			<button onclick="location.href='${pageContext.request.contextPath}/item'" class="btn btn-primary">쇼핑하기</button>
 		</div>
 		
 		<div class="float-right">
 			<button onclick="removeAll()" class="btn btn-primary">장바구니
 				비우기</button>
-			<button onclick="location.href='order'" class="btn btn-primary">주문하기</button>
+			<button onclick="order(contextPath)" class="btn btn-primary">주문하기</button>
 		</div>
 	</div>
 	</main>

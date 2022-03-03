@@ -82,7 +82,7 @@ th, td {
 		<h3 class="mt-4 pb-3 font-italic">[ 주문 상세 정보 ]</h3>
 
 		<ol class="breadcrumb mb-3 p-2">
-			<li class="breadcrumb-item"><a href="${pageContext.request.contextPath}">홈</a></li>
+			<li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/main/mainpage">홈</a></li>
 			<c:if test="${loginInfo ne null}">
 				<li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/member/mypage">내 정보</a></li>
 				<li class="breadcrumb-item"><a

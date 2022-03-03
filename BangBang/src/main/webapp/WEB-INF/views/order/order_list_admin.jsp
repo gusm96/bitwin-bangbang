@@ -83,7 +83,7 @@ th, td {
 		<h3 class="mt-4 pb-3 font-italic">[ 주문관리 ]</h3>
 
 		<ol class="breadcrumb mb-3 p-2">
-			<li class="breadcrumb-item"><a href="${pageContext.request.contextPath}">홈</a></li>
+			<li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/main/mainpage">홈</a></li>
 			<li class="breadcrumb-item"><a href="${pageContext.request.contextPath}/admin">관리자 페이지</a></li>
 			<li class="breadcrumb-item active">주문관리</li>
 		</ol>

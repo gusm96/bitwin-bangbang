@@ -43,9 +43,12 @@
 		<a class="nav-font"
 			href="${pageContext.request.contextPath}/store/mypage"
 			style="padding-top: 10px;">가맹점 정보 보기</a>
-			 <a class="nav-font"
+			<a class="nav-font"
+			href="${pageContext.request.contextPath}/order/store/${storeInfo.sidx}/list"
+			style="padding-top: 10px;">주문 보기</a> 
+			<a class="nav-font"
 			href="${pageContext.request.contextPath}/store/mypage/fee"
-			style="padding-top: 10px;">가맹점 수수료 보기</a> 
+			style="padding-top: 10px;">가맹점 수수료 보기</a>
 	</nav>
 
 	<hr style="color: gray;">

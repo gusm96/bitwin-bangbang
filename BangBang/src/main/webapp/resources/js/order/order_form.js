@@ -33,25 +33,25 @@ function printList(data, contextPath) {
     html += "<tbody>";
 
     for (let i = 0; i < data.length; i++) {
-      html += '<tr><td rowspan="2"><a href=' + contextPath + '/board/detail?iidx=' + data[i].iidx + '>';
+      html += '<tr><td rowspan="2" class="align-middle"><a href=' + contextPath + '/board/detail?iidx=' + data[i].iidx + '>';
       html += '<img src=' + contextPath + '/resources/uploadfile/' + data[i].thumb + ' style="height: 50px; width: 50px;"></td>';
-      html += '<td class="text-left"><a href=' + contextPath + '/board/detail?iidx=' + data[i].iidx + '>' + data[i].name + "</a></td>";
+      html += '<td class="text-left align-middle"><a href=' + contextPath + '/board/detail?iidx=' + data[i].iidx + '>' + data[i].name + "</a></td>";
       html += '<td></td><td></td></tr>';
-      html += "<tr><td class='text-left'>" + data[i].qty + "개</td>";
+      html += "<tr><td class='text-left py-1'>" + data[i].qty + "개</td>";
 
       let price = data[i].price * data[i].qty;
       let salePrice = data[i].salePrice * data[i].qty;
 
       html +=
         salePrice != 0
-          ? '<td class="text-right"><p style="text-decoration: line-through">' +
+          ? '<td class="text-right py-1"><p style="text-decoration: line-through;">' +
             moneyEx(price) +
             "원</p></td>"
           : "<td></td>";
       html +=
         salePrice != 0
-          ? '<td class="text-right">' + moneyEx(salePrice) + "원</td></tr>"
-          : '<td class="text-right">' + moneyEx(price) + "원</td></tr>";
+          ? '<td class="text-right py-1">' + moneyEx(salePrice) + "원</td></tr>"
+          : '<td class="text-right py-1">' + moneyEx(price) + "원</td></tr>";
 
       totalPrice += price;
       totalPay += salePrice == 0 ? price : salePrice;
@@ -67,8 +67,10 @@ function printList(data, contextPath) {
 
     $("#item").val(data[0].name);
     $("#amount").val(totalPay);
+    
   } else {
-    $("body").html("<h1>장바구니에 담긴 상품이 없습니다.</h1>");
+	alert('잘못된 접근입니다.');
+	location.replace(contextPath + '/main/mainpage');
   }
 }
 
@@ -92,12 +94,20 @@ function orderRequest(contextPath) {
       // 결제 정보 추가
       if (insertPayment(data, contextPath)) {
         let html = "";
+		
+		html += '<main class="container">';
+		html += '<div class="container-fluid px-4">';
 
         html += "<h1>주문이 완료되었습니다.<h1>";
-        html += '<input type="button" value="주문 상세 보기" ';
+        html += '<input type="button" class="btn btn-primary" value="쇼핑 계속  하기" ';
+        html +=
+          "onclick=\"location.href='" + contextPath + "/item\"> ";
+        html += '<input type="button" class="btn btn-primary" value="주문 상세 보기" ';
         html +=
           "onclick=\"location.href='" + contextPath + "/order/member/list/";
         html += data + "'\">";
+        
+        html += '</div></main>';
 
         $("body").html(html);
 
