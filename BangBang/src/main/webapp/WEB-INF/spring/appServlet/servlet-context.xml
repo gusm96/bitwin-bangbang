@@ -39,9 +39,10 @@
 			<beans:value>utf-8</beans:value>
 		</beans:property>
 	</beans:bean>
-	<!-- 업로드 패스 설정 --> 
+	<!-- 업로드 패스 설정 -->
 	<beans:bean class="java.lang.String" id="uploadPath">
- 	<beans:constructor-arg value="C:\Users\gusm9\Documents\workspace\bitwin-bangbang\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\BangBang\resources\uploadfile" />
+		<beans:constructor-arg
+			value="C:\Users\gusm9\Documents\workspace\bitwin-bangbang\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\BangBang\resources\uploadfile" />
 	</beans:bean>
 	<!-- 로그인 여부 확인을 위한 인터셉터 등록 -->
 	<beans:bean id="authCheckInterceptor"
@@ -53,14 +54,20 @@
 	<interceptors>
 		<interceptor>
 			<mapping path="/member/mypage/**" />
+			<mapping path="/order" />
+			<mapping path="/order/linked" />
+			<mapping path="/order/member/**" />
 			<beans:ref bean="authCheckInterceptor" />
 		</interceptor>
+
 		<interceptor>
 			<mapping path="/admin/**" />
+			<mapping path="/order/admin/**" />
 			<beans:ref bean="adminAuthCheckInterceptor" />
 		</interceptor>
 		<interceptor>
 			<mapping path="/store/**" />
+			<mapping path="/order/store/**" />
 			<beans:ref bean="storeAuthCheckInterceptor" />
 		</interceptor>
 	</interceptors>

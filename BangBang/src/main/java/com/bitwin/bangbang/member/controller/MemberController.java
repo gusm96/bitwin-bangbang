@@ -182,7 +182,7 @@ public class MemberController {
 		return checkIdService.checkId(userId);
 	}
 
-	@GetMapping("/mypage/edit/pw/checkpw")
+	@GetMapping("/mypage/pw/checkpw")
 	@ResponseBody
 	public String checkPw(@RequestParam("currentpw") String currentPw, HttpSession session) {
 		LoginInfo loginInfo = (LoginInfo) session.getAttribute("loginInfo");

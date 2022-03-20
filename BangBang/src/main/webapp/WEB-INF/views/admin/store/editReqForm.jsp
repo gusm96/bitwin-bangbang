@@ -49,9 +49,9 @@ td {
 						</td>
 					</tr>
 				</table>
-			</form>
-				<button id="edit_btn" type="submit" style="display: inline;">수정</button>
 				<button id="cancel_btn">거절</button>
+				<button id="edit_btn" type="submit" style="display: inline;">수정</button>
+			</form>
 		</div>
 	</div>
 	<%@include file="../../includes/bangbang-footer.jsp"%>
