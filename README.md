@@ -4,9 +4,9 @@
 
 #### Member
 
-|             [구성모](https://github.com/gusm96)              | [김현우](https://github.com/wmrwmr) | [문가란](https://github.com/lililights) | [신승민](https://github.com/siner44) |
-| :----------------------------------------------------------: | ----------------------------------- | --------------------------------------- | ------------------------------------ |
-| <img src="https://avatars.githubusercontent.com/u/77833389?v=4" style="zoom:50%;" /> |                                     |                                         |                                      |
+|          [구성모](https://github.com/gusm96)          |      [김현우](https://github.com/wmrwmr)      | [문가란](https://github.com/lililights) |  [신승민](https://github.com/siner44)   |
+| :---------------------------------------------------: | :-------------------------------------------: | :-------------------------------------: | :-------------------------------------: |
+| - 일반회원 Part<br />- 가맹점 Part<br />- 관리자 Part | - 공지사항 게시글 Part<br />- 고객서비스 Part |   - 결제 Part<br />- 가맹점 지도 Part   | - 상품등록 Part<br />- 상품 게시글 Part |
 
 
 
@@ -15,8 +15,6 @@
  ### “전국 방방곡곡 원하는 술이 찾아온다.”
 
  **“방방술래”**는 소비자들이 주류를 구매할 때 겪는 어려움을 해소하기 위한 주류 픽업 서비스를 제공해줍니다.
-
-
 
 ------
 
@@ -31,4 +29,22 @@
 |       2022.02.25        |              개발 완료              |
 |       2022.02.28        |              PPT 준비               |
 |       2022.03.02        |            발표 및 시연             |
+
+------
+
+### 사용 기술 
+
+BackEnd
+
+- JAVA, Spring Framework, MyBatis
+
+FrontEnd
+
+- Javascript, JSP, HTML5, CCS3, jQuery, Ajax, Bootstrap
+
+Database
+
+- MySQL
+
+------
 
