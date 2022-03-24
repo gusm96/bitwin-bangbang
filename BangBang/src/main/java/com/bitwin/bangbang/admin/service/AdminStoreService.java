@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.bitwin.bangbang.admin.domain.StoreEditReqListView;
+import com.bitwin.bangbang.admin.domain.StoreListView;
 import com.bitwin.bangbang.member.service.MailSenderService;
 import com.bitwin.bangbang.member.service.RamdomPassword;
 import com.bitwin.bangbang.store.dao.StoreDao;
@@ -30,6 +32,12 @@ public class AdminStoreService {
 
 	@Autowired
 	private RamdomPassword randomPw;
+
+	// 페이지 당 표현할 가맹점 수
+	private final int COUNT_PER_PAGE = 15;
+
+	// 페이징 번호 노출 개수
+	private final int COUNT_PER_PAGING_NUM = 5;
 
 	public int insertStore(StoreRegRequest regRequest) {
 		int resultCnt = 0;
@@ -61,14 +69,18 @@ public class AdminStoreService {
 		return resultCnt;
 	}
 
-	public List<Store> selectAll() {
-		List<Store> store = null;
+	public StoreListView getStoreList(int currentPage) {
+		List<Store> list = null;
 
 		dao = template.getMapper(StoreDao.class);
 
-		store = dao.selectAll();
+		int totalCount = dao.selectTotalCount();
 
-		return store;
+		int index = (currentPage - 1) * COUNT_PER_PAGE;
+
+		list = dao.selectAll(index, COUNT_PER_PAGE);
+
+		return new StoreListView(currentPage, COUNT_PER_PAGE, COUNT_PER_PAGING_NUM, list, totalCount);
 	}
 
 	// 가맹점 아이디 중복 체크
@@ -98,37 +110,53 @@ public class AdminStoreService {
 		return store;
 	}
 
-	public List<StoreEditRequestList> selectEditRequest() {
-		List<StoreEditRequestList> store = null;
+	public StoreEditReqListView getEditReqList(int currentPage) {
+
+		List<StoreEditRequestList> list = null;
+
 		dao = template.getMapper(StoreDao.class);
-		
-		store = dao.selectEditRequestList();
-		
-		return store;
+
+		int totalCount = dao.editReqTotalCount();
+
+		int index = (currentPage - 1) * COUNT_PER_PAGE;
+
+		list = dao.selectEditRequestList(index, COUNT_PER_PAGE);
+
+		return new StoreEditReqListView(currentPage, COUNT_PER_PAGE, COUNT_PER_PAGING_NUM, list, totalCount);
 	}
 
 	public StoreEditRequest getEditRequest(int sridx) {
-		
+
 		StoreEditRequest storeReq = null;
-		
+
 		dao = template.getMapper(StoreDao.class);
-		
+
 		storeReq = dao.selectStoreEditReq(sridx);
-		
+
 		return storeReq;
 	}
 
 	public int acceptEditRequest(StoreEditRequest editRequest) {
 		int resultCnt = 0;
-		
+
 		dao = template.getMapper(StoreDao.class);
-		
+
 		resultCnt = dao.updateStore(editRequest);
-		
-		if(resultCnt > 0) {
+
+		if (resultCnt > 0) {
 			// 성공적으로 update 되었으므로 요청 리스트 에서 삭제
 			dao.deleteEditReq(editRequest.getSidx());
 		}
+
+		return resultCnt;
+	}
+
+	public int editReqCount() {
+		int resultCnt = 0;
+		
+		dao = template.getMapper(StoreDao.class);
+		
+		resultCnt = dao.editReqTotalCount();
 		
 		return resultCnt;
 	}

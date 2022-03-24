@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bitwin.bangbang.admin.domain.MemberListView;
 import com.bitwin.bangbang.member.dao.MemberDao;
 import com.bitwin.bangbang.member.domain.Member;
 
@@ -17,14 +18,26 @@ public class AdminMemberService {
 	@Autowired
 	private SqlSessionTemplate template;
 
-	public List<Member> getMemberList() {
-		List<Member> member = null;
+	// 페이지 당 표현할 맴버수
+	private final int COUNT_PER_PAGE = 15;
+
+	// 페이징 번호 노출 개수
+	private final int COUNT_PER_PAGING_NUM = 5;
+
+	public MemberListView getMemberList(int currentPage) {
+		
+		List<Member> list = null;
 
 		dao = template.getMapper(MemberDao.class);
-
-		member = dao.selectAll();
-
-		return member;
+		
+		int totalCount = dao.selectTotalCount();
+		
+		int index = (currentPage - 1) * COUNT_PER_PAGE;
+		
+		
+		list = dao.selectAll(index, COUNT_PER_PAGE);
+		
+		return new MemberListView(currentPage, COUNT_PER_PAGE, COUNT_PER_PAGING_NUM, list, totalCount);
 	}
 
 	public Member getMember(int uidx) {
@@ -33,7 +46,7 @@ public class AdminMemberService {
 		dao = template.getMapper(MemberDao.class);
 
 		member = dao.selectByIdx(uidx);
-		
+
 		System.out.println(member);
 
 		return member;

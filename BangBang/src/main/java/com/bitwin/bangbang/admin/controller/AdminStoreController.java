@@ -21,11 +21,18 @@ public class AdminStoreController {
 	private AdminStoreService storeService;
 
 	@GetMapping
-	public String getStore(Model model) {
-		model.addAttribute("store", storeService.selectAll());
-		model.addAttribute("storeReq", storeService.selectEditRequest());
+	public String getStore(@RequestParam(value = "p", defaultValue = "1") int currentPage, Model model) {
+		model.addAttribute("store", storeService.getStoreList(currentPage));
+		model.addAttribute("storeReq", storeService.editReqCount());
 		return "admin/store/management";
 	}
+
+	@GetMapping("/modification-list")
+	public String getStoreEditRegList(@RequestParam(value = "p", defaultValue = "1") int currentPage, Model model) {
+		model.addAttribute("storeReq", storeService.getEditReqList(currentPage));
+		return "admin/store/editReqList";
+	}
+
 	// 가맹점 등록
 	@GetMapping("/reg")
 	public String getStoreRegForm() {
@@ -37,14 +44,14 @@ public class AdminStoreController {
 		model.addAttribute("result", storeService.insertStore(regRequest));
 		return "admin/store/regComplete";
 	}
-	
+
 	// 가맹점 아이디 중복 체크
 	@GetMapping("/reg/checkid")
 	@ResponseBody
-	public String checkStoreId(@RequestParam("storeId")String storeId) {
+	public String checkStoreId(@RequestParam("storeId") String storeId) {
 		return storeService.checkStoreId(storeId);
 	}
-	
+
 	// 가맹점 정보 상세 보기
 	@GetMapping("/{sname}")
 	public String getStoreDetail(@PathVariable("sname") String sname, Model model) {
@@ -52,25 +59,26 @@ public class AdminStoreController {
 		model.addAttribute("store", storeService.storeDetial(sname));
 		return "admin/store/detail";
 	}
-	
+
 	// 가맹점 정보 수정하기
 	@GetMapping("/{sname}/edit")
 	public String getEditStore(@PathVariable("sname") String sname, Model model) {
 		model.addAttribute("store", storeService.storeDetial(sname));
 		return "admin/store/editform";
 	}
-	
+
 	@PostMapping("/{sname}/edit")
 	public String postEditStore(@PathVariable("sname") String sname, Model model) {
-		
+
 		return "admin/store/editComplete";
 	}
-	
+
 	@GetMapping("/{sridx}/req")
 	public String getEditReqStore(@PathVariable("sridx") int sridx, Model model) {
 		model.addAttribute("store", storeService.getEditRequest(sridx));
 		return "admin/store/editReqForm";
 	}
+
 	@PostMapping("/{sridx}/req")
 	public String postEditReqStore(@PathVariable("sridx") int sridx, StoreEditRequest editRequest, Model model) {
 		model.addAttribute("result", storeService.acceptEditRequest(editRequest));
@@ -79,4 +87,4 @@ public class AdminStoreController {
 	// 요청 거절 사유 보내기
 //	@GetMapping("/{sridx}/cancel")
 //	public String getEditReqCancel(@PathVariable("srdix") int sridx)
-}	
+}

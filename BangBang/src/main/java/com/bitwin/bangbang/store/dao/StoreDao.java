@@ -2,6 +2,8 @@ package com.bitwin.bangbang.store.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Select;
+
 import com.bitwin.bangbang.store.domain.Store;
 import com.bitwin.bangbang.store.domain.StoreEditRequest;
 import com.bitwin.bangbang.store.domain.StoreEditRequestList;
@@ -16,8 +18,7 @@ public interface StoreDao {
 	public int insertStore(StoreRegRequest regRequest);
 	
 	// 모든 가맹점 정보
-	public List<Store> selectAll();
-	
+	public List<Store> selectAll(int index, int cOUNT_PER_PAGE);
 	
 	// 가맹점 아이디
 	public int selectByStoreId(String storeId);
@@ -32,7 +33,7 @@ public interface StoreDao {
 
 	public int storeInfoEditRequest(StoreEditRequest editRequest);
 
-	public List<StoreEditRequestList> selectEditRequestList();
+	public List<StoreEditRequestList> selectEditRequestList(int index, int cOUNT_PER_PAGE);
 
 	public StoreEditRequest selectStoreEditReq(int sridx);
 
@@ -47,4 +48,9 @@ public interface StoreDao {
 	public int selectCountByEmailStoreId(StoreSearchPassword searchPw);
 
 	public void updatePassword2(StoreSearchPassword searchPw);
+	
+	@Select("select count(*) from store")
+	public int selectTotalCount();
+	@Select("select count(*) from store_req")
+	public int editReqTotalCount();
 }

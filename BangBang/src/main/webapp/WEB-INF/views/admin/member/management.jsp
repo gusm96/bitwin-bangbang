@@ -8,8 +8,8 @@
 <title>회원 관리</title>
 <link rel="stylesheet" href="/bangbang/resources/css/container.css">
 <style type="text/css">
-#main_container{
-width: 700px;
+#main_container {
+	width: 700px;
 }
 </style>
 </head>
@@ -39,7 +39,7 @@ width: 700px;
 							<td>이름(닉네임)</td>
 							<td>이메일</td>
 						</tr>
-						<c:forEach items="${member}" var="m">
+						<c:forEach items="${member.list}" var="m">
 							<tr>
 								<td>${m.uidx}</td>
 								<td>${m.userid}</td>
@@ -50,6 +50,28 @@ width: 700px;
 						</c:forEach>
 					</tbody>
 				</table>
+				<hr>
+				<!-- 페이징 넘버 영역 -->
+				<div class="row justify-content-md-center mt-4 bottom">
+					<div class="btn-toolbar" role="toolbar"
+						style="display: flex; align-items: center; justify-content: center">
+						<div class="btn-group mr-2" role="group">
+							<c:if test="${member.pagination.preNum>0}">
+								<a href="member?p=${member.pagination.preNum}"
+									class="btn btn-primary">이전</a>
+							</c:if>
+							<c:forEach begin="${member.pagination.startNum}"
+								end="${member.pagination.endNum}" var="pnum">
+								<a href="member?p=${pnum}"
+									class="btn ${member.pageNum eq pnum ? 'btn-dark': 'btn-white'}">${pnum}</a>
+							</c:forEach>
+							<c:if test="${member.pagination.nextNum>0}">
+								<a href="member?p=${member.pagination.nextNum}"
+									class="btn btn-primary">다음</a>
+							</c:if>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

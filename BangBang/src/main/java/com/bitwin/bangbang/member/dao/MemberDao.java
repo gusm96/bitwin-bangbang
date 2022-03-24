@@ -6,6 +6,8 @@ import com.bitwin.bangbang.member.domain.SimpleRegRequest;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Select;
+
 import com.bitwin.bangbang.member.domain.EditMember;
 import com.bitwin.bangbang.member.domain.LoginInfo;
 import com.bitwin.bangbang.member.domain.Member;
@@ -31,12 +33,15 @@ public interface MemberDao {
 
 	public int updatePassword(MemberPassword memberPw);
 	
-	public List<Member> selectAll();
+	public List<Member> selectAll(int index, int cOUNT_PER_PAGE);
 	
 	public String searchId(String email);
 
 	public int selectCountByEmailUserId(SearchPassword searchPw);
 
 	public void updatePassword2(SearchPassword searchPw);
+	
+	@Select("select count(*) from user")
+	public int selectTotalCount();
 	
 }
