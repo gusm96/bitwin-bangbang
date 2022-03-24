@@ -68,7 +68,7 @@ public class AdminStoreService {
 
 		return resultCnt;
 	}
-
+	// 가맹점 정보 리스트 
 	public StoreListView getStoreList(int currentPage) {
 		List<Store> list = null;
 

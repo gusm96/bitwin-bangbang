@@ -14,12 +14,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.bitwin.bangbang.exception.ChangePwInvalidException;
 import com.bitwin.bangbang.exception.LoginInvalidException;
@@ -31,46 +28,26 @@ import com.bitwin.bangbang.member.domain.MemberRegRequest;
 import com.bitwin.bangbang.member.domain.NaverInfo;
 import com.bitwin.bangbang.member.domain.SearchPassword;
 import com.bitwin.bangbang.member.domain.SimpleRegRequest;
-import com.bitwin.bangbang.member.service.MemberChangePwService;
-import com.bitwin.bangbang.member.service.MemberEditService;
-import com.bitwin.bangbang.member.service.MemberEmailCheckService;
-import com.bitwin.bangbang.member.service.MemberIdCheckService;
 import com.bitwin.bangbang.member.service.MemberLoginService;
-import com.bitwin.bangbang.member.service.MemberPwCheckService;
-import com.bitwin.bangbang.member.service.MemberRegService;
+import com.bitwin.bangbang.member.service.MemberCheckService;
 import com.bitwin.bangbang.member.service.MemberService;
 import com.bitwin.bangbang.member.service.SimpleLoginService;
 
 @Controller
 @RequestMapping("/member")
 public class MemberController {
-	
-	@Autowired
-	private MemberService service;
-	
-	@Autowired
-	private MemberLoginService loginService;
 
 	@Autowired
-	private MemberRegService regService;
+	private MemberService service;
+
+	@Autowired
+	private MemberLoginService loginService;
 
 	@Autowired
 	private SimpleLoginService apiService;
 
 	@Autowired
-	private MemberEditService editService;
-
-	@Autowired
-	private MemberEmailCheckService checkEmailService;
-
-	@Autowired
-	private MemberIdCheckService checkIdService;
-
-	@Autowired
-	private MemberPwCheckService pwCheckService;
-
-	@Autowired
-	private MemberChangePwService changePwService;
+	private MemberCheckService checkService;
 
 	// 로그인
 	@GetMapping("/login")
@@ -81,6 +58,7 @@ public class MemberController {
 		model.addAttribute("naver", naver);
 		return "member/loginform";
 	}
+
 	@PostMapping("/login")
 	public String postLogin(MemberLoginRequest loginRequest, HttpServletResponse res, HttpSession session)
 			throws LoginInvalidException {
@@ -119,13 +97,13 @@ public class MemberController {
 
 		return page;
 	}
-	
+
 	// 로그아웃
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		session.invalidate();
 		return "redirect:/main/mainpage";
-		}
+	}
 
 	// Kakao api 로그아웃
 	@GetMapping("/logout/oauth/kakao")
@@ -133,22 +111,25 @@ public class MemberController {
 		session.invalidate();
 		return "redirect:/main/mainpage";
 	}
+
 	// Id 찾기
 	@GetMapping("/search/id")
 	public String getSearchId() {
 		return "member/searchId";
 	}
+
 	@PostMapping("/search/id")
 	public String postSearchId(@RequestParam("email") String email, Model model) {
 		model.addAttribute("result", service.searchById(email));
 		return "member/searchIdComplete";
 	}
-	
+
 	// PW 찾기
 	@GetMapping("/search/pw")
 	public String getSearchPw() {
 		return "member/searchPw";
 	}
+
 	@PostMapping("/search/pw")
 	public String postSearchPw(SearchPassword searchPW, Model model) {
 		model.addAttribute("result", service.searchByPw(searchPW));
@@ -165,30 +146,31 @@ public class MemberController {
 	public String postGeneralMember(MemberRegRequest regRequest, Model model) {
 		System.out.println("regRequest: " + regRequest);
 
-		model.addAttribute("result", regService.insertMember(regRequest));
+		model.addAttribute("result", service.insertMember(regRequest));
 		return "member/regComplete";
 	}
 
 	// 중복 체크 기능
+	// 이메일 체크
 	@GetMapping("join/general/checkemail")
 	@ResponseBody
 	public String checkEmail(@RequestParam("email") String email) {
-		return checkEmailService.checkEmail(email);
+		return checkService.checkEmail(email);
 	}
-
+	// 아이디 체크
 	@GetMapping("/join/general/checkid")
 	@ResponseBody
 	public String checkId(@RequestParam("userid") String userId) {
-		return checkIdService.checkId(userId);
+		return checkService.checkId(userId);
 	}
-
+	// 비밀번호 체크
 	@GetMapping("/mypage/pw/checkpw")
 	@ResponseBody
 	public String checkPw(@RequestParam("currentpw") String currentPw, HttpSession session) {
 		LoginInfo loginInfo = (LoginInfo) session.getAttribute("loginInfo");
 		String userid = loginInfo.getUserId();
 
-		return pwCheckService.checkPw(userid, currentPw);
+		return checkService.checkPw(userid, currentPw);
 	}
 
 	// 간편 회원가입
@@ -200,7 +182,7 @@ public class MemberController {
 	@PostMapping("/join/simple-reg")
 	public String postSimpleReg(SimpleRegRequest regRequest, HttpServletRequest req, Model model) {
 
-		model.addAttribute("result", regService.insertSimpleMember(regRequest, req));
+		model.addAttribute("result", service.insertSimpleMember(regRequest, req));
 
 		return "member/regComplete";
 	}
@@ -211,7 +193,7 @@ public class MemberController {
 		// 현재 로그인한 정보를 session 에서 가져온다.
 		LoginInfo loginInfo = (LoginInfo) session.getAttribute("loginInfo");
 		int uidx = loginInfo.getUidx();
-		model.addAttribute("member", editService.getMember(uidx));
+		model.addAttribute("member", service.getMember(uidx));
 		return "member/mypage/editform";
 	}
 
@@ -220,7 +202,7 @@ public class MemberController {
 			throws IllegalStateException, IOException {
 		System.out.println("Controller" + editMember);
 
-		model.addAttribute("result", editService.editMember(editMember, req));
+		model.addAttribute("result", service.editMember(editMember, req));
 
 		return "member/mypage/editComplete";
 	}
@@ -238,9 +220,9 @@ public class MemberController {
 		LoginInfo loginInfo = (LoginInfo) session.getAttribute("loginInfo");
 		String userid = loginInfo.getUserId();
 
-		String check = pwCheckService.checkPw(userid, currentPw);
+		String check = checkService.checkPw(userid, currentPw);
 		if (check.equals("Y")) {
-			model.addAttribute("result", changePwService.changePw(userid, newPw));
+			model.addAttribute("result", service.changePw(userid, newPw));
 			session.invalidate();
 			page = "member/mypage/changeComplete";
 		} else {

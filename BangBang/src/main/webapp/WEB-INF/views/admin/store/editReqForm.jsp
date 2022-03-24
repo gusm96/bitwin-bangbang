@@ -33,23 +33,20 @@ td {
 					<tr>
 						<th>가맹점명</th>
 						<td><span>${store.sname}</span> <input type="hidden"
-							name="sname" value="${store.sname}" required />
-						</td>
+							name="sname" value="${store.sname}" required /></td>
 					</tr>
 					<tr>
 						<th>가맹점 번호</th>
 						<td><span>${store.sphone}</span> <input type="hidden"
-							name="sphone" value="${store.sphone}" required />
-						</td>
+							name="sphone" value="${store.sphone}" required /></td>
 					</tr>
 					<tr>
 						<th>가맹점 주소</th>
 						<td><span>${store.address}</span> <input type="hidden"
-							name="address" value="${store.address}" required />
-						</td>
+							name="address" value="${store.address}" required /></td>
 					</tr>
 				</table>
-				<button id="cancel_btn">거절</button>
+				<button id="cancel_btn" type="button">거절</button>
 				<button id="edit_btn" type="submit" style="display: inline;">수정</button>
 			</form>
 		</div>
@@ -57,8 +54,10 @@ td {
 	<%@include file="../../includes/bangbang-footer.jsp"%>
 	<script>
 		$("#cancel_btn").click(function() {
-			alert("요청을 거절하였습니다.");
-			location.href="/bangbang/admin/store/${store.sidx}/cancel";
+			if (confirm("정말로 거절하시겠습니까?")) {
+				alert("요청을 거절하였습니다.");
+				location.href = "/bangbang/admin/store/${store.sidx}/cancel";
+			}
 		});
 	</script>
 </body>
