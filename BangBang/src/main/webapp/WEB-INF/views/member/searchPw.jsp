@@ -19,8 +19,13 @@
 .text_blue {
 	color: blue;
 }
-#main_container{
+
+#main_container {
 	width: 300px;
+}
+
+#button_container {
+	margin-top: 10px;
 }
 </style>
 <script>
@@ -61,13 +66,15 @@
 					<label for="userid">아이디</label> <input class="form-control"
 						type="text" name="userid" id="userid" required />
 				</div>
-				<button type="submit" style="display: inline">비밀번호 찾기</button>
-				<button id="back_btn">뒤로가기</button>
+				<div id="button_container">
+					<button type="submit" style="display: inline">비밀번호 찾기</button>
+					<button id="back_btn">뒤로가기</button>
+				</div>
 			</form>
 		</div>
 	</div>
 	<script>
-		$("#back_btn").click(function() {
+		$("#back_btn").click(function() {	
 			history.go(-1);
 		});
 	</script>

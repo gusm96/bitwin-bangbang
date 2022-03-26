@@ -37,6 +37,7 @@ table {
 #edit_btn{
 	margin-top: 20px;
 }
+
 </style>
 
 <%@ include file="/WEB-INF/views/frame/pageset.jsp"%>
@@ -59,7 +60,7 @@ table {
 								id="profile_img"> <input type="hidden" name=oldPhoto
 								value="${member.photo}">
 								<hr></td>
-							<td><input type="file" name="photo"></td>
+							<td><input type="file" name="photo" ></td>
 						</tr>
 						<tr class="line">
 							<th>비밀번호</th>

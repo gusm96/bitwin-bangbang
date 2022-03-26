@@ -20,7 +20,7 @@
 		<div id="main_container">
 			<form>
 				<h3>회원검색</h3>
-				<select name="searchType">
+				<select name="searchType"> 
 					<option value="userid"
 						${param.searchType eq 'userid' ? 'selected' : ''}>아이디</option>
 					<option value="username"
@@ -31,14 +31,18 @@
 			<hr>
 			<div>
 				<h3>회원 리스트</h3>
-				<table style="text-align: center; width: 100%;">
-					<tbody>
+				<table class="table" style="text-align: left; width: 100%;">
+					<thead>
 						<tr>
-							<td>회원번호</td>
-							<td>아이디</td>
-							<td>이름(닉네임)</td>
-							<td>이메일</td>
+							<th>회원번호</th>
+							<th>아이디</th>
+							<th>이름(닉네임)</th>
+							<th>이메일</th>
 						</tr>
+					
+					</thead>
+					
+					<tbody>
 						<c:forEach items="${member.list}" var="m">
 							<tr>
 								<td>${m.uidx}</td>

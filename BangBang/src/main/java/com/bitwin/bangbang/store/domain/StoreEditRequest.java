@@ -6,8 +6,7 @@ public class StoreEditRequest {
 	private String sname;
 	private String sphone;
 	private String address;
-
-	
+	private Store curInfo;
 
 	public int getSridx() {
 		return sridx;
@@ -16,8 +15,7 @@ public class StoreEditRequest {
 	public void setSridx(int sridx) {
 		this.sridx = sridx;
 	}
-	
-	
+
 	public int getSidx() {
 		return sidx;
 	}
@@ -50,13 +48,18 @@ public class StoreEditRequest {
 		this.address = address;
 	}
 
+	public Store getCurInfo() {
+		return curInfo;
+	}
+
+	public void setCurInfo(Store curInfo) {
+		this.curInfo = curInfo;
+	}
+
 	@Override
 	public String toString() {
 		return "StoreEditRequest [sridx=" + sridx + ", sidx=" + sidx + ", sname=" + sname + ", sphone=" + sphone
-				+ ", address=" + address + "]";
+				+ ", address=" + address + ", curInfo=" + curInfo + "]";
 	}
 
-	
-
-	
 }

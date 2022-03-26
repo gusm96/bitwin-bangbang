@@ -196,14 +196,11 @@ public class MemberController {
 		model.addAttribute("member", service.getMember(uidx));
 		return "member/mypage/editform";
 	}
-
+	
 	@PostMapping("/mypage")
 	public String postMemeberEdit(EditMember editMember, Model model, HttpServletRequest req)
 			throws IllegalStateException, IOException {
-		System.out.println("Controller" + editMember);
-
 		model.addAttribute("result", service.editMember(editMember, req));
-
 		return "member/mypage/editComplete";
 	}
 

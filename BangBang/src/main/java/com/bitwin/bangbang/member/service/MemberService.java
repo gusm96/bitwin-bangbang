@@ -21,19 +21,19 @@ import com.bitwin.bangbang.member.domain.SimpleRegRequest;
 
 @Service
 public class MemberService {
-	
+
 	private MemberDao dao;
-	
+
 	@Autowired
 	private SqlSessionTemplate template;
-	
+
 	@Autowired
 	private RamdomPassword ramdomPw;
 	@Autowired
 	private MailSenderService mailSender;
 	@Autowired
 	private BCryptPasswordEncoder bcrypt;
-	
+
 	// 회원가입
 	public int insertMember(MemberRegRequest regRequest) {
 		int resultCnt = 0;
@@ -48,6 +48,7 @@ public class MemberService {
 		dao = template.getMapper(MemberDao.class);
 
 		resultCnt = dao.insertMember(regRequest);
+		// 회원가입 완료 메일 전송
 		if (mailSender.send(regRequest.getEmail(), regRequest.getUsername()) > 0) {
 			System.out.println("메일발송 완료");
 		} else {
@@ -56,7 +57,7 @@ public class MemberService {
 
 		return resultCnt;
 	}
-	
+
 	// 간편 회원가입
 	public int insertSimpleMember(SimpleRegRequest regRequest, HttpServletRequest req) {
 		int resultCnt = 0;
@@ -72,35 +73,35 @@ public class MemberService {
 
 		return resultCnt;
 	}
-	
+
 	public int searchById(String email) {
-		int resultCnt =0;
-		
+		int resultCnt = 0;
+
 		dao = template.getMapper(MemberDao.class);
-		
-		if(dao.selectCountByEmail(email) > 0) {
+
+		if (dao.selectCountByEmail(email) > 0) {
 			// 메일로 회원의 아이디 전송
 			String userid = dao.searchId(email);
 			resultCnt = mailSender.sendId(email, userid);
 		}
-		
+
 		return resultCnt;
 	}
 
 	public int searchByPw(SearchPassword searchPw) {
 		int resultCnt = 0;
 		dao = template.getMapper(MemberDao.class);
-		if(dao.selectCountByEmailUserId(searchPw) > 0) {
+		if (dao.selectCountByEmailUserId(searchPw) > 0) {
 			String password = ramdomPw.getRamdomPassword(8);
 			resultCnt = mailSender.sendPw(searchPw.getEmail(), password);
 			String bpw = bcrypt.encode(password);
 			searchPw.setBpw(bpw);
 			dao.updatePassword2(searchPw);
 		}
-		
+
 		return resultCnt;
 	}
-	
+
 	public Member getMember(int uidx) {
 		dao = template.getMapper(MemberDao.class);
 		return dao.selectByIdx(uidx);
@@ -110,7 +111,7 @@ public class MemberService {
 		int resultCnt = 0;
 
 		File newFile = null;
-		
+
 		if (!(editMember.getPhoto() == null) && editMember.getPhoto().getSize() > 0) {
 			String savePath = req.getSession().getServletContext().getRealPath(CommonsData.SAVE_URL);
 			String[] files = editMember.getPhoto().getOriginalFilename().split("\\.");
@@ -119,7 +120,7 @@ public class MemberService {
 			newFile = new File(savePath, newFileName);
 			editMember.getPhoto().transferTo(newFile);
 			editMember.setPhotoName(newFileName);
-		}else {
+		} else {
 			editMember.setPhotoName(editMember.getOldPhoto());
 		}
 
@@ -138,23 +139,21 @@ public class MemberService {
 
 		return resultCnt;
 	}
-	
+
 	// 비밀번호 변경
-	public int changePw (String userid, String newPw) {
+	public int changePw(String userid, String newPw) {
 		int resultCnt = 0;
 		MemberPassword memberPw = new MemberPassword();
 
 		String password = bcrypt.encode(newPw);
-		
+
 		memberPw.setUserid(userid);
 		memberPw.setNewPassword(password);
-		
+
 		dao = template.getMapper(MemberDao.class);
-		
+
 		resultCnt = dao.updatePassword(memberPw);
-		
-		
-		
+
 		return resultCnt;
 	}
 }

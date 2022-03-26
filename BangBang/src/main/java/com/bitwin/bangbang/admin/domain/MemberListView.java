@@ -6,7 +6,7 @@ import com.bitwin.bangbang.member.domain.Member;
 public class MemberListView {
 
 	private List<Member> list; // 게시물 리스트
-	private int totalCount; // 게시물 전체 개수
+	private int totalCount; // 전체 회원수수
 	private Pagination pagination; // 페이징 처리 객체
 	private int pageNum; // 페이지 번호
 

@@ -132,6 +132,9 @@ public class AdminStoreService {
 		dao = template.getMapper(StoreDao.class);
 
 		storeReq = dao.selectStoreEditReq(sridx);
+		
+		storeReq.setCurInfo(dao.selectStore(storeReq.getSidx()));
+		System.out.println(storeReq);
 
 		return storeReq;
 	}

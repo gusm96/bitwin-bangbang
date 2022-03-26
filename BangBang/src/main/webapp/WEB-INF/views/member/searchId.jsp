@@ -19,8 +19,12 @@
 .text_blue {
 	color: blue;
 }
-#main_container{
+
+#main_container {
 	width: 300px;
+}
+#button_container{
+	margin-top: 10px;
 }
 </style>
 <script>
@@ -49,7 +53,7 @@
 		<div id="main_container" class="text-center">
 			<div>
 				<h3>아이디 찾기</h3>
-				<span>등록된 이메일을 입력해주세요.</span> <br />
+				<span>등록된 이메일을 입력하세요.</span>
 			</div>
 			<form method="post">
 				<div class="form-floating">
@@ -57,8 +61,10 @@
 						type="email" name="email" id="email" required />
 					<div id="msg"></div>
 				</div>
-				<button type="submit" style="display: inline">아이디 찾기</button>
-				<button id="back_btn">뒤로가기</button>
+				<div id="button_container">
+					<button type="submit" style="display: inline">아이디 찾기</button>
+					<button id="back_btn">뒤로가기</button>
+				</div>
 			</form>
 		</div>
 	</div>

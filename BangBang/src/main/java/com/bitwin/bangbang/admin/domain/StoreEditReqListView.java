@@ -7,7 +7,7 @@ import com.bitwin.bangbang.store.domain.StoreEditRequestList;
 public class StoreEditReqListView {
 
 	private List<StoreEditRequestList> list; // 게시물 리스트
-	private int totalCount; // 게시물 전체 개수
+	private int totalCount; // 전체 가맹점 정보수정 요청수
 	private Pagination pagination; // 페이징 처리 객체
 	private int pageNum; // 페이지 번호
 

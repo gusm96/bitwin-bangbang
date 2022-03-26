@@ -38,14 +38,16 @@
 			<hr>
 			<div>
 				<h3>가맹점 리스트</h3>
-				<table style="text-align: center; width: 100%;">
-					<tbody>
+				<table class="table" style="text-align: left; width: 100%;">
+					<thead>
 						<tr>
-							<td>번호</td>
-							<td>가맹점명</td>
-							<td>가맹점 주소</td>
-							<td>사업자명</td>
+							<th>번호</th>
+							<th>가맹점명</th>
+							<th>가맹점 주소</th>
+							<th>사업자명</th>
 						</tr>
+					</thead>
+					<tbody>
 						<c:forEach items="${store.list}" var="s">
 							<tr>
 								<td>${s.sidx}</td>

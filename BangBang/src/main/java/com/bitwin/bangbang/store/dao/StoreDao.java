@@ -53,4 +53,6 @@ public interface StoreDao {
 	public int selectTotalCount();
 	@Select("select count(*) from store_req")
 	public int editReqTotalCount();
+	@Select("select * from store where sidx=#{sidx}")
+	public Store selectStore(int sidx);
 }
