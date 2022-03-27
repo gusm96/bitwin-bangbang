@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bitwin.bangbang.admin.domain.MemberListView;
+import com.bitwin.bangbang.admin.domain.Search;
 import com.bitwin.bangbang.member.dao.MemberDao;
 import com.bitwin.bangbang.member.domain.Member;
 
@@ -25,15 +26,14 @@ public class AdminMemberService {
 	private final int COUNT_PER_PAGING_NUM = 5;
 
 	public MemberListView getMemberList(int currentPage) {
-		
+
 		List<Member> list = null;
 
 		dao = template.getMapper(MemberDao.class);
-		
+
 		int totalCount = dao.selectTotalCount();
-		
+
 		int index = (currentPage - 1) * COUNT_PER_PAGE;
-		
 		
 		list = dao.selectAll(index, COUNT_PER_PAGE);
 		

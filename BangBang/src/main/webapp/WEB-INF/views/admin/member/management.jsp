@@ -18,14 +18,14 @@
 	<%@include file="../../includes/admin-nav.jsp"%>
 	<div id="body_container">
 		<div id="main_container">
-			<form>
+			<form method="get">
 				<h3>회원검색</h3>
-				<select name="searchType"> 
+				<select name="keyword">
 					<option value="userid"
 						${param.searchType eq 'userid' ? 'selected' : ''}>아이디</option>
 					<option value="username"
 						${param.searchType eq 'username' ? 'selected' : ''}>이름</option>
-				</select> <input type="text">
+				</select> <input type="text" name="search" placeholder="검색할 내용을 입력하세요.">
 				<button type="submit">검색</button>
 			</form>
 			<hr>
@@ -39,9 +39,7 @@
 							<th>이름(닉네임)</th>
 							<th>이메일</th>
 						</tr>
-					
 					</thead>
-					
 					<tbody>
 						<c:forEach items="${member.list}" var="m">
 							<tr>
@@ -54,7 +52,6 @@
 						</c:forEach>
 					</tbody>
 				</table>
-				<hr>
 				<!-- 페이징 넘버 영역 -->
 				<div class="row justify-content-md-center mt-4 bottom">
 					<div class="btn-toolbar" role="toolbar"

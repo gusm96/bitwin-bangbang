@@ -134,7 +134,6 @@ public class AdminStoreService {
 		storeReq = dao.selectStoreEditReq(sridx);
 		
 		storeReq.setCurInfo(dao.selectStore(storeReq.getSidx()));
-		System.out.println(storeReq);
 
 		return storeReq;
 	}

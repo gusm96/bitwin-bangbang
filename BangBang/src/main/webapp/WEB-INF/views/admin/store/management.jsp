@@ -27,7 +27,7 @@
 		<div id="main_container">
 			<form>
 				<h3>가맹점 검색</h3>
-				<select name="searchType">
+				<select name="keyword">
 					<option value="sname"
 						${param.searchType eq 'sname' ? 'selected' : ''}>가맹점명</option>
 					<option value="oname"
@@ -37,7 +37,12 @@
 			</form>
 			<hr>
 			<div>
-				<h3>가맹점 리스트</h3>
+				<div>
+					<h3>가맹점 리스트</h3>
+					<span>&rarr;<a
+						href="${pageContext.request.contextPath}/admin/store/reg">가맹점
+							등록하기</a></span>
+				</div>
 				<table class="table" style="text-align: left; width: 100%;">
 					<thead>
 						<tr>
@@ -81,9 +86,6 @@
 					</div>
 				</div>
 			</div>
-			<br> <span>&rarr;<a
-				href="${pageContext.request.contextPath}/admin/store/reg">가맹점
-					등록하기</a></span>
 			<hr>
 			<div id="edit_req_box">
 				<span>가맹점 정보수정 요청</span> [<span style="color: red;"><c:out
