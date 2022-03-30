@@ -20,10 +20,10 @@
 	<%@include file="../includes/store-nav.jsp"%>
 	<div id="body_container">
 		<div id="main_container">
-			<table style="text-align: left;">
+			<table class="table" style="text-align: left;">
 				<thead>
 					<tr>
-						<th colspan="3" style="text-align: center;"><h3>${store.sname}</h3><hr></th>
+						<th colspan="3" style="text-align: center;"><h3>${store.sname}</h3></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -55,8 +55,7 @@
 					</tr>
 				</tbody>
 			</table>
-			<hr />
-			<table style="text-align: left;">
+			<table class="table" style="text-align: left;">
 				<tr>
 					<th>사업자명</th>
 					<td>${store.oname}</td>
@@ -78,7 +77,6 @@
 					<td>${store.date}</td>
 				</tr>
 			</table>
-			<hr />
 			<button id="changepw_btn">비밀번호 변경</button>
 		</div>
 	</div>

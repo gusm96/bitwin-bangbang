@@ -90,13 +90,18 @@ public class MemberService {
 
 	public int searchByPw(SearchPassword searchPw) {
 		int resultCnt = 0;
+		
 		dao = template.getMapper(MemberDao.class);
+		
 		if (dao.selectCountByEmailUserId(searchPw) > 0) {
+			// 임시비밀번호 8자리 생성 (문자, 기호, 숫자)
 			String password = ramdomPw.getRamdomPassword(8);
-			resultCnt = mailSender.sendPw(searchPw.getEmail(), password);
-			String bpw = bcrypt.encode(password);
-			searchPw.setBpw(bpw);
+			// 임시비밀번호 암호화
+			searchPw.setBpw(bcrypt.encode(password));
+			// 변경된 임시번호로 회원정보 업데이트
 			dao.updatePassword2(searchPw);
+			// 메일로 임시비밀번호 전송
+			resultCnt = mailSender.sendPw(searchPw.getEmail(), password);
 		}
 
 		return resultCnt;

@@ -15,7 +15,7 @@
 <style type="text/css">
 #main_container{
 	width: 300px;
-	padding-bottom: 50px;
+	padding-bottom: 20px;
 }
 form * input{
 margin-bottom: 5px;
@@ -41,6 +41,7 @@ margin-bottom: 5px;
 					<button type="submit" class="w-100 btn btn-lg btn-primary">로그인</button>
 				</div>
 			</form>
+			<br>
 			<div>
 				<a href="${pageContext.request.contextPath}/login/store/search/id">아이디
 					찾기</a> <a href="${pageContext.request.contextPath}/login/store/search/pw">비밀번호

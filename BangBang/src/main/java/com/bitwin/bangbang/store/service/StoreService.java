@@ -46,7 +46,6 @@ public class StoreService {
 		dao = template.getMapper(StoreDao.class);
 
 		store = dao.selectByStoreId2(loginReq.getStoreId());
-		System.out.println("store : " + store);
 
 		if (store == null) {
 			// 아이디 또는 비밀번호 확인
@@ -68,14 +67,12 @@ public class StoreService {
 
 	public Store getStoreInfo(HttpSession session) {
 		Store store = null;
+		
 		StoreLoginInfo loginInfo = (StoreLoginInfo) session.getAttribute("storeInfo");
-		String storeId = loginInfo.getStoreId();
 
 		dao = template.getMapper(StoreDao.class);
 
-		store = dao.selectByStoreId2(storeId);
-
-		System.out.println(store);
+		store = dao.selectByStoreId2(loginInfo.getStoreId());
 
 		return store;
 	}
@@ -97,14 +94,12 @@ public class StoreService {
 	public int changePw(StorePassword storePw, String currentPw) {
 		int resultCnt = 0;
 		String storeId = storePw.getStoreId();
-		System.out.println(storePw);
 
 		dao = template.getMapper(StoreDao.class);
 
 		if (checkPw(storeId, currentPw).equals("Y")) {
 			String bpw = bcrypt.encode(storePw.getNewPw1());
 			storePw.setNewPw1(bpw);
-			System.out.println("변경할 비빌번호: " +storePw);
 			resultCnt = dao.updatePassword(storePw);
 		}
 
@@ -113,10 +108,10 @@ public class StoreService {
 
 	public int storeEditRequest(StoreEditRequest editRequest, HttpSession session) {
 		int resultCnt = 0;
+		
 		StoreLoginInfo loginInfo = (StoreLoginInfo) session.getAttribute("storeInfo");
 		
 		editRequest.setSidx(loginInfo.getSidx());
-		System.out.println(editRequest);
 		
 		dao = template.getMapper(StoreDao.class);
 		
@@ -141,13 +136,18 @@ public class StoreService {
 
 	public int searchByPw(StoreSearchPassword searchPw) {
 		int resultCnt = 0;
+		
 		dao = template.getMapper(StoreDao.class);
+		
 		if(dao.selectCountByEmailStoreId(searchPw) > 0) {
+			// 임시비밀번호 8자리 생성 (문자, 기호, 숫자)
 			String password = ramdomPw.getRamdomPassword(8);
-			resultCnt = mailSender.sendStorePw(searchPw.getEmail(), password);
-			String bpw = bcrypt.encode(password);
-			searchPw.setBpw(bpw);
+			// 임시비밀번호 암호화
+			searchPw.setBpw(bcrypt.encode(password));
+			// 임시비밀번호로 가맹점 정보 update
 			dao.updatePassword2(searchPw);
+			// 가맹점 이메일로 임시비밀번호 전송
+			resultCnt = mailSender.sendStorePw(searchPw.getEmail(), password);
 		}
 		
 		return resultCnt;
