@@ -10,7 +10,6 @@ pageEncoding="UTF-8"%>
       #main_container {
         padding: 20px 20px;
       }
-
     </style>
   </head>
   <body>
@@ -21,8 +20,9 @@ pageEncoding="UTF-8"%>
         <h3>가맹점 정보 수정 요청</h3>
         <hr />
         <form method="post">
+          <input type="hidden" name="oemail" value="${store.curInfo.oemail}" />
           <input type="hidden" name="sidx" value="${store.sidx}" />
-          <table class="table" style="text-align: left;">
+          <table class="table" style="text-align: left">
             <thead>
               <tr>
                 <th class="col">#</th>
@@ -82,10 +82,27 @@ pageEncoding="UTF-8"%>
     <%@include file="../../includes/bangbang-footer.jsp"%>
     <script>
       $("#cancel_btn").click(function () {
-        if (confirm("정말로 거절하시겠습니까?")) {
-          alert("요청을 거절하였습니다.");
-          location.href = "/bangbang/admin/store/${store.sidx}/cancel";
-        }
+        var reason = prompt("거절 사유를 입력해주세요.");
+        $.ajax({
+        	url: "${pageContext.request.contextPath}/admin/store/cancel",
+          type: "post",
+          data: {
+        	  sridx: `${store.sridx}`,
+            text: reason,
+          },
+          success: function (data) {
+
+            console.log("통신결과 : ", data);
+
+            if(data == "Y"){
+         	alert("요청을 거절하였습니다.");
+      location.href = "${pageConext.request.contextPath}/admin/store";
+            } else {
+            	alert("실패하였습니다.");
+            	location.reload();
+            }
+          },
+        });
       });
     </script>
   </body>

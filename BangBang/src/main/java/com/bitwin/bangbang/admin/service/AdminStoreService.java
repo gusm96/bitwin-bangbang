@@ -68,7 +68,8 @@ public class AdminStoreService {
 
 		return resultCnt;
 	}
-	// 가맹점 정보 리스트 
+
+	// 가맹점 정보 리스트
 	public StoreListView getStoreList(int currentPage) {
 		List<Store> list = null;
 
@@ -132,7 +133,7 @@ public class AdminStoreService {
 		dao = template.getMapper(StoreDao.class);
 
 		storeReq = dao.selectStoreEditReq(sridx);
-		
+
 		storeReq.setCurInfo(dao.selectStore(storeReq.getSidx()));
 
 		return storeReq;
@@ -146,8 +147,13 @@ public class AdminStoreService {
 		resultCnt = dao.updateStore(editRequest);
 
 		if (resultCnt > 0) {
-			// 성공적으로 update 되었으므로 요청 리스트 에서 삭제
-			dao.deleteEditReq(editRequest.getSidx());
+			// 가맹점 정보 수정이 완료되었음을 알리는 메일 전송
+			System.out.println(editRequest.getOemail());
+			resultCnt = mailSender.sendStoreReq(editRequest.getOemail());
+			if (resultCnt > 0) {
+				// 성공적으로 update 되었으므로 요청 리스트 에서 삭제
+				dao.deleteEditReq(editRequest.getSidx());
+			}
 		}
 
 		return resultCnt;
@@ -155,12 +161,30 @@ public class AdminStoreService {
 
 	public int editReqCount() {
 		int resultCnt = 0;
-		
+
 		dao = template.getMapper(StoreDao.class);
-		
+
 		resultCnt = dao.editReqTotalCount();
-		
+
 		return resultCnt;
+	}
+
+	public String cancleEditReq(int sridx, String text) {
+		String result = "";
+
+		StoreEditRequest editRequest = new StoreEditRequest();
+
+		dao = template.getMapper(StoreDao.class);
+
+		editRequest = dao.selectStoreEditReq(sridx);
+
+		result = mailSender.sendCancle(editRequest.getOemail(), text);
+
+		if (result.equals("Y")) {
+			dao.deleteEditReq(editRequest.getSidx());
+		}
+
+		return result;
 	}
 
 }

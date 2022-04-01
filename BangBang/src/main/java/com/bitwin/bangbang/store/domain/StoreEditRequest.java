@@ -6,6 +6,7 @@ public class StoreEditRequest {
 	private String sname;
 	private String sphone;
 	private String address;
+	private String oemail;
 	private Store curInfo;
 
 	public int getSridx() {
@@ -47,6 +48,15 @@ public class StoreEditRequest {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	
+
+	public String getOemail() {
+		return oemail;
+	}
+
+	public void setOemail(String oemail) {
+		this.oemail = oemail;
+	}
 
 	public Store getCurInfo() {
 		return curInfo;
@@ -59,7 +69,9 @@ public class StoreEditRequest {
 	@Override
 	public String toString() {
 		return "StoreEditRequest [sridx=" + sridx + ", sidx=" + sidx + ", sname=" + sname + ", sphone=" + sphone
-				+ ", address=" + address + ", curInfo=" + curInfo + "]";
+				+ ", address=" + address + ", oemail=" + oemail + ", curInfo=" + curInfo + "]";
 	}
+
+	
 
 }

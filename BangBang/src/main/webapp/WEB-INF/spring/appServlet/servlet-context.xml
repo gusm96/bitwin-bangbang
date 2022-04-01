@@ -79,7 +79,7 @@
 		<beans:property name="port" value="587" /><!-- 465 or 25 -->
 		<beans:property name="username"
 			value="bitwin214@gmail.com" />
-		<beans:property name="password" value="bangbang214@" />
+		<beans:property name="password" value="@214bangbang" />
 		<beans:property name="defaultEncoding" value="utf-8" />
 		<beans:property name="javaMailProperties">
 			<beans:props>

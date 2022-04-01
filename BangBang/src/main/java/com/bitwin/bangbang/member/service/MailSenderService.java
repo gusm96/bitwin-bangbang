@@ -192,6 +192,7 @@ public class MailSenderService {
 
 		return resultCnt;
 	}
+
 	public int sendStorePw(String email, String password) {
 		int resultCnt = 1;
 
@@ -232,4 +233,83 @@ public class MailSenderService {
 		return resultCnt;
 	}
 
+	public int sendStoreReq(String email) {
+		int resultCnt = 1;
+
+		MimeMessage message = sender.createMimeMessage();
+
+		try {
+
+			// 메일 제목
+			message.setSubject("[안내] <방방술래> 가맹점 정보 수정 완료", "utf-8");
+
+			// 메일 내용 : html
+			String html = "<h1>가맹점 정보 수정 완료</h1>";
+			html += "<div>가맹점 정보가 요청하신 정보로 정상적으로 변경 완료 되었습니다.</div>";
+			html += "<a href=\"http://localhost:8080/bangbang/login/store\">방방술래 가맹점 로그인 바로가기</a> <br>";
+
+			message.setText(html, "utf-8", "html");
+
+			// from : 보내는 사람 설정 , 구글 정책은 setFrom 이 적용되지 않는다.
+			message.setFrom(new InternetAddress("bitwin214@gamil.com"));
+
+			// to : 받는 사람의 이메일 설정
+			message.addRecipient(RecipientType.TO, new InternetAddress(email, "회원님", "utf-8"));
+
+			// 메일 발송
+			sender.send(message);
+
+		} catch (AddressException e) {
+			System.out.println("메일발송 실패 : 이메일 형식에 맞지 않음!!!");
+		} catch (SendFailedException e) {
+			System.out.println("발송 실패 : " + e.getMessage());
+		} catch (MailSendException e) {
+			System.out.println("발송 실패 : " + e.getMessage());
+		} catch (MessagingException | UnsupportedEncodingException e) {
+			resultCnt = 0;
+			e.printStackTrace();
+		}
+
+		return resultCnt;
+	}
+
+	public String sendCancle(String email, String text) {
+		String result = "Y";
+
+		MimeMessage message = sender.createMimeMessage();
+
+		try {
+
+			// 메일 제목
+			message.setSubject("[안내] <방방술래> 가맹점 정보 수정요청 거절", "utf-8");
+
+			// 메일 내용 : html
+			String html = "<h1>신청하신 요청이 거절 되었습니다.</h1>";
+			html += "<h3>거절 사유</h3>";
+			html += "<div>: " + text + "</div>";
+			html += "<a href=\"http://localhost:8080/bangbang/login/store\">방방술래 가맹점 로그인 바로가기</a> <br>";
+
+			message.setText(html, "utf-8", "html");
+
+			// from : 보내는 사람 설정 , 구글 정책은 setFrom 이 적용되지 않는다.
+			message.setFrom(new InternetAddress("bitwin214@gamil.com"));
+
+			// to : 받는 사람의 이메일 설정
+			message.addRecipient(RecipientType.TO, new InternetAddress(email, "회원님", "utf-8"));
+
+			// 메일 발송
+			sender.send(message);
+
+		} catch (AddressException e) {
+			System.out.println("메일발송 실패 : 이메일 형식에 맞지 않음!!!");
+		} catch (SendFailedException e) {
+			System.out.println("발송 실패 : " + e.getMessage());
+		} catch (MailSendException e) {
+			System.out.println("발송 실패 : " + e.getMessage());
+		} catch (MessagingException | UnsupportedEncodingException e) {
+			result = "N";
+			e.printStackTrace();
+		}
+		return result;
+	}
 }
