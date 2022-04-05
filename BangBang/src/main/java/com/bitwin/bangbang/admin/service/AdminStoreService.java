@@ -169,21 +169,20 @@ public class AdminStoreService {
 		return resultCnt;
 	}
 
-	public String cancleEditReq(int sridx, String text) {
+	public String cancleEditReq(String sridx, String text) {
 		String result = "";
 
 		StoreEditRequest editRequest = new StoreEditRequest();
 
 		dao = template.getMapper(StoreDao.class);
-
-		editRequest = dao.selectStoreEditReq(sridx);
+		
+		editRequest = dao.selectStoreEditReq(Integer.parseInt(sridx));
 
 		result = mailSender.sendCancle(editRequest.getOemail(), text);
 
 		if (result.equals("Y")) {
 			dao.deleteEditReq(editRequest.getSidx());
 		}
-
 		return result;
 	}
 

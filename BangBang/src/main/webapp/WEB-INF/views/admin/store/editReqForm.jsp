@@ -5,6 +5,7 @@ pageEncoding="UTF-8"%>
   <head>
     <meta charset="UTF-8" />
     <title>가맹점 정보 수정 요청</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="/bangbang/resources/css/container.css" />
     <style type="text/css">
       #main_container {
@@ -81,27 +82,30 @@ pageEncoding="UTF-8"%>
     </div>
     <%@include file="../../includes/bangbang-footer.jsp"%>
     <script>
-      $("#cancel_btn").click(function () {
-        var reason = prompt("거절 사유를 입력해주세요.");
-        $.ajax({
-        	url: "${pageContext.request.contextPath}/admin/store/cancel",
-          type: "post",
-          data: {
-        	  sridx: `${store.sridx}`,
-            text: reason,
-          },
-          success: function (data) {
-
-            console.log("통신결과 : ", data);
-
-            if(data == "Y"){
-         	alert("요청을 거절하였습니다.");
-      location.href = "${pageConext.request.contextPath}/admin/store";
-            } else {
-            	alert("실패하였습니다.");
-            	location.reload();
-            }
-          },
+      $(document).ready(function () {
+        $("#cancel_btn").click(function () {
+          var reason = prompt("거절 사유를 입력해주세요.");
+          $.ajax({
+            type: "post",
+            url: "${pageContext.request.contextPath}/admin/store/cancel",
+            data: {
+              sridx: "${store.sridx}",
+              text: reason,
+            },
+            success: function (data) {
+              console.log("통신결과 : ", data);
+              if (data == "Y") {
+                alert("요청을 거절하였습니다.");
+                location.href = "bangbang/admin/store";
+              } else {
+                alert("실패하였습니다.");
+                location.reload();
+              }
+            },
+            error: function () {
+                console.log("비동기 통신 오류");
+              },
+          });
         });
       });
     </script>

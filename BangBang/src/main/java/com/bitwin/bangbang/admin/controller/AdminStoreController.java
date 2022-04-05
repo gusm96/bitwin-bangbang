@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -86,11 +87,9 @@ public class AdminStoreController {
 	}
 
 	// 요청 거절 사유 보내기
-	@GetMapping("/cancel")
+	@PostMapping("/cancel")
 	@ResponseBody
-	public String getEditReqCancel(@RequestParam("srdix") int sridx, @RequestParam("text") String text) {
-		System.out.println("sridx : " + sridx);
-		System.out.println("text : " + text);
+	public String getEditReqCancel(@RequestParam("sridx") String sridx,@RequestParam("text") String text) {
 		return storeService.cancleEditReq(sridx, text);
 	}
 }
