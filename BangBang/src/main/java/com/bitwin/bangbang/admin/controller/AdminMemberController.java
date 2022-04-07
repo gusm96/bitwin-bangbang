@@ -23,7 +23,7 @@ public class AdminMemberController {
 		model.addAttribute("member", memberService.getMemberList(currentPage));
 		return "admin/member/management";
 	}
-
+	// 회원정보 상세보기
 	@GetMapping("/{uidx}")
 	public String getMember(@PathVariable("uidx") int uidx, Model model) {
 		model.addAttribute("member", memberService.getMember(uidx));

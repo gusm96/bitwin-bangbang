@@ -35,7 +35,7 @@ public class AdminStoreController {
 	}
 
 	// 가맹점 등록
-	@GetMapping("/reg")
+	@GetMapping("/reg") 
 	public String getStoreRegForm() {
 		return "admin/store/regform";
 	}
@@ -73,13 +73,14 @@ public class AdminStoreController {
 
 		return "admin/store/editComplete";
 	}
-
+	
+	// 가맹점 정보 수정 요청 상세보기
 	@GetMapping("/{sridx}/req")
 	public String getEditReqStore(@PathVariable("sridx") int sridx, Model model) {
 		model.addAttribute("store", storeService.getEditRequest(sridx));
 		return "admin/store/editReqForm";
 	}
-
+	// 가맹점 정보 수정 요청 수락
 	@PostMapping("/{sridx}/req")
 	public String postEditReqStore(@PathVariable("sridx") int sridx, StoreEditRequest editRequest, Model model) {
 		model.addAttribute("result", storeService.acceptEditRequest(editRequest));

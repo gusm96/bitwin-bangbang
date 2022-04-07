@@ -158,7 +158,7 @@ public class AdminStoreService {
 
 		return resultCnt;
 	}
-
+	// 가맹점 정보 수정 요청 전체 수
 	public int editReqCount() {
 		int resultCnt = 0;
 
@@ -168,7 +168,8 @@ public class AdminStoreService {
 
 		return resultCnt;
 	}
-
+	
+	// 가맹점 정보 수정 요청 거절 
 	public String cancleEditReq(String sridx, String text) {
 		String result = "";
 

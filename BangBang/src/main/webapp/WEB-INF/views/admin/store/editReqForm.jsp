@@ -96,7 +96,7 @@ pageEncoding="UTF-8"%>
               console.log("통신결과 : ", data);
               if (data == "Y") {
                 alert("요청을 거절하였습니다.");
-                location.href = "bangbang/admin/store";
+                location.href = "/bangbang/admin/store";
               } else {
                 alert("실패하였습니다.");
                 location.reload();

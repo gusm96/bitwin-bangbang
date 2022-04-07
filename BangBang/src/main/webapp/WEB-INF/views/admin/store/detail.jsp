@@ -14,58 +14,57 @@
 	<%@include file="../../includes/admin-nav.jsp"%>
 	<div id="body_container">
 		<div id="main_container">
-			<table>
+			<table class="table">
 				<thead>
-					<tr>
-						<th colspan="2">${store.sname}</th>
+					<tr >
+						<th colspan="2" style="text-align: center;"><h3>${store.sname}</h3></th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody style="text-align: left;">
 					<tr>
-						<td>가맹점 사진</td>
+						<th>가맹점 사진</th>
 						<td><img
 							src="${pageContext.request.contextPath}/resources/uploadfile/${store.photo}"
 							style="width: 200px; height: 200px;"></td>
 					</tr>
 					<tr>
-						<td>아이디</td>
+						<th>아이디</th>
 						<td>${store.storeId}</td>
 					</tr>
 					<tr>
-						<td>가맹점명</td>
+						<th>가맹점명</th>
 						<td>${store.sname}</td>
 					</tr>
 					<tr>
-						<td>가맹점 전화번호</td>
+						<th>가맹점 전화번호</th>
 						<td>${store.sphone}</td>
 					</tr>
 					<tr>
-						<td>가맹점 주소</td>
+						<th>가맹점 주소</th>
 						<td>${store.address}</td>
 					</tr>
 					<tr>
-						<td>사업자명</td>
+						<th>사업자명</th>
 						<td>${store.oname}</td>
 					</tr>
 					<tr>
-						<td>사업자 전화번호</td>
+						<th>사업자 전화번호</th>
 						<td>${store.ophone}</td>
 					</tr>
 					<tr>
-						<td>사업자 이메일</td>
+						<th>사업자 이메일</th>
 						<td>${store.oemail}</td>
 					</tr>
 					<tr>
-						<td>사업자 번호</td>
+						<th>사업자 번호</th>
 						<td>${store.regnum}</td>
 					</tr>
 					<tr>
-						<td>가맹점 등록일</td>
+						<th>가맹점 등록일</th>
 						<td>${store.date}</td>
 					</tr>
 				</tbody>
 			</table>
-			<hr />
 			<button id="edit_btn" value="${store.sname}">정보수정</button>
 		</div>
 	</div>

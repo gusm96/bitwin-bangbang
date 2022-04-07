@@ -47,8 +47,6 @@ public class AdminMemberService {
 
 		member = dao.selectByIdx(uidx);
 
-		System.out.println(member);
-
 		return member;
 	}
 }

@@ -6,79 +6,97 @@
 <head>
 <meta charset="UTF-8" />
 <title>회원 상세정보</title>
+<%@ include file="/WEB-INF/views/frame/pageset.jsp"%>
 <link rel="stylesheet" href="/bangbang/resources/css/container.css">
-  <style type="text/css">
-      table{
-      	width: 100%;
-      }
-      img{
-      	border-radius: 15px;
-      }
-    </style>
+<style type="text/css">
+table {
+	width: 100%;
+}
+
+img {
+	border-radius: 15px;
+}
+</style>
 </head>
 <body>
-<%@include file="../../includes/admin-header.jsp"%>
-<%@include file="../../includes/admin-nav.jsp"%>
+	<%@include file="../../includes/admin-header.jsp"%>
+	<%@include file="../../includes/admin-nav.jsp"%>
 	<div id="body_container">
 		<div id="main_container">
-			<table>
+			<table class="table">
 				<thead>
 					<tr>
-						<th colspan="2" style="text-align: center;"><br>${member.username}<hr></th>
+						<th colspan="2" style="text-align: center;"><h3>${member.username}</h3></th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody style="text-align: left;">
 					<tr>
-						<td>프로필</td>
+						<th>프로필</th>
 						<td><c:if test="${member.sns == true}">
-								<img src="${member.photo}" width="200px" height="200px"><hr>
+								<img src="${member.photo}" width="200px" height="200px">
+
 							</c:if> <c:if test="${member.sns == false}">
 								<img
 									src="${pageContext.request.contextPath}/resources/uploadfile/${member.photo}"
-									width="200px" height="200px" /><hr>
+									width="200px" height="200px" />
+
 							</c:if></td>
 					</tr>
 					<c:if test="${member.sns == false }">
 						<tr>
-							<td>아이디<hr></td>
-							<td>${member.userid}<hr></td>
+							<th>아이디</th>
+							<td>${member.userid}</td>
 						</tr>
 					</c:if>
 					<tr>
-						<td>생년월일<hr></td>
-						<td>${member.birth}<hr></td>
+						<th>생년월일</th>
+						<td>${member.birth}</td>
 					</tr>
 					<tr>
-						<td>전화번호<hr></td>
-						<td>${member.phonenum}<hr></td>
+						<th>전화번호</th>
+						<td>${member.phonenum}</td>
 					</tr>
 					<tr>
-						<td>이메일<hr></td>
-						<td>${member.email}<hr></td>
+						<th>이메일</th>
+						<td>${member.email}</td>
 					</tr>
-					</table>
-					<br>
-					<table>
+				</tbody>
+			</table>
+			<br>
+			<table class="table">
+				<thead>
 					<tr>
-						<td colspan="2" style="font-weight: bolder;">광고 및 알람 수신동의<hr></td>
+						<th colspan="2" style="text-align: center;"><h4>광고 및 알람
+								수신동의</h4></th>
 					</tr>
+				</thead>
+				<tbody style="text-align: left;">
 					<tr>
-						<td>이메일</td>
+						<th>이메일</th>
 						<td>${member.enotify == true ? '허용' : '비허용'}</td>
 					</tr>
 					<tr>
-						<td>문자</td>
+						<th>문자</th>
 						<td>${member.mnotify == true ? '허용' : '비허용'}</td>
 					</tr>
 					<tr>
-						<td>카카오톡</td>
+						<th>카카오톡</th>
 						<td>${member.snotify == true ? '허용' : '비허용'}</td>
 					</tr>
+				</tbody>
+			</table>
+			<table class="table">
+				<thead>
 					<tr>
-						<td><hr>회원가입일<br></td>
-						<td><hr>${member.regdate}<br></td>
+						<th colspan="2" style="text-align: center;"><h4>회원가입일</h4></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td colspan="2">${member.regdate}</td>
 					</tr>
 				</tbody>
+
 			</table>
 		</div>
 	</div>
