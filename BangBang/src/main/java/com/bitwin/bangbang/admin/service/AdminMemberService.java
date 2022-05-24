@@ -34,9 +34,9 @@ public class AdminMemberService {
 		int totalCount = dao.selectTotalCount();
 
 		int index = (currentPage - 1) * COUNT_PER_PAGE;
-		
+
 		list = dao.selectAll(index, COUNT_PER_PAGE);
-		
+
 		return new MemberListView(currentPage, COUNT_PER_PAGE, COUNT_PER_PAGING_NUM, list, totalCount);
 	}
 
@@ -48,5 +48,23 @@ public class AdminMemberService {
 		member = dao.selectByIdx(uidx);
 
 		return member;
+	}
+
+	public MemberListView getMemberList(int currentPage, String keyword, String search) {
+
+		List<Member> list = null;
+
+		dao = template.getMapper(MemberDao.class);
+
+		int totalCount = dao.selectTotalCount();
+
+		int index = (currentPage - 1) * COUNT_PER_PAGE;
+
+		list = dao.searchMember(index, COUNT_PER_PAGE, keyword, search);
+		System.out.println(index + COUNT_PER_PAGE);
+		System.out.println(keyword);
+		System.out.println(search);
+		System.out.println(list);
+		return new MemberListView(currentPage, COUNT_PER_PAGE, COUNT_PER_PAGING_NUM, list, totalCount);
 	}
 }

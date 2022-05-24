@@ -35,7 +35,9 @@ public interface MemberDao {
 	public int updatePassword(MemberPassword memberPw);
 
 	public List<Member> selectAll(int index, int cOUNT_PER_PAGE);
-
+	// 검색기능
+	public List<Member> searchMember(int index, int cOUNT_PER_PAGE, String keyword, String search);
+	
 	public String searchId(String email);
 
 	public int selectCountByEmailUserId(SearchPassword searchPw);
@@ -44,5 +46,6 @@ public interface MemberDao {
 
 	@Select("select count(*) from user")
 	public int selectTotalCount();
+
 
 }

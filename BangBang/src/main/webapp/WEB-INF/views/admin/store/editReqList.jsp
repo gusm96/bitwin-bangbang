@@ -32,6 +32,11 @@ uri="http://java.sun.com/jsp/jstl/core"%>
             </tr>
           </thead>
           <tbody>
+          	<c:if test="${empty storeReq.list}">
+          		<tr>
+          		<td colspan="4" style="text-align: center;">요청이 없습니다.</td>
+          		</tr>
+          	</c:if>
             <c:forEach items="${storeReq.list}" var="sr">
               <tr>
                 <td>${sr.sridx}</td>

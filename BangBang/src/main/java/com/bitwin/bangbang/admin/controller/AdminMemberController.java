@@ -17,12 +17,21 @@ public class AdminMemberController {
 	@Autowired
 	private AdminMemberService memberService;
 
-	@GetMapping
-	public String getMemberList(@RequestParam(value = "p", defaultValue = "1") int currentPage, Model model) {
+	// 회원 리스트
+//	@GetMapping
+//	public String getMemberList(@RequestParam(value = "p", defaultValue = "1") int currentPage, Model model) {
 //		// List 에 Member 객채를 담아서 보낸다.
-		model.addAttribute("member", memberService.getMemberList(currentPage));
+//		model.addAttribute("member", memberService.getMemberList(currentPage));
+//		return "admin/member/management";
+//	}
+	@GetMapping
+	public String getMemberList(@RequestParam(value = "p", defaultValue = "1") int currentPage,
+			@RequestParam(value = "keyword", defaultValue = "userid") String keyword,
+			@RequestParam(value = "search", defaultValue = "_") String search, Model model) {
+		model.addAttribute("member", memberService.getMemberList(currentPage, keyword, search));
 		return "admin/member/management";
 	}
+
 	// 회원정보 상세보기
 	@GetMapping("/{uidx}")
 	public String getMember(@PathVariable("uidx") int uidx, Model model) {
