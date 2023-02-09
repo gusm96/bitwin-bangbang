@@ -28,6 +28,8 @@ public class AdminMemberController {
 	public String getMemberList(@RequestParam(value = "p", defaultValue = "1") int currentPage,
 			@RequestParam(value = "keyword", defaultValue = "userid") String keyword,
 			@RequestParam(value = "search", defaultValue = "_") String search, Model model) {
+		System.out.println("controller"+keyword);
+		System.out.println("controller"+search);
 		model.addAttribute("member", memberService.getMemberList(currentPage, keyword, search));
 		return "admin/member/management";
 	}

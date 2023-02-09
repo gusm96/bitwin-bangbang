@@ -25,20 +25,20 @@ public class AdminMemberService {
 	// 페이징 번호 노출 개수
 	private final int COUNT_PER_PAGING_NUM = 5;
 
-	public MemberListView getMemberList(int currentPage) {
-
-		List<Member> list = null;
-
-		dao = template.getMapper(MemberDao.class);
-
-		int totalCount = dao.selectTotalCount();
-
-		int index = (currentPage - 1) * COUNT_PER_PAGE;
-
-		list = dao.selectAll(index, COUNT_PER_PAGE);
-
-		return new MemberListView(currentPage, COUNT_PER_PAGE, COUNT_PER_PAGING_NUM, list, totalCount);
-	}
+//	public MemberListView getMemberList(int currentPage) {
+//
+//		List<Member> list = null;
+//
+//		dao = template.getMapper(MemberDao.class);
+//
+//		int totalCount = dao.selectTotalCount();
+//
+//		int index = (currentPage - 1) * COUNT_PER_PAGE;
+//
+//		list = dao.selectAll(index, COUNT_PER_PAGE);
+//
+//		return new MemberListView(currentPage, COUNT_PER_PAGE, COUNT_PER_PAGING_NUM, list, totalCount);
+//	}
 
 	public Member getMember(int uidx) {
 		Member member = null;
@@ -61,7 +61,6 @@ public class AdminMemberService {
 		int index = (currentPage - 1) * COUNT_PER_PAGE;
 
 		list = dao.searchMember(index, COUNT_PER_PAGE, keyword, search);
-		System.out.println(index + COUNT_PER_PAGE);
 		System.out.println(keyword);
 		System.out.println(search);
 		System.out.println(list);
