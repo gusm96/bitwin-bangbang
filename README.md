@@ -1,5 +1,5 @@
 # Bit - win Team
-<img src="https://github.com/gusm96/bitwin-bangbang/blob/main/image/image1.png" style="zoom: 50%; " />
+<img src="https://github.com/gusm96/bitwin-bangbang/blob/main/image/image1.png" style="zoom: 25%; " />
 ### Project : 방방술래 (주류 픽업 서비스 플랫폼)
 
 #### Member
