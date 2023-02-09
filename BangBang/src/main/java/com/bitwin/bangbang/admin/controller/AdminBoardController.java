@@ -41,14 +41,12 @@ public class AdminBoardController {
 	@RequestMapping(value = "update", method = RequestMethod.GET)
 	public String form(@RequestParam("iidx") int iidx, Model model) {
 		model.addAttribute("board", boardService.read(iidx));
-		System.out.println(boardService.read(iidx));
 		model.addAttribute("item", itemService.read(iidx));
 		return "board/update";
 	}
 
 	@RequestMapping(value = "update", method = RequestMethod.POST)
 	public String update(BoardEdit edit, HttpServletRequest request) throws IllegalStateException, IOException {
-		System.out.println(edit);
 		boardService.update(edit, request);
 		return "redirect:list";
 	}

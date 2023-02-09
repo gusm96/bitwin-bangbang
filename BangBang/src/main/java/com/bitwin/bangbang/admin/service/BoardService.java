@@ -65,7 +65,6 @@ public class BoardService {
 			reg.getPhoto2().transferTo(newFile);
 			reg.setPhoto2Name(newFileName);
 		}
-		System.out.println(savePath);
 
 		try {
 			dao = template.getMapper(BoardDAO.class);

@@ -5,21 +5,15 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.bitwin.bangbang.exception.LoginInvalidException;
-import com.bitwin.bangbang.member.domain.LoginInfo;
-import com.bitwin.bangbang.member.domain.SearchPassword;
 import com.bitwin.bangbang.store.domain.StoreEditRequest;
 import com.bitwin.bangbang.store.domain.StoreLoginInfo;
-import com.bitwin.bangbang.store.domain.StoreLoginRequest;
 import com.bitwin.bangbang.store.domain.StorePassword;
-import com.bitwin.bangbang.store.domain.StoreSearchPassword;
 import com.bitwin.bangbang.store.service.StoreService;
 
 @Controller

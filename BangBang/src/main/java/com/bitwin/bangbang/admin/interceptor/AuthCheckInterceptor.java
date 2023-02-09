@@ -27,7 +27,7 @@ public class AuthCheckInterceptor extends HandlerInterceptorAdapter {
 		String url = request.getRequestURL().toString();
 		
 		response.sendRedirect(
-				request.getContextPath()+"/login/admin?referer="+request.getRequestURL().toString());
+				request.getContextPath()+"/login/admin?referer="+url);
 		
 		return false;
 	}

@@ -148,7 +148,6 @@ public class AdminStoreService {
 
 		if (resultCnt > 0) {
 			// 가맹점 정보 수정이 완료되었음을 알리는 메일 전송
-			System.out.println(editRequest.getOemail());
 			resultCnt = mailSender.sendStoreReq(editRequest.getOemail());
 			if (resultCnt > 0) {
 				// 성공적으로 update 되었으므로 요청 리스트 에서 삭제

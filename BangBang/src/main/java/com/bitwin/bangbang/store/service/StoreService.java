@@ -8,9 +8,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.bitwin.bangbang.exception.LoginInvalidException;
-import com.bitwin.bangbang.member.dao.MemberDao;
-import com.bitwin.bangbang.member.domain.Member;
-import com.bitwin.bangbang.member.domain.SearchPassword;
 import com.bitwin.bangbang.member.service.MailSenderService;
 import com.bitwin.bangbang.member.service.RamdomPassword;
 import com.bitwin.bangbang.store.dao.StoreDao;
