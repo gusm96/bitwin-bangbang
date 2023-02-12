@@ -81,7 +81,6 @@ public class SimpleLoginService {
 				br.close();
 				bw.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		} else if (snsname.equals("naver")) {
@@ -133,7 +132,6 @@ public class SimpleLoginService {
 				br.close();
 				bw.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 

@@ -62,7 +62,6 @@ public class MemberController {
 	@PostMapping("/login")
 	public String postLogin(MemberLoginRequest loginRequest, HttpServletResponse res, HttpSession session)
 			throws LoginInvalidException {
-
 		return loginService.login(loginRequest, res, session);
 	}
 
