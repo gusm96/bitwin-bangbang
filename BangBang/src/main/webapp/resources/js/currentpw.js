@@ -19,8 +19,6 @@ $(document).ready(function () {
           currentpw: $("#current_pw").val(),
         },
         success: function (data) {
-          console.log("통신 결과 : ", data);
-
           if (data == "Y") {
             $("#msg").css("display", "block");
             $("#msg").text("현재 비밀번호가 일치합니다.");

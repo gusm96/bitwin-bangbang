@@ -17,11 +17,13 @@ $(document).ready(function () {
         $("#pmsg").css("display", "block");
         $("#pmsg").text("비밀번호가 일치합니다.");
         $("#pmsg").addClass("text_blue");
+        $("#submit").attr('disabled', false);
       } else {
         // 비밀번호 불일치 이벤트 실행
         $("#pmsg").css("display", "block");
         $("#pmsg").text("비밀번호가 일치하지 않습니다.");
         $("#pmsg").addClass("text_red");
+        $("#submit").attr('disabled', true);
       }
     }
   });

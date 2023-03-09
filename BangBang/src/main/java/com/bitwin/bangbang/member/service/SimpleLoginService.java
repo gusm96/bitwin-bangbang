@@ -54,10 +54,6 @@ public class SimpleLoginService {
 				bw.write(sb.toString());
 				bw.flush();
 
-				// 결과 코드가 200이라면 성공
-				int responseCode = conn.getResponseCode();
-				System.out.println("responseCode : " + responseCode);
-
 				// 요청을 통해 얻은 JSON타입의 Response 메세지 읽어오기
 				BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 				String line = "";
@@ -66,7 +62,6 @@ public class SimpleLoginService {
 				while ((line = br.readLine()) != null) {
 					result += line;
 				}
-				System.out.println("response body : " + result);
 
 				// Gson 라이브러리에 포함된 클래스로 JSON파싱 객체 생성
 				JsonParser parser = new JsonParser();
@@ -74,9 +69,6 @@ public class SimpleLoginService {
 
 				access_Token = element.getAsJsonObject().get("access_token").getAsString();
 				refresh_Token = element.getAsJsonObject().get("refresh_token").getAsString();
-
-				System.out.println("access_token : " + access_Token);
-				System.out.println("refresh_token : " + refresh_Token);
 
 				br.close();
 				bw.close();
@@ -105,10 +97,6 @@ public class SimpleLoginService {
 				bw.write(sb.toString());
 				bw.flush();
 
-				// 결과 코드가 200이라면 성공
-				int responseCode = conn.getResponseCode();
-				System.out.println("responseCode : " + responseCode);
-
 				// 요청을 통해 얻은 JSON타입의 Response 메세지 읽어오기
 				BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 				String line = "";
@@ -117,17 +105,12 @@ public class SimpleLoginService {
 				while ((line = br.readLine()) != null) {
 					result += line;
 				}
-				System.out.println("response body : " + result);
-
 				// Gson 라이브러리에 포함된 클래스로 JSON파싱 객체 생성
 				JsonParser parser = new JsonParser();
 				JsonElement element = parser.parse(result);
 
 				access_Token = element.getAsJsonObject().get("access_token").getAsString();
 				refresh_Token = element.getAsJsonObject().get("refresh_token").getAsString();
-
-				System.out.println("access_token : " + access_Token);
-				System.out.println("refresh_token : " + refresh_Token);
 
 				br.close();
 				bw.close();
@@ -154,9 +137,6 @@ public class SimpleLoginService {
 				// 요청에 필요한 Header에 포함될 내용
 				conn.setRequestProperty("Authorization", "Bearer " + access_Token);
 
-				int responseCode = conn.getResponseCode();
-				System.out.println("responseCode : " + responseCode);
-
 				BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 
 				String line = "";
@@ -165,13 +145,11 @@ public class SimpleLoginService {
 				while ((line = br.readLine()) != null) {
 					result += line;
 				}
-				System.out.println("response body : " + result);
 
 				JsonParser parser = new JsonParser();
 				JsonElement element = parser.parse(result);
 
 				JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
-				System.out.println("properties:" + properties);
 				JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
 
 				String nickname = properties.getAsJsonObject().get("nickname").getAsString();
@@ -199,9 +177,6 @@ public class SimpleLoginService {
 				// 요청에 필요한 Header에 포함될 내용
 				conn.setRequestProperty("Authorization", "Bearer " + access_Token);
 
-				int responseCode = conn.getResponseCode();
-				System.out.println("responseCode : " + responseCode);
-
 				BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 
 				String line = "";
@@ -210,14 +185,12 @@ public class SimpleLoginService {
 				while ((line = br.readLine()) != null) {
 					result += line;
 				}
-				System.out.println("response body : " + result);
-
 				JsonParser parser = new JsonParser();
 				JsonElement element = parser.parse(result);
 
 				JsonObject properties = element.getAsJsonObject().get("response").getAsJsonObject();
-				System.out.println("properties:" + properties);
-				//JsonObject naver_account = element.getAsJsonObject().get("naver_account").getAsJsonObject();
+				// JsonObject naver_account =
+				// element.getAsJsonObject().get("naver_account").getAsJsonObject();
 
 				String nickname = properties.getAsJsonObject().get("name").getAsString();
 				String profile = properties.getAsJsonObject().get("profile_image").getAsString();
@@ -253,7 +226,7 @@ public class SimpleLoginService {
 		LoginInfo loginInfo = null;
 
 		dao = template.getMapper(MemberDao.class);
-		
+
 		loginInfo = dao.selectByEmail(email);
 
 		return loginInfo;

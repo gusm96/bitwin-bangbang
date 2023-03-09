@@ -92,8 +92,7 @@ public class MemberRegRequest {
 	public void setSnotify(boolean snotify) {
 		this.snotify = snotify;
 	}
-	
-	
+
 	public String getPhotoName() {
 		return photoName;
 	}
@@ -108,7 +107,5 @@ public class MemberRegRequest {
 				+ username + ", birth=" + birth + ", phonenum=" + phonenum + ", email=" + email + ", enotify=" + enotify
 				+ ", mnotify=" + mnotify + ", snotify=" + snotify + ", photoName=" + photoName + "]";
 	}
-
-	
 
 }

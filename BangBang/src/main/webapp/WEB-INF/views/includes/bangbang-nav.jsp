@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <!-- Bootstrap Core CSS -->
-<link href="${pageContext.request.contextPath}/resources/hyunwoo/vendor/bootstrap/css/bootstrap.min.css"
+<link href="${pageContext.request.contextPath}/resources/getboot/bootstrap.min.css"
 	rel="stylesheet">
 
 <!-- MetisMenu CSS -->

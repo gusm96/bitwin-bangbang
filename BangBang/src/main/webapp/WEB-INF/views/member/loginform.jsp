@@ -6,15 +6,18 @@
 <head>
 <meta charset="UTF-8" />
 <title>로그인</title>
+<%@include file="/WEB-INF/views/frame/pageset.jsp"%>
 <link rel="stylesheet" href="/bangbang/resources/css/container.css">
 <style type="text/css">
 #main_container {
 	width: 343px;
 }
+
 form * {
 	margin-bottom: 5px;
 }
 </style>
+
 </head>
 <body>
 	<%@include file="../includes/bangbang-header.jsp"%>
@@ -27,13 +30,13 @@ form * {
 				<div class="form-floating">
 					<label for="userid">아이디</label> <input type="text"
 						class="form-control" name="userid" required
-						placeholder="아이디를 입력하세요."
+						onkeyup="charCheck(this)" placeholder="아이디를 입력하세요."
 						value="${cookie.saveId != null ? cookie.saveId.value : ''}" />
 				</div>
 				<div class="form-floating">
 					<label for="password">비밀번호</label> <input type="password"
 						name="password" class="form-control" required
-						placeholder="비밀번호를 입력하세요." />
+						onkeyup="charCheck(this)" placeholder="비밀번호를 입력하세요." />
 				</div>
 				<div>
 					<label>아이디 저장</label> <input type="checkbox" name="saveid"
@@ -72,5 +75,17 @@ form * {
 		</div>
 	</div>
 	<%@include file="../includes/bangbang-footer.jsp"%>
+
+	<script type="text/javascript">
+		/* 특수문자 및 공백 사용 불가. */
+		function charCheck(obj) {
+			var regExp = /[\{\}\[\]\/?.,;:|\)~`\-_+┼<>\\'\"\\\(\=]/gi;
+			var space = /\s/g;
+			if (regExp.test(obj.value) || obj.value.match(space)) {
+				alert("공백 및 특수문자(!@#$%^&*제외)는 사용할 수 없습니다.");
+				obj.value = obj.value.substring(0, obj.value.length - 1);
+			}
+		}
+	</script>
 </body>
 </html>

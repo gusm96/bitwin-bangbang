@@ -19,19 +19,19 @@ $(document).ready(function () {
           userid: $("#userid").val(),
         },
         success: function (data) {
-          console.log("통신 결과 : ", data);
-
           // Y | N
           if (data == "Y") {
             // 사용 가능한 아이디
             $("#msg").css("display", "block");
             $("#msg").text("사용가능한 아이디 입니다.");
             $("#msg").addClass("text_blue");
+            $("#submit").attr('disabled', false);
           } else {
             // 사용 불가능한 아이디
             $("#msg").css("display", "block");
             $("#msg").text("사용 불가능한 아이디 입니다.");
             $("#msg").addClass("text_red");
+            $("#submit").attr('disabled', true);
           }
         },
         error: function () {

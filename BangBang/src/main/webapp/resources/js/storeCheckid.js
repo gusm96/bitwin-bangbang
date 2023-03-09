@@ -19,8 +19,6 @@ $(document).ready(function () {
           storeId: $("#storeId").val(),
         },
         success: function (data) {
-          console.log("통신 결과 : ", data);
-
           // Y | N
           if (data == "Y") {
             // 사용 가능한 아이디

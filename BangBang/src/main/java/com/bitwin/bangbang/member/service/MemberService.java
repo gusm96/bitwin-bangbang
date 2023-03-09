@@ -2,6 +2,7 @@ package com.bitwin.bangbang.member.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLIntegrityConstraintViolationException;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -47,11 +48,11 @@ public class MemberService {
 		dao = template.getMapper(MemberDao.class);
 
 		resultCnt = dao.insertMember(regRequest);
-		// 회원가입 완료 메일 전송
+
 		if (mailSender.send(regRequest.getEmail(), regRequest.getUsername()) > 0) {
-			System.out.println("메일발송 완료");
+			System.out.println("메일전송 성공");
 		} else {
-			System.out.println("메일 발송 실패!");
+			System.out.println("메일전송 실패");
 		}
 
 		return resultCnt;
@@ -89,9 +90,9 @@ public class MemberService {
 
 	public int searchByPw(SearchPassword searchPw) {
 		int resultCnt = 0;
-		
+
 		dao = template.getMapper(MemberDao.class);
-		
+
 		if (dao.selectCountByEmailUserId(searchPw) > 0) {
 			// 임시비밀번호 8자리 생성 (문자, 기호, 숫자)
 			String password = ramdomPw.getRamdomPassword(8);

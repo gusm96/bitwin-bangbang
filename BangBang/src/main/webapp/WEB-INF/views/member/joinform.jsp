@@ -35,14 +35,14 @@ table {
 }
 </style>
 <script type="text/javascript"
-	src="<c:url value="/resources/js/checkid.js"/>"></script>
+	src="${pageContext.request.contextPath }/resources/js/checkid.js"></script>
 <script type="text/javascript"
-	src="<c:url value="/resources/js/checkemail.js"/>"></script>
+	src="${pageContext.request.contextPath }/resources/js/checkemail.js"></script>
 <script type="text/javascript"
-	src="<c:url value="/resources/js/checkpw.js"/>"></script>
+	src="${pageContext.request.contextPath }/resources/js/checkpw.js"></script>
 <script type="text/javascript"
-	src="<c:url value="/resources/js/reg.js"/>"></script>
-</head>
+	src="${pageContext.request.contextPath }/resources/js/reg.js"></script>
+</head> 
 <body>
 	<%@include file="../includes/bangbang-header.jsp"%>
 
@@ -51,7 +51,7 @@ table {
 		<div id="main_container">
 			<h3>일반 회원가입</h3>
 			<hr>
-			<form method="post" id="form">
+			<form method="POST" id="form">
 				<div class="form-floating">
 					<label>아이디</label> <input class="form-control" type="text"
 						name="userid" id="userid" required min="5" max="30" />
@@ -60,9 +60,10 @@ table {
 				<div class="form-floating">
 					<label>비밀번호</label> <input class="form-control" type="password"
 						name="password" id="password1" min="8" max="16" required />
-						<div style="font-size: small; color: gray;"># 영문, 숫자, 기호를 사용하여 8자 이상 16자 이하로 입력하세요.</div>
+					<div style="font-size: small; color: gray;"># 영문, 숫자, 기호를
+						사용하여 8자 이상 16자 이하로 입력하세요.</div>
 				</div>
-				
+
 				<div class="form-floating">
 					<label>비밀번호 확인</label> <input class="form-control" type="password"
 						name="password2" id="password2" min="8" max="16" required />

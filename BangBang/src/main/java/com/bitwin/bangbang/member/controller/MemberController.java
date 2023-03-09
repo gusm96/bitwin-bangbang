@@ -1,6 +1,7 @@
 package com.bitwin.bangbang.member.controller;
 
 import java.io.IOException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
@@ -143,8 +144,6 @@ public class MemberController {
 
 	@PostMapping("/join/general")
 	public String postGeneralMember(MemberRegRequest regRequest, Model model) {
-		System.out.println("regRequest: " + regRequest);
-
 		model.addAttribute("result", service.insertMember(regRequest));
 		return "member/regComplete";
 	}
@@ -156,12 +155,14 @@ public class MemberController {
 	public String checkEmail(@RequestParam("email") String email) {
 		return checkService.checkEmail(email);
 	}
+
 	// 아이디 체크
 	@GetMapping("/join/general/checkid")
 	@ResponseBody
 	public String checkId(@RequestParam("userid") String userId) {
 		return checkService.checkId(userId);
 	}
+
 	// 비밀번호 체크
 	@GetMapping("/mypage/pw/checkpw")
 	@ResponseBody
@@ -195,7 +196,7 @@ public class MemberController {
 		model.addAttribute("member", service.getMember(uidx));
 		return "member/mypage/editform";
 	}
-	
+
 	@PostMapping("/mypage")
 	public String postMemeberEdit(EditMember editMember, Model model, HttpServletRequest req)
 			throws IllegalStateException, IOException {
