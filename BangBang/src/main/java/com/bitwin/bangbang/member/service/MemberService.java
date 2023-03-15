@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.sql.SQLIntegrityConstraintViolationException;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -161,4 +162,6 @@ public class MemberService {
 
 		return resultCnt;
 	}
+
+	
 }

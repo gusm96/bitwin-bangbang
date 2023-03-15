@@ -1,7 +1,6 @@
 package com.bitwin.bangbang.member.controller;
 
 import java.io.IOException;
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
@@ -29,8 +28,8 @@ import com.bitwin.bangbang.member.domain.MemberRegRequest;
 import com.bitwin.bangbang.member.domain.NaverInfo;
 import com.bitwin.bangbang.member.domain.SearchPassword;
 import com.bitwin.bangbang.member.domain.SimpleRegRequest;
-import com.bitwin.bangbang.member.service.MemberLoginService;
 import com.bitwin.bangbang.member.service.MemberCheckService;
+import com.bitwin.bangbang.member.service.MemberLoginService;
 import com.bitwin.bangbang.member.service.MemberService;
 import com.bitwin.bangbang.member.service.SimpleLoginService;
 
@@ -87,6 +86,7 @@ public class MemberController {
 			// session 에 로그인 정보 등록
 			session.setAttribute("loginInfo", apiService.getLoginInfo(email));
 			session.setAttribute("access_Token", access_Token);
+			System.out.println("Access Toekn = "+access_Token);
 			session.setAttribute("loginType", snsname);
 			page = "redirect:/main/mainpage";
 		} else {

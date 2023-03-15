@@ -9,6 +9,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
 
+import javax.servlet.http.HttpSession;
+
+import org.apache.http.HttpConnection;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,15 +33,16 @@ public class SimpleLoginService {
 	private SqlSessionTemplate template;
 
 	public String getAccessToken(String snsname, String authorize_code) {
-		// 카카오 간편 로그인일 경우
 		String access_Token = "";
 		String refresh_Token = "";
+		// 카카오 간편 로그인일 경우
 		if (snsname.equals("kakao")) {
 			KakaoInfo kakao = new KakaoInfo();
 			String reqURL = "https://kauth.kakao.com/oauth/token";
 			try {
-				URL url = new URL(reqURL);
-				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+				URL url = new URL(reqURL); // URL 객체 생성
+				// url 의 프로토콜이 https:// 이기 때문에 HttpURLConnection객체로 캐스팅
+				HttpURLConnection conn = (HttpURLConnection) url.openConnection(); //
 
 				// POST 요청을 위해 기본값이 false인 setDoOutput을 true로
 				conn.setRequestMethod("POST");
@@ -49,10 +53,11 @@ public class SimpleLoginService {
 				StringBuilder sb = new StringBuilder();
 				sb.append("grant_type=authorization_code");
 				sb.append("&client_id=" + kakao.getClient_id());
+				sb.append("&client_secret=" + kakao.getClient_secret());
 				sb.append("&redirect_uri=" + kakao.getRedirect_uri());
 				sb.append("&code=" + authorize_code);
 				bw.write(sb.toString());
-				bw.flush();
+				bw.flush(); // 아직 BufferedWriter를 닫으면 안되기에 flush() 사용
 
 				// 요청을 통해 얻은 JSON타입의 Response 메세지 읽어오기
 				BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -60,6 +65,7 @@ public class SimpleLoginService {
 				String result = "";
 
 				while ((line = br.readLine()) != null) {
+					System.out.println(line);
 					result += line;
 				}
 
@@ -231,4 +237,5 @@ public class SimpleLoginService {
 
 		return loginInfo;
 	}
+	
 }

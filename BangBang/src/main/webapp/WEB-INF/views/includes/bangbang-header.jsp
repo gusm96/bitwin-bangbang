@@ -159,14 +159,13 @@
 						<c:if test="${not empty loginInfo }">
 							<div>
 								<c:if test="${loginType eq 'kakao'}">
-
+									
 									<a href="${pageContext.request.contextPath}/member/mypage"><img
 										id="profile" src="${loginInfo.photo}"></a>
 									<a
-										href="https://kauth.kakao.com/oauth/logout?client_id=${kakao.client_id}&logout_redirect_uri=${kakao.logout_redirect_uri}">로그아웃</a>
+										href="https://kauth.kakao.com/oauth/logout">로그아웃</a>
 								</c:if>
 								<c:if test="${loginType eq 'naver'}">
-
 									<a href="${pageContext.request.contextPath}/member/mypage"><img
 										id="profile" src="${loginInfo.photo}"></a>
 									<a href="${pageContext.request.contextPath}/member/logout">로그아웃</a>
