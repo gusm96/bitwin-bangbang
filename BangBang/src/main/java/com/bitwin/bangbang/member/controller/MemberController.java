@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.bitwin.bangbang.member.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,18 +21,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bitwin.bangbang.exception.ChangePwInvalidException;
 import com.bitwin.bangbang.exception.LoginInvalidException;
-import com.bitwin.bangbang.member.domain.EditMember;
-import com.bitwin.bangbang.member.domain.KakaoInfo;
-import com.bitwin.bangbang.member.domain.LoginInfo;
-import com.bitwin.bangbang.member.domain.MemberLoginRequest;
-import com.bitwin.bangbang.member.domain.MemberRegRequest;
-import com.bitwin.bangbang.member.domain.NaverInfo;
-import com.bitwin.bangbang.member.domain.SearchPassword;
-import com.bitwin.bangbang.member.domain.SimpleRegRequest;
 import com.bitwin.bangbang.member.service.MemberCheckService;
 import com.bitwin.bangbang.member.service.MemberLoginService;
 import com.bitwin.bangbang.member.service.MemberService;
-import com.bitwin.bangbang.member.service.SimpleLoginService;
 
 @Controller
 @RequestMapping("/member")
@@ -42,9 +34,6 @@ public class MemberController {
 
 	@Autowired
 	private MemberLoginService loginService;
-
-	@Autowired
-	private SimpleLoginService apiService;
 
 	@Autowired
 	private MemberCheckService checkService;
@@ -75,19 +64,18 @@ public class MemberController {
 			HttpSession session) {
 		String page = "";
 
-		String access_Token = apiService.getAccessToken(snsname, code);
-		HashMap<String, Object> userInfo = apiService.getUserInfo(snsname, access_Token);
+		ApiToken token = loginService.getAccessToken(snsname, code);
+		HashMap<String, Object> userInfo = loginService.getUserInfo(snsname, token.getAccess_Token());
 		// DB에 등록 된 회원인지 확인
 		String email = (String) userInfo.get("email");
 		
-		int countEmail = apiService.checkEmail(email);
+		int countEmail = loginService.checkEmail(email);
 
 		if (countEmail > 0) {
 			// email 로 회원 정보 가져온다.
 			// session 에 로그인 정보 등록
-			session.setAttribute("loginInfo", apiService.getLoginInfo(email));
-			session.setAttribute("access_Token", access_Token);
-			System.out.println("Access Toekn = "+access_Token);
+			session.setAttribute("loginInfo", loginService.getLoginInfo(email));
+			session.setAttribute("access_Token", token.getAccess_Token());
 			session.setAttribute("loginType", snsname);
 			page = "redirect:/main/mainpage";
 		} else {
@@ -109,6 +97,7 @@ public class MemberController {
 	// Kakao api 로그아웃
 	@GetMapping("/logout/oauth/kakao")
 	public String kakaoLogout(HttpSession session) {
+		loginService.kakaoLogout();
 		session.invalidate();
 		return "redirect:/main/mainpage";
 	}

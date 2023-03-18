@@ -17,6 +17,11 @@ public class PasswordStrongMeter {
 				break;
 			}
 		}
+		if(count == 1){
+			return PasswordStrong.WEAK;
+		}else if(count == 2){
+			return PasswordStrong.NORMAL;
+		}
 		return PasswordStrong.STRONG;
 	}
 }

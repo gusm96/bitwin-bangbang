@@ -158,8 +158,8 @@
 						</c:if>
 						<c:if test="${not empty loginInfo }">
 							<div>
-								<c:if test="${loginType eq 'kakao'}">
-									
+								<c:if test="${loginType eq ''}">
+									kakao
 									<a href="${pageContext.request.contextPath}/member/mypage"><img
 										id="profile" src="${loginInfo.photo}"></a>
 									<a
