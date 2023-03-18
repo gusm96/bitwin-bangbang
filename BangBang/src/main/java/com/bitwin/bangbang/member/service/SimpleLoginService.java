@@ -34,7 +34,7 @@ public class SimpleLoginService {
 
 	public String getAccessToken(String snsname, String authorize_code) {
 		String access_Token = "";
-		String refresh_Token = "";
+		String refresh_Token = ""; // access_Token 이 만료 되었을 때 새로 발급해주는 키의 역할
 		// 카카오 간편 로그인일 경우
 		if (snsname.equals("kakao")) {
 			KakaoInfo kakao = new KakaoInfo();

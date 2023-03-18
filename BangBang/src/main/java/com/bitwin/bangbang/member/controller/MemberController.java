@@ -79,6 +79,7 @@ public class MemberController {
 		HashMap<String, Object> userInfo = apiService.getUserInfo(snsname, access_Token);
 		// DB에 등록 된 회원인지 확인
 		String email = (String) userInfo.get("email");
+		
 		int countEmail = apiService.checkEmail(email);
 
 		if (countEmail > 0) {
