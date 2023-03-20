@@ -44,5 +44,14 @@ public class PasswordStrongMeterTest {
 	@DisplayName("Password에 숫자가 포함되었는가?")
 	public void PasswordContainingNumbers(){
 		pwAssertEquals(PasswordStrong.NORMAL, "abcd1234");
+		pwAssertEquals(PasswordStrong.WEAK, "12341234"); // 숫자만 있을 때
 	}
+
+	@Test
+	@DisplayName("Password에 대문자가 포함되었는가?")
+	public void PasswordContainigUppercase(){
+		pwAssertEquals(PasswordStrong.NORMAL, "ABCDabcd");
+		pwAssertEquals(PasswordStrong.WEAK,"ABCDEFGH"); // 대문자만 있을 때
+	}
+
 }
