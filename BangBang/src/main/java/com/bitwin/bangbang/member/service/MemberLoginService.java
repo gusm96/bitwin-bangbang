@@ -135,83 +135,90 @@ public class MemberLoginService {
 		// 요청하는 클라이언트마다 가진 정보가 다를 수 있기에 HashMap타입으로 선언
 		HashMap<String, Object> userInfo = new HashMap<>();
 		if (snsname.equals("kakao")) {
-			String reqURL = "https://kapi.kakao.com/v2/user/me";
-			try {
-				URL url = new URL(reqURL);
-				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-				conn.setRequestMethod("POST");
-
-				// 요청에 필요한 Header에 포함될 내용
-				conn.setRequestProperty("Authorization", "Bearer " + access_Token);
-
-				BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-
-				String line = "";
-				String result = "";
-
-				while ((line = br.readLine()) != null) {
-					result += line;
-				}
-
-				JsonParser parser = new JsonParser();
-				JsonElement element = parser.parse(result);
-
-				JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
-				JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
-
-				String nickname = properties.getAsJsonObject().get("nickname").getAsString();
-				String profile = properties.getAsJsonObject().get("profile_image").getAsString();
-				String email = kakao_account.getAsJsonObject().get("email").getAsString();
-				String range = kakao_account.getAsJsonObject().get("age_range").getAsString();
-
-				userInfo.put("nickname", nickname);
-				userInfo.put("profile", profile);
-				userInfo.put("email", email);
-				userInfo.put("reage", range);
-
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-
+			userInfo = getKakaoUserInfo(userInfo, access_Token);
 		} else if (snsname.equals("naver")) {
-			String reqURL = "https://openapi.naver.com/v1/nid/me";
+			userInfo = getNaverUserInfo(userInfo, access_Token);
+		}
+		return userInfo;
+	}
+	public HashMap<String, Object> getKakaoUserInfo(HashMap<String, Object> userInfo, String access_Token) {
+		String reqURL = "https://kapi.kakao.com/v2/user/me";
+		try {
+			URL url = new URL(reqURL);
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("POST");
 
-			try {
-				URL url = new URL(reqURL);
-				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-				conn.setRequestMethod("POST");
+			// 요청에 필요한 Header에 포함될 내용
+			conn.setRequestProperty("Authorization", "Bearer " + access_Token);
 
-				// 요청에 필요한 Header에 포함될 내용
-				conn.setRequestProperty("Authorization", "Bearer " + access_Token);
+			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 
-				BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			String line = "";
+			String result = "";
 
-				String line = "";
-				String result = "";
-
-				while ((line = br.readLine()) != null) {
-					result += line;
-				}
-				JsonParser parser = new JsonParser();
-				JsonElement element = parser.parse(result);
-
-				JsonObject properties = element.getAsJsonObject().get("response").getAsJsonObject();
-
-				String nickname = properties.getAsJsonObject().get("name").getAsString();
-				String profile = properties.getAsJsonObject().get("profile_image").getAsString();
-				String email = properties.getAsJsonObject().get("email").getAsString();
-				String range = properties.getAsJsonObject().get("age").getAsString();
-				String phonenum = properties.getAsJsonObject().get("mobile").getAsString();
-
-				userInfo.put("nickname", nickname);
-				userInfo.put("profile", profile);
-				userInfo.put("email", email);
-				userInfo.put("reage", range);
-				userInfo.put("phonenum", phonenum);
-
-			} catch (IOException e) {
-				e.printStackTrace();
+			while ((line = br.readLine()) != null) {
+				result += line;
 			}
+
+			JsonParser parser = new JsonParser();
+			JsonElement element = parser.parse(result);
+
+			JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
+			JsonObject kakao_account = element.getAsJsonObject().get("kakao_account").getAsJsonObject();
+
+			String nickname = properties.getAsJsonObject().get("nickname").getAsString();
+			String profile = properties.getAsJsonObject().get("profile_image").getAsString();
+			String email = kakao_account.getAsJsonObject().get("email").getAsString();
+			String range = kakao_account.getAsJsonObject().get("age_range").getAsString();
+
+			userInfo.put("nickname", nickname);
+			userInfo.put("profile", profile);
+			userInfo.put("email", email);
+			userInfo.put("reage", range);
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return userInfo;
+	}
+	public HashMap<String, Object> getNaverUserInfo(HashMap<String, Object> userInfo, String access_Token){
+		String reqURL = "https://openapi.naver.com/v1/nid/me";
+
+		try {
+			URL url = new URL(reqURL);
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setRequestMethod("POST");
+
+			// 요청에 필요한 Header에 포함될 내용
+			conn.setRequestProperty("Authorization", "Bearer " + access_Token);
+
+			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+			String line = "";
+			String result = "";
+
+			while ((line = br.readLine()) != null) {
+				result += line;
+			}
+			JsonParser parser = new JsonParser();
+			JsonElement element = parser.parse(result);
+
+			JsonObject properties = element.getAsJsonObject().get("response").getAsJsonObject();
+
+			String nickname = properties.getAsJsonObject().get("name").getAsString();
+			String profile = properties.getAsJsonObject().get("profile_image").getAsString();
+			String email = properties.getAsJsonObject().get("email").getAsString();
+			String range = properties.getAsJsonObject().get("age").getAsString();
+			String phonenum = properties.getAsJsonObject().get("mobile").getAsString();
+
+			userInfo.put("nickname", nickname);
+			userInfo.put("profile", profile);
+			userInfo.put("email", email);
+			userInfo.put("reage", range);
+			userInfo.put("phonenum", phonenum);
+
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 		return userInfo;
 	}
