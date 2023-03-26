@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.bitwin.bangbang.admin.dao.AdminDao;
 import com.bitwin.bangbang.admin.domain.Admin;
-import com.bitwin.bangbang.exception.LoginInvalidException;
+import com.bitwin.bangbang.member.exception.LoginInvalidException;
 
 @Service
 public class AdminLoginService {

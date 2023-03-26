@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.bitwin.mapper.paqMapper">
+<mapper namespace="com.bitwin.bangbang.serviceManagement.mapper.paqMapper">
 
-	<select id="getList" resultType="com.bitwin.domain.paqVO">
+	<select id="getList" resultType="com.bitwin.bangbang.serviceManagement.domain.paqVO">
 	
 	<![CDATA[ 
 	select * from paq where pqidx > 0
@@ -35,7 +35,7 @@
 
 
 
-	<select id="read" resultType="com.bitwin.domain.paqVO">
+	<select id="read" resultType="com.bitwin.bangbang.serviceManagement.domain.paqVO">
 		select * from paq
 		where
 		pqidx = #{pqidx}
@@ -60,7 +60,7 @@
 
 
 	<select id="memberGetListWithPaging"
-		resultType="com.bitwin.domain.paqVO">
+		resultType="com.bitwin.bangbang.serviceManagement.domain.paqVO">
  					 <![CDATA[  
  					 SELECT pqidx, title, content, regdate,updatedate
   					FROM paq
@@ -82,7 +82,7 @@
 
 
 	<select id="adminGetListWithPaging"
-		resultType="com.bitwin.domain.paqVO">
+		resultType="com.bitwin.bangbang.serviceManagement.domain.paqVO">
  					 <![CDATA[  
  					 SELECT pqidx, title, content, regdate,updatedate
   					FROM paq

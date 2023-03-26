@@ -1,9 +1,9 @@
-package com.bitwin.service;
+package com.bitwin.bangbang.serviceManagement.service;
 
 import java.util.List;
 
-import com.bitwin.domain.faqVO;
-import com.bitwin.domain.Criteria;
+import com.bitwin.bangbang.serviceManagement.domain.faqVO;
+import com.bitwin.bangbang.serviceManagement.domain.Criteria;
 
 public interface faqService {
 	

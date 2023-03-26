@@ -1,10 +1,13 @@
-package com.bitwin.bangbang;
+package com.bitwin.bangbang.serviceManagement.controller;
 
 import java.util.HashMap;
 
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
+import com.bitwin.bangbang.serviceManagement.domain.Criteria;
+import com.bitwin.bangbang.serviceManagement.domain.PageDTO;
+import com.bitwin.bangbang.serviceManagement.domain.paqVO;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -19,10 +22,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.bitwin.domain.Criteria;
-import com.bitwin.domain.PageDTO;
-import com.bitwin.domain.paqVO;
-import com.bitwin.service.paqService;
+import com.bitwin.bangbang.serviceManagement.service.paqService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -71,7 +71,7 @@ public class paqController {
 
 	@PostMapping("/reply-register")
 	public String replyRegister(paqVO paq, @ModelAttribute("cri") Criteria cri, @RequestParam("pqidx") int pqidx,
-			RedirectAttributes rttr) {
+								RedirectAttributes rttr) {
 
 		log.info("modify: " + paq);
 

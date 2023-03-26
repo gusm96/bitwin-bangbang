@@ -1,4 +1,4 @@
-package com.bitwin.bangbang.exception;
+package com.bitwin.bangbang.member.exception;
 
 public class LoginInvalidException extends Exception {
 	public LoginInvalidException(String message) {

@@ -1,9 +1,9 @@
-package com.bitwin.service;
+package com.bitwin.bangbang.serviceManagement.service;
 
 import java.util.List;
 
-import com.bitwin.domain.notice_boardVO;
-import com.bitwin.domain.Criteria;
+import com.bitwin.bangbang.serviceManagement.domain.Criteria;
+import com.bitwin.bangbang.serviceManagement.domain.notice_boardVO;
 
 public interface notice_boardService {
 	

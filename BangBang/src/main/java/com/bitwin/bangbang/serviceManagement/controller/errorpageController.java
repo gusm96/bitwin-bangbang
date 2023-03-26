@@ -1,4 +1,4 @@
-package com.bitwin.bangbang;
+package com.bitwin.bangbang.serviceManagement.controller;
 
 
 

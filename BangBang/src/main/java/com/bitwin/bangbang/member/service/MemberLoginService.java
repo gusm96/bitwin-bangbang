@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.bitwin.bangbang.exception.LoginInvalidException;
+import com.bitwin.bangbang.member.exception.LoginInvalidException;
 import com.bitwin.bangbang.member.dao.MemberDao;
 
 import java.io.*;

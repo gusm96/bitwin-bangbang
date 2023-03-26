@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.bitwin.bangbang.exception.ChangePwInvalidException;
-import com.bitwin.bangbang.exception.LoginInvalidException;
+import com.bitwin.bangbang.member.exception.ChangePwInvalidException;
+import com.bitwin.bangbang.member.exception.LoginInvalidException;
 import com.bitwin.bangbang.member.service.MemberCheckService;
 import com.bitwin.bangbang.member.service.MemberLoginService;
 import com.bitwin.bangbang.member.service.MemberService;

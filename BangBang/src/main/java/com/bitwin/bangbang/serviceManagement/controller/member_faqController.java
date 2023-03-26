@@ -1,16 +1,15 @@
-package com.bitwin.bangbang;
+package com.bitwin.bangbang.serviceManagement.controller;
 
 
+import com.bitwin.bangbang.serviceManagement.domain.Criteria;
+import com.bitwin.bangbang.serviceManagement.domain.PageDTO;
+import com.bitwin.bangbang.serviceManagement.service.faqService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import com.bitwin.domain.Criteria;
-import com.bitwin.domain.PageDTO;
-import com.bitwin.service.faqService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;

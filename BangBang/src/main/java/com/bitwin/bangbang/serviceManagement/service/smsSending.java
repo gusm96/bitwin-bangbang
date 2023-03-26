@@ -1,4 +1,4 @@
-package com.bitwin.bangbang;
+package com.bitwin.bangbang.serviceManagement.service;
 
 import java.util.HashMap;
 import org.json.simple.JSONObject;

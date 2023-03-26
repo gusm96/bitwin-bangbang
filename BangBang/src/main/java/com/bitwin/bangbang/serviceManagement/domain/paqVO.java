@@ -1,4 +1,4 @@
-package com.bitwin.domain;
+package com.bitwin.bangbang.serviceManagement.domain;
 
 import java.util.Date;
 

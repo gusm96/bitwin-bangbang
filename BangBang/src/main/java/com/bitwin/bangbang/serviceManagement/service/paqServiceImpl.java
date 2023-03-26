@@ -1,12 +1,11 @@
-package com.bitwin.service;
+package com.bitwin.bangbang.serviceManagement.service;
 
 import java.util.List;
 
+import com.bitwin.bangbang.serviceManagement.domain.Criteria;
+import com.bitwin.bangbang.serviceManagement.domain.paqVO;
+import com.bitwin.bangbang.serviceManagement.mapper.paqMapper;
 import org.springframework.stereotype.Service;
-
-import com.bitwin.domain.paqVO;
-import com.bitwin.domain.Criteria;
-import com.bitwin.mapper.paqMapper;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;

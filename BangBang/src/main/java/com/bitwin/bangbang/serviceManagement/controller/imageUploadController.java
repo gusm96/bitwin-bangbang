@@ -1,4 +1,4 @@
-package com.bitwin.bangbang;
+package com.bitwin.bangbang.serviceManagement.controller;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -7,45 +7,24 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.UUID;
 
-import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import org.json.simple.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.bitwin.domain.paqVO;
-import com.bitwin.bangbang.member.domain.LoginInfo;
-import com.bitwin.domain.Criteria;
-import com.bitwin.domain.PageDTO;
-import com.bitwin.service.paqService;
+import com.bitwin.bangbang.serviceManagement.service.paqService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
-import net.nurigo.java_sdk.api.Message;
-import net.nurigo.java_sdk.exceptions.CoolsmsException;
-
-
 
 
 @Controller

@@ -2,10 +2,10 @@
 <!DOCTYPE mapper
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.bitwin.mapper.faqMapper">
+<mapper namespace="com.bitwin.bangbang.serviceManagement.mapper.faqMapper">
 
 	<select id="getList"
-		resultType="com.bitwin.domain.faqVO">
+		resultType="com.bitwin.bangbang.serviceManagement.domain.faqVO">
 	
 	<![CDATA[ 
 	select * from faq where fqidx > 0
@@ -29,7 +29,7 @@
 	</insert>
 
 
-	<select id="read" resultType="com.bitwin.domain.faqVO">
+	<select id="read" resultType="com.bitwin.bangbang.serviceManagement.domain.faqVO">
 		select * from faq
 		where fqidx = #{fqidx}
 	</select>
@@ -55,7 +55,7 @@
 
 
 	<select id="getListWithPaging"
-		resultType="com.bitwin.domain.faqVO">
+		resultType="com.bitwin.bangbang.serviceManagement.domain.faqVO">
  					 <![CDATA[  
  					 SELECT fqidx, title, content, regdate,updatedate
   					FROM faq

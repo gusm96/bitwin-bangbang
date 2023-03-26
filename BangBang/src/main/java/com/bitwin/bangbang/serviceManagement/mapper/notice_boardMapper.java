@@ -1,9 +1,9 @@
-package com.bitwin.mapper;
+package com.bitwin.bangbang.serviceManagement.mapper;
 
 import java.util.List;
 
-import com.bitwin.domain.notice_boardVO;
-import com.bitwin.domain.Criteria;
+import com.bitwin.bangbang.serviceManagement.domain.notice_boardVO;
+import com.bitwin.bangbang.serviceManagement.domain.Criteria;
 
 public interface notice_boardMapper {
 	

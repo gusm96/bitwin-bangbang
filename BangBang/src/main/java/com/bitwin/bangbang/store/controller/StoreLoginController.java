@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.bitwin.bangbang.exception.LoginInvalidException;
+import com.bitwin.bangbang.member.exception.LoginInvalidException;
 import com.bitwin.bangbang.store.domain.StoreLoginRequest;
 import com.bitwin.bangbang.store.domain.StoreSearchPassword;
 import com.bitwin.bangbang.store.service.StoreService;

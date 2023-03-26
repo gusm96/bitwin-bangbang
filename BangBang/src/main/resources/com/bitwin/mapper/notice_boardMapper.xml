@@ -2,10 +2,10 @@
 <!DOCTYPE mapper
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.bitwin.mapper.notice_boardMapper">
+<mapper namespace="com.bitwin.bangbang.serviceManagement.mapper.notice_boardMapper">
 
 	<select id="getList"
-		resultType="com.bitwin.domain.notice_boardVO">
+		resultType="com.bitwin.bangbang.serviceManagement.domain.notice_boardVO">
 	
 	<![CDATA[ 
 	select * from notice_board where nidx > 0
@@ -29,7 +29,7 @@
 	</insert>
 
 
-	<select id="read" resultType="com.bitwin.domain.notice_boardVO">
+	<select id="read" resultType="com.bitwin.bangbang.serviceManagement.domain.notice_boardVO">
 		select * from notice_board
 		where nidx = #{nidx}
 	</select>
@@ -55,7 +55,7 @@
 
 
 	<select id="getListWithPaging"
-		resultType="com.bitwin.domain.notice_boardVO">
+		resultType="com.bitwin.bangbang.serviceManagement.domain.notice_boardVO">
  					 <![CDATA[  
  					 SELECT nidx, title, content, regdate,updatedate
   					FROM notice_board

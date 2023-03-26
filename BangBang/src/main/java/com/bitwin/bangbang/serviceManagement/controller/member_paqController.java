@@ -1,7 +1,10 @@
-package com.bitwin.bangbang;
+package com.bitwin.bangbang.serviceManagement.controller;
 
 import javax.servlet.http.HttpSession;
 
+import com.bitwin.bangbang.serviceManagement.domain.Criteria;
+import com.bitwin.bangbang.serviceManagement.domain.PageDTO;
+import com.bitwin.bangbang.serviceManagement.domain.paqVO;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,11 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.bitwin.domain.paqVO;
 import com.bitwin.bangbang.member.domain.LoginInfo;
-import com.bitwin.domain.Criteria;
-import com.bitwin.domain.PageDTO;
-import com.bitwin.service.paqService;
+import com.bitwin.bangbang.serviceManagement.service.paqService;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;

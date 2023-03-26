@@ -32,7 +32,6 @@ public class MailSenderService {
 		MimeMessage message = sender.createMimeMessage();
 
 		try {
-
 			// 메일 제목
 			message.setSubject("[안내] " + userName + " 님 회원가입을 축하합니다.", "utf-8");
 
