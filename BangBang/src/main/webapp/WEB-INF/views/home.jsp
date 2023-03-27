@@ -51,51 +51,51 @@ pageEncoding="UTF-8"%>
           <div id="bar-image-container">
             <div class="bar-images hide--mobile">
               <img
-                src="${pageContext.request.contextPath}/resources/hyunwoo/imageContainer/1.jpg"
+                src="${pageContext.request.contextPath}/resources/imageContainer/1.jpg"
                 alt="1"
                 class="bar-image"
               />
               <img
-                src="${pageContext.request.contextPath}/resources/hyunwoo/imageContainer/2.jpg"
+                src="${pageContext.request.contextPath}/resources/imageContainer/2.jpg"
                 alt="2"
                 class="bar-image"
               />
               <img
-                src="${pageContext.request.contextPath}/resources/hyunwoo/imageContainer/3.jpg"
+                src="${pageContext.request.contextPath}/resources/imageContainer/3.jpg"
                 alt="3"
                 class="bar-image"
               />
             </div>
             <div class="bar-images hide--mobile">
               <img
-                src="${pageContext.request.contextPath}/resources/hyunwoo/imageContainer/4.jpg"
+                src="${pageContext.request.contextPath}/resources/imageContainer/4.jpg"
                 alt="4"
                 class="bar-image"
               />
               <img
-                src="${pageContext.request.contextPath}/resources/hyunwoo/imageContainer/5.jpg"
+                src="${pageContext.request.contextPath}/resources/imageContainer/5.jpg"
                 alt="5"
                 class="bar-image"
               />
               <img
-                src="${pageContext.request.contextPath}/resources/hyunwoo/imageContainer/6.jpg"
+                src="${pageContext.request.contextPath}/resources/imageContainer/6.jpg"
                 alt="6"
                 class="bar-image"
               />
             </div>
             <div class="bar-images hide--mobile">
               <img
-                src="${pageContext.request.contextPath}/resources/hyunwoo/imageContainer/7.jpg"
+                src="${pageContext.request.contextPath}/resources/imageContainer/7.jpg"
                 alt="7"
                 class="bar-image"
               />
               <img
-                src="${pageContext.request.contextPath}/resources/hyunwoo/imageContainer/8.jpg"
+                src="${pageContext.request.contextPath}/resources/imageContainer/8.jpg"
                 alt="8"
                 class="bar-image"
               />
               <img
-                src="${pageContext.request.contextPath}/resources/hyunwoo/imageContainer/9.jpg"
+                src="${pageContext.request.contextPath}/resources/imageContainer/9.jpg"
                 alt="9"
                 class="bar-image"
               />

@@ -17,7 +17,6 @@ import lombok.extern.log4j.Log4j;
 @Controller
 @Log4j
 @RequestMapping("member/faq/*")
-@AllArgsConstructor
 public class member_faqController {
 	
 	private faqService service;

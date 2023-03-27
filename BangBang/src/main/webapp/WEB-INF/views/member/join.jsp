@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원가입</title>
-<link rel="stylesheet" href="/bangbang/resources/css/container.css">
+<link rel="stylesheet" href="/resources/css/container.css">
 </head>
 <body>
 	<!-- 마이페이지 네비 -->

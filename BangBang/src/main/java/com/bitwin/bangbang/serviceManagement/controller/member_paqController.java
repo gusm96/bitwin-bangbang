@@ -23,7 +23,6 @@ import lombok.extern.log4j.Log4j;
 @Controller
 @Log4j
 @RequestMapping("/member/paq/*")
-@AllArgsConstructor
 public class member_paqController {
 
 	private paqService service;

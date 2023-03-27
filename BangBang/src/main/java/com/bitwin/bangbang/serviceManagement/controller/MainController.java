@@ -17,7 +17,6 @@ import lombok.AllArgsConstructor;
  */
 @Controller
 @RequestMapping("/main/*")
-@AllArgsConstructor
 public class MainController {
 	
 	

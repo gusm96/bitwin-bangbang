@@ -13,43 +13,31 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
 @Controller
 @Log4j
 @RequestMapping("admin/faq/*")
-@AllArgsConstructor
 public class faqController {
-	
+
 	private faqService service;
 	
 	@GetMapping("/list")
 	public void list(Criteria cri, Model model) {
-		
-		
-		
+
 		model.addAttribute("list", service.getList(cri));
-//		model.addAttribute("pageMaker", new PageDTO(cri, 200));
-		
+
 		int total = service.getTotal(cri);
 		
 		log.info("total: " + total);
 		
 		model.addAttribute("pageMaker", new PageDTO(cri, total));
 
-		
 	}
-	
-	
-	
-	
-	
-	
+
 	@PostMapping("/register")
 	public String register(faqVO faq, RedirectAttributes rttr) {
-		
-		
+
 		service.register(faq);
 		
 		rttr.addFlashAttribute("result", faq.getFqidx());
@@ -98,19 +86,4 @@ public class faqController {
 		
 		return "redirect:/admin/faq/list";
 	}
-	
-	@GetMapping("/register")
-	public void register() {
-		
-	}
-	
-	
-
-	
-	
-	
-	
-	
-	
-	
 }

@@ -28,10 +28,6 @@
 	href="${pageContext.request.contextPath}/resources/hyunwoo/vendor/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet" type="text/css">
 
-<script src="https://kit.fontawesome.com/ba424bfb3c.js"
-	crossorigin="anonymous"></script>
-
-	
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditor/ckeditor.js"></script>
 	
 <div class="container" style="padding-top: 10px;">

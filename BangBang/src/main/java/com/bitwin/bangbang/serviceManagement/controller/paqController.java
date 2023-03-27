@@ -32,7 +32,6 @@ import net.nurigo.java_sdk.exceptions.CoolsmsException;
 @Controller
 @Log4j
 @RequestMapping("admin/paq/*")
-@AllArgsConstructor
 public class paqController {
 
 	private paqService service;

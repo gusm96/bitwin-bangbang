@@ -12,7 +12,6 @@ import lombok.extern.log4j.Log4j;
 
 @Log4j
 @Service
-@AllArgsConstructor
 public class notice_boardServiceImpl implements notice_boardService {
 	
 	//Spring 4.3 이상에서 자동 처리

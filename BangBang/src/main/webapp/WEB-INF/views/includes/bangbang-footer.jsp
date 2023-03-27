@@ -7,7 +7,7 @@
 		<!-- 본문가리지 않는 플로팅배너 모듈 -->
 		<a style="POSITION: fixed; RIGHT: 1%; BOTTOM: 2%;"
 			href="http://pf.kakao.com/_Cxjpwb/chat" target="_blank"> <img
-			src="${pageContext.request.contextPath}/resources/hyunwoo/imageContainer/kakaoLogo.png"
+			src="${pageContext.request.contextPath}/resources/imageContainer/kakaoLogo.png"
 			style="width: 60px; height: 60px;">
 		</a>
 		<!-- 모듈 끝 -->

@@ -7,7 +7,7 @@
 <meta charset="UTF-8" />
 <title>로그인</title>
 <%@include file="/WEB-INF/views/frame/pageset.jsp"%>
-<link rel="stylesheet" href="/bangbang/resources/css/container.css">
+<link rel="stylesheet" href="/resources/css/container.css">
 <style type="text/css">
 #main_container {
 	width: 343px;
