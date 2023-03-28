@@ -68,6 +68,31 @@ public class MemberLoginService {
 
 		return viewName;
 	}
+	public String socialLogin(HttpSession session, String snsname, String code){
+		String page = "";
+
+		ApiToken token = getAccessToken(snsname, code);
+		HashMap<String, Object> userInfo = getUserInfo(snsname, token.getAccess_Token());
+		// DB에 등록 된 회원인지 확인
+		String email = (String) userInfo.get("email");
+
+		int countEmail = checkEmail(email);
+
+		if (countEmail > 0) {
+			// email 로 회원 정보 가져온다.
+			// session 에 로그인 정보 등록
+			session.setAttribute("loginInfo", getLoginInfo(email));
+			session.setAttribute("access_Token", token.getAccess_Token());
+			session.setAttribute("loginType", snsname);
+			page = "redirect:/main/mainpage";
+		} else {
+			// userInfo 값을 joinform 으로 전달해 회원가입 실행.
+			session.setAttribute("userInfo", userInfo);
+			page = "redirect:/member/join/simple-reg";
+		}
+
+		return page;
+	}
 	public ApiToken getAccessToken(String snsname, String authorize_code) {
 		ApiToken token = new ApiToken();
 		SnsApi api = setApiInfo(snsname);

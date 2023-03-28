@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8" />
 <title>가맹점 정보 수정</title>
-<link rel="stylesheet" href="/bangbang/resources/css/container.css">
+<link rel="stylesheet" href="/resources/css/container.css">
 <%@include file="/WEB-INF/views/frame/pageset.jsp"%>
 </head>
 <body>

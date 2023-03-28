@@ -6,7 +6,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
   <head>
     <meta charset="UTF-8" />
     <title>가맹점 정보수정 요청</title>
-    <link rel="stylesheet" href="/bangbang/resources/css/container.css" />
+    <link rel="stylesheet" href="/resources/css/container.css" />
     <style type="text/css">
       #main_container {
         width: 700px;

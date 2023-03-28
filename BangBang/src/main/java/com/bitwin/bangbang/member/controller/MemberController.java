@@ -1,23 +1,17 @@
 package com.bitwin.bangbang.member.controller;
 
 import java.io.IOException;
-import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.bitwin.bangbang.member.domain.*;
+import com.bitwin.bangbang.member.service.PasswordStrengthCheck;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import com.bitwin.bangbang.member.exception.ChangePwInvalidException;
 import com.bitwin.bangbang.member.exception.LoginInvalidException;
@@ -37,6 +31,9 @@ public class MemberController {
 
 	@Autowired
 	private MemberCheckService checkService;
+
+	@Autowired
+	private PasswordStrengthCheck pwStrengthCheck;
 
 	// 로그인
 	@GetMapping("/login")
@@ -62,29 +59,7 @@ public class MemberController {
 	@GetMapping("/login/oauth/{snsname}")
 	public String socialLogin(@PathVariable("snsname") String snsname, @RequestParam("code") String code,
 			HttpSession session) {
-		String page = "";
-
-		ApiToken token = loginService.getAccessToken(snsname, code);
-		HashMap<String, Object> userInfo = loginService.getUserInfo(snsname, token.getAccess_Token());
-		// DB에 등록 된 회원인지 확인
-		String email = (String) userInfo.get("email");
-		
-		int countEmail = loginService.checkEmail(email);
-
-		if (countEmail > 0) {
-			// email 로 회원 정보 가져온다.
-			// session 에 로그인 정보 등록
-			session.setAttribute("loginInfo", loginService.getLoginInfo(email));
-			session.setAttribute("access_Token", token.getAccess_Token());
-			session.setAttribute("loginType", snsname);
-			page = "redirect:/main/mainpage";
-		} else {
-			// userInfo 값을 joinform 으로 전달해 회원가입 실행.
-			session.setAttribute("userInfo", userInfo);
-			page = "redirect:/member/join/simple-reg";
-		}
-
-		return page;
+		return loginService.socialLogin(session, snsname, code);
 	}
 
 	// 로그아웃
@@ -154,6 +129,11 @@ public class MemberController {
 	}
 
 	// 비밀번호 체크
+	@RequestMapping(method = RequestMethod.GET,value = "join/general/checkpw", produces = "application/text; charset=utf8")
+	@ResponseBody
+	public String pwStrengthCheck(@RequestParam("password") String password){
+		return pwStrengthCheck.ConfirmPasswordConditions(password).getValue();
+	}
 	@GetMapping("/mypage/pw/checkpw")
 	@ResponseBody
 	public String checkPw(@RequestParam("currentpw") String currentPw, HttpSession session) {

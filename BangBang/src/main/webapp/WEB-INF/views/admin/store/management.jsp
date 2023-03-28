@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <title>가맹점 관리</title>
 <%@ include file="/WEB-INF/views/frame/pageset.jsp"%>
-<link rel="stylesheet" href="/bangbang/resources/css/container.css">
+<link rel="stylesheet" href="/resources/css/container.css">
 <style type="text/css">
 #edit_req_box {
 	height: 30px;

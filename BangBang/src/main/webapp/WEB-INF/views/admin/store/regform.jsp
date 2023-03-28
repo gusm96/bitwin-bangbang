@@ -7,7 +7,7 @@
 <meta charset="UTF-8" />
 <title>가맹점 등록</title>
 <%@ include file="/WEB-INF/views/frame/pageset.jsp"%>
-<link rel="stylesheet" href="/bangbang/resources/css/container.css">
+<link rel="stylesheet" href="/resources/css/container.css">
 <style>
 .text_red {
 	color: red;

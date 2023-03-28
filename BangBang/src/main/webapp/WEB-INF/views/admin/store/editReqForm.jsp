@@ -6,7 +6,7 @@ pageEncoding="UTF-8"%>
     <meta charset="UTF-8" />
     <title>가맹점 정보 수정 요청</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="/bangbang/resources/css/container.css" />
+    <link rel="stylesheet" href="/resources/css/container.css" />
     <style type="text/css">
       #main_container {
         padding: 20px 20px;

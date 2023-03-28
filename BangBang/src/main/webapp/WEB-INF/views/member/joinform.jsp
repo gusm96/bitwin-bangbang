@@ -35,13 +35,14 @@ table {
 }
 </style>
 <script type="text/javascript"
-	src="${pageContext.request.contextPath }/resources/js/checkid.js"></script>
+	src="/resources/js/checkid.js"></script>
 <script type="text/javascript"
-	src="${pageContext.request.contextPath }/resources/js/checkemail.js"></script>
+	src="/resources/js/checkemail.js"></script>
 <script type="text/javascript"
-	src="${pageContext.request.contextPath }/resources/js/checkpw.js"></script>
+	src="/resources/js/checkpw.js"></script>
 <script type="text/javascript"
-	src="${pageContext.request.contextPath }/resources/js/reg.js"></script>
+	src="/resources/js/reg.js"></script>
+	<script src="/resources/js/pwStrengthChcek.js"></script>
 </head> 
 <body>
 	<%@include file="../includes/bangbang-header.jsp"%>
@@ -62,6 +63,7 @@ table {
 						name="password" id="password1" min="8" max="16" required />
 					<div style="font-size: small; color: gray;"># 영문, 숫자, 기호를
 						사용하여 8자 이상 16자 이하로 입력하세요.</div>
+					<div class="pwStrength"></div>
 				</div>
 
 				<div class="form-floating">

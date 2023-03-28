@@ -4,6 +4,6 @@
 <c:if test="${result > 0 }">
 	<script>
 		alert("회원가입을 축하드립니다.");
-		location.href = "/bangbang/member/login";
+		location.href = "${pageContext.request.contextPath}/member/login";
 	</script>
 </c:if>

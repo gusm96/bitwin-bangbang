@@ -11,7 +11,7 @@
 <head>
 <meta charset="UTF-8" />
 <title>가맹점 로그인</title>
-<link rel="stylesheet" href="/bangbang/resources/css/container.css">
+<link rel="stylesheet" href="/resources/css/container.css">
 <style type="text/css">
 #main_container{
 	width: 300px;
