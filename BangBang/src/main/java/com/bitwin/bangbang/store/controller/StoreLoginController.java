@@ -2,6 +2,7 @@ package com.bitwin.bangbang.store.controller;
 
 import javax.servlet.http.HttpSession;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,10 +18,10 @@ import com.bitwin.bangbang.store.domain.StoreSearchPassword;
 import com.bitwin.bangbang.store.service.StoreService;
 
 @Controller
+@RequiredArgsConstructor
 @RequestMapping("/")
 public class StoreLoginController {
-	@Autowired
-	private StoreService service;
+	private final StoreService service;
 
 	@GetMapping("/login/store")
 	public String getStoreLogin() {

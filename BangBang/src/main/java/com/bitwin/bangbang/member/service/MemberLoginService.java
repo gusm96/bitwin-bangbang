@@ -8,6 +8,7 @@ import com.bitwin.bangbang.member.domain.*;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import lombok.RequiredArgsConstructor;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -22,12 +23,11 @@ import java.net.URL;
 import java.util.HashMap;
 
 @Service
+@RequiredArgsConstructor
 public class MemberLoginService {
 	private MemberDao dao;
-	@Autowired
-	private SqlSessionTemplate template;
-	@Autowired
-	private BCryptPasswordEncoder encoder;
+	private final SqlSessionTemplate template;
+	private final BCryptPasswordEncoder encoder;
 	public String login(MemberLoginRequest loginRequest, HttpServletResponse res, HttpSession session)
 			throws LoginInvalidException {
 		String viewName = null;

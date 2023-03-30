@@ -3,6 +3,7 @@ package com.bitwin.bangbang.admin.service;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import lombok.RequiredArgsConstructor;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,12 +13,12 @@ import com.bitwin.bangbang.admin.domain.Admin;
 import com.bitwin.bangbang.member.exception.LoginInvalidException;
 
 @Service
+@RequiredArgsConstructor
 public class AdminLoginService {
 	
 	private AdminDao dao;
 	
-	@Autowired
-	private SqlSessionTemplate template;
+	private final SqlSessionTemplate template;
 
 	public String login(Admin loginReq, HttpServletResponse res, HttpSession session) throws LoginInvalidException {
 		String viewPage = "";

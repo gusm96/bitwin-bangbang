@@ -1,5 +1,6 @@
 package com.bitwin.bangbang.admin.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,11 +13,10 @@ import com.bitwin.bangbang.admin.domain.Search;
 import com.bitwin.bangbang.admin.service.AdminMemberService;
 
 @Controller
+@RequiredArgsConstructor
 @RequestMapping("/admin/member")
 public class AdminMemberController {
-	@Autowired
-	private AdminMemberService memberService;
-
+	private final AdminMemberService memberService;
 	// 회원 리스트
 	@GetMapping
 	public String getMemberList(@RequestParam(value = "p", defaultValue = "1") int currentPage,

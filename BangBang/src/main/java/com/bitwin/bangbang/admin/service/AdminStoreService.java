@@ -2,15 +2,15 @@ package com.bitwin.bangbang.admin.service;
 
 import java.util.List;
 
+import lombok.RequiredArgsConstructor;
 import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.bitwin.bangbang.admin.domain.StoreEditReqListView;
 import com.bitwin.bangbang.admin.domain.StoreListView;
 import com.bitwin.bangbang.member.service.MailSenderService;
-import com.bitwin.bangbang.member.service.RamdomPassword;
+import com.bitwin.bangbang.member.service.RandomPassword;
 import com.bitwin.bangbang.store.dao.StoreDao;
 import com.bitwin.bangbang.store.domain.Store;
 import com.bitwin.bangbang.store.domain.StoreEditRequest;
@@ -18,20 +18,17 @@ import com.bitwin.bangbang.store.domain.StoreEditRequestList;
 import com.bitwin.bangbang.store.domain.StoreRegRequest;
 
 @Service
+@RequiredArgsConstructor
 public class AdminStoreService {
 	private StoreDao dao;
 
-	@Autowired
-	private SqlSessionTemplate template;
+	private final SqlSessionTemplate template;
 
-	@Autowired
-	private BCryptPasswordEncoder bcrypt;
+	private final BCryptPasswordEncoder bcrypt;
 
-	@Autowired
-	private MailSenderService mailSender;
+	private final MailSenderService mailSender;
 
-	@Autowired
-	private RamdomPassword randomPw;
+	private final RandomPassword randomPw;
 
 	// 페이지 당 표현할 가맹점 수
 	private final int COUNT_PER_PAGE = 15;
@@ -43,7 +40,7 @@ public class AdminStoreService {
 		int resultCnt = 0;
 
 		// 임시 비밀번호 생성
-		String pw = randomPw.getRamdomPassword(8);
+		String pw = randomPw.getRandomPassword(8);
 
 		// 임시 비밀번호를 암호화 하여 DB에 저장
 		String bPw = bcrypt.encode(pw);

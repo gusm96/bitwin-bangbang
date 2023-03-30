@@ -2,13 +2,11 @@ package com.bitwin.bangbang.member.service;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.SQLIntegrityConstraintViolationException;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
+import lombok.RequiredArgsConstructor;
 import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -21,19 +19,14 @@ import com.bitwin.bangbang.member.domain.SearchPassword;
 import com.bitwin.bangbang.member.domain.SimpleRegRequest;
 
 @Service
+@RequiredArgsConstructor
 public class MemberService {
 
 	private MemberDao dao;
-
-	@Autowired
-	private SqlSessionTemplate template;
-
-	@Autowired
-	private RamdomPassword ramdomPw;
-	@Autowired
-	private MailSenderService mailSender;
-	@Autowired
-	private BCryptPasswordEncoder bcrypt;
+	private final SqlSessionTemplate template;
+	private final RandomPassword randomPw;
+	private final MailSenderService mailSender;
+	private final BCryptPasswordEncoder bcrypt;
 
 	// 회원가입
 	public int insertMember(MemberRegRequest regRequest) {
@@ -96,7 +89,7 @@ public class MemberService {
 
 		if (dao.selectCountByEmailUserId(searchPw) > 0) {
 			// 임시비밀번호 8자리 생성 (문자, 기호, 숫자)
-			String password = ramdomPw.getRamdomPassword(8);
+			String password = randomPw.getRandomPassword(8);
 			// 임시비밀번호 암호화
 			searchPw.setBpw(bcrypt.encode(password));
 			// 변경된 임시번호로 회원정보 업데이트

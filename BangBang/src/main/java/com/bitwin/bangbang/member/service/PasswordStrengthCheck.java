@@ -1,7 +1,6 @@
 package com.bitwin.bangbang.member.service;
 
 import com.bitwin.bangbang.member.domain.PasswordStrength;
-import lombok.var;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,7 +14,6 @@ public class PasswordStrengthCheck {
             System.out.println(e.getMessage());
             return PasswordStrength.ERROR;
         }
-        // 기본 조건 충족하지 못함
     }
 
     private static int getNumberMet(String password) {
@@ -29,7 +27,7 @@ public class PasswordStrengthCheck {
 
         return result;
     }
-
+    // 기본 조건 비밀번호 8자 이상 16자 미만
     private static boolean isMeetBasicConditions(String password){
         if (password.length() >= 8 && password.length() <= 16 && !password.isEmpty()) {
             return true;

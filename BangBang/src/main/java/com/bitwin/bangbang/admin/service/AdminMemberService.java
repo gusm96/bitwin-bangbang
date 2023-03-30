@@ -2,6 +2,7 @@ package com.bitwin.bangbang.admin.service;
 
 import java.util.List;
 
+import lombok.RequiredArgsConstructor;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,12 +12,12 @@ import com.bitwin.bangbang.member.dao.MemberDao;
 import com.bitwin.bangbang.member.domain.Member;
 
 @Service
+@RequiredArgsConstructor
 public class AdminMemberService {
 
 	private MemberDao dao;
 
-	@Autowired
-	private SqlSessionTemplate template;
+	private final SqlSessionTemplate template;
 
 	// 페이지 당 표현할 맴버수
 	private final int COUNT_PER_PAGE = 15;

@@ -3,6 +3,7 @@ package com.bitwin.bangbang.admin.controller;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,11 +14,9 @@ import com.bitwin.bangbang.admin.service.AdminLoginService;
 import com.bitwin.bangbang.member.exception.LoginInvalidException;
 
 @Controller
-
+@RequiredArgsConstructor
 public class AdminLoginController {
-	
-	@Autowired
-	private AdminLoginService loginService;
+	private final AdminLoginService loginService;
 	@RequestMapping(value = "/login/admin" ,method = RequestMethod.GET)
 	public String getLogin() {
 		return "admin/login";

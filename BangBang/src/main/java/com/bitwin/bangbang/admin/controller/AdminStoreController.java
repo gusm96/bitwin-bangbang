@@ -1,5 +1,6 @@
 package com.bitwin.bangbang.admin.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,10 +16,10 @@ import com.bitwin.bangbang.store.domain.StoreEditRequest;
 import com.bitwin.bangbang.store.domain.StoreRegRequest;
 
 @Controller
+@RequiredArgsConstructor
 @RequestMapping("/admin/store")
 public class AdminStoreController {
-	@Autowired
-	private AdminStoreService storeService;
+	private final AdminStoreService storeService;
 
 	@GetMapping
 	public String getStore(@RequestParam(value = "p", defaultValue = "1") int currentPage, Model model) {

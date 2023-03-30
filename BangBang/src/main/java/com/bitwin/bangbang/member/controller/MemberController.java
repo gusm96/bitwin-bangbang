@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import com.bitwin.bangbang.member.domain.*;
 import com.bitwin.bangbang.member.service.PasswordStrengthCheck;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,20 +21,13 @@ import com.bitwin.bangbang.member.service.MemberLoginService;
 import com.bitwin.bangbang.member.service.MemberService;
 
 @Controller
+@RequiredArgsConstructor // 생성자 주입
 @RequestMapping("/member")
 public class MemberController {
-
-	@Autowired
-	private MemberService service;
-
-	@Autowired
-	private MemberLoginService loginService;
-
-	@Autowired
-	private MemberCheckService checkService;
-
-	@Autowired
-	private PasswordStrengthCheck pwStrengthCheck;
+	private final MemberService service;
+	private final MemberLoginService loginService;
+	private final MemberCheckService checkService;
+	private final  PasswordStrengthCheck pwStrengthCheck;
 
 	// 로그인
 	@GetMapping("/login")

@@ -2,14 +2,14 @@ package com.bitwin.bangbang.store.service;
 
 import javax.servlet.http.HttpSession;
 
+import lombok.RequiredArgsConstructor;
 import org.mybatis.spring.SqlSessionTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.bitwin.bangbang.member.exception.LoginInvalidException;
 import com.bitwin.bangbang.member.service.MailSenderService;
-import com.bitwin.bangbang.member.service.RamdomPassword;
+import com.bitwin.bangbang.member.service.RandomPassword;
 import com.bitwin.bangbang.store.dao.StoreDao;
 import com.bitwin.bangbang.store.domain.Store;
 import com.bitwin.bangbang.store.domain.StoreEditRequest;
@@ -19,21 +19,18 @@ import com.bitwin.bangbang.store.domain.StorePassword;
 import com.bitwin.bangbang.store.domain.StoreSearchPassword;
 
 @Service
+@RequiredArgsConstructor
 public class StoreService {
 
 	private StoreDao dao;
 
-	@Autowired
 	private SqlSessionTemplate template;
 
-	@Autowired
-	private BCryptPasswordEncoder bcrypt;
+	private final BCryptPasswordEncoder bcrypt;
 	
-	@Autowired
-	private MailSenderService mailSender;
+	private final MailSenderService mailSender;
 	
-	@Autowired
-	private RamdomPassword ramdomPw;
+	private final RandomPassword randomPw;
 	
 	public String storeLogin(StoreLoginRequest loginReq, HttpSession session) throws LoginInvalidException {
 		String viewPage = "";
@@ -138,7 +135,7 @@ public class StoreService {
 		
 		if(dao.selectCountByEmailStoreId(searchPw) > 0) {
 			// 임시비밀번호 8자리 생성 (문자, 기호, 숫자)
-			String password = ramdomPw.getRamdomPassword(8);
+			String password = randomPw.getRandomPassword(8);
 			// 임시비밀번호 암호화
 			searchPw.setBpw(bcrypt.encode(password));
 			// 임시비밀번호로 가맹점 정보 update

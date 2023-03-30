@@ -1,5 +1,6 @@
 package com.bitwin.bangbang.member.service;
 
+import lombok.RequiredArgsConstructor;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -10,15 +11,14 @@ import com.bitwin.bangbang.member.domain.Member;
 import com.bitwin.bangbang.member.domain.MemberPassword;
 
 @Service
+@RequiredArgsConstructor
 public class MemberCheckService {
 
 	private MemberDao dao;
 	
-	@Autowired
-	private SqlSessionTemplate template;
+	private final SqlSessionTemplate template;
 	
-	@Autowired
-	private BCryptPasswordEncoder encoder;
+	private final BCryptPasswordEncoder encoder;
 	
 	public String checkEmail(String email) {
 		dao = template.getMapper(MemberDao.class);
