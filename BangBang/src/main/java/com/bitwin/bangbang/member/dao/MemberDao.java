@@ -15,6 +15,8 @@ import com.bitwin.bangbang.member.domain.Member;
 import com.bitwin.bangbang.member.domain.MemberPassword;
 
 public interface MemberDao {
+	public boolean findByUserId(String userid);
+	public boolean findByEmail(String email);
 
 	public int insertMember(MemberRegRequest regRequest);
 

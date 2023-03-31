@@ -103,6 +103,7 @@ public class MemberController {
 
 	@PostMapping("/join/general")
 	public String postGeneralMember(MemberRegRequest regRequest, Model model) {
+		System.out.println("Test");
 		model.addAttribute("result", service.insertMember(regRequest));
 		return "member/regComplete";
 	}

@@ -109,4 +109,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where userid=#{userid}
 	</update>
 
+	<!-- 아이디로 회원 유무 찾기 -->
+	<select id="findByUserId" resultType="boolean">
+		select IF(count(*) = 1, 1, 0) from user where userid =#{userid}
+	</select>
+	<!-- 이메일로 회원 유무 찾기 -->
+	<select id="findByEmail" resultType="boolean">
+		select IF(count(*) = 1, 1, 0) from user where email =#{email}
+	</select>
 </mapper>

@@ -11,7 +11,7 @@ public class MemberRegRequest {
 	private boolean enotify;
 	private boolean mnotify;
 	private boolean snotify;
-	private String photoName;
+	private String photoName = "default.jpg";
 
 	public int getUidx() {
 		return uidx;

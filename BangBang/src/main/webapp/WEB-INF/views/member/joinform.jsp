@@ -35,14 +35,14 @@ table {
 }
 </style>
 <script type="text/javascript"
-	src="/resources/js/checkid.js"></script>
+	src="${pageContext.request.contextPath}/resources/js/checkid.js"></script>
 <script type="text/javascript"
-	src="/resources/js/checkemail.js"></script>
+	src="${pageContext.request.contextPath}/resources/js/checkemail.js"></script>
 <script type="text/javascript"
-	src="/resources/js/checkpw.js"></script>
+	src="${pageContext.request.contextPath}/resources/js/checkpw.js"></script>
 <script type="text/javascript"
-	src="/resources/js/reg.js"></script>
-	<script src="/resources/js/pwStrengthChcek.js"></script>
+	src="${pageContext.request.contextPath}/resources/js/reg.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/pwStrengthChcek.js"></script>
 </head> 
 <body>
 	<%@include file="../includes/bangbang-header.jsp"%>

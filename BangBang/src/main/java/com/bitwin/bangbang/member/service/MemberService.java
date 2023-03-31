@@ -31,16 +31,27 @@ public class MemberService {
 	// 회원가입
 	public int insertMember(MemberRegRequest regRequest) {
 		int resultCnt = 0;
-
-		regRequest.setPhotoName("default.jpg");
-
-		// 비밀번호 암호화 필요
+		// 증복된 회원 검사
+		// id 중복
+		if (duplicateUserIdValidation(regRequest.getUserid())) {
+			// ID 중복 알림
+			resultCnt = 2;
+			return resultCnt;
+		}
+		// email 중복
+		if (duplicateEmailValidation(regRequest.getEmail())) {
+			// Email 중복
+			resultCnt = 3;
+			return resultCnt;
+		}
+		// 비밀번호 암호화
 		String bPw = bcrypt.encode(regRequest.getPassword());
 		// 암호화 된 비밀번호를 저장
 		regRequest.setPassword(bPw);
 
 		dao = template.getMapper(MemberDao.class);
 
+		// 회원 정보 DB 에 insert
 		resultCnt = dao.insertMember(regRequest);
 
 		if (mailSender.send(regRequest.getEmail(), regRequest.getUsername()) > 0) {
@@ -48,10 +59,16 @@ public class MemberService {
 		} else {
 			System.out.println("메일전송 실패");
 		}
-
 		return resultCnt;
 	}
-
+	private boolean duplicateUserIdValidation(String userid){
+		dao = template.getMapper(MemberDao.class);
+		return dao.findByUserId(userid);
+	}
+	private boolean duplicateEmailValidation(String email){
+		dao = template.getMapper(MemberDao.class);
+		return dao.findByEmail(email);
+	}
 	// 간편 회원가입
 	public int insertSimpleMember(SimpleRegRequest regRequest, HttpServletRequest req) {
 		int resultCnt = 0;
