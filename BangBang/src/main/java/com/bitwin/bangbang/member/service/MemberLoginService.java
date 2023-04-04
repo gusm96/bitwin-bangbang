@@ -70,7 +70,7 @@ public class MemberLoginService {
 	}
 	public String socialLogin(HttpSession session, String snsname, String code){
 		String page = "";
-
+		// AccessToken 메서드 실행
 		ApiToken token = getAccessToken(snsname, code);
 		HashMap<String, Object> userInfo = getUserInfo(snsname, token.getAccess_Token());
 		// DB에 등록 된 회원인지 확인

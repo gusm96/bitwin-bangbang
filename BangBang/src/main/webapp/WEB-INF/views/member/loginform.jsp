@@ -28,13 +28,13 @@ form * {
 			<form method="post">
 				<input type="hidden" name="url" value="${param.referer}" />
 				<div class="form-floating">
-					<label for="userid">아이디</label> <input type="text"
+					<label for="userid">아이디</label> <input type="text" id="userid"
 						class="form-control" name="userid" required
 						onkeyup="charCheck(this)" placeholder="아이디를 입력하세요."
 						value="${cookie.saveId != null ? cookie.saveId.value : ''}" />
 				</div>
 				<div class="form-floating">
-					<label for="password">비밀번호</label> <input type="password"
+					<label for="password">비밀번호</label> <input type="password" id="password"
 						name="password" class="form-control" required
 						onkeyup="charCheck(this)" placeholder="비밀번호를 입력하세요." />
 				</div>

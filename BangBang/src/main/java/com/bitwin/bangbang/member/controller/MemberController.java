@@ -9,7 +9,6 @@ import javax.servlet.http.HttpSession;
 import com.bitwin.bangbang.member.domain.*;
 import com.bitwin.bangbang.member.service.PasswordStrengthCheck;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -50,6 +49,8 @@ public class MemberController {
 		return "error/loginFail";
 	}
 
+	// Kakako / Naver Login API
+	// 받아온 코드로 Login 진행
 	@GetMapping("/login/oauth/{snsname}")
 	public String socialLogin(@PathVariable("snsname") String snsname, @RequestParam("code") String code,
 			HttpSession session) {
