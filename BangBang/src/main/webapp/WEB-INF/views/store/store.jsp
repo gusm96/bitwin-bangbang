@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8" />
 <title>가맹점 정보</title>
-<link rel="stylesheet" href="/resources/css/container.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/container.css">
 </head>
 <body>
 	<%@include file="../includes/store-header.jsp"%>

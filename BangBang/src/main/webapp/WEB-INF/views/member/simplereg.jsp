@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8" />
 <title>간편 회원 가입</title>
-<link rel="stylesheet" href="/resources/css/container.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/container.css">
 <style type="text/css">
 #main_container {
 	width: 300px;

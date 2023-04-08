@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8" />
 <title>비밀번호 변경</title>
-<link rel="stylesheet" href="/resources/css/container.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/container.css">
 <%@ include file="/WEB-INF/views/frame/pageset.jsp"%>
 <style>
 #msg, #pmsg {

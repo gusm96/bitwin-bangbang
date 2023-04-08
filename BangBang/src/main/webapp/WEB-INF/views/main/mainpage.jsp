@@ -10,19 +10,19 @@
 <main class="container">
      <div id="bar-image-container" style="padding-bottom: 20px;">
 				<div class="bar-images hide--mobile">
-					<img src="/resources/imageContainer/1.jpg" alt="1" class="bar-image">
-					<img src="/resources/imageContainer/2.jpg" alt="2" class="bar-image">
-					<img src="/resources/imageContainer/3.jpg" alt="3" class="bar-image">
+					<img src="${pageContext.request.contextPath}/resources/imageContainer/1.jpg" alt="1" class="bar-image">
+					<img src="${pageContext.request.contextPath}/resources/imageContainer/2.jpg" alt="2" class="bar-image">
+					<img src="${pageContext.request.contextPath}/resources/imageContainer/3.jpg" alt="3" class="bar-image">
 				</div>
 				<div class="bar-images hide--mobile">
-					<img src="/resources/imageContainer/4.jpg" alt="4" class="bar-image">
-					<img src="/resources/imageContainer/5.jpg" alt="5" class="bar-image">
-					<img src="/resources/imageContainer/6.jpg" alt="6" class="bar-image">
+					<img src="${pageContext.request.contextPath}/resources/imageContainer/4.jpg" alt="4" class="bar-image">
+					<img src="${pageContext.request.contextPath}/resources/imageContainer/5.jpg" alt="5" class="bar-image">
+					<img src="${pageContext.request.contextPath}/resources/imageContainer/6.jpg" alt="6" class="bar-image">
 				</div>
 				<div class="bar-images hide--mobile">
-					<img src="/resources/imageContainer/7.jpg" alt="7" class="bar-image">
-					<img src="/resources/imageContainer/8.jpg" alt="8" class="bar-image">
-					<img src="/resources/imageContainer/9.jpg" alt="9" class="bar-image">
+					<img src="${pageContext.request.contextPath}/resources/imageContainer/7.jpg" alt="7" class="bar-image">
+					<img src="${pageContext.request.contextPath}/resources/imageContainer/8.jpg" alt="8" class="bar-image">
+					<img src="${pageContext.request.contextPath}/resources/imageContainer/9.jpg" alt="9" class="bar-image">
 				</div>
   </div>
   

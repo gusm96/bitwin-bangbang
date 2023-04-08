@@ -6,7 +6,7 @@
 <meta charset="UTF-8" />
 <title>비밀번호 찾기</title>
 <%@ include file="/WEB-INF/views/frame/pageset.jsp"%>
-<link rel="stylesheet" href="/resources/css/container.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/container.css">
 <style>
 #msg {
 	display: none;

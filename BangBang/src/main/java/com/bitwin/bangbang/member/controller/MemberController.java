@@ -111,7 +111,7 @@ public class MemberController {
 
 	// 중복 체크 기능
 	// 이메일 체크
-	@GetMapping("join/general/checkemail")
+	@GetMapping("/join/general/checkemail")
 	@ResponseBody
 	public String checkEmail(@RequestParam("email") String email) {
 		return checkService.checkEmail(email);

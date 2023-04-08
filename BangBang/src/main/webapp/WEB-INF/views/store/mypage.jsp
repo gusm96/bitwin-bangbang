@@ -7,7 +7,7 @@
 <meta charset="UTF-8" />
 <title>가맹점 상세정보</title>
 <%@ include file="/WEB-INF/views/frame/pageset.jsp"%>
-<link rel="stylesheet" href="/resources/css/container.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/container.css">
 <style type="text/css">
 	table {
 	margin: 0;

@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8" />
 <title>관리자 로그인</title>
-<link rel="stylesheet" href="/bangbang/resources/css/container.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/container.css">
 <style type="text/css">
 #main_container {
 	width: 300px;
