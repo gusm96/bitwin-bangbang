@@ -68,11 +68,11 @@ public class MemberLoginService {
 
 		return viewName;
 	}
-	public String socialLogin(HttpSession session, String snsname, String code){
+	public String socialLogin(HttpSession session, String snsName, String code){
 		String page = "";
 		// AccessToken 메서드 실행
-		ApiToken token = getAccessToken(snsname, code);
-		HashMap<String, Object> userInfo = getUserInfo(snsname, token.getAccess_Token());
+		ApiToken token = getAccessToken(snsName, code);
+		HashMap<String, Object> userInfo = getUserInfo(snsName, token.getAccess_Token());
 		// DB에 등록 된 회원인지 확인
 		String email = (String) userInfo.get("email");
 
@@ -83,7 +83,7 @@ public class MemberLoginService {
 			// session 에 로그인 정보 등록
 			session.setAttribute("loginInfo", getLoginInfo(email));
 			session.setAttribute("access_Token", token.getAccess_Token());
-			session.setAttribute("loginType", snsname);
+			session.setAttribute("loginType", snsName);
 			page = "redirect:/main/mainpage";
 		} else {
 			// userInfo 값을 joinform 으로 전달해 회원가입 실행.
@@ -93,9 +93,9 @@ public class MemberLoginService {
 
 		return page;
 	}
-	public ApiToken getAccessToken(String snsname, String authorize_code) {
+	public ApiToken getAccessToken(String snsName, String authorize_code) {
 		ApiToken token = new ApiToken();
-		SnsApi api = setApiInfo(snsname);
+		SnsApi api = setApiInfo(snsName);
 		try {
 			URL url = new URL(api.getTokenURL()); // URL 객체 생성
 			// url 의 프로토콜이 https:// 이기 때문에 HttpURLConnection객체로 캐스팅
@@ -122,7 +122,6 @@ public class MemberLoginService {
 			String result = "";
 
 			while ((line = br.readLine()) != null) {
-				System.out.println(line);
 				result += line;
 			}
 
@@ -139,15 +138,15 @@ public class MemberLoginService {
 		}
 		return token;
 	}
-	public SnsApi setApiInfo(String snsname){
+	public SnsApi setApiInfo(String snsName){
 		SnsApi api = null;
-		if(snsname.equals("kakao")){
+		if(snsName.equals("kakao")){
 			KakaoInfo kakao = new KakaoInfo();
 			api = new SnsApi(kakao.getTokenURL(),
 					kakao.getClient_id(),
 					kakao.getClient_secret(),
 					kakao.getRedirect_uri());
-		}else if (snsname.equals("naver")){
+		}else if (snsName.equals("naver")){
 			NaverInfo naver = new NaverInfo();
 			api = new SnsApi(naver.getTokenURL(),
 					naver.getClient_id(),
@@ -156,12 +155,12 @@ public class MemberLoginService {
 		}
 		return api;
 	}
-	public HashMap<String, Object> getUserInfo(String snsname, String access_Token) {
+	public HashMap<String, Object> getUserInfo(String snsName, String access_Token) {
 		// 요청하는 클라이언트마다 가진 정보가 다를 수 있기에 HashMap타입으로 선언
 		HashMap<String, Object> userInfo = new HashMap<>();
-		if (snsname.equals("kakao")) {
+		if (snsName.equals("kakao")) {
 			userInfo = getKakaoUserInfo(userInfo, access_Token);
-		} else if (snsname.equals("naver")) {
+		} else if (snsName.equals("naver")) {
 			userInfo = getNaverUserInfo(userInfo, access_Token);
 		}
 		return userInfo;
@@ -199,7 +198,7 @@ public class MemberLoginService {
 			userInfo.put("nickname", nickname);
 			userInfo.put("profile", profile);
 			userInfo.put("email", email);
-			userInfo.put("reage", range);
+			userInfo.put("range", range);
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -239,7 +238,7 @@ public class MemberLoginService {
 			userInfo.put("nickname", nickname);
 			userInfo.put("profile", profile);
 			userInfo.put("email", email);
-			userInfo.put("reage", range);
+			userInfo.put("range", range);
 			userInfo.put("phonenum", phonenum);
 
 		} catch (IOException e) {

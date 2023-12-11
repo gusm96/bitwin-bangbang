@@ -74,7 +74,8 @@ public class BoardController {
 		
 		// Member member = (Member)session.getAttribute("member");
 		// review.setUidx(member.getUserId());
-		
+
+
 		reviewService.create(review);
 	} 
 	
