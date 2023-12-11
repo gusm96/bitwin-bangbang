@@ -32,7 +32,10 @@
 | - 일반 회원 Part<br />- 가맹점 Part<br />- 관리자 Part | - 공지사항 게시글 Part<br />- 고객서비스 Part |   - 결제 Part<br />- 가맹점 지도 Part   | - 상품등록 Part<br />- 상품 게시글 Part |
 
 ------
+### ERD
 
+<img width="758" alt="방방ERD" src="https://github.com/gusm96/bitwin-bangbang/assets/77833389/c523bd2d-b0bb-4cbd-b83c-181eefe8fba8">
+------
 ### 🛠️Using Technology
 
 - BackEnd
@@ -66,15 +69,15 @@
 
 ### 📚 What I Leaned?
 
-- Spring MVC Framework의 동작 원리와 기술적인 부분들에 대해 깊이 있는 이해를 얻을 수 있었습니다.
+- Spring Framework의 동작 원리를 이해하고 응용할 수 있습니다.
   - Component scan 방법과 Java 코드로 Spring Bean을 등록하는 방법 등 Spring Bean에 대한 이해
   - DI(의존성 주입)에 대한 이해와 생성자 주입, 필드 주입, 수정자 주입의 장단점 등
+- HttpURLConnection 클래스를 사용해 외부 API를 호출할 수 있습니다.
 - REST API의 개념과 기본적인 개발 방법에 대한 이해를 얻을 수 있었습니다.
-- 관계형 데이터베이스를 사용하며 SQL 쿼리 작성에 대한 숙련도를 향상시킬 수 있었습니다.
-- Mybatis 설정과 사용 방법을 익힐 수 있었습니다.
-- 회원 및 가맹점 로그인 및 가입 기능을 구현하며 보안에 대한 이해와 Bcrypt(암호화 해시 함수)를 사용한 비밀번호 보안 강화, SQL Injection 방어 방법 등을 공부했습니다.
-- Git을 이용한 버전 관리 및 협업 방법을 배웠습니다.
-- JSP를 이용한 view 구성과 JavaScript, jQuery, Bootstrap 등을 사용하여 프론트엔드의 기본적인 기술들도 공부할 수 있었습니다.
+- RDBMS 기본 SQL 문법을 작성할 수 있습니다.
+- Mybatis를 설정하고 사용할 수 있습니다.
+- Bcrypt를 암호화 해시 함수를 사용해 비밀번호 암호화를 할 수 있습니다.
+- JSP, JavaScript, jQuery, Bootstrap 등을 사용하여 화면을 구성할 수 있습니다.
 
 ------
 
@@ -82,7 +85,5 @@
 
 - Git을 활용하여 협업을 제대로 하지 못했던 부분이 아쉬웠습니다.
   - 프로젝트 이후 Git branch, merge 등을 공부하여 Git Collaborator 기능을 이해하고 사용할 수 있게 되었습니다.
-- 프로젝트의 방향성
-  - 프로젝트가 학습용 프로젝트에 가깝다는 생각이 들어 아쉬움이 남았습니다.  그래서 현재 사이드 프로젝트 “My Blog”를 개발하고 있으며, 해당 프로젝트를 배포하고 운영하며 유지 보수해 나가는 것이 목표입니다. ( 입사 후에도 꾸준히 개발하며 학습할 것입니다. )
 - 보안
-  - 기능 구현에만 집중하여 보안에 신경을 쓰지 못했음을 깨달았습니다. 그래서 현재 Spring-Security, SQL Injection 방어 등 보안에 대한 공부를 하며 코드를 리팩토링하고 있습니다.
+  - 기능 구현에만 집중하여 보안에 신경을 쓰지 못했음을 깨달았습니다. 그래서 현재 Spring Security, SQL Injection 방어 등 보안에 대한 공부를 하며 코드를 리팩토링하고 있습니다.
