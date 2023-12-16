@@ -72,17 +72,8 @@
   - Component scan 방법과 Java 코드로 Spring Bean을 등록하는 방법 등 Spring Bean에 대한 이해
   - DI(의존성 주입)에 대한 이해와 생성자 주입, 필드 주입, 수정자 주입의 장단점 등
 - HttpURLConnection 클래스를 사용해 외부 API를 호출할 수 있습니다.
-- REST API의 개념과 기본적인 개발 방법에 대한 이해를 얻을 수 있었습니다.
 - RDBMS 기본 SQL 문법을 작성할 수 있습니다.
 - Mybatis를 설정하고 사용할 수 있습니다.
 - Bcrypt를 암호화 해시 함수를 사용해 비밀번호 암호화를 할 수 있습니다.
 - JSP, JavaScript, jQuery, Bootstrap 등을 사용하여 화면을 구성할 수 있습니다.
 
-------
-
-###  프로젝트의 아쉬운 점
-
-- Git을 활용하여 협업을 제대로 하지 못했던 부분이 아쉬웠습니다.
-  - 프로젝트 이후 Git branch, merge 등을 공부하여 Git Collaborator 기능을 이해하고 사용할 수 있게 되었습니다.
-- 보안
-  - 기능 구현에만 집중하여 보안에 신경을 쓰지 못했음을 깨달았습니다. 그래서 현재 Spring Security, SQL Injection 방어 등 보안에 대한 공부를 하며 코드를 리팩토링하고 있습니다.
