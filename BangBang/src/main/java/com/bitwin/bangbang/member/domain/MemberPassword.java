@@ -1,28 +1,13 @@
 package com.bitwin.bangbang.member.domain;
 
+
+import lombok.*;
+
+@Getter
+@Builder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class MemberPassword {
-	private String userid;
+	private String username;
 	private String newPassword;
-
-	public String getUserid() {
-		return userid;
-	}
-
-	public void setUserid(String userid) {
-		this.userid = userid;
-	}
-
-	public String getNewPassword() {
-		return newPassword;
-	}
-
-	public void setNewPassword(String newPassword) {
-		this.newPassword = newPassword;
-	}
-
-	@Override
-	public String toString() {
-		return "MemberPassword [userid=" + userid + ", newPassword=" + newPassword + "]";
-	}
-
 }

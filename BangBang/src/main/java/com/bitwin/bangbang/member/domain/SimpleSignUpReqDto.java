@@ -1,9 +1,9 @@
 package com.bitwin.bangbang.member.domain;
 
-public class MemberRegRequest {
+public class SimpleSignUpReqDto {
 	private int uidx;
+	private String photo;
 	private String userid;
-	private String password;
 	private String username;
 	private String birth;
 	private String phonenum;
@@ -11,7 +11,16 @@ public class MemberRegRequest {
 	private boolean enotify;
 	private boolean mnotify;
 	private boolean snotify;
-	private String photoName = "default.jpg";
+	private boolean sns;
+	
+
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
 
 	public int getUidx() {
 		return uidx;
@@ -27,14 +36,6 @@ public class MemberRegRequest {
 
 	public void setUserid(String userid) {
 		this.userid = userid;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 	public String getUsername() {
@@ -92,20 +93,21 @@ public class MemberRegRequest {
 	public void setSnotify(boolean snotify) {
 		this.snotify = snotify;
 	}
+	
 
-	public String getPhotoName() {
-		return photoName;
+	public boolean isSns() {
+		return sns;
 	}
 
-	public void setPhotoName(String photoName) {
-		this.photoName = photoName;
+	public void setSns(boolean sns) {
+		this.sns = sns;
 	}
 
 	@Override
 	public String toString() {
-		return "MemberRegRequest [uidx=" + uidx + ", userid=" + userid + ", password=" + password + ", username="
-				+ username + ", birth=" + birth + ", phonenum=" + phonenum + ", email=" + email + ", enotify=" + enotify
-				+ ", mnotify=" + mnotify + ", snotify=" + snotify + ", photoName=" + photoName + "]";
+		return "SimpleRegRequest [uidx=" + uidx + ", photo=" + photo + ", userid=" + userid + ", username=" + username
+				+ ", birth=" + birth + ", phonenum=" + phonenum + ", email=" + email + ", enotify=" + enotify
+				+ ", mnotify=" + mnotify + ", snotify=" + snotify + ", sns=" + sns + "]";
 	}
 
 }

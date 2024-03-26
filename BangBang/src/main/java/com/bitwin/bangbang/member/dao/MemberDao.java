@@ -1,53 +1,57 @@
 package com.bitwin.bangbang.member.dao;
 
-import com.bitwin.bangbang.member.domain.MemberRegRequest;
-import com.bitwin.bangbang.member.domain.SearchPassword;
-import com.bitwin.bangbang.member.domain.SimpleRegRequest;
+import com.bitwin.bangbang.member.domain.SignUpReqDto;
+import com.bitwin.bangbang.member.domain.PasswordResetRequestDto;
+import com.bitwin.bangbang.member.domain.SimpleSignUpReqDto;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.ibatis.annotations.Select;
 
-import com.bitwin.bangbang.admin.domain.Search;
 import com.bitwin.bangbang.member.domain.EditMember;
 import com.bitwin.bangbang.member.domain.LoginInfo;
 import com.bitwin.bangbang.member.domain.Member;
 import com.bitwin.bangbang.member.domain.MemberPassword;
 
 public interface MemberDao {
-	public boolean findByUserId(String userid);
-	public boolean findByEmail(String email);
+    /* Create */
+    int save(SignUpReqDto regRequest);
 
-	public int insertMember(MemberRegRequest regRequest);
+    int simpleSave(SimpleSignUpReqDto regRequest);
 
-	public int insertSimpleMember(SimpleRegRequest regRequest);
+    /* Read */
+    int countByUsername(String username);
 
-	public int selectCountByUesrId(String userId);
+    int countByEmail(String email);
 
-	public int selectCountByEmail(String email);
+    Optional<Member> findById(Long memberId);
 
-	public Member selectById(String userid);
+    Optional<Member> findByUsername(String username);
 
-	public Member selectByIdx(int uidx);
+    Optional<LoginInfo> findByEmail(String email);
 
-	public LoginInfo selectByEmail(String email);
+    boolean existsByUsername(String username);
 
-	public int editMember(EditMember editMember);
+    boolean existsByEmail(String email);
 
-	public int updatePassword(MemberPassword memberPw);
+    List<Member> findAll(int index, int countPerPage);
 
-	public List<Member> selectAll(int index, int cOUNT_PER_PAGE);
-	// 검색기능
-	public List<Member> searchMember(int index, int cOUNT_PER_PAGE, String keyword, String search);
-	
-	public String searchId(String email);
+    List<Member> searchMember(int index, int countPerPage, String keyword, String search);
 
-	public int selectCountByEmailUserId(SearchPassword searchPw);
+    String searchId(String email);
 
-	public void updatePassword2(SearchPassword searchPw);
+    int countByUsernameAndEmail(PasswordResetRequestDto searchPw);
 
-	@Select("select count(*) from user")
-	public int selectTotalCount();
+    @Select("select count(*) from user")
+    int selectTotalCount();
 
+    /* UPDATE */
+    int updateMember(EditMember editMember);
 
+    int changePassword(MemberPassword memberPw);
+
+    void updatePassword2(PasswordResetRequestDto searchPw);
+
+    /* DELETE */
 }

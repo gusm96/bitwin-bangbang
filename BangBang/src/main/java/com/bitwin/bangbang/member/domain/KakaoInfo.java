@@ -1,12 +1,29 @@
 package com.bitwin.bangbang.member.domain;
 
 import lombok.Getter;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 @Getter
+@Component
 public class KakaoInfo {
-	private String tokenURL = "https://kauth.kakao.com/oauth/token";
-	private String client_id = "a085f34768fc66402a5576852c5c8a96";
-	private String client_secret ="1JQ2oztoPHxk8NHjSPD70PNkvoe56Miu";
-	private String redirect_uri = "http://localhost:8080/bangbang/member/login/oauth/kakao";
-	private String logout_redirect_uri ="http://localhost:8080/bangbang/member/logout/oauth/kakao";
+    private String tokenUrl;
+    private String clientId;
+    private String clientSecret;
+    private String redirectUri;
+    private String logoutRedirectUri;
+    private String userInfoRequestUri;
+    public KakaoInfo(@Value("${kakao.tokenUrl}") String tokenUrl,
+                     @Value("${kakao.client_id}") String clientId,
+                     @Value("${kakao.client_secret}") String clientSecret,
+                     @Value("${kakao.redirect_uri}") String redirectUri,
+                     @Value("${kakao.logout_redirect_uri}") String logoutRedirectUri,
+                     @Value("${kakao.userinfo_request_uri}")String userInfoRequestUri) {
+        this.tokenUrl = tokenUrl;
+        this.clientId = clientId;
+        this.clientSecret = clientSecret;
+        this.redirectUri = redirectUri;
+        this.logoutRedirectUri = logoutRedirectUri;
+        this.userInfoRequestUri = userInfoRequestUri;
+    }
 } 

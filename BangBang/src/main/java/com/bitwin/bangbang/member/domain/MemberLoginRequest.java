@@ -1,58 +1,23 @@
 package com.bitwin.bangbang.member.domain;
 
+import lombok.*;
+
+@Getter
+@Builder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class MemberLoginRequest {
 
 	private String url;
-	private String userid;
+	private String username;
 	private String password;
-	private String saveid;
+	private String saveId;
 
-	public String getUrl() {
-		return url;
-	}
-
-	public void setUrl(String url) {
-		this.url = url;
-	}
-
-	public String getUserid() {
-		return userid;
-	}
-
-	public void setUserid(String userid) {
-		this.userid = userid;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getSaveid() {
-		return saveid;
-	}
-
-	public void setSaveid(String saveid) {
-		this.saveid = saveid;
-	}
-
-	@Override
-	public String toString() {
-		return "MemberLoginRequest [url=" + url + ", userid=" + userid + ", password=" + password + ", saveid=" + saveid + "]";
-	}
-	
 	public LoginParams getLoginParams() {
-		return new LoginParams(userid, password);
+		return LoginParams.builder()
+				.username(this.username)
+				.password(this.password)
+				.build();
 	}
-	
-	
-	
-	
-	
-	
-	
 
 }

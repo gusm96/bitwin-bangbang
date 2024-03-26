@@ -85,7 +85,7 @@ public class BoardController {
 	 int result = 0;
 	 
 	 // Member member = (Member)session.getAttribute("member");
-	 int uidx = reviewService.reviewUidCheck(review.getRidx());
+	 Long memberId = reviewService.reviewUidCheck(review.getRidx());
 	 
 		/*
 		 * if(member.getUidx() == uidx) {
@@ -105,11 +105,11 @@ public class BoardController {
 	 int result = 0;
 	 
 	 Member member = (Member)session.getAttribute("member");
-	 int uidx = reviewService.reviewUidCheck(review.getRidx());
-	 
+	 Long memberId = reviewService.reviewUidCheck(review.getRidx());
+
 		
-		  if(member.getUidx() == uidx) { 
-		  review.setUidx(member.getUidx());
+		  if(member.getMemberId() == memberId) {
+		  review.setMemberId(member.getMemberId());
 		  reviewService.update(review);
 		  result = 1; 
 		  }

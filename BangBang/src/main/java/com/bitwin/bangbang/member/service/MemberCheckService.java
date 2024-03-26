@@ -20,27 +20,5 @@ public class MemberCheckService {
 	
 	private final BCryptPasswordEncoder encoder;
 	
-	public String checkEmail(String email) {
-		dao = template.getMapper(MemberDao.class);
-		return dao.selectCountByEmail(email) > 0 ? "N" : "Y";
-	}
-	
-	public String checkId(String userId) {
-		dao = template.getMapper(MemberDao.class);
-		return dao.selectCountByUesrId(userId) > 0 ? "N" : "Y";
-	}
-	
-	public String checkPw(String userid, String currentPw) {
-		Member member = null;
-		
-		dao = template.getMapper(MemberDao.class);
-		
-		member = dao.selectById(userid);
-		
-		if(!encoder.matches(currentPw, member.getPassword())) {
-			return "N";
-		}
-		return "Y";
-		
-	}
+
 }

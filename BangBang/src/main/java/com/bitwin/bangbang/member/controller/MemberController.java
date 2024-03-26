@@ -1,201 +1,226 @@
 package com.bitwin.bangbang.member.controller;
 
-import java.io.IOException;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import com.bitwin.bangbang.member.domain.*;
-import com.bitwin.bangbang.member.service.PasswordStrengthCheck;
+import com.bitwin.bangbang.member.exception.ChangePwInvalidException;
+import com.bitwin.bangbang.member.exception.LoginInvalidException;
+import com.bitwin.bangbang.member.service.*;
+import com.bitwin.bangbang.member.service.implement.MemberLoginServiceImpl;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import com.bitwin.bangbang.member.exception.ChangePwInvalidException;
-import com.bitwin.bangbang.member.exception.LoginInvalidException;
-import com.bitwin.bangbang.member.service.MemberCheckService;
-import com.bitwin.bangbang.member.service.MemberLoginService;
-import com.bitwin.bangbang.member.service.MemberService;
+import java.util.HashMap;
+
+import static com.bitwin.bangbang.member.domain.Result.*;
 
 @Controller
 @RequiredArgsConstructor // 생성자 주입
 @RequestMapping("/member")
 public class MemberController {
-	private final MemberService service;
-	private final MemberLoginService loginService;
-	private final MemberCheckService checkService;
-	private final  PasswordStrengthCheck pwStrengthCheck;
+    private final MemberService memberService;
+    private final MailSender mailSender;
+    private final MemberLoginService loginService;
+    private final PasswordStrengthCheck pwStrengthCheck;
 
-	// 로그인
-	@GetMapping("/login")
-	public String getLogin(Model model) {
-		KakaoInfo kakao = new KakaoInfo();
-		NaverInfo naver = new NaverInfo();
-		model.addAttribute("kakao", kakao);
-		model.addAttribute("naver", naver);
-		return "member/loginform";
-	}
+    @Value("${kakao.redirect_uri}")
+    private String kakaoRedirectUri;
 
-	@PostMapping("/login")
-	public String postLogin(MemberLoginRequest loginRequest, HttpServletResponse res, HttpSession session)
-			throws LoginInvalidException {
-		return loginService.login(loginRequest, res, session);
-	}
+    @Value("${kakao.client_id}")
+    private String kakaoClientId;
 
-	@ExceptionHandler(LoginInvalidException.class)
-	public String loginFail(LoginInvalidException e) {
-		return "error/loginFail";
-	}
+    @Value("${naver.redirect_uri}")
+    private String naverRedirectUri;
 
-	// Kakako / Naver Login API
-	// 받아온 코드로 Login 진행
-	@GetMapping("/login/oauth/{snsname}")
-	public String socialLogin(@PathVariable("snsname") String snsname, @RequestParam("code") String code,
-			HttpSession session) {
-		return loginService.socialLogin(session, snsname, code);
-	}
+    @Value("${naver.client_id}")
+    private String naverClientId;
 
-	// 로그아웃
-	@GetMapping("/logout")
-	public String logout(HttpSession session) {
-		session.invalidate();
-		return "redirect:/main/mainpage";
-	}
+    // 일반 회원가입
+    @GetMapping("/signup")
+    public String getSignUpView() {
+        return "member/signupForm";
+    }
 
-	// Kakao api 로그아웃
-	@GetMapping("/logout/oauth/kakao")
-	public String kakaoLogout(HttpSession session) {
-		loginService.kakaoLogout();
-		session.invalidate();
-		return "redirect:/main/mainpage";
-	}
+    @PostMapping("/signup")
+    public String signUp(@RequestBody @Valid SignUpReqDto regRequest, Model model) {
+        try {
+            MemberDto memberDto = memberService.signUp(regRequest);
+            mailSender.send(memberDto.getEmail(), memberDto.getUsername());
+            model.addAttribute("response", ResultResponse.builder()
+                    .result(SIGNUP_SUCCESS)
+                    .build());
+        } catch (Exception e) {
+            model.addAttribute("response", ResultResponse.builder()
+                    .result(FAILED.setMessage(e.getMessage()))
+                    .build());
+        }
+        return MemberRouter.SIGNUP_SUCCESS_REDIRECT.getRouter();
+    }
 
-	// Id 찾기
-	@GetMapping("/search/id")
-	public String getSearchId() {
-		return "member/searchId";
-	}
+    // 중복 체크 기능
+    // 이메일 체크
+    @GetMapping("/signup/checkemail")
+    @ResponseBody
+    public String checkEmail(@RequestParam("email") String email) {
+        return memberService.checkEmail(email);
+    }
 
-	@PostMapping("/search/id")
-	public String postSearchId(@RequestParam("email") String email, Model model) {
-		model.addAttribute("result", service.searchById(email));
-		return "member/searchIdComplete";
-	}
+    // 아이디 체크
+    @GetMapping("/signup/checkid")
+    @ResponseBody
+    public String checkId(@RequestParam("userid") String userId) {
+        return memberService.checkId(userId);
+    }
 
-	// PW 찾기
-	@GetMapping("/search/pw")
-	public String getSearchPw() {
-		return "member/searchPw";
-	}
+    // 비밀번호 체크
+    @RequestMapping(method = RequestMethod.GET, value = "/signup/checkpw", produces = "application/text; charset=utf8")
+    @ResponseBody
+    public String pwStrengthCheck(@RequestParam("password") String password) {
+        return pwStrengthCheck.ConfirmPasswordConditions(password).getValue();
+    }
 
-	@PostMapping("/search/pw")
-	public String postSearchPw(SearchPassword searchPW, Model model) {
-		model.addAttribute("result", service.searchByPw(searchPW));
-		return "member/searchPwComplete";
-	}
+    @GetMapping("/mypage/pw/checkpw")
+    @ResponseBody
+    public String checkPw(@RequestParam("currentpw") String currentPw, HttpSession session) {
+        LoginInfo loginInfo = (LoginInfo) session.getAttribute("loginInfo");
+        String username = loginInfo.getUsername();
 
-	// 일반 회원가입
-	@GetMapping("/join/general")
-	public String getGeneralMember() {
-		return "member/joinform";
-	}
+        return memberService.checkPw(username, currentPw);
+    }
 
-	@PostMapping("/join/general")
-	public String postGeneralMember(MemberRegRequest regRequest, Model model) {
-		model.addAttribute("result", service.insertMember(regRequest));
-		return "member/regComplete";
-	}
+    // 로그인
+    @GetMapping("/login")
+    public String getLogin(Model model) {
+        HashMap<String, String> social = new HashMap<>();
+        social.put("kakao_redirect_uri", kakaoRedirectUri);
+        social.put("kakao_client_id", kakaoClientId);
+        social.put("naver_redirect_uri", naverRedirectUri);
+        social.put("naver_client_id", naverClientId);
+        model.addAttribute("social", social);
+        return "member/loginform";
+    }
 
-	// 중복 체크 기능
-	// 이메일 체크
-	@GetMapping("/join/general/checkemail")
-	@ResponseBody
-	public String checkEmail(@RequestParam("email") String email) {
-		return checkService.checkEmail(email);
-	}
+    @PostMapping("/login")
+    public String postLogin(MemberLoginRequest loginRequest, HttpServletResponse res, HttpSession session)
+            throws LoginInvalidException {
+        return loginService.login(loginRequest, res, session);
+    }
 
-	// 아이디 체크
-	@GetMapping("/join/general/checkid")
-	@ResponseBody
-	public String checkId(@RequestParam("userid") String userId) {
-		return checkService.checkId(userId);
-	}
+    @ExceptionHandler(LoginInvalidException.class)
+    public String loginFail(LoginInvalidException e) {
+        return "error/loginFail";
+    }
 
-	// 비밀번호 체크
-	@RequestMapping(method = RequestMethod.GET,value = "join/general/checkpw", produces = "application/text; charset=utf8")
-	@ResponseBody
-	public String pwStrengthCheck(@RequestParam("password") String password){
-		return pwStrengthCheck.ConfirmPasswordConditions(password).getValue();
-	}
-	@GetMapping("/mypage/pw/checkpw")
-	@ResponseBody
-	public String checkPw(@RequestParam("currentpw") String currentPw, HttpSession session) {
-		LoginInfo loginInfo = (LoginInfo) session.getAttribute("loginInfo");
-		String userid = loginInfo.getUserId();
+    // Kakako / Naver Login API
+    // 받아온 코드로 Login 진행
+    @GetMapping("/login/oauth/{snsname}")
+    public String socialLogin(@PathVariable("snsname") String snsname, @RequestParam("code") String code,
+                              HttpSession session) throws LoginInvalidException {
+        return loginService.socialLogin(session, snsname, code);
+    }
 
-		return checkService.checkPw(userid, currentPw);
-	}
+    // 로그아웃
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/main/mainpage";
+    }
 
-	// 간편 회원가입
-	@GetMapping("/join/simple-reg")
-	public String getSimpleReg() {
-		return "member/simplereg";
-	}
+  /*  // Kakao api 로그아웃
+    @GetMapping("/logout/oauth/kakao")
+    public String kakaoLogout(HttpSession session) {
+        loginService.kakaoLogout();
+        session.invalidate();
+        return "redirect:/main/mainpage";
+    }*/
 
-	@PostMapping("/join/simple-reg")
-	public String postSimpleReg(SimpleRegRequest regRequest, HttpServletRequest req, Model model) {
+    // Id 찾기
+    @GetMapping("/search/id")
+    public String getSearchId() {
+        return "member/searchId";
+    }
 
-		model.addAttribute("result", service.insertSimpleMember(regRequest, req));
+    @PostMapping("/search/id")
+    public String searchUsername(@RequestParam("email") String email, Model model) {
+        model.addAttribute("result", memberService.searchUsernameByEmail(email));
+        return "member/searchIdComplete";
+    }
 
-		return "member/regComplete";
-	}
+    // PW 찾기
+    @GetMapping("/search/pw")
+    public String getSearchPw() {
+        return "member/searchPw";
+    }
 
-	// 마이페이지 회원정보 수정
-	@GetMapping("/mypage")
-	public String getMemberEdit(HttpSession session, Model model) {
-		// 현재 로그인한 정보를 session 에서 가져온다.
-		LoginInfo loginInfo = (LoginInfo) session.getAttribute("loginInfo");
-		int uidx = loginInfo.getUidx();
-		model.addAttribute("member", service.getMember(uidx));
-		return "member/mypage/editform";
-	}
+    @PostMapping("/search/pw")
+    public String searchPassword(@RequestBody PasswordResetRequestDto requestDto, Model model) {
+        model.addAttribute("result", memberService.issueTemporaryPassword(requestDto));
+        return "member/searchPwComplete";
+    }
 
-	@PostMapping("/mypage")
-	public String postMemeberEdit(EditMember editMember, Model model, HttpServletRequest req)
-			throws IllegalStateException, IOException {
-		model.addAttribute("result", service.editMember(editMember, req));
-		return "member/mypage/editComplete";
-	}
 
-	// 비밀번호 변경
-	@GetMapping("/mypage/pw")
-	public String getEditPw() {
-		return "member/mypage/changepw";
-	}
+    // 간편 회원가입
+    @GetMapping("/simple-signup")
+    public String getSimpleReg() {
+        return "member/simplereg";
+    }
 
-	@PostMapping("/mypage/pw")
-	public String changePw(@RequestParam("currentPw") String currentPw, @RequestParam("newPw1") String newPw,
-			HttpSession session, Model model) throws ChangePwInvalidException {
-		String page = "";
-		LoginInfo loginInfo = (LoginInfo) session.getAttribute("loginInfo");
-		String userid = loginInfo.getUserId();
+    @PostMapping("/simple-signup")
+    public String postSimpleReg(SimpleSignUpReqDto regRequest, HttpServletRequest req, Model model) {
 
-		String check = checkService.checkPw(userid, currentPw);
-		if (check.equals("Y")) {
-			model.addAttribute("result", service.changePw(userid, newPw));
-			session.invalidate();
-			page = "member/mypage/changeComplete";
-		} else {
-			throw new ChangePwInvalidException("현재 비밀번호가 일치하지 않습니다.");
-		}
+        model.addAttribute("result", memberService.simpleSignUp(regRequest));
 
-		return page;
-	}
+        return "signupResult";
+    }
 
-	@ExceptionHandler(ChangePwInvalidException.class)
-	public String changeFail(ChangePwInvalidException e) {
-		return "error/changeFail";
-	}
+    // 마이페이지 회원정보 수정
+    @GetMapping("/mypage")
+    public String getMemberEdit(HttpSession session, Model model) {
+        // 현재 로그인한 정보를 session 에서 가져온다.
+        LoginInfo loginInfo = (LoginInfo) session.getAttribute("loginInfo");
+        Long memberId = loginInfo.getMemberId();
+        model.addAttribute("member", memberService.retrieveMemberById(memberId));
+        return "member/mypage/editform";
+    }
+
+ /*   @PostMapping("/mypage")
+    public String updateMemberInfo(EditMember editMember, Model model, HttpServletRequest req)
+            throws IllegalStateException {
+        model.addAttribute("result", memberService.editMember(editMember, req));
+        return "member/mypage/editComplete";
+    }*/
+
+    // 비밀번호 변경
+    @GetMapping("/mypage/pw")
+    public String getEditPw() {
+        return "member/mypage/changepw";
+    }
+
+    @PostMapping("/mypage/pw")
+    public String changePw(@RequestParam("currentPw") String currentPw,
+                           @RequestParam("newPw1") String newPw,
+                           HttpSession session, Model model) {
+        String page = "";
+        LoginInfo loginInfo = (LoginInfo) session.getAttribute("loginInfo");
+        String username = loginInfo.getUsername();
+        try {
+            model.addAttribute("result", memberService.changePassword(username, currentPw, newPw));
+            session.invalidate();
+            page = "member/mypage/changeComplete";
+        } catch (Exception e) {
+
+        }
+        return page;
+    }
+
+    @ExceptionHandler(ChangePwInvalidException.class)
+    public String changeFail(ChangePwInvalidException e) {
+        return "error/changeFail";
+    }
 }
